@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROSA Hip System – Roboter-assistierte Hüftendoprothetik | Klinischer Leitfaden</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #2e86ab;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: #fff;
+            font-size: 17px;
+        }
+        
+        nav {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-family: Arial, sans-serif;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+            font-weight: normal;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            font-weight: normal;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .info-box {
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+            background: var(--light);
+        }
+        
+        .info-box.highlight {
+            border-color: var(--secondary);
+            background: #e8f4f8;
+        }
+        
+        .info-box.tip {
+            border-color: var(--warning);
+            background: #fef9e7;
+        }
+        
+        .info-box.warning {
+            border-color: var(--accent);
+            background: #fdedec;
+        }
+        
+        .info-box.success {
+            border-color: var(--success);
+            background: #e8f8f0;
+        }
+        
+        .info-box-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: normal;
+            font-family: Arial, sans-serif;
+        }
+        
+        tr:nth-child(even) {
+            background: var(--light);
+        }
+        
+        .workflow-step {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: var(--secondary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content strong {
+            color: var(--primary);
+        }
+        
+        .expert-tip {
+            background: linear-gradient(135deg, #fef9e7, #fcf3cf);
+            border: 1px solid var(--warning);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .expert-tip::before {
+            content: "💡 Expertentipp";
+            display: block;
+            font-weight: bold;
+            color: #b7950b;
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+        }
+        
+        .key-point {
+            background: linear-gradient(135deg, #e8f8f0, #d5f5e3);
+            border: 1px solid var(--success);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .key-point::before {
+            content: "✓ Kernaussage";
+            display: block;
+            font-weight: bold;
+            color: var(--success);
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+        }
+        
+        .caution {
+            background: linear-gradient(135deg, #fdedec, #fadbd8);
+            border: 1px solid var(--accent);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .caution::before {
+            content: "⚠️ Achtung";
+            display: block;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+        }
+        
+        .reference-list {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .reference-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.5rem;
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-box {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .summary-box h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+            margin-top: 0;
+        }
+        
+        .summary-box ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .summary-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .summary-box li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            header h1 {
+                font-size: 1.75rem;
+            }
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+        
+        .stat-highlight {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .comparison-card {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .comparison-card h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#zusammenfassung">Zusammenfassung</a></li>
+            <li><a href="#system">Das System</a></li>
+            <li><a href="#spinopelvin">Spinopelvines Alignment</a></li>
+            <li><a href="#workflow">Workflow</a></li>
+            <li><a href="#evidenz">Klinische Evidenz</a></li>
+            <li><a href="#tipps">Expertentipps</a></li>
+            <li><a href="#literatur">Literatur</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>ROSA® Hip System</h1>
+        <p>Fluoroskopie-basierte roboter-assistierte Hüftendoprothetik mit spinopelvinem Alignment</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem;">Ein klinischer Leitfaden mit Handlungsempfehlungen und Expertentipps</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="zusammenfassung">
+            <div class="summary-box">
+                <h2>Zusammenfassung</h2>
+                <p>Das ROSA® Hip System (Zimmer Biomet) ist ein fluoroskopie-basiertes Robotersystem für die Hüft-Totalendoprothetik über den direkten anterioren Zugang. Es integriert spinopelvine Mobilitätsanalyse, präzise Pfannenpositionierung und intraoperative Beinlängen-/Offset-Kontrolle.</p>
+                <ul>
+                    <li><strong>CT-frei:</strong> Keine präoperative CT erforderlich – reduzierte Strahlenbelastung</li>
+                    <li><strong>Pin-los:</strong> Keine Referenzarrays oder Pins – vereinfachter Workflow</li>
+                    <li><strong>Lernkurve:</strong> Ca. 12 Fälle bis zur Routine (Buchan et al. 2023)</li>
+                    <li><strong>Genauigkeit:</strong> 100% der Pfannen in Lewinnek Safe Zone in Kadaverstudie</li>
+                    <li><strong>ONE Planner® Hip:</strong> Webbasierte Planung in ca. 5 Minuten mit Auto-Plan</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="einleitung">
+            <h2>1. Einleitung</h2>
+            
+            <p>Die Hüft-Totalendoprothetik (H-TEP) zählt zu den erfolgreichsten chirurgischen Eingriffen mit einer Patientenzufriedenheit von über 90% (Learmonth et al. 2007). Dennoch bleibt die Luxation eine der häufigsten Komplikationen mit einer Inzidenz von 0,2–10% (Hermansen et al. 2021). Die traditionelle "Lewinnek Safe Zone" (40° ± 10° Inklination, 15° ± 10° Anteversion) reicht nicht aus, um alle Luxationen zu verhindern.</p>
+
+            <div class="info-box highlight">
+                <div class="info-box-title">Paradigmenwechsel</div>
+                Das moderne Verständnis der Pfannenpositionierung berücksichtigt die individuelle spinopelvine Mobilität. Ein Patient mit "steifer Wirbelsäule" benötigt eine andere Cup-Position als ein Patient mit normaler Mobilität.
+            </div>
+
+            <p>Die Entwicklung roboter-assistierter Systeme wie ROSA® Hip zielt darauf ab, die Genauigkeit der Implantatpositionierung zu verbessern und patientenspezifische spinopelvine Parameter zu berücksichtigen. Im August 2021 erhielt das System die FDA-Zulassung für den roboter-assistierten direkten anterioren Zugang (Zimmer Biomet 2021).</p>
+
+            <div class="expert-tip">
+                <strong>Dr. Atul Kamath, Cleveland Clinic:</strong> "ROSA Hip ermöglicht es Chirurgen, die vollständige Kontrolle über Fallplanung und -durchführung zu behalten, während Echtzeit-Daten und Visualisierungstools bereitgestellt werden. Selbst Chirurgen, die neu in der roboter-assistierten Chirurgie sind, können ROSA Hip leicht an ihren eigenen Workflow anpassen."
+            </div>
+        </section>
+
+        <section id="system">
+            <h2>2. Das ROSA® Hip System</h2>
+
+            <h3>2.1 Systemkomponenten</h3>
+            
+            <p>Das ROSA® Hip System besteht aus folgenden Hauptkomponenten:</p>
+            
+            <ul>
+                <li><strong>ROSA® Recon Robotic Unit:</strong> Die robotische Einheit mit Roboterarm</li>
+                <li><strong>ROSA® Tablet:</strong> Touchscreen-Interface für Planung und Navigation</li>
+                <li><strong>ONE Planner® Hip:</strong> Webbasierte präoperative Planungssoftware</li>
+                <li><strong>ONE Matrix™ Hip:</strong> Intraoperatives Trial-Panel für Beinlängen-/Offset-Optimierung</li>
+            </ul>
+
+            <h3>2.2 Klassifikation der Robotersysteme</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kategorie</th>
+                        <th>Systeme</th>
+                        <th>Merkmale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fluoroskopie-basiert</strong></td>
+                        <td>ROSA Hip (Zimmer Biomet)</td>
+                        <td>CT-frei, keine Pins/Arrays, röntgenbasierte Planung</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Imageless</strong></td>
+                        <td>Intellijoint, NaviPro, HipAlign</td>
+                        <td>Pelvine Arrays erforderlich, keine CT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CT-basiert</strong></td>
+                        <td>MAKO (Stryker)</td>
+                        <td>Präoperative CT, haptisches Feedback</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="key-point">
+                Das ROSA Hip System unterscheidet sich von anderen Robotersystemen durch seinen vereinfachten Workflow: <strong>Keine Pins, keine Referenzarrays, keine präoperative CT</strong>. Der fluoroskopie-basierte Ansatz spiegelt den konventionellen DAA-Workflow wider.
+            </div>
+
+            <h3>2.3 ONE Planner® Hip – Präoperative Planung</h3>
+            
+            <p>ONE Planner® Hip ist ein webbasiertes Planungstool, das keine lokale Installation erfordert. Funktionen umfassen:</p>
+
+            <ul>
+                <li><strong>Auto-Plan Modus:</strong> Präoperativer Plan in ca. 5 Minuten erstellt</li>
+                <li><strong>Spinopelvine Mobilitätsanalyse:</strong> Bei Vorliegen von sitzenden und stehenden lateralen Röntgenbildern</li>
+                <li><strong>Automatische Kalibrierung:</strong> Implantate, Offset, Beinlängendifferenz, Femurhalsresektion</li>
+                <li><strong>Intuitive Benutzeroberfläche:</strong> Interaktive Anpassung der Auto-Plan-Ergebnisse</li>
+            </ul>
+
+            <div class="expert-tip">
+                Nutzen Sie den Auto-Plan als Ausgangspunkt und passen Sie die Werte basierend auf Ihrer klinischen Erfahrung und patientenspezifischen Faktoren an. Die Software berechnet automatisch die erwarteten Pfannenpositionen im Stehen und Sitzen.
+            </div>
+
+            <h3>2.4 Kompatible Implantate</h3>
+            
+            <p>ROSA Hip ist kompatibel mit verschiedenen Implantatsystemen, darunter:</p>
+            <ul>
+                <li>Avenir Complete® Hip System</li>
+                <li>G7® Acetabular System</li>
+                <li>Taperloc® Femoral Stem</li>
+            </ul>
+        </section>
+
+        <section id="spinopelvin">
+            <h2>3. Spinopelvines Alignment</h2>
+
+            <h3>3.1 Grundlagen der spinopelvinen Mobilität</h3>
+            
+            <p>Die Beziehung zwischen Wirbelsäule, Becken und Hüfte ist entscheidend für die Stabilität nach H-TEP. Bei normaler spinopelviner Mobilität kippt das Becken beim Hinsetzen nach posterior, was zu einer erhöhten funktionellen Anteversion der Pfanne führt (ca. 15°).</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Definition</th>
+                        <th>Klinische Relevanz</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Sacral Slope (SS)</strong></td>
+                        <td>Winkel zwischen Sakralplatte und Horizontale</td>
+                        <td>ΔSS &lt;10° = steife Wirbelsäule</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pelvic Tilt (PT)</strong></td>
+                        <td>Winkel zwischen Linie S1-Hüftkopfzentrum und Vertikale</td>
+                        <td>PT &gt;19° = erhöhtes Risiko</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pelvic Incidence (PI)</strong></td>
+                        <td>Morphologischer Parameter (unveränderlich)</td>
+                        <td>PI-LL &gt;10° = sagittale Imbalance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lumbar Lordosis (LL)</strong></td>
+                        <td>Lumbale Lordose L1-S1</td>
+                        <td>Beeinflusst Beckenposition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ΔPT (Stehen→Sitzen)</strong></td>
+                        <td>Änderung des Pelvic Tilt</td>
+                        <td>&lt;10° = steif, &gt;30° = hypermobil</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.2 Hip-Spine Classification (Vigdorchik et al. 2021)</h3>
+
+            <p>Die Hip-Spine Klassifikation ermöglicht eine systematische Risikoeinschätzung und Therapieplanung:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Typ</th>
+                        <th>Mobilität</th>
+                        <th>Balance</th>
+                        <th>Empfehlung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1A</strong></td>
+                        <td>Normal</td>
+                        <td>Normal</td>
+                        <td>Standard-Position (40° Inklination, 20-25° Anteversion)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1B</strong></td>
+                        <td>Steif (ΔSS &lt;10°)</td>
+                        <td>Normal</td>
+                        <td>Erhöhte Anteversion (25-30°), 45° Inklination</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2A</strong></td>
+                        <td>Normal</td>
+                        <td>Imbalance</td>
+                        <td>Individualisiert nach APP</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2B</strong></td>
+                        <td>Steif</td>
+                        <td>Imbalance</td>
+                        <td><strong>HÖCHSTES RISIKO</strong> – Dual-Mobility-Cup erwägen</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="caution">
+                <strong>Hochrisiko-Patienten (Typ 2B):</strong> Patienten mit steifer Wirbelsäule UND sagittaler Imbalance haben das höchste Luxationsrisiko. Hier sollten Dual-Mobility-Cups in Betracht gezogen werden, die das Luxationsrisiko um das 6-fache reduzieren können.
+            </div>
+
+            <h3>3.3 Präoperative Bildgebung für spinopelvine Analyse</h3>
+
+            <div class="info-box highlight">
+                <div class="info-box-title">Erforderliche Röntgenbilder für ONE Planner® Hip</div>
+                <ol>
+                    <li><strong>AP Becken im Liegen:</strong> Standardaufnahme für Pfannenplanung</li>
+                    <li><strong>AP Becken im Stehen:</strong> Beurteilung der stehenden Beckenposition</li>
+                    <li><strong>Laterales Röntgen im Stehen:</strong> Messung von SS, PT, LL</li>
+                    <li><strong>Laterales Röntgen im Sitzen:</strong> Beurteilung der spinopelvinen Mobilität (ΔSS)</li>
+                </ol>
+            </div>
+
+            <div class="expert-tip">
+                <strong>Sitzende Röntgenaufnahme:</strong> Patient sitzt mit 90° Hüft- und Knieflexion. Beide Füße auf dem Boden. Die Wirbelsäule sollte entspannt sein (nicht aufrecht korrigiert). Kassette hinter dem Patienten auf Höhe des lumbosakralen Übergangs.
+            </div>
+        </section>
+
+        <section id="workflow">
+            <h2>4. Praktischer Workflow</h2>
+
+            <h3>4.1 Präoperative Phase</h3>
+
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <strong>Röntgenbilder akquirieren</strong><br>
+                    AP Becken (liegend + stehend) sowie laterale Wirbelsäulenaufnahmen (stehend + sitzend). Kalibrierkugel verwenden für korrekte Skalierung.
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <strong>ONE Planner® Hip starten</strong><br>
+                    Zugang über Zimmer Biomet Case Management System. Bilder hochladen und Auto-Plan aktivieren.
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <strong>Spinopelvine Analyse</strong><br>
+                    Bei Vorliegen aller 4 Röntgenbilder: Automatische Berechnung von ΔSS, Klassifikation nach Hip-Spine System, Risikoeinschätzung.
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <strong>Plan finalisieren</strong><br>
+                    Zielwerte für Inklination und Anteversion festlegen. Beinlänge und Offset planen. Plan speichern und zur ROSA-Einheit übertragen.
+                </div>
+            </div>
+
+            <h3>4.2 Intraoperative Phase</h3>
+
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <strong>Patientenlagerung</strong><br>
+                    Rückenlage auf Extensionstisch. Standard-DAA-Setup. ROSA-Einheit positionieren.
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <strong>Referenz-Fluoroskopie</strong><br>
+                    C-Bogen-Aufnahme für Landmark-Registrierung. Automatische Erkennung von Tränen, Foramen obturatorium und Femur. Chirurg verifiziert Landmarks.
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <strong>Acetabulumpräparation</strong><br>
+                    Manuelle Fräsung wie gewohnt. ROSA gibt Echtzeit-Feedback zur Fräsposition und -orientierung.
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <strong>Pfannenpositionierung</strong><br>
+                    <strong>ARM-BASIERT:</strong> Pfanne am Roboterarm befestigen. Semi-autonome Positionierung zur Erreichung der Zielwinkel. Chirurg führt Impaktierung durch.<br>
+                    <strong>ARM-LOS:</strong> Fluoroskopische Overlay-Technologie ohne Roboterarm.
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <strong>ONE Matrix™ – Beinlängen-/Offset-Analyse</strong><br>
+                    Nach Probekomponenten: Fluoroskopie für Beinlängen- und Offset-Messung. System zeigt beste Implantat-Kombination an.
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <strong>Finale Implantation & Dokumentation</strong><br>
+                    Definitive Komponenten einsetzen. Abschluss-Röntgen. Daten automatisch an ZBEdge® Analytics übertragen.
+                </div>
+            </div>
+
+            <div class="expert-tip">
+                <strong>C-Bogen-Positionierung:</strong> Achten Sie auf symmetrische Darstellung der Foramen obturatoria. Die Tränenlinien sollten klar erkennbar sein. Bei Adipositas kann eine höhere Durchleuchtungsdosis erforderlich sein – ROSA kompensiert dies automatisch in der Bildverarbeitung.
+            </div>
+        </section>
+
+        <section id="evidenz">
+            <h2>5. Klinische Evidenz</h2>
+
+            <h3>5.1 Genauigkeit der Pfannenpositionierung</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Studie</th>
+                        <th>Design</th>
+                        <th>Ergebnis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kamath et al. 2021</td>
+                        <td>Matched-pair Kadaverstudie (n=33/Arm)</td>
+                        <td><strong>100%</strong> ROSA in Lewinnek Zone vs. 73% manuell</td>
+                    </tr>
+                    <tr>
+                        <td>Buchan et al. 2023</td>
+                        <td>Klinische Serie (n=100)</td>
+                        <td><strong>81,6%</strong> in Safe Zone (vs. 59% manuell, p&lt;0.001)</td>
+                    </tr>
+                    <tr>
+                        <td>Ong et al. 2024</td>
+                        <td>Adipositas-Subanalyse</td>
+                        <td>ROSA eliminiert BMI-bedingten Genauigkeitsverlust</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="key-point">
+                ROSA Hip ermöglicht eine präzise Pfannenpositionierung unabhängig vom BMI des Patienten. Bei manueller Technik zeigen adipöse Patienten signifikant mehr "offene" (überabduzierte) Pfannen (Ong et al. 2024).
+            </div>
+
+            <h3>5.2 Lernkurve</h3>
+
+            <p>Buchan et al. (2023) untersuchten die Lernkurve bei 100 konsekutiven ROSA-Hip-Fällen mittels LC-CUSUM-Analyse:</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h4>Lernphase</h4>
+                    <div class="stat-highlight">12 Fälle</div>
+                    <p>Bis zur Routine</p>
+                </div>
+                <div class="comparison-card">
+                    <h4>Größte Verbesserung</h4>
+                    <div class="stat-highlight">Cup-Phase</div>
+                    <p>Acetabulum-Positionierung</p>
+                </div>
+                <div class="comparison-card">
+                    <h4>OP-Zeit nach Lernkurve</h4>
+                    <div class="stat-highlight">≈ manuell</div>
+                    <p>Keine signifikante Differenz</p>
+                </div>
+            </div>
+
+            <h3>5.3 Patient-Reported Outcomes (PROs)</h3>
+
+            <p>Buchan et al. (2024) verglichen 1-Jahres-Ergebnisse zwischen ROSA (n=85) und manueller Technik (n=91):</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Outcome</th>
+                        <th>ROSA Hip</th>
+                        <th>Manuell</th>
+                        <th>Signifikanz</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HOOS-PS Verbesserung</td>
+                        <td>-41,5 Punkte</td>
+                        <td>-37,8 Punkte</td>
+                        <td>ROSA signifikant besser</td>
+                    </tr>
+                    <tr>
+                        <td>VR-12 PCS</td>
+                        <td>Vergleichbar</td>
+                        <td>Vergleichbar</td>
+                        <td>n.s.</td>
+                    </tr>
+                    <tr>
+                        <td>UCLA Activity Score</td>
+                        <td>Vergleichbar</td>
+                        <td>Vergleichbar</td>
+                        <td>n.s.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5.4 Vergleich ROSA vs. CT-basierte Systeme</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>ROSA Hip (Fluoroskopie)</th>
+                        <th>CT-basiertes System (z.B. MAKO)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Präoperative Bildgebung</td>
+                        <td>Röntgen (4 Aufnahmen)</td>
+                        <td>CT-Scan erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td>Strahlenbelastung</td>
+                        <td>Geringer</td>
+                        <td>Höher (CT)</td>
+                    </tr>
+                    <tr>
+                        <td>OP-Zeit</td>
+                        <td>Kürzer (weniger Setup)</td>
+                        <td>Länger</td>
+                    </tr>
+                    <tr>
+                        <td>Pins/Arrays</td>
+                        <td>Keine</td>
+                        <td>Erforderlich</td>
+                    </tr>
+                    <tr>
+                        <td>Safe Zone Accuracy</td>
+                        <td>81,6%</td>
+                        <td>~87%</td>
+                    </tr>
+                    <tr>
+                        <td>Kosten</td>
+                        <td>Geringer (keine CT)</td>
+                        <td>Höher</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box highlight">
+                <div class="info-box-title">Fazit zur Evidenz</div>
+                ROSA Hip bietet eine vergleichbare Genauigkeit wie CT-basierte Systeme bei geringerer Strahlenbelastung, kürzerem Workflow und niedrigeren Kosten. Die 1-Jahres-PROs zeigen signifikante Vorteile bei der HOOS-Physical-Function.
+            </div>
+        </section>
+
+        <section id="tipps">
+            <h2>6. Expertentipps & Troubleshooting</h2>
+
+            <h3>6.1 Patientenselektion</h3>
+
+            <div class="expert-tip">
+                <strong>Ideale Kandidaten für spinopelvine Analyse:</strong>
+                <ul>
+                    <li>Z.n. Wirbelsäulenversteifung (insbesondere lumbosakral)</li>
+                    <li>Bekannte sagittale Imbalance</li>
+                    <li>Hüftdysplasie (erhöhte Luxationsneigung)</li>
+                    <li>Revisionseingriffe</li>
+                    <li>Adipositas (BMI &gt;35) – ROSA kompensiert technische Schwierigkeiten</li>
+                    <li>Neurologische Grunderkrankungen (M. Parkinson, Apoplex)</li>
+                </ul>
+            </div>
+
+            <h3>6.2 Fluoroskopie-Optimierung</h3>
+
+            <div class="two-column">
+                <div class="expert-tip">
+                    <strong>Bildqualität sicherstellen:</strong>
+                    <ul>
+                        <li>Foramen obturatoria symmetrisch</li>
+                        <li>Symphyse mittig</li>
+                        <li>Beide Tränenlinien klar erkennbar</li>
+                        <li>Sakrum nicht überprojiziert</li>
+                    </ul>
+                </div>
+                <div class="expert-tip">
+                    <strong>Bei schlechter Bildqualität:</strong>
+                    <ul>
+                        <li>Becken neu ausrichten</li>
+                        <li>Durchleuchtungsdosis erhöhen</li>
+                        <li>Landmarks manuell korrigieren</li>
+                        <li>Im Zweifel: neues Referenzbild</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>6.3 Troubleshooting</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problem</th>
+                        <th>Mögliche Ursache</th>
+                        <th>Lösung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registrierungsfehler</td>
+                        <td>Landmark-Erkennung fehlerhaft</td>
+                        <td>Landmarks manuell überprüfen und korrigieren; ggf. neues Röntgenbild</td>
+                    </tr>
+                    <tr>
+                        <td>Plan-Realität-Diskrepanz</td>
+                        <td>Pelvic Tilt intraoperativ verändert</td>
+                        <td>Beckenposition kontrollieren; Referenzbild im Liegen wiederholen</td>
+                    </tr>
+                    <tr>
+                        <td>Offset-Abweichung</td>
+                        <td>Femur-Registrierung ungenau</td>

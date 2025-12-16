@@ -1,0 +1,1115 @@
+# Geschlechtsspezifische Unterschiede im spinopelvinen Alignment in der Hüftendoprothetik: Praktischer Leitfaden für die klinische Anwendung
+
+## Einleitung
+
+Die Berücksichtigung geschlechtsspezifischer Unterschiede gewinnt in der personalisierten Medizin zunehmend an Bedeutung. In der Hüftendoprothetik zeigt sich, dass biologisches Geschlecht nicht nur die Hüftanatomie, sondern auch die spinopelvinen Parameter, das Komplikationsprofil und die klinischen Outcomes signifikant beeinflusst. Frauen unterziehen sich häufiger einer Hüft-TEP als Männer, zeigen jedoch unterschiedliche anatomische Ausgangssituationen und postoperative Komplikationsraten. Das Verständnis dieser geschlechtsspezifischen Unterschiede ist essenziell für optimale chirurgische Planung und Risikostratifizierung.
+
+## Anatomische Grundlagen: Geschlechtsdimorphismus des Beckens
+
+### Evolutionäre und funktionelle Aspekte
+
+Der Übergang des Menschen zum aufrechten Gang führte zu fundamentalen Veränderungen der Beckenanatomie. Bei Frauen resultierte die Anpassung an die Geburtsfunktion in einem breiteren, flacheren Becken mit größerem Beckeneingang. Diese anatomischen Unterschiede manifestieren sich in allen Ebenen: sagittal, koronal und transversal.
+
+### Dimensionale Unterschiede
+
+**Beckendimensionen**:
+
+- Frauen zeigen einen signifikant größeren Beckeneingangswinkel
+- Der Abstand zwischen den Spinae iliacae anterior superiores (SIAS) ist bei Frauen größer
+- Die Beckenbreite übertrifft bei Frauen die Beckenhöhe deutlicher als bei Männern
+- Das weibliche Becken ist anterior-posterior breiter
+
+**Acetabuläre Morphologie**:
+Mehrere Studien dokumentieren konsistente geschlechtsspezifische Unterschiede in der Acetabulum-Geometrie. Eine chinesische Populationsstudie an 100 gesunden Erwachsenen identifizierte signifikante Geschlechtsunterschiede in acetabulären Parametern, wobei Frauen signifikant erhöhte Abduktionswinkel (p=0,001) aufwiesen. Die acetabuläre Breite und Tiefe waren bei Frauen signifikant geringer (beide p<0,001). Der acetabuläre Tiefe-Breite-Index war ebenfalls bei Frauen vermindert (p<0,05), was auf eine relativ flachere Pfanne hinweist.
+
+**Acetabuläre Anteversion**:
+Die acetabuläre Anteversion zeigt einen der konsistentesten geschlechtsspezifischen Unterschiede:
+
+- Frauen: durchschnittlich 20-23° (Range 10-53°)
+- Männer: durchschnittlich 17-18° (Range 7-46°)
+- Differenz: 2,7-5° höhere Anteversion bei Frauen (p=0,02)
+
+Diese erhöhte Anteversion bei Frauen wird als Adaptation an die breitere Beckenstruktur und die Anforderungen der Geburtsfunktion interpretiert. Eine dänische Studie an 75 Patienten mit Hüftdysplasie bestätigte signifikant höhere acetabuläre Anteversion bei Frauen (p<0,0001), während zwischen normalen und dysplastischen Hüften kein Unterschied bestand (p=0,11).
+
+**Femoraler Offset**:
+Männer zeigen einen signifikant größeren femoralen Offset:
+
+- Männer: durchschnittlich 55mm (Range 42-68mm)
+- Frauen: durchschnittlich 48mm (Range 37-57mm)
+- Differenz: 7mm (p=0,00)
+
+Dieser Unterschied hat wichtige Implikationen für die Implantatauswahl und das Risiko von Impingement.
+
+## Spinopelvine Parameter: Geschlechtsspezifische Unterschiede
+
+### Pelvic Incidence (PI)
+
+Die Pelvic Incidence, traditionell als unveränderlicher anatomischer Parameter betrachtet, zeigt kontroverse geschlechtsspezifische Daten. Neuere Evidenz deutet jedoch auf subtile, aber signifikante Unterschiede hin:
+
+**Studienergebnisse**:
+Eine koreanische Studie mit 254 Probanden dokumentierte:
+
+- Frauen zeigten 2,78-4,10° höhere PI als Männer
+- Unterschied war sowohl im Röntgen (p<0,001) als auch im CT (p=0,009) signifikant
+- Die Korrelation zwischen Alter und PI war bei Frauen stärker ausgeprägt
+
+Eine indische Querschnittstudie fand ebenfalls signifikante Geschlechtsunterschiede:
+
+- Männer: mittlere PI 53,21° ± 6,98°
+- Frauen: mittlere PI 49,74° ± 6,31°
+- Differenz: 3,47° (p=0,019)
+
+**Interpretation**:
+Die höhere PI bei Frauen in einigen Populationen korreliert mit strukturellen Beckenunterschieden. Der Faktor, der PI beeinflusst, ist primär der Pelvic Tilt. Unterschiede in PT und PI zwischen den Geschlechtern lassen sich durch differentielle Beckenstrukturen erklären, die weiterer Forschung bedürfen.
+
+### Pelvic Tilt (PT)
+
+Der Pelvic Tilt zeigt konsistente geschlechtsspezifische Unterschiede über multiple Studien:
+
+**Geschlechtsspezifische Werte**:
+
+- Frauen: 4,07° (Röntgen) bzw. 2,98° (CT) höherer PT als Männer (p<0,001)
+- Indische Studie: Männer 13,59° ± 5,76° vs. Frauen 11,08° ± 4,76° (p=0,007)
+
+Diese Unterschiede reflektieren die differentielle Beckenstellung zwischen den Geschlechtern im Stand. Die höheren PT-Werte bei Frauen in einigen Kohorten, niedrigere in anderen, unterstreichen die Komplexität und potenzielle Populations-Abhängigkeit dieser Parameter.
+
+### Sacral Slope (SS)
+
+Im Gegensatz zu PI und PT zeigt der Sacral Slope keine konsistenten geschlechtsspezifischen Unterschiede:
+
+- Indische Studie: Kein signifikanter Unterschied (p=0,822)
+- Koreanische Studie: Keine signifikante Differenz zwischen Geschlechtern
+
+Da PI = PT + SS, und PI und PT geschlechtsspezifische Unterschiede zeigen, kompensiert SS diese Unterschiede, sodass die geometrische Beziehung erhalten bleibt.
+
+### Lumbar Lordosis (LL)
+
+Die Lumbarlordose und ihre Beziehung zu den pelvinen Parametern zeigt geschlechtsspezifische Variationen:
+
+- Starke Korrelation zwischen SS und LL (r=0,782) unabhängig vom Geschlecht
+- Korrelation zwischen anatomischer sakraler Neigung (a-SS) und LL bei Frauen ähnlich wie zwischen PI und LL (r=0,562 vs. r=0,632)
+
+### Altersabhängige Veränderungen
+
+Taiwanesische Studie an asymptomatischen Erwachsenen zeigte:
+
+- PT größer in der Altersgruppe 61-80 Jahre vs. 20-40 und 41-60 Jahre (p<0,001)
+- SS größer bei 61-80-Jährigen vs. 41-60-Jährigen (p=0,006)
+- LL kleiner bei 61-80-Jährigen (p<0,001)
+- Zervikale Lordose größer bei älteren Patienten (p<0,001)
+
+**Geschlechtsspezifische Alterungsmuster**:
+
+- C2-C7 sagittale Vertikalachse größer bei Männern (p<0,001)
+- Altersbedingte Veränderungen grundsätzlich bei beiden Geschlechtern ähnlich
+- PI-Zunahme mit Alter primär durch Erhöhung der sakro-femoralen Distanz
+
+## Klinische Relevanz für die Hüftendoprothetik
+
+### Funktionelle Acetabulum-Position bei Frauen
+
+Die Kombination aus höherer nativer acetabulärer Anteversion und geschlechtsspezifischen spinopelvinen Parametern führt zu einer veränderten funktionellen Acetabulum-Position:
+
+**Implikationen**:
+
+1. **Erhöhte funktionelle Anteversion**: Bei Frauen mit höherem PT im Stehen wird die bereits erhöhte anatomische Anteversion weiter gesteigert
+1. **Risiko für anteriores Impingement**: Die Kombination kann zu anteriorem Impingement in Hüftextension führen
+1. **Posteriores Dislokationsrisiko**: Paradoxerweise trotz erhöhter Anteversion durch spinopelvine Mobilität
+
+### Geschlechtsspezifische Komplikationsprofile
+
+#### Dislokationsrisiko
+
+Frauen zeigen ein komplexes Dislokationsprofil:
+
+**Registry-Daten**:
+Eine große US-amerikanische Registerstudie mit über 35.000 Hüft-TEPs demonstrierte:
+
+- Frauen: 29% höheres Risiko für all-cause Revision
+- Frauen: 32% höheres Risiko für aseptische Revision
+- Frauen: 17% höheres Risiko für nicht-septische Revision
+- Hauptgründe: Instabilität, Infektion, aseptische Lockerung
+
+Eine kanadische Populationsstudie mit 67.077 Patienten zeigte:
+
+- Frauen: Höhere Rate chirurgischer Komplikationen innerhalb 1 Jahr (2,9% vs. 2,5%, aOR 1,19, p=0,0009)
+- Männer: Höheres Risiko für medizinische Komplikationen innerhalb 30 Tagen (6,3% vs. 2,7%, p<0,001)
+
+**Dislokationsanalyse nach Berry et al.**:
+Retrospektive Review von 6.623 primären Hüft-TEPs zeigte:
+
+- Frauen: Zweifach höheres Dislokationsrisiko
+- Assoziation mit kleineren Kopfgrößen bei Frauen
+
+**Einflussfaktoren bei Frauen**:
+
+1. Kleinere Acetabulum-Dimensionen → kleinere Kopfgrößen
+1. Höhere acetabuläre Anteversion → veränderte Safe Zone
+1. Potenzielle Weichteilschwäche (geringere Muskelmasse)
+1. Höheres Alter im Durchschnitt
+1. Osteoporose-Prävalenz
+
+#### Periprothetische Frakturen
+
+Gromov et al. demonstrierten in einer retrospektiven Analyse von 1.598 primären Hüft-TEPs:
+
+- Frauen: Fast zweifach erhöhtes Risiko für periprothetische Frakturen
+- Unabhängig vom postoperativen Zeitpunkt
+- Assoziation mit Osteoporose und Sturzneigung
+
+Eine Studie zu zementfreien Kurzschäften zeigte:
+
+- Signifikant höhere femorale Verlängerung bei Frauen (p<0,001)
+- Höhere globale Hüfthöhendifferenz bei Frauen (p<0,001)
+- Ursache: Potenziell proximaler durchgeführte femorale Halsosteotomie
+
+#### Infektionen
+
+**Geschlechtsspezifische Daten**:
+
+- Frauen: Höhere Rate oberflächlicher Wundinfektionen (5,24%, p=0,006)
+- Frauen: Risikofaktor für tiefe Infektionen mit chirurgischem Débridement
+- Männer: Höhere Rate systemischer Infektionen in nationalen Registern
+
+Die erhöhte Infektionsrate bei Frauen könnte multifaktoriell sein: höheres Alter, höherer BMI, metabolische Faktoren, längere Krankenhausverweildauer.
+
+### Implantatauswahl und geschlechtsspezifische Überlegungen
+
+#### Kopfgröße
+
+**Geschlechtsspezifische Verwendung**:
+US-Registry-Analyse zeigte:
+
+- Frauen: Häufiger 28mm Femurköpfe
+- Männer: Häufiger 36mm oder größere Köpfe
+- Frauen: Häufiger Metal-on-highly-crosslinked-Polyethylen
+- Männer: Häufiger Metal-on-Metal-Gleitpaarungen
+
+**Biomechanische Konsequenzen**:
+
+- Kleinere Kopfgrößen bei Frauen: Reduzierter jumping distance
+- Erhöhtes Dislokationsrisiko bei kleineren Köpfen
+- Trade-off: Kleinere Acetabula limitieren maximal mögliche Kopfgröße
+
+**Moderne Empfehlung**:
+
+- Maximale Kopfgröße anstreben (mindestens 36mm)
+- Bei sehr kleinen Acetabula: Dual-Mobility-Pfannen erwägen
+- Vermeidung von 28mm Köpfen bei Risikopatienten
+
+#### Schaftauswahl
+
+**Anatomische Überlegungen**:
+
+- Frauen: Schmalerer Femurkanal, geringere Kortikalisdicke
+- Männer: Breiterer Kanal, größerer endostealer Durchmesser
+
+Eine Studie zu geschlechtsspezifischen Unterschieden bei zementfreien Kurzschäften ergab:
+
+- Männer: Signifikant größerer Verlust des acetabulären Offsets (p=0,012)
+- Männer: Kompensatorische Erhöhung des femoralen Offsets (p=0,0X)
+- Frauen: Signifikant höhere Pfannenanteversion postoperativ (30,3° ± 6,1° vs. 25,8° ± 6,6°, p<0,001)
+
+Diese Daten unterstreichen die Notwendigkeit geschlechtsspezifischer Planungsansätze.
+
+## Präoperative Diagnostik und geschlechtsspezifische Planung
+
+### Standardisiertes Messprotokoll
+
+**Obligatorische Parameter bei beiden Geschlechtern**:
+
+1. Laterale Ganzkörperaufnahmen (stehend und sitzend)
+1. Messung von PI, PT, SS, LL
+1. Berechnung von ΔSS (spinopelvine Mobilität)
+1. PI-LL Mismatch
+1. Acetabuläre Anteversion (CT oder MRT)
+1. Femoraler Offset
+
+**Geschlechtsspezifische Zusatzinformationen**:
+
+*Bei Frauen*:
+
+- Erwartung höherer acetabulärer Anteversion (20-23°)
+- Berücksichtigung höherer PI (variabel nach Population)
+- Evaluation der Osteoporose (DEXA-Scan erwägen)
+- Assessment kleinerer Acetabulum-Dimensionen
+
+*Bei Männern*:
+
+- Erwartung niedrigerer acetabulärer Anteversion (17-18°)
+- Größerer femoraler Offset (durchschnittlich 7mm mehr)
+- Höhere Komorbiditätenlast (kardiovaskulär, renal)
+
+### Risikostratifizierung
+
+**Hochrisiko-Konstellationen bei Frauen**:
+
+1. Kombination aus:
+- Hoher nativer acetabulärer Anteversion (>25°)
+- Posteriorer Pelvic Tilt im Stehen (PT >25°)
+- Spinopelvine Steifigkeit (ΔSS <10°)
+- Osteoporose (T-Score <-2,5)
+- Alter >75 Jahre
+1. Zusatzrisikofaktoren:
+- BMI >30 kg/m²
+- Vorherige Wirbelsäulenfusion
+- Neuromuskuläre Erkrankungen
+- Kognitive Einschränkungen
+
+**Hochrisiko-Konstellationen bei Männern**:
+
+1. Kardiovaskuläre Komorbiditäten:
+- Koronare Herzkrankheit
+- Chronische Niereninsuffizienz
+- Diabetes mellitus
+- Hypertonie
+1. Niedrigere acetabuläre Anteversion (<15°):
+- Risiko für posteriores Impingement
+- Notwendigkeit erhöhter Pfannenanteversion
+
+### Bildgebende Strategien
+
+**EOS-Imaging bei Geschlechtsunterschieden**:
+Besondere Relevanz bei Frauen aufgrund:
+
+- Höherer Variabilität der spinopelvinen Mobilität
+- Komplexerer Beziehung zwischen Beckenstellung und Acetabulum-Position
+- Notwendigkeit präziser Messung bei kleineren anatomischen Strukturen
+
+**CT-basierte 3D-Planung**:
+Vorteilhaft bei beiden Geschlechtern, aber besonders bei:
+
+- Frauen mit kleinen Acetabula (präzise Größenbestimmung)
+- Dysplasie (häufiger bei Frauen, Verhältnis 4:1 bis 9:1)
+- Komplexer Deformität
+
+## Operative Strategie und geschlechtsspezifische Anpassungen
+
+### Pfannenpositionierung bei Frauen
+
+**Grundprinzipien**:
+Die native höhere acetabuläre Anteversion bei Frauen muss in der Planung berücksichtigt werden. Eine unkritische Anwendung von Standardzielen (z.B. 20° Anteversion) kann zu übermäßiger funktioneller Anteversion führen.
+
+**Empfohlene Anpassungen**:
+
+*Typ 1A (Normal mobil, balanciert)*:
+
+- Ziel: 38-40° Inklination / 18-20° Anteversion (APP)
+- Berücksichtigung der höheren nativen Anteversion
+- Leichte Reduktion gegenüber männlichen Standardwerten
+
+*Typ 1B (Normal mobil, unbalanciert)*:
+
+- Bei posteriorem PT >20°: Vorsicht mit weiterer Anteversi onserhöhung
+- Ziel: 40° Inklination / 18-22° Anteversion
+- Dual-Mobility bei multiplen Risikofaktoren erwägen
+
+*Typ 2A (Steif, stuck sitting)*:
+
+- Anteversion 22-28° (versus 25-30° bei Männern)
+- Obligat: Größtmögliche Kopfgröße oder Dual-Mobility
+- Cave: Überschreitung funktioneller Safe Zone bei nativer Hyperanteversion
+
+*Typ 2B (Steif, stuck standing)*:
+
+- Anteversion 15-18° (versus 15-20° bei Männern)
+- Besondere Vorsicht wegen Kombinationseffekt mit nativer Anteversion
+
+**Spezielle Situation: Hüftdysplasie bei Frauen**:
+
+- 9:1 weibliche Prädominanz
+- Häufig kombiniert mit erhöhter Anteversion
+- Korrektur der Dysplasie ohne Überkorrektur der Anteversion
+- Individuelle Planung basierend auf CT-3D-Rekonstruktion
+
+### Pfannenpositionierung bei Männern
+
+**Grundprinzipien**:
+Die durchschnittlich niedrigere native acetabuläre Anteversion erfordert oft höhere implantierte Anteversion, um adäquate funktionelle Werte zu erreichen.
+
+**Empfohlene Anpassungen**:
+
+*Typ 1A (Normal mobil, balanciert)*:
+
+- Ziel: 40° Inklination / 20-22° Anteversion (APP)
+- Standard-Positionierung ausreichend
+
+*Typ 2A (Steif, stuck sitting)*:
+
+- Anteversion 25-30°
+- Größerer Offset zur Vermeidung von Impingement
+- Dual-Mobility bei spinaler Fusion
+
+*Typ 2B (Steif, stuck standing)*:
+
+- Anteversion 15-20°
+- Cave: Risiko posterioren Impingements höher als bei Frauen
+- Erhalt posteriorer Weichteile essentiell
+
+**Native Retroversion**:
+Ein kleiner Prozentsatz männlicher Patienten zeigt native acetabuläre Retroversion:
+
+- Crossover-Sign und Posterior-Wall-Sign häufiger bei Männern
+- Mögliche normale Variation
+- Erhöht Risiko für Femoroacetabuläres Impingement
+- Erfordert adjustierte Pfannenpositionierung (höhere Anteversion)
+
+### Schaftpositionierung
+
+**Geschlechtsspezifische Überlegungen zur Anteversion**:
+
+Die kombinierte Anteversion (Pfanne + Schaft) sollte geschlechtsspezifisch optimiert werden:
+
+*Frauen*:
+
+- Ziel kombinierte Anteversion: 30-40° (eher untere Hälfte)
+- Bei nativer Hyperanteversion: Schaftanteversion reduzieren
+- Modulare Schäfte zur feinen Adjustierung
+
+*Männer*:
+
+- Ziel kombinierte Anteversion: 30-40° (eher obere Hälfte)
+- Bei nativer niedrigerer Anteversion: Schaftanteversion erhöhen
+- Größerer Offset zur Impingementvermeidung
+
+### Weichteilmanagement
+
+**Geschlechtsspezifische Aspekte**:
+
+*Frauen*:
+
+- Tendenziell weniger ausgeprägte Muskulatur
+- Sorgfältiger Kapselerhalt/-rekonstruktion
+- Vermeidung übermäßiger Weichteil-Traumatisierung
+- Erhöhtes Risiko für Abduktoreninsuffizienz
+
+*Männer*:
+
+- Kräftigere Muskulatur mit höherem Tonus
+- Größeres Impingement-Risiko bei inadäquatem Offset
+- Aggressive Kapselrekonstruktion bei posteriorem Zugang
+
+## Postoperative Outcomes: Geschlechtsspezifische Unterschiede
+
+### Schmerzlinderung und funktionelle Ergebnisse
+
+**Schmerz-Outcomes**:
+
+- Frauen: Höheres Risiko für moderate bis schwere Schmerzen nach 2 und 5 Jahren
+- Frauen: Höhere präoperative Schmerzniveaus im Durchschnitt
+- Beide Geschlechter: Signifikante Schmerzreduktion, aber Frauen absolut höhere Restwerte
+
+**Funktionelle Limitation**:
+
+- Frauen: Höhere Abhängigkeit von Gehhilfen postoperativ
+- Frauen: Stärkere Aktivitätslimitation nach 2 und 5 Jahren
+- Frauen: Längere Krankenhausverweildauer (1,07 vs. 0,57 Tage, p<0,001)
+
+**Patient-Reported Outcomes (PROMs)**:
+Holtzman et al. zeigten in einer Medicare-Population:
+
+- Frauen: Schlechterer funktioneller Status vor und nach TEP
+- Frauen: Höhere Schmerzwerte trotz erfolgreicher TEP
+- Geschlechtsunterschiede persistieren auch nach Adjustierung für Komorbiditäten
+
+### Revisionsrisiko
+
+**Gesamtrevisionsraten**:
+
+- Frauen: 29% höheres Risiko für all-cause Revision
+- Frauen: 32% höheres Risiko für aseptische Revision
+
+**Revisionsgründe nach Geschlecht**:
+
+*Häufiger bei Frauen*:
+
+1. Instabilität/Dislokation (2-fach erhöht)
+1. Aseptische Lockerung
+1. Periprothetische Fraktur (2-fach erhöht)
+1. Wundinfektion
+
+*Häufiger bei Männern*:
+
+1. Septische Lockerung
+1. Metallabrieb (historisch bei Metal-on-Metal)
+1. Periprothetische Infektion (tiefe Infektion)
+
+### Lebensqualität und Zufriedenheit
+
+**HRQOL-Daten**:
+Systematische Reviews zeigen:
+
+- Weibliches Geschlecht assoziiert mit schlechterer Health-Related Quality of Life
+- Multiple konfundierende Faktoren: mentaler Status, Komorbiditäten, Ernährungsstatus
+- Postoperativer Schmerz und Krankenhausverweildauer als Mediatoren
+
+**Patientenzufriedenheit**:
+Gründe für Unzufriedenheit nach TEP geschlechtsunabhängig ähnlich:
+
+- Schmerzhafte TEP
+- Funktionelle Limitation
+- Chirurgische Komplikationen
+- Langsame Erholung
+- Nicht erfüllte Erwartungen
+
+Frauen zeigen jedoch häufiger Unzufriedenheit, möglicherweise aufgrund höherer Komplikationsraten.
+
+### Psychosoziale Faktoren
+
+**Geschlechtsspezifische psychologische Aspekte**:
+
+- Depression und Angststörungen: Häufiger bei Frauen
+- Einfluss auf postoperative Schmerzwahrnehmung
+- Resilienz und Bewältigungsstrategien unterschiedlich
+- Persönlichkeitsmerkmale beeinflussen Recovery
+
+## Komplikationsmanagement: Geschlechtsspezifische Strategien
+
+### Frühe Dislokation
+
+**Bei weiblichen Patienten**:
+
+*Sofortmaßnahmen*:
+
+1. Geschlossene Reposition wenn möglich
+1. Evaluation der Pfannenposition:
+- Berücksichtigung der höheren nativen Anteversion
+- Überprüfung funktioneller Anteversion in beiden Positionen
+1. Spinopelvine Reevaluation:
+- Hat sich PT postoperativ verändert?
+- Ist spinopelvine Mobilität normalerweise?
+
+*Revisionsstrategie*:
+
+- Bei anteriofer Dislokation: Reduktion der Anteversion (15-18°)
+- Bei posteriorer Dislokation: Erhöhung der Anteversion (25-28°) ODER
+- Dual-Mobility-Revision bei rezidivierender Luxation
+- Berücksichtigung kleinerer Acetabula: DM-Pfannen oft ideal
+
+**Bei männlichen Patienten**:
+
+*Analyse*:
+
+- Häufiger posteriore Dislokation
+- Überprüfung des Offsets (ausreichend?)
+- Impingement-Evaluation
+
+*Revisionsstrategie*:
+
+- Erhöhung des Offsets wenn inadäquat
+- Adjustierung der Anteversion basierend auf Dislokationsrichtung
+- Dual-Mobility bei spinaler Pathologie
+
+### Periprothetische Fraktur
+
+**Bei Frauen** (2-fach erhöhtes Risiko):
+
+*Präventionsstrategien*:
+
+1. Präoperatives Osteoporose-Screening:
+- DEXA-Scan bei Frauen >65 Jahre
+- Frax-Score-Berechnung
+1. Medikamentöse Prophylaxe:
+- Vitamin D Supplementation (800-1000 IU täglich)
+- Kalzium 1000-1200mg täglich
+- Bisphosphonate erwägen (Absetzen perioperativ kontrovers)
+- Denosumab bei schwerer Osteoporose
+1. Chirurgische Prävention:
+- Zementfreie Implantate mit Vorsicht bei T-Score <-2,5
+- Press-fit Pfannen: Atraumatische Implantation
+- Schaftauswahl: Metaphysär verankernde Designs bevorzugen
+1. Postoperative Maßnahmen:
+- Sturzprophylaxe (Physiotherapie, häusliche Anpassungen)
+- Frühzeitige Mobilisation mit Gehhilfen
+- Balance-Training
+
+**Bei Männern**:
+
+Obwohl niedrigeres Risiko, sind präventive Maßnahmen bei Risikofaktoren angezeigt:
+
+- Chronische Steroidtherapie
+- Niereninsuffizienz
+- Hypogonadismus
+
+### Infektion
+
+**Bei Frauen** (höhere Rate oberflächlicher Infektionen):
+
+*Risikofaktoren-Management*:
+
+- BMI-Optimierung präoperativ wenn möglich
+- Diabetes-Kontrolle (HbA1c <7%)
+- Nutritionsassessment (Albumin, Präalbumin)
+
+*Intraoperative Strategien*:
+
+- Sorgfältige Weichteilhandhabung
+- Minimierung OP-Zeit
+- Vancomycin in Knochenzement bei Hochrisiko erwägen
+
+**Bei Männern** (höhere Rate tiefer Infektionen):
+
+*Komorbiditäten-Management*:
+
+- Kardiovaskuläre Optimierung
+- Nierenersatztherapie-Koordination
+- Immunsuppression minimieren wenn möglich
+
+## Expertentipps für geschlechtsspezifische TEP
+
+### Präoperative Phase
+
+**Tipp 1 - Geschlechtsspezifische Normwerte verwenden**: Verlassen Sie sich nicht auf universelle Referenzwerte für spinopelvine Parameter. Frauen zeigen durchschnittlich 3-5° höhere acetabuläre Anteversion und variable PI/PT-Werte. Adjustieren Sie Ihre Zielsetzung entsprechend.
+
+**Tipp 2 - Osteoporose-Screening bei Frauen obligat**: Bei Frauen >65 Jahren ist präoperatives DEXA-Scanning kein Luxus, sondern Standard. Das 2-fach erhöhte periprothetische Frakturrisiko rechtfertigt präventive Maßnahmen (Vitamin D, Bisphosphonate), die die Ergebnisse verbessern.
+
+**Tipp 3 - CT-basierte Anteversionsmessung bei Frauen**: Die höhere Variabilität der acetabulären Anteversion bei Frauen (Range 10-53°) macht CT-basierte präoperative Messung besonders wertvoll. Röntgen unterschätzt häufig die tatsächliche Anteversion.
+
+**Tipp 4 - Dysplasie-Screening intensivieren**: Bei Frauen mit Arthrose <55 Jahren aktiv nach Dysplasie suchen (9:1 weibliche Prädominanz). Übersehen einer milden Dysplasie führt zu suboptimaler Planung.
+
+**Tipp 5 - Komorbidäten geschlechtsspezifisch evaluieren**: Bei Männern kardiovaskuläre und renale Funktion intensiv prüfen. Bei Frauen metabolische und muskuloskelettale Faktoren (Diabetes, Osteoporose, Sarkopenie) fokussieren.
+
+### Intraoperative Phase
+
+**Tipp 6 - Anteversions-Adjustierung bei Frauen**: Bei präoperativ gemessener acetabulärer Anteversion >23° die implantierte Pfannenanteversion um 2-3° reduzieren. Die funktionelle Anteversion wird durch die spinopelvinen Parameter weiter moduliert.
+
+**Tipp 7 - Maximale Kopfgröße bei Frauen priorisieren**: Das 2-fach erhöhte Dislokationsrisiko bei Frauen wird durch größere Kopfgrößen signifikant reduziert. Mindestens 36mm anstreben. Bei Acetabula <48mm: Dual-Mobility-Pfannen ohne zu zögern verwenden.
+
+**Tipp 8 - Offset-Rekonstruktion geschlechtsspezifisch**: Bei Männern aggressiver den größeren nativen Offset (durchschnittlich +7mm) wiederherstellen. Bei Frauen Offset-Erhöhung zurückhaltender, da übermäßiger Offset die schwächere Abduktorenmuskulatur überlasten kann.
+
+**Tipp 9 - Weichteilschonung bei Frauen**: Die tendenziell schwächere Muskulatur bei Frauen toleriert aggressive Weichteil-Traumatisierung schlechter. Muskelschonende Zugänge (DAA) oder sorgfältige Kapselrekonstruktion bei posteriorem Zugang sind besonders wichtig.
+
+**Tipp 10 - Navigation bei kleinen Acetabula**: Bei Frauen mit Acetabulum-Durchmesser <48mm bietet Navigation besondere Vorteile. Die präzise Positionierung kleiner Pfannen ist technisch anspruchsvoller und fehleranfälliger.
+
+**Tipp 11 - Zementierungstechnik bei Osteoporose**: Bei Frauen mit T-Score <-2,5 zementierte Fixation erwägen, besonders für die Pfanne. Moderne zementierte Pfannen zeigen exzellente Langzeitergebnisse und reduzieren periprothetische Frakturrisiken.
+
+**Tipp 12 - Kombinierte Anteversion geschlechtsspezifisch**:
+
+- Frauen: Ziel 30-35° (eher konservativ wegen höherer nativer Anteversion)
+- Männer: Ziel 35-40° (eher liberal wegen niedrigerer nativer Anteversion)
+- Modulare Schäfte erlauben präzise Feinabstimmung
+
+### Postoperative Phase
+
+**Tipp 13 - Intensivierte Thromboseprophylaxe bei Männern**: Männer zeigen höhere DVT-Raten. Extended prophylaxis (35 Tage) bei Risikofaktoren großzügiger indizieren als bei Frauen.
+
+**Tipp 14 - Aggressives Infektionsscreening bei Frauen**: Die höhere Rate oberflächlicher Wundinfektionen erfordert niedrige Schwelle für Wundrevision. Frühe oberflächliche Infektionen großzügig chirurgisch angehen.
+
+**Tipp 15 - Geschlechtsspezifische Rehabilitationsziele**: Bei Frauen Fokus auf Abduktorenkräftigung und Balance-Training (Sturzprophylaxe). Bei Männern kardiovaskuläre Konditionierung und Komorbiditäten-Management betonen.
+
+**Tipp 16 - Osteoporose-Behandlung nach Frakturrisiko**: Bei Frauen mit T-Score <-2,0 postoperativ Osteoporose-Therapie initiieren. Bisphosphonate frühestens 3 Monate postoperativ starten (Osseointegration abwarten).
+
+**Tipp 17 - Längere Nachsorge bei Frauen**: Das 29% höhere Revisionsrisiko bei Frauen rechtfertigt engmaschigere Langzeitkontrollen. Jährliche Kontrollen statt nur bei Beschwerden.
+
+## Spezielle Populationen und ethnische Unterschiede
+
+### Ethnische Variabilität spinopelviner Parameter
+
+Die geschlechtsspezifischen Unterschiede zeigen zusätzlich ethnische Variationen, die bei der Behandlung berücksichtigt werden müssen.
+
+**Asiatische Populationen**:
+Studien aus Korea, China und Indien dokumentieren:
+
+- Niedrigere durchschnittliche PI als kaukasische Populationen
+- Geschlechtsunterschiede in PI konsistent, aber absolute Werte populationsabhängig
+- Acetabuläre Morphologie: Kleinere Dimensionen, unterschiedliche Tiefe-Breite-Verhältnisse
+- Signifikante Geschlechtsunterschiede in acetabulären Parametern bei Chinesen
+
+**Klinische Implikation**: “One size fits all” Planungsansätze sind inadäquat. Ethnische Hintergrund und Geschlecht müssen simultan berücksichtigt werden.
+
+### Altersspezifische geschlechtsspezifische Veränderungen
+
+**Jüngere Patienten (<55 Jahre)**:
+
+*Frauen*:
+
+- Häufiger Dysplasie als primäre Arthrose-Ursache
+- Höhere Aktivitätserwartungen
+- Längere erwartete Implantat-Lebensdauer erforderlich
+- Keramik-Keramik-Gleitpaarungen vorteilhaft
+- Erhalt von Knochenmasse für potenzielle Revisionen
+
+*Männer*:
+
+- Häufiger post-traumatische Arthrose
+- Höhere mechanische Belastung durch Körpergewicht und Aktivität
+- Höheres Risiko für aktivitätsbedingten Verschleiß
+- Größere Implantate verfügbar
+
+**Ältere Patienten (>75 Jahre)**:
+
+*Frauen*:
+
+- Kumulative Effekte der Osteoporose
+- Höhere Prävalenz spinaler Degeneration
+- Multiples Fallen (Sturzrisiko, kognitive Einschränkungen, Polypharmazie)
+- Dual-Mobility-Pfannen liberaler indizieren
+- Zementierte Fixation häufiger geeignet
+
+*Männer*:
+
+- Höhere Komorbiditätenlast (kardial, renal, pulmonal)
+- Perioperatives Risiko höher
+- Anästhesiologische Herausforderungen
+- Fokus auf medizinische Komplikationsprävention
+
+### Hormonelle Einflüsse
+
+**Menopause und spinopelvine Veränderungen**:
+
+Postmenopausale Veränderungen beeinflussen die Wirbelsäule und das Becken:
+
+- Beschleunigter Knochenverlust (1-3% jährlich in ersten Jahren post-Menopause)
+- Progression von Wirbelkörperfrakturen
+- Veränderung der Lumballordose
+- Zunahme des Pelvic Tilt
+
+**Östrogen-Effekte**:
+
+- Erhalt der Knochenqualität prämenopausal
+- Muskelkraft und -masse
+- Propriozeption und Balance
+- Postmenopausaler Verlust: Multifaktorieller Einfluss auf TEP-Outcomes
+
+**Testosteron bei Männern**:
+
+- Hypogonadismus: Häufig bei älteren Männern mit Komorbiditäten
+- Effekte auf Knochendichte, Muskelmasse, kognitive Funktion
+- Potenzielle Implikationen für perioperatives Risiko
+- Substitutionstherapie: Kontroverse Datenlage bezüglich perioperativem Management
+
+## Zukunftsperspektiven: Personalisierte geschlechtsspezifische Medizin
+
+### Geschlechtsspezifische Implantate
+
+**Aktuelle Entwicklungen**:
+Mehrere Hersteller haben geschlechtsspezifische oder geschlechts-optimierte Implantate entwickelt:
+
+- Femurschäfte mit unterschiedlichen Geometrien (schmalerer Kanal bei Frauen)
+- Pfannen mit optimierter Größenverteilung für kleinere Acetabula
+- Geschlechtsspezifische Instrumentierung
+
+**Evidenzlage**:
+Die klinische Überlegenheit geschlechtsspezifischer Designs ist nicht eindeutig belegt:
+
+- Einige Studien zeigen verbesserte Passform bei Frauen
+- Keine konsistente Überlegenheit in klinischen Outcomes
+- Moderne modulare Systeme erlauben oft adäquate Anpassung
+
+**Kritische Betrachtung**:
+Anatomische Variabilität innerhalb der Geschlechter ist oft größer als zwischen den Geschlechtern. Individualisierte Planung basierend auf tatsächlicher Anatomie ist wichtiger als geschlechtsspezifische Designs per se.
+
+### Künstliche Intelligenz und maschinelles Lernen
+
+**KI-gestützte geschlechtsspezifische Risikomodelle**:
+Entwicklung von Algorithmen, die:
+
+- Geschlecht als Variable in multivariate Risikoprädiktion integrieren
+- Interaktionen zwischen Geschlecht und anderen Faktoren identifizieren
+- Geschlechtsspezifische Empfehlungen für Implantatauswahl generieren
+- Personalisierte Positionierungsziele unter Berücksichtigung geschlechtsspezifischer Anatomie vorschlagen
+
+**Potenziale**:
+
+- Präzisere Risikostratifizierung als mit traditionellen Scores
+- Identifikation von Subgruppen mit atypischen Profilen
+- Kontinuierliche Verbesserung durch Lernen aus Outcomes
+
+### Genomik und Präzisionsmedizin
+
+**Genetische Faktoren**:
+Forschung zu geschlechtschromosomalen Einflüssen auf:
+
+- Knochenstoffwechsel und Osteoporose-Risiko
+- Schmerzwahrnehmung und -verarbeitung
+- Wundheilung und Infektionsrisiko
+- Implantat-Osseointegration
+
+**Pharmakogenomik**:
+Geschlechtsspezifische Unterschiede in:
+
+- Thromboseprophylaxe-Metabolismus
+- Analgetika-Wirksamkeit und Nebenwirkungen
+- Antibiotikapharmakokinetik
+
+### Erweiterte Bildgebung und dynamische Analyse
+
+**4D-Bildgebung**:
+Entwicklung von Technologien zur:
+
+- Dynamischen Erfassung spinopelviner Bewegungen
+- Geschlechtsspezifischen Bewegungsmustern
+- Prädiktiven Modellierung postoperativer Alignmentveränderungen
+
+**Bewegungsanalyse**:
+Integration von:
+
+- Instrumentierter Ganganalyse
+- Geschlechtsspezifischen Bewegungsmustern
+- Aktivitäts-Profilen (Sitzen vs. Stehen, Freizeitaktivitäten)
+
+## Klinische Algorithmen
+
+### Entscheidungsbaum für geschlechtsspezifische Pfannenpositionierung
+
+```
+Geschlecht: Weiblich
+↓
+Native acetabuläre Anteversion messen (CT)
+├─ >25° (Hyperanteversion)
+│  └─ Spinopelvine Parameter
+│     ├─ Normal mobil (ΔSS 10-30°)
+│     │  └─ Ziel: 38-40°/15-18° (APP)
+│     │     + Dual-Mobility erwägen bei PT >25°
+│     └─ Steif (ΔSS <10°)
+│        ├─ Stuck sitting → 40°/18-22° + DM obligat
+│        └─ Stuck standing → 35-38°/12-15° + posteriorer Weichteilerhalt
+│
+├─ 18-25° (Normal)
+│  └─ Spinopelvine Parameter
+│     ├─ Normal mobil → 40°/18-20° (Standard)
+│     └─ Steif → Typ 2A: 40°/22-25° + DM
+│            Typ 2B: 38°/15-18°
+│
+└─ <18° (Niedrige Anteversion, selten bei Frauen)
+  └─ Wie Männer behandeln
+     Standard: 40°/20-22°
+
+Zusatzfaktoren:
+- Dysplasie → Individualisierte 3D-Planung
+- Osteoporose (T<-2,5) → DM + ggf. Zement erwägen
+- Alter >75 + Multiple Risikofaktoren → DM liberaler
+```
+
+```
+Geschlecht: Männlich
+↓
+Native acetabuläre Anteversion messen (CT)
+├─ <15° (Niedrige Anteversion, häufiger bei Männern)
+│  └─ Spinopelvine Parameter
+│     ├─ Normal mobil → 40°/22-25°
+│     │  Größerer Offset rekonstruieren
+│     └─ Steif
+│        ├─ Stuck sitting → 40-42°/28-30° + DM
+│        └─ Stuck standing → 38°/18-20° + posteriorer Erhalt
+│
+├─ 15-20° (Normal für Männer)
+│  └─ Spinopelvine Parameter
+│     ├─ Normal mobil → 40°/20-22° (Standard)
+│     └─ Steif → Typ 2A: 40°/25-28° + DM
+│            Typ 2B: 38°/16-18° + Offset
+│
+└─ >20° (Erhöhte Anteversion, seltener bei Männern)
+  └─ Wie Frauen behandeln, aber Offset beachten
+
+Zusatzfaktoren:
+- FAI-Morphologie → Cam-Resektion, adjustierte Positionierung
+- Wirbelsäulenfusion → DM obligat, basierend auf fixer PT
+- Kardiovaskuläre Komorbidität → Perioperatives Risiko-Management
+```
+
+### Management-Algorithmus bei geschlechtsspezifischen Komplikationen
+
+```
+Frühe Dislokation
+↓
+Geschlecht?
+├─ Weiblich
+│  └─ Dislokationsrichtung?
+│     ├─ Posterior (häufiger)
+│     │  └─ Evaluation:
+│     │     - Pfannenanteversion: >25° APP?
+│     │     - Native Anteversion: >23°?
+│     │     - PT im Stehen: >20°?
+│     │     → Kombination → Übermäßige funktionelle AV
+│     │     → Revision: AV reduzieren auf 18-20° + DM
+│     │
+│     └─ Anterior
+│        └─ Evaluation:
+│           - Pfannenanteversion: <15° APP?
+│           - PT im Stehen: Anterior gekippt?
+│           - Stuck standing-Muster?
+│           → Revision: AV erhöhen + DM
+│
+└─ Männlich
+  └─ Dislokationsrichtung?
+     ├─ Posterior (häufigste Richtung)
+     │  └─ Evaluation:
+     │     - Offset ausreichend?
+     │     - Impingement (Cam, Schaft-Pfanne)?
+     │     - Native AV <15°?
+     │     → Revision: AV erhöhen, Offset optimieren
+     │        ggf. Cam-Resektion + DM
+     │
+     └─ Anterior
+        └─ Evaluation:
+           - Übermäßige AV (>25°)?
+           - Anterior PT?
+           → Revision: AV reduzieren
+
+Periprothetische Fraktur
+↓
+├─ Weiblich (2-fach erhöhtes Risiko)
+│  └─ Akutmanagement + Prävention Kontralaterale
+│     - Vancouver-Klassifikation
+│     - ORIF vs. Revision
+│     - DEXA-Scan
+│     - Vitamin D + Kalzium
+│     - Bisphosphonate erwägen
+│     - Sturzprophylaxe initiieren
+│
+└─ Männlich
+  └─ Standardmanagement
+     Risikofaktoren evaluieren:
+     - Steroidtherapie
+     - Niereninsuffizienz
+     - Hypogonadismus
+```
+
+## Qualitätsindikatoren und Benchmarking
+
+### Geschlechtsspezifische Outcome-Metriken
+
+**Registerdaten sollten geschlechtsstratifiziert berichten**:
+
+*Primäre Outcomes*:
+
+- Revisionsrate innerhalb 1, 2, 5, 10 Jahren
+- Revisionsgründe (separat: Dislokation, Lockerung, Infektion, Fraktur)
+- Mortalität (30 Tage, 90 Tage, 1 Jahr)
+
+*Sekundäre Outcomes*:
+
+- PROMs (geschlechtsspezifische Normierung)
+- Komplikationsraten (chirurgisch und medizinisch)
+- Krankenhausverweildauer
+- Wiederaufnahmerate
+
+*Prozessindikatoren*:
+
+- Verwendung größerer Kopfgrößen bei Frauen
+- Dual-Mobility-Verwendung bei Hochrisikopatienten
+- Präoperatives Osteoporose-Screening bei Frauen
+- Individualisierte Planung basierend auf spinopelvinen Parametern
+
+### Institutional Performance Monitoring
+
+Kliniken sollten interne Audits durchführen:
+
+- Geschlechtsspezifische Komplikationsraten im Vergleich zu nationalen Benchmarks
+- Identifikation von Ausreißern (z.B. überdurchschnittliche Dislokationsrate bei Frauen)
+- Root-cause-Analyse bei geschlechtsspezifischen Problemen
+- Kontinuierliche Verbesserungsinitiativen
+
+### Pay-for-Performance und Value-Based Care
+
+Zukünftige Vergütungsmodelle sollten:
+
+- Risiko-adjustierte Outcomes berücksichtigen (inkl. Geschlecht)
+- Geschlechtsspezifische Qualitätsindikatoren einbeziehen
+- Anreize für Best Practices schaffen (z.B. präoperatives Screening)
+- Vermeidung von Gender Bias in Outcome-Bewertung
+
+## Zusammenfassung und Kernbotschaften
+
+### Anatomische Geschlechtsunterschiede
+
+1. **Acetabuläre Anteversion**: Frauen zeigen konsistent 3-5° höhere native Anteversion (20-23° vs. 17-18° bei Männern). Dies muss bei der Pfannenpositionierung berücksichtigt werden.
+1. **Acetabuläre Dimensionen**: Frauen haben signifikant kleinere, flachere Acetabula, was die Implantatauswahl (kleinere Pfannen, kleinere maximal mögliche Kopfgrößen) beeinflusst.
+1. **Femoraler Offset**: Männer zeigen durchschnittlich 7mm größeren Offset. Rekonstruktion des geschlechtsspezifisch angemessenen Offsets ist wichtig für Biomechanik und Impingement-Vermeidung.
+1. **Spinopelvine Parameter**: Geschlechtsunterschiede in PI und PT sind nachweisbar, aber populationsabhängig variabel. Individuelle Messung ist essentieller als Anwendung von Durchschnittswerten.
+
+### Klinische Implikationen
+
+1. **Dislokationsrisiko**: Frauen zeigen 2-fach erhöhtes Luxationsrisiko. Primäre Ursachen: kleinere Kopfgrößen, höhere native Anteversion mit potenzieller Überkompensation, schwächere Muskulatur.
+1. **Periprothetische Frakturen**: Frauen haben 2-fach erhöhtes Risiko. Präoperatives Osteoporose-Screening und präventive Maßnahmen (Vitamin D, Bisphosphonate) sind bei Frauen >65 Jahren obligat.
+1. **Revisionsrate**: Frauen zeigen 29% höheres Gesamtrevisionsrisiko. Hauptgründe: Instabilität, aseptische Lockerung, periprothetische Fraktur.
+1. **Funktionelle Outcomes**: Frauen berichten häufiger postoperative Schmerzen und funktionelle Limitation trotz technisch erfolgreicher TEP. Multifaktorielle Ursachen: psychosoziale Faktoren, Komorbiditäten, höhere Komplikationsraten.
+
+### Operative Strategien
+
+1. **Pfannenpositionierung bei Frauen**: Reduktion der Standard-Anteversion um 2-3° bei nativer Hyperanteversion (>23°). Ziel: Vermeidung übermäßiger funktioneller Anteversion bei posteriorer Beckenstellung.
+1. **Pfannenpositionierung bei Männern**: Häufig Erhöhung der Anteversion um 2-3° bei nativer niedriger Anteversion (<15°). Fokus auf adäquaten Offset zur Impingement-Vermeidung.
+1. **Kopfgröße-Strategie**: Bei Frauen maximal mögliche Kopfgröße (mindestens 36mm) priorisieren. Bei Acetabula <48mm großzügig Dual-Mobility-Pfannen verwenden.
+1. **Dual-Mobility-Indikationen**: Liberaler bei Frauen mit multiplen Risikofaktoren (Alter >75, Osteoporose, spinale Steifigkeit, kognitive Einschränkungen).
+
+### Perioperatives Management
+
+1. **Präoperative Evaluation**: Geschlechtsspezifisches Screening:
+- Frauen: DEXA-Scan, metabolische Parameter, spinopelvine Mobilität
+- Männer: Kardiovaskuläre und renale Funktion, Thromboserisiko
+1. **Postoperative Komplikationen**: Geschlechtsspezifisches Monitoring:
+- Frauen: Wundinfektionen, Dislokationen, Frakturen
+- Männer: DVT, kardiale Ereignisse, tiefe Infektionen
+1. **Rehabilitation**: Geschlechtsangepasste Programme:
+- Frauen: Abduktorenkräftigung, Balance, Sturzprophylaxe
+- Männer: Kardiovaskuläre Konditionierung, Komorbiditäten-Management
+
+### Zukunftsperspektiven
+
+1. **Personalisierte Medizin**: Geschlecht als eine von vielen Variablen in multimodaler Risikostratifizierung und Planungsalgorithmen. KI-gestützte Systeme können komplexe Interaktionen zwischen Geschlecht, Anatomie, spinopelvinen Parametern und Komorbiditäten optimieren.
+1. **Geschlechtsspezifische Forschung**: Notwendigkeit weiterer Studien zu:
+- Langzeit-Outcomes geschlechtsspezifischer Strategien
+- Hormonelle Einflüsse auf Implantat-Osseointegration
+- Pharmakogenomik perioperativer Medikation
+- Psychosoziale Faktoren und deren Optimierung
+1. **Health Equity**: Vermeidung von Gender Bias in:
+- Patientenselektion und -beratung
+- Implantatauswahl (keine automatische Verwendung kleinerer Implantate)
+- Outcome-Bewertung (geschlechtsspezifische Normierung von PROMs)
+- Zugang zu innovativen Technologien (Navigation, Dual-Mobility)
+
+## Abschließende Empfehlungen
+
+Die Integration geschlechtsspezifischer Überlegungen in die Hüftendoprothetik ist kein separates Konzept, sondern integraler Bestandteil der personalisierten, patientenspezifischen Behandlung. Geschlecht beeinflusst Anatomie, Physiologie, Komplikationsrisiken und Outcomes, sollte jedoch immer im Kontext der individuellen Gesamtsituation betrachtet werden.
+
+Die erfolgreiche geschlechtssensitive TEP erfordert:
+
+- Anerkennung anatomischer und physiologischer Unterschiede
+- Adjustierung operativer Techniken basierend auf Evidenz
+- Geschlechtsspezifisches perioperatives Risikomanagement
+- Individualisierte Rehabilitation und Nachsorge
+- Kontinuierliches Monitoring geschlechtsstratifizierter Outcomes
+- Vermeidung von Stereotypisierung und Bias
+
+Mit zunehmender Erkenntnis über geschlechtsspezifische Aspekte und deren Integration in moderne Planungstools und KI-Algorithmen wird die Präzision und Sicherheit der Hüftendoprothetik für alle Patienten weiter verbessert.
+
+## Literatur
+
+Maratt JD, Esposito CI, McLawhorn AS, Jerabek SA, Padgett DE, Mayman DJ. Pelvic incidence: an anatomic investigation of 880 cadaveric specimens. Eur Spine J. 2015;24(11):2565-2569.
+
+Schmitz RJ, Harrison D, Wang HM. Sex Differences in Alpha Angle in a Young Adult Population Without Hip Pain. Orthop J Sports Med. 2016;4(9):2325967116666039.
+
+Grammatopoulos G, Pandit HG, da Assunção R, et al. Pelvic position and movement during hip replacement. Bone Joint J. 2014;96-B(7):876-883.
+
+Nakahara I, Takao M, Sakai T, Miki H, Nishii T, Sugano N. Gender differences in 3D morphology and bony impingement of human hips. J Orthop Res. 2011;29(3):333-339.
+
+Horii C, Yamazaki T, Oka H, et al. Does the anatomical pelvic tilt angle measured on the lateral spine radiograph predict acetabular coverage and the pelvic tilt angle? Bone Joint J. 2020;102-B(7):882-889.
+
+Rivière C, Harman C, Villet L, Séveno M, Cobb J. The influence of spine-hip relations on total hip replacement: A systematic review. Orthop Traumatol Surg Res. 2017;103(4):559-568.
+
+Sing DC, Barry JJ, Cheah JW, Vail TP, Hansen EN. Long-Term Outcomes of Total Hip Arthroplasty in Patients with Cerebral Palsy. J Arthroplasty. 2016;31(4):822-826.
+
+Meermans G, Malik A, Witt J, Haddad F. Preoperative radiographic assessment of limb-length discrepancy in total hip arthroplasty. Clin Orthop Relat Res. 2011;469(6):1677-1682.
+
+Kurtz S, Ong K, Lau E, Mowat F, Halpern M. Projections of primary and revision hip and knee arthroplasty in the United States from 2005 to 2030. J Bone Joint Surg Am. 2007;89(4):780-785.
+
+Biedermann R, Tonin A, Krismer M, Rachbauer F, Eibl G, Stöckl B. Reducing the risk of dislocation after total hip arthroplasty: the effect of orientation of the acetabular component. J Bone Joint Surg Br. 2005;87(6):762-769.
+
+Berry DJ, von Knoch M, Schleck CD, Harmsen WS. Effect of femoral head diameter and operative approach on risk of dislocation after primary total hip arthroplasty. J Bone Joint Surg Am. 2005;87(11):2456-2463.
+
+Gromov K, Bersang A, Nielsen CS, Kallemose T, Husted H, Troelsen A. Risk factors for post-operative periprosthetic fractures following primary total hip arthroplasty with a proximally coated double-tapered cementless femoral component. Bone Joint J. 2017;99-B(4):451-457.
+
+McLawhorn AS, Sculco PK, Weeks KD, Nam D, Mayman DJ. Targeting a New Safe Zone: A Step in the Development of Patient-Specific Component Positioning for Total Hip Arthroplasty. Am J Orthop (Belle Mead NJ). 2015;44(6):270-276.
+
+Heckmann N, McKnight B, Stefl M, Trasolini NA, Ike H, Dorr LD. Late Dislocation Following Total Hip Arthroplasty: Spinopelvic Imbalance as a Causative Factor. J Bone Joint Surg Am. 2018;100(21):1845-1853.
+
+Holtzman J, Saleh K, Kane R. Gender differences in functional status and pain in a Medicare population undergoing elective total hip arthroplasty. Med Care. 2002;40(6):461-470.
+
+Lavernia CJ, Sierra RJ, Grieco FR. Osteolysis and wear in total hip arthroplasty. J Am Acad Orthop Surg. 1999;7(6):376-386.
+
+Keurentjes JC, Fiocco M, Schreurs BW, et al. Revision surgery is overestimated in hip replacement. Bone Joint Res. 2012;1(10):258-262.
+
+Learmonth ID, Young C, Rorabeck C. The operation of the century: total hip replacement. Lancet. 2007;370(9597):1508-1519.
+
+Sugano N, Noble PC, Kamaric E. A comparison of alternative methods of measuring femoral anteversion. J Comput Assist Tomogr. 1998;22(4):610-614.
+
+Zaltz I, Baca G, Kim YJ, et al. Complications associated with the periacetabular osteotomy: a prospective multicenter study. J Bone Joint Surg Am. 2014;96(23):1967-1974.
+
+Mac-Thiong JM, Roussouly P, Berthonnaud E, Guigui P. Age- and sex-related variations in sagittal sacropelvic morphology and balance in asymptomatic adults. Eur Spine J. 2011;20 Suppl 5(Suppl 5):572-577.
+
+Phan D, Bederman SS, Schwarzkopf R. The influence of sagittal spinal deformity on anteversion of the acetabular component in total hip arthroplasty. Bone Joint J. 2015;97-B(8):1017-1023.
+
+Dorr LD, Malik A, Dastane M, Wan Z. Combined anteversion technique for total hip arthroplasty. Clin Orthop Relat Res. 2009;467(1):119-127.
+
+Ike H, Dorr LD, Trasolini N, Stefl M, McKnight B, Heckmann N. Spine-Pelvis-Hip Relationship in the Functioning of a Total Hip Replacement. J Bone Joint Surg Am. 2018;100(18):1606-1615.
+
+Lembeck B, Mueller O, Reize P, Wuelker N. Pelvic tilt makes acetabular cup navigation inaccurate. Acta Orthop. 2005;76(4):517-523.
+
+Wan Z, Malik A, Jaramaz B, Chao L, Dorr LD. Imaging and navigation measurement of acetabular component position in THA. Clin Orthop Relat Res. 2009;467(1):32-42.
+
+Miki H, Yamanashi W, Nishii T, Sato Y, Yoshikawa H, Sugano N. Anatomic hip range of motion after implantation during total hip arthroplasty as measured by a navigation system. J Arthroplasty. 2007;22(7):946-952.
+
+Yoshimine F. The safe-zones for combined cup and neck anteversions that fulfill the essential range of motion and their optimum combination in total hip replacements. J Biomech. 2006;39(7):1315-1323.
+
+Widmer KH, Zurfluh B. Compliant positioning of total hip components for optimal range of motion. J Orthop Res. 2004;22(4):815-821.
+
+D’Lima DD, Urquhart AG, Buehler KO, Walker RH, Colwell CW Jr. The effect of the orientation of the acetabular and femoral components on the range of motion of the hip at different head-neck ratios. J Bone Joint Surg Am. 2000;82(3):315-321.
+
+Barrack RL, Krempec JA, Clohisy JC, et al. Accuracy of acetabular component position in hip arthroplasty. J Bone Joint Surg Am. 2013;95(19):1760-1768.
+
+Abdel MP, von Roth P, Jennings MT, Hanssen AD, Pagnano MW. What Safe Zone? The Vast Majority of Dislocated THAs Are Within the Lewinnek Safe Zone for Acetabular Component Position. Clin Orthop Relat Res. 2016;474(2):386-391.
+
+Seagrave KG, Troelsen A, Malchau H, Husted H, Gromov K. Acetabular cup position and risk of dislocation in primary total hip arthroplasty: a systematic review of the literature. Acta Orthop. 2017;88(1):10-17.
+
+Callanan MC, Jarrett B, Bragdon CR, et al. The John Charnley Award: risk factors for cup malpositioning: quality improvement through a joint registry at a tertiary hospital. Clin Orthop Relat Res. 2011;469(2):319-329.
+
+Malik A, Maheshwari A, Dorr LD. Impingement with total hip replacement. J Bone Joint Surg Am. 2007;89(8):1832-1842.
+
+Tower SS, Currier JH, Currier BH, Lyford KA, Van Citters DW, Mayor MB. Rim cracking of the cross-linked longevity polyethylene acetabular liner after total hip arthroplasty. J Bone Joint Surg Am. 2007;89(10):2212-2217.
+
+Bouchard SM, Stewart KJ, Pedersen DR, et al. Design factors influencing performance of constrained acetabular liners: finite element characterization. J Orthop Res. 2006;24(5):1038-1046.
+
+McCollum DE, Gray WJ. Dislocation after total hip arthroplasty. Causes and prevention. Clin Orthop Relat Res. 1990;(261):159-170.
+
+Paterno SA, Lachiewicz PF, Kelley SS. The influence of patient-related factors and the position of the acetabular component on the rate of dislocation after total hip replacement. J Bone Joint Surg Am. 1997;79(8):1202-1210.
+
+Schmalzried TP, Guttmann D, Grecula M, Amstutz HC. The relationship between the design, position, and articular wear of acetabular components inserted without cement and the development of pelvic osteolysis. J Bone Joint Surg Am. 1994;76(5):677-688.
+
+Esposito CI, Gladnick BP, Lee YY, et al. Cup position alone does not predict risk of dislocation after hip arthroplasty. J Arthroplasty. 2015;30(1):109-113.
+
+Vigdorchik JM, Sharma AK, Elbuluk AM, et al. High Offset Stems Are Protective of Dislocation in High-Risk Total Hip Arthroplasty. J Arthroplasty. 2021;36(1):210-216.
+
+Masonis JL, Bourne RB. Surgical approach, abductor function, and total hip arthroplasty dislocation. Clin Orthop Relat Res. 2002;(405):46-53.
+
+Kwon MS, Kuskowski M, Mulhall KJ, Macaulay W, Brown TE, Saleh KJ. Does surgical approach affect total hip arthroplasty dislocation rates? Clin Orthop Relat Res. 2006;447:34-38.
+
+Enocson A, Tidermark J, Tornkvist H, Lapidus LJ. Dislocation of hemiarthroplasty after femoral neck fracture: better outcome after the anterolateral approach in a prospective cohort study on 739 consecutive hips. Acta Orthop. 2008;79(2):211-217.
+
+Tsukada S, Wakui M. Decreased perioperative serum albumin is a risk factor for worsening of knee pain after total knee arthroplasty. J Exp Orthop. 2015;2(1):24.
+
+Bozic KJ, Lau E, Kurtz S, et al. Patient-related risk factors for periprosthetic joint infection and postoperative mortality following total hip arthroplasty in Medicare patients. J Bone Joint Surg Am. 2012;94(9):794-800.
+
+Kong L, Cao J, Zhang Y, Ding W, Shen Y. Risk factors for periprosthetic joint infection following primary total hip or knee arthroplasty: a meta-analysis. Int Wound J. 2017;14(3):529-536.
+
+Zmistowski B, Karam JA, Durinka JB, Casper DS, Parvizi J. Periprosthetic joint infection increases the risk of one-year mortality. J Bone Joint Surg Am. 2013;95(24):2177-2184.
+
+Parvizi J, Tan TL, Goswami K, et al. The 2018 Definition of Periprosthetic Hip and Knee Infection: An Evidence-Based and Validated Criteria. J Arthroplasty. 2018;33(5):1309-1314.e2.
+
+Premkumar A, Morse K, Levack AE, Bostrom MP, Carli AV. Periprosthetic Joint Infection in Patients with Inflammatory Joint Disease: Prevention and Diagnosis. Curr Rheumatol Rep. 2018;20(11):68.
+
+Dowsey MM, Choong PF. Obesity is a major risk factor for prosthetic infection after primary hip arthroplasty. Clin Orthop Relat Res. 2008;466(1):153-158.
+
+Namba RS, Inacio MC, Paxton EW. Risk factors associated with deep surgical site infections after primary total knee arthroplasty: an analysis of 56,216 knees. J Bone Joint Surg Am. 2013;95(9):775-782.
+
+Friedman RJ, Hess S, Berkowitz SD, Homering M. Complication rates after hip or knee arthroplasty in morbidly obese patients. Clin Orthop Relat Res. 2013;471(10):3358-3366.
+
+Wagner ER, Kamath AF, Fruth KM, Harmsen WS, Berry DJ. Effect of Body Mass Index on Complications and Reoperations After Total Hip Arthroplasty. J Bone Joint Surg Am. 2016;98(3):169-179.
+
+Si HB, Zeng Y, Shen B, et al. The influence of body mass index on the outcomes of primary total knee arthroplasty. Knee Surg Sports Traumatol Arthrosc. 2015;23(6):1824-1832.
+
+George J, Piuzzi NS, Crawford DA, Klika AK, Barsoum WK. Paradoxical Obesity: The Impact of Patient Body Mass Index on Complications After Total Hip Arthroplasty. J Arthroplasty. 2017;32(8):2518-2524.
+
+DeMik DE, Bedard NA, Dowdle SB, et al. Complications and Obesity in Arthroplasty-A Hip is Not a Knee. J Arthroplasty. 2018;33(10):3281-3287.
+
+Jämsen E, Nevalainen P, Eskelinen A, Huotari K, Kalliovalkama J, Moilanen T. Obesity, diabetes, and preoperative hyperglycemia as predictors of periprosthetic joint infection: a single-center analysis of 7181 primary hip and knee replacements for osteoarthritis. J Bone Joint Surg Am. 2012;94(14):e101.
+
+Malinzak RA, Ritter MA, Berend ME, Meding JB, Olberding EM, Davis KE. Morbidly obese, diabetic, younger, and unilateral joint arthroplasty patients have elevated total joint arthroplasty infection rates. J Arthroplasty. 2009;24(6 Suppl):84-88.
+
+Naylor JM, Hart A, Harris IA, Lewin AM. Variation in rehabilitation setting after uncomplicated total knee or hip arthroplasty: a call for evidence-based guidelines. BMC Musculoskelet Disord. 2019;20(1):214.
+
+Shan L, Shan B, Suzuki A, Nouh F, Saxena A. Intermediate and long-term quality of life after total knee replacement: a systematic review and meta-analysis. J Bone Joint Surg Am. 2015;97(2):156-168.
+
+Judge A, Arden NK, Cooper C, et al. Predictors of outcomes of total knee replacement surgery. Rheumatology (Oxford). 2012;51(10):1804-1813.
+
+Beswick AD, Wylde V, Gooberman-Hill R, Blom A, Dieppe P. What proportion of patients report long-term pain after total hip or knee replacement for osteoarthritis? A systematic review of prospective studies in unselected patients. BMJ Open. 2012;2(1):e000435.
+
+Lewis GN, Rice DA, McNair PJ, Kluger M. Predictors of persistent pain after total knee arthroplasty: a systematic review and meta-analysis. Br J Anaesth. 2015;114(4):551-561.
+
+Wylde V, Hewlett S, Learmonth ID, Dieppe P. Persistent pain after joint replacement: prevalence, sensory qualities, and postoperative determinants. Pain. 2011;152(3):566-572.
+
+Vissers MM, Bussmann JB, Verhaar JA, Busschbach JJ, Bierma-Zeinstra SM, Reijman M. Psychological factors affecting the outcome of total hip and knee arthroplasty: a systematic review. Semin Arthritis Rheum. 2012;41(4):576-588.
+
+Duivenvoorden T, Vissers MM, Verhaar JA, et al. Anxiety and depressive symptoms before and after total hip and knee arthroplasty: a prospective multicentre study. Osteoarthritis Cartilage. 2013;21(12):1834-1840.
+
+Scott CE, Howie CR, MacDonald D, Biant LC. Predicting dissatisfaction following total knee replacement: a prospective study of 1217 patients. J Bone Joint Surg Br. 2010;92(9):1253-1258.

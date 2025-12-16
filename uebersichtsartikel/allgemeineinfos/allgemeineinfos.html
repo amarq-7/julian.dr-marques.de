@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinopelvines Alignment in der Hüftendoprothetik</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #f9fafb;
+            --white: #ffffff;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .section h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .section h4 {
+            color: var(--text);
+            font-size: 1.25rem;
+            margin: 1rem 0 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+
+        .card-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .card-content {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Classification Tables */
+        .classification-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .classification-box h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .classification-box ul {
+            margin-left: 1.5rem;
+            color: var(--text);
+        }
+
+        .classification-box li {
+            margin: 0.5rem 0;
+        }
+
+        /* Parameter Box */
+        .parameter-box {
+            background: #fef3c7;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .parameter-box strong {
+            color: #92400e;
+        }
+
+        /* Risk Warning Box */
+        .warning-box {
+            background: #fef2f2;
+            border-left: 4px solid var(--danger);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .warning-box h4 {
+            color: var(--danger);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Success Box */
+        .success-box {
+            background: #f0fdf4;
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .success-box h4 {
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Interactive Calculator */
+        .calculator {
+            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .input-group {
+            margin: 1rem 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
+        }
+
+        .result-box {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 2px solid var(--border);
+        }
+
+        .result-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Literature Section */
+        .literature-item {
+            padding: 1rem;
+            margin: 0.75rem 0;
+            background: #f9fafb;
+            border-left: 3px solid var(--secondary);
+            border-radius: 4px;
+        }
+
+        .literature-item:hover {
+            background: #f3f4f6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .calculator, footer {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                🦴 Spinopelvines Alignment
+            </div>
+            <ul class="nav-links">
+                <li><a href="#grundlagen">Grundlagen</a></li>
+                <li><a href="#klassifikation">Klassifikation</a></li>
+                <li><a href="#diagnostik">Diagnostik</a></li>
+                <li><a href="#therapie">Therapie</a></li>
+                <li><a href="#rechner">Rechner</a></li>
+                <li><a href="#literatur">Literatur</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Spinopelvines Alignment in der Hüftendoprothetik</h1>
+        <p>Evidenzbasierte Ressource für die präoperative Evaluation und patientenspezifische Pfannenpositionierung</p>
+    </div>
+
+    <div class="container">
+        <!-- Einleitung -->
+        <section class="section" id="einleitung">
+            <h2>Einleitung</h2>
+            <p>Das spinopelvine Alignment beschreibt die komplexe biomechanische Beziehung zwischen Wirbelsäule, Becken und Hüftgelenk. Diese Interaktion hat fundamentale Auswirkungen auf das Outcome nach Hüfttotalendoprothese (H-TEP).</p>
+            
+            <div class="warning-box">
+                <h4>⚠️ Klinische Relevanz</h4>
+                <p><strong>58% aller Hüftluxationen</strong> ereignen sich trotz Positionierung innerhalb der historischen Lewinnek Safe Zone. Die Berücksichtigung des spinopelvinen Alignments ist daher für die moderne Hüftendoprothetik essentiell.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">1-10%</div>
+                        <span>Luxationsrate</span>
+                    </div>
+                    <div class="card-content">
+                        Allgemeine Luxationsrate nach H-TEP, erhöht bei spinopelvinen Pathologien auf bis zu 15%
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">2-3x</div>
+                        <span>Erhöhtes Risiko</span>
+                    </div>
+                    <div class="card-content">
+                        Relatives Risiko für Luxation bei Patienten mit lumbaler Fusion zum Sakrum
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">60%</div>
+                        <span>Prävalenz</span>
+                    </div>
+                    <div class="card-content">
+                        Anteil der H-TEP-Kandidaten mit begleitenden Rückenschmerzen
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grundlagen -->
+        <section class="section" id="grundlagen">
+            <h2>Anatomische und biomechanische Grundlagen</h2>
+            
+            <h3>Der Lumbopelvine Komplex (LPC)</h3>
+            <p>Der lumbopelvine Komplex funktioniert als kinematische Kette aus Lendenwirbelsäule, Becken und Hüftgelenken. Diese Einheit ermöglicht koordinierte Positionsänderungen und energieeffiziente Körperhaltung.</p>
+
+            <h3>Spinopelvine Parameter</h3>
+            
+            <div class="parameter-box">
+                <h4>📏 Fixe Parameter</h4>
+                <p><strong>Pelvic Incidence (PI):</strong> Anatomisch fixierter Winkel zwischen Senkrechten auf S1-Deckplatte und Verbindungslinie Hüftkopf-S1<br>
+                <em>Normwert: 45-60°</em><br>
+                <em>Beziehung: PI = PT + SS</em></p>
+            </div>
+
+            <div class="parameter-box">
+                <h4>📐 Variable Parameter</h4>
+                <p><strong>Pelvic Tilt (PT):</strong> Beckenneigung, Winkel zwischen Senkrechten und Verbindungslinie Hüftkopf-S1<br>
+                <em>Normwert: 10-25°</em></p>
+                
+                <p><strong>Sacral Slope (SS):</strong> Sakrumneigung, Winkel zwischen S1-Deckplatte und Horizontale<br>
+                <em>Normwert: 30-45°</em></p>
+                
+                <p><strong>Lumbar Lordosis (LL):</strong> Lumbale Lordose zwischen L1 und S1<br>
+                <em>Normwert: 40-60°</em></p>
+            </div>
+
+            <div class="classification-box">
+                <h4>🔄 Funktionelle Parameter</h4>
+                <ul>
+                    <li><strong>PI-LL Mismatch:</strong> PI - LL > 10° definiert sagittales Ungleichgewicht (Flatback)</li>
+                    <li><strong>ΔSS:</strong> Änderung des Sacral Slope zwischen Stehen und Sitzen (Maß für spinopelvine Mobilität)</li>
+                    <li><strong>SVA:</strong> Sagittal Vertical Axis, C7-Lot zur sakralen Hinterkante (Normwert < 5 cm)</li>
+                </ul>
+            </div>
+
+            <h3>Physiologische Positionsänderungen</h3>
+            <p>Beim Übergang vom Stehen zum Sitzen erfolgen koordinierte Anpassungen:</p>
+            <ul style="margin-left: 2rem; margin-top: 1rem;">
+                <li>Posteriore Beckenkippung (PT ↑ um ~20°)</li>
+                <li>Abnahme des Sacral Slope (SS ↓ um 20-30°)</li>
+                <li>Abflachung der lumbalen Lordose (LL ↓)</li>
+                <li>Zunahme der funktionellen Azetabulumanteversion um 15-22°</li>
+            </ul>
+
+            <div class="success-box">
+                <h4>✓ Klinische Bedeutung</h4>
+                <p>Diese physiologischen Mechanismen verhindern normalerweise femoroacetabuläres Impingement bei Hüftbeugung. Bei pathologischer spinopelviner Mobilität ist dieser Schutzmechanismus gestört.</p>
+            </div>
+        </section>
+
+        <!-- Klassifikation -->
+        <section class="section" id="klassifikation">
+            <h2>Klassifikationssysteme</h2>
+
+            <h3>1. Bordeaux-Klassifikation (Rivière et al. 2017)</h3>
+            <p>Die am weitesten verbreitete Klassifikation basierend auf Alignment und Mobilität:</p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">1A</div>
+                        <span>Normal / Normal</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Kriterien:</strong> PI-LL ≤ 10°, ΔSS 10-30°<br>
+                        <strong>Empfehlung:</strong> Standard Safe Zone (40-45° Inkl., 15-20° AV)<br>
+                        <strong>Risiko:</strong> Standard
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">1B</div>
+                        <span>Normal / Steif</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Kriterien:</strong> PI-LL ≤ 10°, ΔSS < 10°<br>
+                        <strong>Empfehlung:</strong> ↑ AV (20-25°), 40° Inkl., Dual Mobility erwägen<br>
+                        <strong>Risiko:</strong> Erhöht (anterior)
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">2A</div>
+                        <span>Flatback / Normal</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Kriterien:</strong> PI-LL > 10°, ΔSS 10-30°<br>
+                        <strong>Empfehlung:</strong> ↓ AV (10-15°), 40° Inkl.<br>
+                        <strong>Risiko:</strong> Erhöht (posterior beim Sitzen)
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">2B</div>
+                        <span>Flatback / Steif</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Kriterien:</strong> PI-LL > 10°, ΔSS < 10°<br>
+                        <strong>Empfehlung:</strong> ↓↓ AV (5-10°), 35-40° Inkl., Dual Mobility OBLIGAT<br>
+                        <strong>Risiko:</strong> Sehr hoch (15-fach)
+                    </div>
+                </div>
+            </div>
+
+            <h3>2. Hip-Spine Classification (Vigdorchik et al. 2021)</h3>
+            <div class="classification-box">
+                <h4>Vereinfachte Klassifikation zur schnellen Risikostratifizierung:</h4>
+                <ul>
+                    <li><strong>Gruppe A (Normal):</strong> PI-LL < 10°, PT < 20°, ΔSS ≥ 10° → Standardvorgehen</li>
+                    <li><strong>Gruppe B (Steif):</strong> PI-LL < 10°, PT < 20°, ΔSS < 10° → Erhöhte Anteversion, großer Kopf</li>
+                    <li><strong>Gruppe C (Flatback):</strong> PI-LL ≥ 10° ODER PT ≥ 20° → Reduzierte Anteversion</li>
+                    <li><strong>Gruppe D (Flatback + Steif):</strong> (PI-LL ≥ 10° ODER PT ≥ 20°) UND ΔSS < 10° → Dual Mobility</li>
+                </ul>
+            </div>
+
+            <h3>3. Phan-Klassifikation (2015)</h3>
+            <p>Einteilung nach Mobilität und Balance:</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">Typ 1: Flexibel & Balanciert</div>
+                    <div class="card-content">ΔSS > 10°, PT < 25°, PI-LL < 10° - Niedrigstes Risiko</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Typ 2: Rigide & Balanciert</div>
+                    <div class="card-content">ΔSS < 10°, PT < 25°, PI-LL < 10° - Mäßiges Risiko</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Typ 3: Flexibel & Unbalanciert</div>
+                    <div class="card-content">ΔSS > 10°, PT > 25°, PI-LL > 10° - Erhöhtes Risiko</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Typ 4: Rigide & Unbalanciert</div>
+                    <div class="card-content">ΔSS < 10°, PT > 25°, PI-LL > 10° - Höchstes Risiko</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diagnostik -->
+        <section class="section" id="diagnostik">
+            <h2>Diagnostik und präoperative Evaluation</h2>
+
+            <h3>Anamnestische Red Flags</h3>
+            <div class="warning-box">
+                <h4>⚠️ Risikofaktoren für abnorme spinopelvine Mobilität:</h4>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Z.n. lumbaler Fusion (stärkster Prädiktor)</li>
+                    <li>Adulte Wirbelsäulendeformität (ASD)</li>
+                    <li>Chronische Lumbalgie</li>
+                    <li>Flatback-Deformität</li>
+                    <li>Alter > 80 Jahre</li>
+                    <li>Eingeschränkte Rumpfflexibilität</li>
+                </ul>
+            </div>
+
+            <h3>Bildgebende Diagnostik</h3>
+            <div class="classification-box">
+                <h4>📸 Standardprotokoll bei Risikopatienten:</h4>
+                <ul>
+                    <li><strong>Beckenübersicht a.p. stehend:</strong> Koxarthrose-Grad, Beckenschiefstand</li>
+                    <li><strong>Becken lateral stehend:</strong> Messung PT, SS, PI</li>
+                    <li><strong>Becken lateral sitzend (90° Hüftflexion):</strong> PT/SS sitzend, Berechnung ΔSS</li>
+                    <li><strong>LWS a.p. und lateral stehend:</strong> LL, Voroperationen, degenerative Veränderungen</li>
+                    <li><strong>Optional: EOS-Ganzkörperaufnahmen:</strong> Gold-Standard für komplette spinopelvine Analyse</li>
+                </ul>
+            </div>
+
+            <h3>Zu messende Parameter</h3>
+            <ol style="margin-left: 2rem; margin-top: 1rem;">
+                <li>Pelvic Incidence (PI)</li>
+                <li>Pelvic Tilt stehend und sitzend</li>
+                <li>Sacral Slope stehend und sitzend → ΔSS berechnen</li>
+                <li>Lumbar Lordosis (LL)</li>
+                <li>PI-LL Mismatch berechnen</li>
+                <li>Optional: C7-SVA, TPA bei Ganzkörperaufnahmen</li>
+            </ol>
+        </section>
+
+        <!-- Interaktiver Rechner -->
+        <section class="section" id="rechner">
+            <h2>Interaktiver Klassifikationsrechner</h2>
+            <p>Geben Sie die gemessenen spinopelvinen Parameter ein, um die Klassifikation und Behandlungsempfehlungen zu erhalten:</p>
+
+            <div class="calculator">
+                <div class="input-group">
+                    <label>Pelvic Incidence (PI) in Grad:</label>
+                    <input type="number" id="pi" placeholder="z.B. 55">
+                </div>
+
+                <div class="input-group">
+                    <label>Lumbar Lordosis (LL) in Grad:</label>
+                    <input type="number" id="ll" placeholder="z.B. 50">
+                </div>
+
+                <div class="input-group">
+                    <label>Pelvic Tilt stehend (PT) in Grad:</label>
+                    <input type="number" id="pt" placeholder="z.B. 15">
+                </div>
+
+                <div class="input-group">
+                    <label>Sacral Slope stehend (SS) in Grad:</label>
+                    <input type="number" id="ss_stand" placeholder="z.B. 40">
+                </div>
+
+                <div class="input-group">
+                    <label>Sacral Slope sitzend (SS) in Grad:</label>
+                    <input type="number" id="ss_sit" placeholder="z.B. 20">
+                </div>
+
+                <button class="btn" onclick="calculateClassification()">Klassifikation berechnen</button>
+
+                <div id="result" class="result-box" style="display: none;">
+                    <h4>Ergebnis:</h4>
+                    <div id="resultContent"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Therapie -->
+        <section class="section" id="therapie">
+            <h2>Therapeutische Implikationen</h2>
+
+            <h3>Patientenspezifische Pfannenpositionierung</h3>
+            <p>Die optimale Pfannenposition muss individuell basierend auf dem spinopelvinen Status angepasst werden:</p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span>Gruppe 1A: Standard</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Inklination:</strong> 40-45°<br>
+                        <strong>Anteversion:</strong> 15-20°<br>
+                        <strong>Kopf:</strong> Standard (≥32 mm)<br>
+                        <strong>Besonderheiten:</strong> Konventionelle Safe Zone anwendbar
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span>Gruppe 1B: Steife WS</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Inklination:</strong> 40°<br>
+                        <strong>Anteversion:</strong> 20-25° (↑)<br>
+                        <strong>Kopf:</strong> Maximal (≥36 mm)<br>
+                        <strong>Besonderheiten:</strong> Dual Mobility erwägen, Cave Impingement anterior
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span>Gruppe 2A: Flatback</span>
+                    </div>
+                    <div class="card-content">
+                        <strong>Inklination:</strong> 40°<br>
+                        <strong>Anteversion:
