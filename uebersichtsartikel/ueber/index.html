@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über den Autor - Joint Alignment Compendium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.6; color: #374151; background: #f9fafb; }
+        .site-header { background: rgba(255,255,255,0.95); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+        .header-inner { max-width: 1400px; margin: 0 auto; padding: 0.875rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: #1f2937; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-highlight { background: linear-gradient(135deg, #2563eb, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { color: #4b5563; text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: #2563eb; }
+        .breadcrumb { background: white; border-bottom: 1px solid #f3f4f6; padding: 0.75rem 0; }
+        .breadcrumb-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; font-size: 0.875rem; color: #6b7280; }
+        .breadcrumb-inner a { color: #2563eb; text-decoration: none; }
+        .breadcrumb-separator { margin: 0 0.5rem; color: #9ca3af; }
+        .page-header { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #14b8a6 100%); color: white; padding: 3rem 2rem; position: relative; }
+        .page-header::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23fff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .page-header-content { max-width: 900px; margin: 0 auto; position: relative; text-align: center; }
+        .page-header h1 { font-family: 'Source Serif 4', Georgia, serif; font-size: 2.5rem; font-weight: 700; }
+        .page-header p { margin-top: 0.75rem; opacity: 0.9; font-size: 1.125rem; }
+        .main-container { max-width: 900px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+        .content-card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 2.5rem 3rem; }
+        .author-intro { display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 2rem; }
+        .author-avatar { width: 120px; height: 120px; background: linear-gradient(135deg, #dbeafe, #eff6ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .author-avatar span { font-size: 3rem; }
+        .author-info h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.75rem; color: #111827; margin-bottom: 0.25rem; }
+        .author-info .title { color: #2563eb; font-weight: 500; margin-bottom: 0.5rem; }
+        .author-info .affiliation { color: #6b7280; font-size: 0.9375rem; }
+        .content-card h3 { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 1rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
+        .content-card h3:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        .content-card p { margin-bottom: 1rem; line-height: 1.75; }
+        .content-card a { color: #2563eb; text-decoration: none; }
+        .content-card a:hover { text-decoration: underline; }
+        .mission-box { background: linear-gradient(135deg, #eff6ff, #e0f2fe); border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; }
+        .mission-box h4 { color: #1d4ed8; margin-bottom: 0.5rem; font-size: 1.0625rem; }
+        .mission-box p { margin: 0; color: #374151; }
+        .contact-box { background: #f9fafb; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; }
+        .contact-box h4 { font-size: 1rem; font-weight: 600; color: #1f2937; margin-bottom: 0.75rem; }
+        .contact-box p { margin-bottom: 0.25rem; }
+        .site-footer { background: #111827; color: white; padding: 3rem 2rem 1.5rem; margin-top: 2rem; }
+        .footer-inner { max-width: 1400px; margin: 0 auto; }
+        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+        .footer-brand h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .footer-brand p { color: #9ca3af; font-size: 0.875rem; line-height: 1.6; }
+        .footer-links h4 { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; color: #d1d5db; }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a { color: #9ca3af; text-decoration: none; font-size: 0.9375rem; }
+        .footer-links a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-copyright { font-size: 0.8125rem; color: #6b7280; }
+        .footer-disclaimer { font-size: 0.75rem; color: #6b7280; max-width: 600px; line-height: 1.5; }
+        @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; } .content-card { padding: 1.5rem; } .author-intro { flex-direction: column; align-items: center; text-align: center; } .footer-bottom { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><span>Joint</span><span class="logo-highlight">Alignment</span><span>Compendium</span></a>
+            <nav class="nav-links"><a href="index.html">Home</a><a href="huefte.html">Hüfte</a><a href="ueber.html">Über</a></nav>
+        </div>
+    </header>
+    <nav class="breadcrumb"><div class="breadcrumb-inner"><a href="index.html">Home</a><span class="breadcrumb-separator">›</span><span>Über den Autor</span></div></nav>
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Über den Autor</h1>
+            <p>Die Vision hinter dem Joint Alignment Compendium</p>
+        </div>
+    </section>
+    <div class="main-container">
+        <div class="content-card">
+            <div class="author-intro">
+                <div class="author-avatar"><span>👨‍⚕️</span></div>
+                <div class="author-info">
+                    <h2>Julian Marques</h2>
+                    <p class="title">Arzt</p>
+                    <p class="affiliation">Universitätsklinikum Bonn<br>Venusberg-Campus 1, 53127 Bonn</p>
+                </div>
+            </div>
+
+            <h3>Über dieses Projekt</h3>
+            <p>Das Joint Alignment Compendium entstand aus dem Bedürfnis heraus, das komplexe und schnell wachsende Wissen zum Thema spinopelvines Alignment in der Hüftendoprothetik strukturiert und praxisnah aufzubereiten.</p>
+            <p>Die Literatur zu diesem Thema ist umfangreich, aber oft fragmentiert über verschiedene Journals verteilt. Dieses digitale Handbuch soll als zentrale Anlaufstelle dienen, um evidenzbasierte Konzepte, Klassifikationssysteme und klinische Strategien übersichtlich zugänglich zu machen.</p>
+
+            <div class="mission-box">
+                <h4>🎯 Mission</h4>
+                <p>Strukturiertes Wissen und klinische Strategien für Fachpublikum – evidenzbasiert, praxisnah und auf dem aktuellen Stand der Wissenschaft.</p>
+            </div>
+
+            <h3>Transparenzhinweis</h3>
+            <p>Die Inhalte dieser Website wurden unter Zuhilfenahme von KI-Systemen erstellt und anschließend fachlich geprüft. Dieser transparente Umgang mit der Erstellungsmethodik ist mir wichtig, da er zur Qualitätssicherung beiträgt und die kritische Bewertung der Inhalte ermöglicht.</p>
+            <p>Trotz sorgfältiger Überprüfung können Fehler nicht ausgeschlossen werden. Die Inhalte dienen der Fortbildung und Information – für klinische Entscheidungen ist stets die Originalliteratur und die individuelle Patientensituation maßgeblich.</p>
+
+            <h3>Interessenkonflikte</h3>
+            <p>Es bestehen keine relevanten Interessenkonflikte im Zusammenhang mit den auf dieser Website dargestellten Inhalten.</p>
+
+            <div class="contact-box">
+                <h4>Kontakt</h4>
+                <p><strong>E-Mail:</strong> <a href="mailto:julian.marques@gmx.de">julian.marques@gmx.de</a></p>
+                <p><strong>Telefon:</strong> 015221954877</p>
+                <p style="margin-top: 0.75rem; color: #6b7280; font-size: 0.875rem;">Für Fragen, Anregungen oder Hinweise auf Fehler stehe ich gerne zur Verfügung.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>Joint Alignment Compendium</h3>
+                    <p>Digitales Handbuch für Alignment-Strategien in der Endoprothetik. Strukturiertes Wissen und klinische Strategien für Fachpublikum.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="huefte.html">Hüfte</a></li>
+                        <li><a href="ueber.html">Über den Autor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Joint Alignment Compendium. Alle Rechte vorbehalten.</p>
+                <p class="footer-disclaimer">Die Inhalte dienen der Information und Fortbildung und stellen keine klinische Anweisung dar.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

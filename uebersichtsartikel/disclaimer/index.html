@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - Joint Alignment Compendium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.6; color: #374151; background: #f9fafb; }
+        .site-header { background: rgba(255,255,255,0.95); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+        .header-inner { max-width: 1400px; margin: 0 auto; padding: 0.875rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: #1f2937; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .logo-highlight { background: linear-gradient(135deg, #2563eb, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { color: #4b5563; text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: #2563eb; }
+        .breadcrumb { background: white; border-bottom: 1px solid #f3f4f6; padding: 0.75rem 0; }
+        .breadcrumb-inner { max-width: 1400px; margin: 0 auto; padding: 0 2rem; font-size: 0.875rem; color: #6b7280; }
+        .breadcrumb-inner a { color: #2563eb; text-decoration: none; }
+        .breadcrumb-separator { margin: 0 0.5rem; color: #9ca3af; }
+        .page-header { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; padding: 2.5rem 2rem; }
+        .page-header-content { max-width: 900px; margin: 0 auto; }
+        .page-header h1 { font-family: 'Source Serif 4', Georgia, serif; font-size: 2rem; font-weight: 700; }
+        .page-header p { margin-top: 0.5rem; opacity: 0.9; }
+        .main-container { max-width: 900px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+        .content-card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 2.5rem 3rem; }
+        .content-card h2 { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2.5rem; margin-bottom: 1rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
+        .content-card h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+        .content-card p { margin-bottom: 1rem; line-height: 1.75; }
+        .content-card ul { margin-bottom: 1rem; padding-left: 1.5rem; }
+        .content-card li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .content-card strong { color: #1f2937; }
+        .warning-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; }
+        .warning-box h3 { color: #92400e; margin-top: 0; margin-bottom: 0.75rem; font-size: 1.125rem; }
+        .warning-box p { margin-bottom: 0.5rem; color: #78350f; }
+        .warning-box p:last-child { margin-bottom: 0; }
+        .site-footer { background: #111827; color: white; padding: 3rem 2rem 1.5rem; margin-top: 2rem; }
+        .footer-inner { max-width: 1400px; margin: 0 auto; }
+        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+        .footer-brand h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .footer-brand p { color: #9ca3af; font-size: 0.875rem; line-height: 1.6; }
+        .footer-links h4 { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; color: #d1d5db; }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a { color: #9ca3af; text-decoration: none; font-size: 0.9375rem; }
+        .footer-links a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-copyright { font-size: 0.8125rem; color: #6b7280; }
+        .footer-disclaimer { font-size: 0.75rem; color: #6b7280; max-width: 600px; line-height: 1.5; }
+        @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; } .content-card { padding: 1.5rem; } .footer-bottom { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../index.html" class="logo"><span>Joint</span><span class="logo-highlight">Alignment</span><span>Compendium</span></a>
+            <nav class="nav-links"><a href="../index.html">Home</a><a href="../huefte/index.html">Hüfte</a><a href="../ueber/index.html">Über</a></nav>
+        </div>
+    </header>
+    <nav class="breadcrumb"><div class="breadcrumb-inner"><a href="../index.html">Home</a><span class="breadcrumb-separator">›</span><span>Disclaimer</span></div></nav>
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Wichtiger Hinweis & Haftungsausschluss</h1>
+            <p>Medizinischer Disclaimer für Fachpublikum</p>
+        </div>
+    </section>
+    <div class="main-container">
+        <div class="content-card">
+            <div class="warning-box">
+                <h3>⚠️ Bitte beachten Sie</h3>
+                <p>Die auf dieser Website bereitgestellten Inhalte, klinischen Handlungsempfehlungen und Zusammenfassungen wissenschaftlicher Publikationen zum Thema spinopelvines Alignment dienen <strong>ausschließlich der medizinischen Fortbildung und allgemeinen Information von Fachpublikum</strong>.</p>
+            </div>
+
+            <h2>Keine Einzelfallberatung</h2>
+            <p>Die Inhalte stellen <strong>keine therapeutische Empfehlung für spezifische Patientenfälle</strong> dar. Die Entscheidung über die Anwendung der hier beschriebenen Verfahren liegt allein in der Verantwortung des behandelnden Chirurgen.</p>
+            <p>Jeder Patient ist individuell zu betrachten. Die hier dargestellten Informationen ersetzen nicht die klinische Beurteilung im Einzelfall unter Berücksichtigung aller relevanten Faktoren wie Komorbiditäten, individuelle Anatomie und patientenspezifische Risikofaktoren.</p>
+
+            <h2>KI-Unterstützung bei der Erstellung</h2>
+            <p>Die Texte und Zusammenfassungen wurden <strong>unter Zuhilfenahme von Systemen der Künstlichen Intelligenz (KI)</strong> erstellt. Trotz sorgfältiger fachlicher Überprüfung durch Experten können Fehler in der Wiedergabe der Originaldaten oder Fehlinterpretationen durch die KI nicht vollständig ausgeschlossen werden.</p>
+            <p>Alle Inhalte wurden nach der Erstellung durch den Verantwortlichen auf ihre fachliche Richtigkeit geprüft und validiert. Dennoch empfehlen wir, bei klinischen Entscheidungen stets die Originalliteratur zu konsultieren.</p>
+
+            <h2>Haftungsbeschränkung</h2>
+            <p>Der Betreiber dieser Website übernimmt <strong>keine Haftung für Schäden</strong>, die aus der Anwendung der hier bereitgestellten Informationen resultieren.</p>
+            <p>Maßgeblich für die klinische Anwendung sind stets:</p>
+            <ul>
+                <li>Die aktuelle Fachliteratur</li>
+                <li>Die Leitlinien der Fachgesellschaften</li>
+                <li>Die Gebrauchsanweisungen der verwendeten Medizinprodukte</li>
+                <li>Die individuelle klinische Beurteilung</li>
+            </ul>
+
+            <h2>Vollständigkeit</h2>
+            <p>Ein Anspruch auf Vollständigkeit der dargestellten Paper und Methoden besteht nicht. Das Joint Alignment Compendium stellt eine Auswahl relevanter Literatur und Konzepte dar und erhebt nicht den Anspruch, alle verfügbaren wissenschaftlichen Erkenntnisse zu diesem Thema abzubilden.</p>
+
+            <h2>Aktualität</h2>
+            <p>Die medizinische Wissenschaft entwickelt sich kontinuierlich weiter. Wir bemühen uns, die Inhalte aktuell zu halten, können jedoch keine Garantie für die Aktualität aller Informationen übernehmen.</p>
+
+            <div class="warning-box">
+                <h3>Zusammenfassung</h3>
+                <p>Diese Website richtet sich ausschließlich an medizinisches Fachpersonal. Die Inhalte dienen der Fortbildung und Information. Für die klinische Anwendung sind die Originalliteratur, aktuelle Leitlinien und die individuelle Patientensituation maßgeblich.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>Joint Alignment Compendium</h3>
+                    <p>Digitales Handbuch für Alignment-Strategien in der Endoprothetik. Strukturiertes Wissen und klinische Strategien für Fachpublikum.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../huefte/index.html">Hüfte</a></li>
+                        <li><a href="../ueber/index.html">Über den Autor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="../impressum/index.html">Impressum</a></li>
+                        <li><a href="../datenschutz/index.html">Datenschutz</a></li>
+                        <li><a href="../disclaimer/index.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Joint Alignment Compendium. Alle Rechte vorbehalten.</p>
+                <p class="footer-disclaimer">Die Inhalte dienen der Information und Fortbildung und stellen keine klinische Anweisung dar.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

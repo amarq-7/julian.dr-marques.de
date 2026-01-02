@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Artikel - Orthopedic Knowledge Base</title>
+</head>
+<body>
+    <div class="app-container">
+        <main class="article-container">
+            <article class="article-content">
+                <a href="index.html" class="back-button">← Zurück zur Übersicht</a>
+
+
+
+
+
+
+
+   <meta charset="UTF-8">
+   <title>Zusammenfassung: Konsens zur Definition der spinopelvinen Mobilität</title>
+</head>
+<!DOCTYPE html>
+
+
+
+
+
+
+<h1>Ausführliche inhaltliche Zusammenfassung</h1>
+
+<p>Das Paper <strong>Buchalter et al. (2023)</strong> befasst sich mit der Herausforderung, eine einheitliche
+und wissenschaftlich belastbare Definition von <strong>spinopelviner Mobilität</strong> zu etablieren, da dieses
+Schlüsselkonzept in der Hüft‑ und Wirbelsäulenchirurgie bislang uneinheitlich verwendet wird. Ziel der
+Arbeit war es, die unterschiedlichen Definitionen in der Literatur systematisch zu erfassen, zu vergleichen
+und einen Vorschlag für eine konsensbasierte Terminologie zu entwickeln, die Forschung und klinische Kommunikation
+vereinheitlicht.  [oai_citation:0‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<h2>Hintergrund</h2>
+
+<p>Der Begriff „spinopelvine Mobilität“ wird in der Literatur verschieden verwendet. Teilweise beschreibt er
+die Bewegung innerhalb des spinopelvinen Segments (Lendenwirbelsäule und Becken), teilweise die Änderung der
+Beckenkippung zwischen funktionellen Positionen (z. B. Stehen vs. Sitzen), was auch durch Bewegungen anderer
+Gelenke beeinflusst wird. Diese Inkonsistenz erschwert Vergleichbarkeit von Studien und klinische Konsensfindung.  [oai_citation:1‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<p>Bisherige Arbeiten zur Prävention von Luxationen nach Totalhüftendoprothetik (THA) konzentrierten sich
+stark auf statische Parameter wie Safe‑Zones und kombinierte anteversionale Winkel. Die Bedeutung der dynamischen
+spinopelvinen Bewegung wurde lange unterschätzt, was erst neuere Studien thematisiert haben.  [oai_citation:2‡Lippincott Journals](https://journals.lww.com/jaaosglobal/fulltext/2023/06000/creating_consensus_in_the_definition_of.5.aspx?utm_source=chatgpt.com)</p>
+
+<h2>Methode</h2>
+
+<p>Die Autoren führten eine umfassende Literaturrecherche in MEDLINE (PubMed) durch und identifizierten
+72 relevante Publikationen zur spinopelvinen Mobilität, darunter prospektive Fallserien, retrospektive
+Analysen, Reviews, klinische Studien und Fallberichte. Ziel war es, die verwendeten Definitionen und
+Methoden zur Bestimmung von Mobilität sowie die radiologischen Protokolle zu erfassen.  [oai_citation:3‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<h2>Ergebnisse: Variabilität der Definitionen</h2>
+
+<p>Die Analyse zeigte, dass die meisten Studien zwei unterschiedliche Konzepte unter „spinopelviner Mobilität“ verstehen:</p>
+
+<ul>
+   <li>Bewegung innerhalb des spinopelvinen Segments (Lendenwirbelsäule ‑ Sakrum) selbst.</li>
+   <li>Änderung des Beckenkippwinkels (Pelvic Tilt/∆PT oder Sacral Slope/∆SS) zwischen funktionellen Positionen (z. B. Stehen vs. Sitzen).  [oai_citation:4‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</li>
+</ul>
+
+<p>In vielen Arbeiten wurde „Hypermobilität“ als ΔPT > 30° und „Hypomobilität“ bzw. „steife Mobilität“
+als ΔPT &lt; 10° definiert, doch diese Werte wurden uneinheitlich genutzt und teilweise auch auf unterschiedliche
+Radiographie‑Techniken (relaxed‑Seated vs. flexed‑Seated) übertragen — was zu widersprüchlichen Interpretationen
+führte.  [oai_citation:5‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<h2>Diskussion: Probleme der bisherigen Terminologie</h2>
+
+<p>Die Studie unterscheidet zwei Hauptfehlerquellen in der bisherigen Terminologie:</p>
+
+<ul>
+   <li><strong>Unklare Bezugsebene:</strong> Einige Autoren beschreiben Mobilität ausschließlich innerhalb des spinopelvinen Segments, andere beziehen sich auf Beckenkippung gegenüber der Vertikalen, die auch durch Hüft‑ oder andere Gelenkbewegungen beeinflusst wird.  [oai_citation:6‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+   <li><strong>Verschiedene bildgebende Verfahren:</strong> Unterschiedliche Studien nutzten entweder relaxed‑seated oder flexed‑seated Radiographien, was zu variierenden Messwerten und „Hypermobilitäts“-Definitionen führte.  [oai_citation:7‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+</ul>
+
+<p>Beispielsweise kann ein Patient mit steifer Wirbelsäule in flexed‑seated Röntgenaufnahmen scheinbar große ΔPT‑Werte zeigen,
+die funktionell nicht aus der spinopelvinen Bewegung, sondern aus der vermehrten Hüftbewegung resultieren — was zu der
+irreführenden Bezeichnung „spinopelvine Hypermobilität“ geführt hat.  [oai_citation:8‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</p>
+
+<h2>Vorgeschlagener Konsens und Definition</h2>
+
+<p>Die Autoren schlagen vor, den Begriff „spinopelvine Mobilität“ in Zukunft klar und einheitlich zu definieren in Hinsicht auf:</p>
+
+<ul>
+   <li><strong>Spinale Mobilität:</strong> Bewegung innerhalb des lumbosakralen Segments, unabhängig von anderen Gelenken.</li>
+   <li><strong>Pelvine Mobilität:</strong> Änderung des Beckenkippwinkels (PT, SS) relativ zur Vertikalen, die auch von Hüft‑ und anderen Gelenkbewegungen beeinflusst wird.</li>
+   <li><strong>Funktionelle Mobilität:</strong> Die Kombination der Spirale aus spinaler und pelviner Bewegung, verstanden in dem Kontext, wie der Patient zwischen Funktionalpositionen wechselt.  [oai_citation:9‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</li>
+</ul>
+
+<p>Die Autoren empfehlen ausdrücklich, den Begriff „spinopelvine Hypermobilität“ zugunsten präziserer Konzepte
+wie „hip user“ oder „spine user“ zu verwerfen, um die Verwirrung zu reduzieren und die Mechanismen gezielter
+zu adressieren.  [oai_citation:10‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</p>
+
+<h2>Klinische Bedeutung</h2>
+
+<p>Ein standardisiertes, konsistentes Begriffsverständnis ist wichtig, um:</p>
+
+<ul>
+   <li>Vergleichbare Diagnostik und Forschung zu ermöglichen.</li>
+   <li>Therapeutische Entscheidungen wie die Anpassung der Pfannenanteversion bei THA besser zu begründen.</li>
+   <li>Unklare oder widersprüchliche Literaturinterpretationen zu vermeiden.</li>
+</ul>
+
+<p>Die klare Trennung zwischen spinaler, pelviner und funktioneller Mobilität hilft Chirurgen, das mechanische Verhalten eines Patienten
+präziser zu erfassen und entsprechende operative Strategien zu planen.  [oai_citation:11‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<h2>Handlungsempfehlungen</h2>
+
+<ul>
+   <li><strong>Einheitliche Definition nutzen:</strong> Beschreibe spinopelvine Mobilität klar als mechanische Bewegung innerhalb des
+   spinopelvinen Segments oder als Beckenänderung gegen die Vertikale, nicht beides gleichzeitig.</li>
+   <li><strong>Standardisierte Messprotokolle etablieren:</strong> Vermeide Vermischung von flexed‑seated und relaxed‑seated Analysen
+   ohne separate Definitionsrahmen.</li>
+   <li><strong>Präzise Nomenklatur nutzen:</strong> Verwende Begriffe wie „spinale Mobilität“, „pelvine Mobilität“, „hip user“ und
+   „spine user“, um funktionelle Muster klarer zu beschreiben.</li>
+   <li><strong>Forschung harmonisieren:</strong> Zukünftige Studien sollten sich an den konsensbasierten Definitionen orientieren, um
+   vergleichbare Ergebnisse zu erzielen.</li>
+</ul>
+
+<h2>Take‑Home‑Messages</h2>
+
+<ul>
+   <li>Der Begriff „spinopelvine Mobilität“ ist bislang uneinheitlich definiert und führt zu Missverständnissen in Forschung und Praxis.  [oai_citation:12‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</li>
+   <li>Unterscheide zwischen spinaler Bewegung und Beckenkippung, um funktionelle Mechanismen korrekt zu erfassen.  [oai_citation:13‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+   <li>Die Nutzung klarer funktioneller Begriffe wie „hip user“ und „spine user“ verbessert Kommunikation und Planung.  [oai_citation:14‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+   <li>Eine harmonisierte Terminologie ermöglicht bessere Vergleichbarkeit klinischer Studien und evidenzbasierte operative Strategien.  [oai_citation:15‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</li>
+   <li>Beide radiographischen Ansätze (relaxed‑seated vs. flexed‑seated) sind wertvoll, müssen aber getrennt interpretiert werden.  [oai_citation:16‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+</ul>
+
+<p>Insgesamt liefert die Arbeit eine essentielle Grundlage für eine konsensbasierte Terminologie der spinopelvinen Mobilität,
+die sowohl für die Forschung als auch für die klinische Anwendung in der Hüftendoprothetik von großer Bedeutung ist.</p>
+
+            </article>
+        </main>
+    </div>
+</body>
+</html><!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Artikel - Orthopedic Knowledge Base</title>
+</head>
+<body>
+    <div class="app-container">
+        <main class="article-container">
+            <article class="article-content">
+                <a href="index.html" class="back-button">← Zurück zur Übersicht</a>
+
+
+
+
+
+
+
+   <meta charset="UTF-8">
+   <title>Zusammenfassung: Konsens zur Definition der spinopelvinen Mobilität</title>
+</head>
+<!DOCTYPE html>
+
+
+
+
+
+
+<h1>Ausführliche inhaltliche Zusammenfassung</h1>
+
+<p>Das Paper <strong>Buchalter et al. (2023)</strong> befasst sich mit der Herausforderung, eine einheitliche
+und wissenschaftlich belastbare Definition von <strong>spinopelviner Mobilität</strong> zu etablieren, da dieses
+Schlüsselkonzept in der Hüft‑ und Wirbelsäulenchirurgie bislang uneinheitlich verwendet wird. Ziel der
+Arbeit war es, die unterschiedlichen Definitionen in der Literatur systematisch zu erfassen, zu vergleichen
+und einen Vorschlag für eine konsensbasierte Terminologie zu entwickeln, die Forschung und klinische Kommunikation
+vereinheitlicht.  [oai_citation:0‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<h2>Hintergrund</h2>
+
+<p>Der Begriff „spinopelvine Mobilität“ wird in der Literatur verschieden verwendet. Teilweise beschreibt er
+die Bewegung innerhalb des spinopelvinen Segments (Lendenwirbelsäule und Becken), teilweise die Änderung der
+Beckenkippung zwischen funktionellen Positionen (z. B. Stehen vs. Sitzen), was auch durch Bewegungen anderer
+Gelenke beeinflusst wird. Diese Inkonsistenz erschwert Vergleichbarkeit von Studien und klinische Konsensfindung.  [oai_citation:1‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<p>Bisherige Arbeiten zur Prävention von Luxationen nach Totalhüftendoprothetik (THA) konzentrierten sich
+stark auf statische Parameter wie Safe‑Zones und kombinierte anteversionale Winkel. Die Bedeutung der dynamischen
+spinopelvinen Bewegung wurde lange unterschätzt, was erst neuere Studien thematisiert haben.  [oai_citation:2‡Lippincott Journals](https://journals.lww.com/jaaosglobal/fulltext/2023/06000/creating_consensus_in_the_definition_of.5.aspx?utm_source=chatgpt.com)</p>
+
+<h2>Methode</h2>
+
+<p>Die Autoren führten eine umfassende Literaturrecherche in MEDLINE (PubMed) durch und identifizierten
+72 relevante Publikationen zur spinopelvinen Mobilität, darunter prospektive Fallserien, retrospektive
+Analysen, Reviews, klinische Studien und Fallberichte. Ziel war es, die verwendeten Definitionen und
+Methoden zur Bestimmung von Mobilität sowie die radiologischen Protokolle zu erfassen.  [oai_citation:3‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<h2>Ergebnisse: Variabilität der Definitionen</h2>
+
+<p>Die Analyse zeigte, dass die meisten Studien zwei unterschiedliche Konzepte unter „spinopelviner Mobilität“ verstehen:</p>
+
+<ul>
+   <li>Bewegung innerhalb des spinopelvinen Segments (Lendenwirbelsäule ‑ Sakrum) selbst.</li>
+   <li>Änderung des Beckenkippwinkels (Pelvic Tilt/∆PT oder Sacral Slope/∆SS) zwischen funktionellen Positionen (z. B. Stehen vs. Sitzen).  [oai_citation:4‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</li>
+</ul>
+
+<p>In vielen Arbeiten wurde „Hypermobilität“ als ΔPT > 30° und „Hypomobilität“ bzw. „steife Mobilität“
+als ΔPT &lt; 10° definiert, doch diese Werte wurden uneinheitlich genutzt und teilweise auch auf unterschiedliche
+Radiographie‑Techniken (relaxed‑Seated vs. flexed‑Seated) übertragen — was zu widersprüchlichen Interpretationen
+führte.  [oai_citation:5‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<h2>Diskussion: Probleme der bisherigen Terminologie</h2>
+
+<p>Die Studie unterscheidet zwei Hauptfehlerquellen in der bisherigen Terminologie:</p>
+
+<ul>
+   <li><strong>Unklare Bezugsebene:</strong> Einige Autoren beschreiben Mobilität ausschließlich innerhalb des spinopelvinen Segments, andere beziehen sich auf Beckenkippung gegenüber der Vertikalen, die auch durch Hüft‑ oder andere Gelenkbewegungen beeinflusst wird.  [oai_citation:6‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+   <li><strong>Verschiedene bildgebende Verfahren:</strong> Unterschiedliche Studien nutzten entweder relaxed‑seated oder flexed‑seated Radiographien, was zu variierenden Messwerten und „Hypermobilitäts“-Definitionen führte.  [oai_citation:7‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+</ul>
+
+<p>Beispielsweise kann ein Patient mit steifer Wirbelsäule in flexed‑seated Röntgenaufnahmen scheinbar große ΔPT‑Werte zeigen,
+die funktionell nicht aus der spinopelvinen Bewegung, sondern aus der vermehrten Hüftbewegung resultieren — was zu der
+irreführenden Bezeichnung „spinopelvine Hypermobilität“ geführt hat.  [oai_citation:8‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</p>
+
+<h2>Vorgeschlagener Konsens und Definition</h2>
+
+<p>Die Autoren schlagen vor, den Begriff „spinopelvine Mobilität“ in Zukunft klar und einheitlich zu definieren in Hinsicht auf:</p>
+
+<ul>
+   <li><strong>Spinale Mobilität:</strong> Bewegung innerhalb des lumbosakralen Segments, unabhängig von anderen Gelenken.</li>
+   <li><strong>Pelvine Mobilität:</strong> Änderung des Beckenkippwinkels (PT, SS) relativ zur Vertikalen, die auch von Hüft‑ und anderen Gelenkbewegungen beeinflusst wird.</li>
+   <li><strong>Funktionelle Mobilität:</strong> Die Kombination der Spirale aus spinaler und pelviner Bewegung, verstanden in dem Kontext, wie der Patient zwischen Funktionalpositionen wechselt.  [oai_citation:9‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</li>
+</ul>
+
+<p>Die Autoren empfehlen ausdrücklich, den Begriff „spinopelvine Hypermobilität“ zugunsten präziserer Konzepte
+wie „hip user“ oder „spine user“ zu verwerfen, um die Verwirrung zu reduzieren und die Mechanismen gezielter
+zu adressieren.  [oai_citation:10‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</p>
+
+<h2>Klinische Bedeutung</h2>
+
+<p>Ein standardisiertes, konsistentes Begriffsverständnis ist wichtig, um:</p>
+
+<ul>
+   <li>Vergleichbare Diagnostik und Forschung zu ermöglichen.</li>
+   <li>Therapeutische Entscheidungen wie die Anpassung der Pfannenanteversion bei THA besser zu begründen.</li>
+   <li>Unklare oder widersprüchliche Literaturinterpretationen zu vermeiden.</li>
+</ul>
+
+<p>Die klare Trennung zwischen spinaler, pelviner und funktioneller Mobilität hilft Chirurgen, das mechanische Verhalten eines Patienten
+präziser zu erfassen und entsprechende operative Strategien zu planen.  [oai_citation:11‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</p>
+
+<h2>Handlungsempfehlungen</h2>
+
+<ul>
+   <li><strong>Einheitliche Definition nutzen:</strong> Beschreibe spinopelvine Mobilität klar als mechanische Bewegung innerhalb des
+   spinopelvinen Segments oder als Beckenänderung gegen die Vertikale, nicht beides gleichzeitig.</li>
+   <li><strong>Standardisierte Messprotokolle etablieren:</strong> Vermeide Vermischung von flexed‑seated und relaxed‑seated Analysen
+   ohne separate Definitionsrahmen.</li>
+   <li><strong>Präzise Nomenklatur nutzen:</strong> Verwende Begriffe wie „spinale Mobilität“, „pelvine Mobilität“, „hip user“ und
+   „spine user“, um funktionelle Muster klarer zu beschreiben.</li>
+   <li><strong>Forschung harmonisieren:</strong> Zukünftige Studien sollten sich an den konsensbasierten Definitionen orientieren, um
+   vergleichbare Ergebnisse zu erzielen.</li>
+</ul>
+
+<h2>Take‑Home‑Messages</h2>
+
+<ul>
+   <li>Der Begriff „spinopelvine Mobilität“ ist bislang uneinheitlich definiert und führt zu Missverständnissen in Forschung und Praxis.  [oai_citation:12‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</li>
+   <li>Unterscheide zwischen spinaler Bewegung und Beckenkippung, um funktionelle Mechanismen korrekt zu erfassen.  [oai_citation:13‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+   <li>Die Nutzung klarer funktioneller Begriffe wie „hip user“ und „spine user“ verbessert Kommunikation und Planung.  [oai_citation:14‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+   <li>Eine harmonisierte Terminologie ermöglicht bessere Vergleichbarkeit klinischer Studien und evidenzbasierte operative Strategien.  [oai_citation:15‡PubMed](https://pubmed.ncbi.nlm.nih.gov/37294841/?utm_source=chatgpt.com)</li>
+   <li>Beide radiographischen Ansätze (relaxed‑seated vs. flexed‑seated) sind wertvoll, müssen aber getrennt interpretiert werden.  [oai_citation:16‡PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10256344/?utm_source=chatgpt.com)</li>
+</ul>
+
+<p>Insgesamt liefert die Arbeit eine essentielle Grundlage für eine konsensbasierte Terminologie der spinopelvinen Mobilität,
+die sowohl für die Forschung als auch für die klinische Anwendung in der Hüftendoprothetik von großer Bedeutung ist.</p>
+
+            </article>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hüfte - Übersichtsartikel - Joint Alignment Compendium</title>
+    <meta name="description" content="Evidenzbasierte Übersichtsartikel zur Hüftendoprothetik und spinopelvinem Alignment">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <style>
+        .logo-highlight { background: linear-gradient(135deg, #2563eb, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .site-header { background: rgba(255,255,255,0.95); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+        .header-inner { max-width: 1400px; margin: 0 auto; padding: 0.875rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 700; color: #1f2937; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-links a { color: #4b5563; text-decoration: none; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { color: #2563eb; }
+        .overview-container { max-width: 1000px; margin: 2rem auto; padding: 0 2rem; }
+        .overview-header { text-align: center; padding: 2rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #14b8a6 100%); color: white; border-radius: 1rem; margin-bottom: 2rem; }
+        .overview-header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .overview-header p { font-size: 1.125rem; opacity: 0.9; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: white; color: #2563eb; text-decoration: none; font-weight: 600; border-radius: 0.5rem; box-shadow: 0 2px 4px rgb(0 0 0 / 0.1); transition: all 0.2s ease; margin-bottom: 2rem; }
+        .back-link:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgb(0 0 0 / 0.15); }
+        .categories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .category-card { background: white; border-radius: 0.75rem; padding: 1.5rem; box-shadow: 0 2px 4px rgb(0 0 0 / 0.1); border: 2px solid transparent; transition: all 0.3s ease; }
+        .category-card:hover { border-color: #3b82f6; box-shadow: 0 8px 16px rgb(0 0 0 / 0.12); transform: translateY(-4px); }
+        .category-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 2px solid #e5e7eb; }
+        .category-title { display: flex; align-items: center; gap: 0.75rem; }
+        .category-icon { font-size: 1.75rem; }
+        .category-card-header h2 { font-size: 1.375rem; font-weight: 700; color: #1f2937; margin: 0; }
+        .article-count-badge { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; white-space: nowrap; }
+        .category-articles { display: flex; flex-direction: column; gap: 0.5rem; }
+        .article-link { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: #f9fafb; border-radius: 0.5rem; text-decoration: none; color: #374151; transition: all 0.2s ease; border-left: 3px solid transparent; }
+        .article-link:hover { background: #eff6ff; border-left-color: #3b82f6; color: #1f2937; transform: translateX(4px); }
+        .article-name { font-size: 0.9375rem; font-weight: 500; flex: 1; }
+        .article-arrow { color: #3b82f6; font-weight: 700; transition: transform 0.2s ease; }
+        .article-link:hover .article-arrow { transform: translateX(4px); }
+        .category-description { font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem; line-height: 1.5; }
+        .site-footer { background: #111827; color: white; padding: 3rem 2rem 1.5rem; margin-top: 3rem; }
+        .footer-inner { max-width: 1400px; margin: 0 auto; }
+        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+        .footer-brand h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .footer-brand p { color: #9ca3af; font-size: 0.875rem; line-height: 1.6; }
+        .footer-links h4 { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; color: #d1d5db; }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a { color: #9ca3af; text-decoration: none; font-size: 0.9375rem; }
+        .footer-links a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-copyright { font-size: 0.8125rem; color: #6b7280; }
+        .footer-disclaimer { font-size: 0.75rem; color: #6b7280; max-width: 600px; line-height: 1.5; }
+        @media (max-width: 768px) { .categories-grid { grid-template-columns: 1fr; gap: 1rem; } .overview-header h1 { font-size: 2rem; } .overview-container { padding: 0 1rem; } .category-card { padding: 1.25rem; } .category-card-header h2 { font-size: 1.125rem; } .article-link { padding: 0.625rem; } .article-name { font-size: 0.875rem; } .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><span>Joint</span><span class="logo-highlight">Alignment</span><span>Compendium</span></a>
+            <nav class="nav-links"><a href="index.html">Home</a><a href="huefte.html" class="active">Hüfte</a><a href="ueber.html">Über</a></nav>
+        </div>
+    </header>
+
+    <div class="overview-container">
+        <a href="index.html" class="back-link">← Zurück zur Hauptseite</a>
+
+        <div class="overview-header">
+            <h1>🦴 Hüfte</h1>
+            <p>Evidenzbasierte Übersichtsartikel zur Hüftendoprothetik</p>
+        </div>
+
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-card-header">
+                    <div class="category-title"><span class="category-icon">📐</span><h2>Grundlagen & Parameter</h2></div>
+                    <span class="article-count-badge">4 Artikel</span>
+                </div>
+                <p class="category-description">Spinopelvine Anatomie, biomechanische Grundlagen und Messparameter</p>
+                <div class="category-articles">
+                    <a href="allgemeineinfos.html" class="article-link"><span class="article-name">Allgemeine Informationen</span><span class="article-arrow">→</span></a>
+                    <a href="funktionellesafezoneundkinematischesalignment.html" class="article-link"><span class="article-name">Funktionelle Safe Zone & Kinematisches Alignment</span><span class="article-arrow">→</span></a>
+                    <a href="altersabhaengigeveraenderungen.html" class="article-link"><span class="article-name">Altersabhängige Veränderungen</span><span class="article-arrow">→</span></a>
+                    <a href="enthnischeunterschiede.html" class="article-link"><span class="article-name">Ethnische Unterschiede</span><span class="article-arrow">→</span></a>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-card-header">
+                    <div class="category-title"><span class="category-icon">🔬</span><h2>Diagnostik</h2></div>
+                    <span class="article-count-badge">3 Artikel</span>
+                </div>
+                <p class="category-description">Bildgebung, Klassifikation und radiologische Evaluation</p>
+                <div class="category-articles">
+                    <a href="klassifikation.html" class="article-link"><span class="article-name">Klassifikationssysteme</span><span class="article-arrow">→</span></a>
+                    <a href="radiologischemessungendirektewinkel.html" class="article-link"><span class="article-name">Radiologische Messungen - Direkte Winkel</span><span class="article-arrow">→</span></a>
+                    <a href="radiologischemessungenindikretewinkel.html" class="article-link"><span class="article-name">Radiologische Messungen - Indirekte Winkel</span><span class="article-arrow">→</span></a>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-card-header">
+                    <div class="category-title"><span class="category-icon">⚕️</span><h2>Therapie</h2></div>
+                    <span class="article-count-badge">8 Artikel</span>
+                </div>
+                <p class="category-description">Operative Strategien, Positionierung und perioperatives Management</p>
+                <div class="category-articles">
+                    <a href="implantatpositionierung.html" class="article-link"><span class="article-name">Implantatpositionierung</span><span class="article-arrow">→</span></a>
+                    <a href="weichteilmanagement.html" class="article-link"><span class="article-name">Weichteilmanagement</span><span class="article-arrow">→</span></a>
+                    <a href="zugangswege.html" class="article-link"><span class="article-name">Zugangswege im Vergleich</span><span class="article-arrow">→</span></a>
+                    <a href="instabilitaetundluxation.html" class="article-link"><span class="article-name">Instabilität und Luxationen</span><span class="article-arrow">→</span></a>
+                    <a href="kniealskompensator.html" class="article-link"><span class="article-name">Knie als Kompensator</span><span class="article-arrow">→</span></a>
+                    <a href="muskuläresbalancingundabduktorenfunktion.html" class="article-link"><span class="article-name">Muskuläres Balancing & Abduktorenfunktion</span><span class="article-arrow">→</span></a>
+                    <a href="postoperativekomplikationen.html" class="article-link"><span class="article-name">Postoperative Komplikationen</span><span class="article-arrow">→</span></a>
+                    <a href="traumaundinfektionen.html" class="article-link"><span class="article-name">Trauma und Infektionen</span><span class="article-arrow">→</span></a>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-card-header">
+                    <div class="category-title"><span class="category-icon">🤖</span><h2>Robotik & Navigation</h2></div>
+                    <span class="article-count-badge">6 Artikel</span>
+                </div>
+                <p class="category-description">Roboter-assistierte Systeme und Navigationstechnologie</p>
+                <div class="category-articles">
+                    <a href="robotikallgemein.html" class="article-link"><span class="article-name">Robotik Allgemein</span><span class="article-arrow">→</span></a>
+                    <a href="cori.html" class="article-link"><span class="article-name">CORI System</span><span class="article-arrow">→</span></a>
+                    <a href="mako.html" class="article-link"><span class="article-name">MAKO System</span><span class="article-arrow">→</span></a>
+                    <a href="rosa.html" class="article-link"><span class="article-name">ROSA Hip System</span><span class="article-arrow">→</span></a>
+                    <a href="velys.html" class="article-link"><span class="article-name">Velys System</span><span class="article-arrow">→</span></a>
+                    <a href="intraoperativestrategienundnavigation.html" class="article-link"><span class="article-name">Intraoperative Strategien & Navigation</span><span class="article-arrow">→</span></a>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-card-header">
+                    <div class="category-title"><span class="category-icon">⚡</span><h2>Spezialfälle</h2></div>
+                    <span class="article-count-badge">7 Artikel</span>
+                </div>
+                <p class="category-description">Komplexe Patientengruppen und spezielle Indikationen</p>
+                <div class="category-articles">
+                    <a href="adipositas.html" class="article-link"><span class="article-name">Adipositas</span><span class="article-arrow">→</span></a>
+                    <a href="rheuma.html" class="article-link"><span class="article-name">Rheumatologische Patienten</span><span class="article-arrow">→</span></a>
+                    <a href="lwsfusion.html" class="article-link"><span class="article-name">LWS-Fusion</span><span class="article-arrow">→</span></a>
+                    <a href="geriatrischepatient.html" class="article-link"><span class="article-name">Geriatrischer Patient</span><span class="article-arrow">→</span></a>
+                    <a href="hueftdysplasie.html" class="article-link"><span class="article-name">Hüftdysplasie</span><span class="article-arrow">→</span></a>
+                    <a href="revisionen.html" class="article-link"><span class="article-name">Revisionen</span><span class="article-arrow">→</span></a>
+                    <a href="beinlaengendifferenz.html" class="article-link"><span class="article-name">Beinlängendifferenz</span><span class="article-arrow">→</span></a>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-card-header">
+                    <div class="category-title"><span class="category-icon">🔩</span><h2>Implantate</h2></div>
+                    <span class="article-count-badge">4 Artikel</span>
+                </div>
+                <p class="category-description">Implantatauswahl, Design und Dual Mobility Systeme</p>
+                <div class="category-articles">
+                    <a href="dualmobilityeins.html" class="article-link"><span class="article-name">Dual Mobility - Teil 1</span><span class="article-arrow">→</span></a>
+                    <a href="dualmobilityzewi.html" class="article-link"><span class="article-name">Dual Mobility - Teil 2</span><span class="article-arrow">→</span></a>
+                    <a href="dualmobilitydrei.html" class="article-link"><span class="article-name">Dual Mobility - Teil 3</span><span class="article-arrow">→</span></a>
+                    <a href="femurschaft.html" class="article-link"><span class="article-name">Femurschaft-Optionen</span><span class="article-arrow">→</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>Joint Alignment Compendium</h3>
+                    <p>Digitales Handbuch für Alignment-Strategien in der Endoprothetik. Strukturiertes Wissen und klinische Strategien für Fachpublikum.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul><li><a href="index.html">Home</a></li><li><a href="huefte.html">Hüfte</a></li><li><a href="ueber.html">Über den Autor</a></li></ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="disclaimer.html">Disclaimer</a></li></ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Joint Alignment Compendium. Alle Rechte vorbehalten.</p>
+                <p class="footer-disclaimer">Die Inhalte dienen der Information und Fortbildung und stellen keine klinische Anweisung dar.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

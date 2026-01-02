@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Artikel - Orthopedic Knowledge Base</title>
+</head>
+<body>
+    <div class="app-container">
+        <main class="article-container">
+            <article class="article-content">
+                <a href="index.html" class="back-button">← Zurück zur Übersicht</a>
+
+
+
+
+
+
+
+    <!-- Bereinigt -->
+    <title>Präoperative Bildgebung und Diagnostik vor H-TEP: Spinopelvine Evaluation</title>
+</head>
+<!DOCTYPE html>
+
+
+
+
+
+
+<article>
+    <h1>Präoperative Bildgebung und Diagnostik vor H-TEP: Spinopelvine Evaluation</h1>
+    
+    <nav>
+        <h2>Inhaltsverzeichnis</h2>
+        <ol>
+            <li><a href="#einleitung">Einleitung</a></li>
+            <li><a href="#grundlagen">Grundlagen der spinopelvinen Bildgebung</a></li>
+            <li><a href="#roentgen">Konventionelles Röntgen: Projektionen und Standardisierung</a></li>
+            <li><a href="#dynamische-aufnahmen">Dynamische Steh-Sitz-Aufnahmen</a></li>
+            <li><a href="#ct">CT-Diagnostik: Indikationen und Messungen</a></li>
+            <li><a href="#eos">EOS-System: Low-Dose Ganzkörperbildgebung</a></li>
+            <li><a href="#mrt">MRT: Weichteilbeurteilung und spezielle Indikationen</a></li>
+            <li><a href="#parameter">Spinopelvine Parameter: Messung und Interpretation</a></li>
+            <li><a href="#screening">Screening-Algorithmus für Risikopatienten</a></li>
+            <li><a href="#software">Planungssoftware und digitale Lösungen</a></li>
+            <li><a href="#workflow">Praktischer präoperativer Workflow</a></li>
+            <li><a href="#zusammenfassung">Zusammenfassung</a></li>
+            <li><a href="#literatur">Literatur</a></li>
+        </ol>
+    </nav>
+
+    <section id="einleitung">
+        <h2>1. Einleitung</h2>
+        
+        <p>Die präoperative Bildgebung vor Hüft-Totalendoprothese (H-TEP) hat sich in den letzten Jahren fundamental gewandelt. Während früher ein einzelnes Beckenübersichtsbild als ausreichend galt, erfordert die moderne funktionelle Pfannenpositionierung eine umfassende Evaluation der spinopelvinen Beziehung. Der Paradigmenwechsel von der statischen Lewinnek Safe Zone zur funktionellen, patientenspezifischen Ausrichtung macht eine differenzierte präoperative Diagnostik unerlässlich.</p>
+        
+        <p>Die Bedeutung dieser erweiterten Diagnostik wird durch aktuelle Daten untermauert: 40% aller primären H-TEP-Patienten weisen eine spinale Imbalance auf, und 31% haben mindestens einen spinopelvinen Risikofaktor. Besonders bemerkenswert ist, dass 81% der Patienten mit einer steifen Wirbelsäule keine instrumentierte Fusion haben – sie würden bei alleiniger Anamnese-basierter Risikostratifizierung übersehen werden.</p>
+        
+        <blockquote>
+            <strong>Kernbotschaft:</strong> "81% der H-TEP-Patienten mit steifer Wirbelsäule haben keine Wirbelsäulenfusion – nur die Bildgebung identifiziert diese Risikopatienten" – Sharma 2023
+        </blockquote>
+        
+        <p>Dieser Artikel vermittelt einen systematischen Ansatz zur präoperativen spinopelvinen Evaluation, von der Basisdiagnostik bis zu fortgeschrittenen Bildgebungsmodalitäten, mit dem Ziel, jeden Patienten individuell zu stratifizieren und die Pfannenpositionierung zu optimieren.</p>
+    </section>
+
+    <section id="grundlagen">
+        <h2>2. Grundlagen der spinopelvinen Bildgebung</h2>
+        
+        <h3>2.1 Referenzebenen</h3>
+        
+        <p>Für das Verständnis der spinopelvinen Bildgebung ist die Kenntnis der verwendeten Referenzebenen essentiell:</p>
+        
+        <table border="1">
+            <caption>Referenzebenen in der H-TEP-Planung</caption>
+            <thead>
+                <tr>
+                    <th>Referenzebene</th>
+                    <th>Definition</th>
+                    <th>Anwendung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Anteriore Beckenebene (APP)</td>
+                    <td>Ebene durch beide SIAS und die Symphyse</td>
+                    <td>Anatomische Referenz, CT-Navigation, Robotik</td>
+                </tr>
+                <tr>
+                    <td>Funktionelle Koronalebene (FCP)</td>
+                    <td>Koronalebene des Körpers im Stehen</td>
+                    <td>Röntgenmessung, funktionelle Ausrichtung</td>
+                </tr>
+                <tr>
+                    <td>Funktionelle Beckenebene (FPP)</td>
+                    <td>APP im aufrechten Stand des Patienten</td>
+                    <td>Zielgröße für funktionelle Positionierung</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>Die APP dient als anatomische Konstante, die Messwerte von CT und Navigation referenziert. Die funktionelle Pfannenposition bezieht sich jedoch auf die FPP im Stand – die Differenz zwischen APP und FPP ist die anteriore pelvine Tilt (APT).</p>
+        
+        <h3>2.2 Definitionen der Anteversion</h3>
+        
+        <p>Murray definierte drei Arten der Anteversionsmessung, die sich auf unterschiedliche Ebenen beziehen:</p>
+        
+        <table border="1">
+            <caption>Anteversionsdefinitionen nach Murray</caption>
+            <thead>
+                <tr>
+                    <th>Definition</th>
+                    <th>Beschreibung</th>
+                    <th>Typische Anwendung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Anatomische Anteversion</td>
+                    <td>Winkel zur Transversalebene in kraniokaudaler Projektion</td>
+                    <td>3D-CT-Modelle</td>
+                </tr>
+                <tr>
+                    <td>Operative Anteversion</td>
+                    <td>Winkel zur Longitudinalachse in sagittaler Projektion</td>
+                    <td>Intraoperative Messung in Seitenlage</td>
+                </tr>
+                <tr>
+                    <td>Radiographische Anteversion</td>
+                    <td>Winkel zur Koronalebene</td>
+                    <td>Beckenübersicht a.p.</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>Für die klinische Praxis ist entscheidend: Die Pfannenposition kann bei gleichem Implantationswinkel "innerhalb" oder "außerhalb" der Safe Zone sein – je nachdem, welche Definition verwendet wird. Konversionsformeln zwischen den Definitionen berücksichtigen die pelvine Tilt.</p>
+        
+        <h3>2.3 Effekt der pelvinen Tilt auf die funktionelle Pfannenposition</h3>
+        
+        <p>Die pelvine Tilt verändert die funktionelle Pfannenorientierung erheblich:</p>
+        
+        <ul>
+            <li>Pro 1° posteriore pelvine Tilt → ~0,7-0,8° mehr funktionelle Anteversion</li>
+            <li>Pro 1° posteriore pelvine Tilt → ~0,3° mehr funktionelle Inklination</li>
+        </ul>
+        
+        <p>Ein Patient mit 20° posteriorer Tilt im Stehen hat somit eine funktionell um ~14-16° höhere Anteversion als anatomisch gemessen – eine potenzielle Ursache für anteriore Dislokation bei Hüftextension.</p>
+    </section>
+
+    <section id="roentgen">
+        <h2>3. Konventionelles Röntgen: Projektionen und Standardisierung</h2>
+        
+        <h3>3.1 Beckenübersicht a.p.</h3>
+        
+        <p>Die Beckenübersicht a.p. bleibt die Basisaufnahme vor jeder H-TEP, sollte jedoch im Stehen erfolgen:</p>
+        
+        <table border="1">
+            <caption>Beckenübersicht: Stehend vs. Liegend</caption>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Liegend (supine)</th>
+                    <th>Stehend</th>
+                    <th>Differenz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pelvine Tilt</td>
+                    <td>Variable</td>
+                    <td>Funktionell relevant</td>
+                    <td>∅ 5,5° mehr posterior im Stehen</td>
+                </tr>
+                <tr>
+                    <td>Crossover-Sign</td>
+                    <td>39% positiv</td>
+                    <td>20% positiv</td>
+                    <td>Signifikant weniger im Stehen</td>
+                </tr>
+                <tr>
+                    <td>Ischial-Spine-Sign</td>
+                    <td>43% positiv</td>
+                    <td>15% positiv</td>
+                    <td>Signifikant weniger im Stehen</td>
+                </tr>
+                <tr>
+                    <td>Inklination</td>
+                    <td>4,2°</td>
+                    <td>5,3°</td>
+                    <td>+1,1° im Stehen</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>Die stehende Aufnahme repräsentiert die funktionelle Beckenposition und sollte Standard für die H-TEP-Planung sein. Wird die Aufnahme liegend angefertigt, muss die Differenz zur Standposition berücksichtigt werden.</p>
+        
+        <h3>3.2 Standardisierung der Aufnahmetechnik</h3>
+        
+        <p>Für reproduzierbare Messungen ist eine standardisierte Technik essentiell:</p>
+        
+        <ul>
+            <li><strong>Film-Fokus-Abstand:</strong> 120 cm</li>
+            <li><strong>Zentralstrahl:</strong> Auf die Mitte zwischen Symphyse und SIAS-Verbindungslinie</li>
+            <li><strong>Beinposition:</strong> 15° Innenrotation zur Kompensation der Femur-Antetorsion</li>
+            <li><strong>Standposition:</strong> Füße schulterbreit, Gewicht gleichmäßig verteilt</li>
+            <li><strong>Bildfeld:</strong> Mindestens bis L3 zur Beurteilung der LWS</li>
+        </ul>
+        
+        <blockquote>
+            <strong>Praxistipp:</strong> Eine "Outlet"-Projektion (stärkere posteriore Tilt) auf dem liegenden Beckenübersichtsbild deutet auf eine chronisch posteriore Beckenstellung hin – diese Patienten profitieren von einer erweiterten spinopelvinen Evaluation.
+        </blockquote>
+        
+        <h3>3.3 Bestimmung der pelvinen Tilt auf dem a.p.-Bild</h3>
+        
+        <p>Die pelvine Tilt kann auch auf a.p.-Aufnahmen abgeschätzt werden, wenn keine seitlichen Aufnahmen vorliegen:</p>
+        
+        <table border="1">
+            <caption>Methoden zur Abschätzung der pelvinen Tilt auf a.p.-Aufnahmen</caption>
+            <thead>
+                <tr>
+                    <th>Methode</th>
+                    <th>Beschreibung</th>
+                    <th>Korrelation mit echter PT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Symphyse-Sacrococcygeal-Distanz (PSSC)</td>
+                    <td>Abstand oberer Symphysenrand zu Sacrococcygealgelenk</td>
+                    <td>r = 0,61-0,68</td>
+                </tr>
+                <tr>
+                    <td>TTPS/TT-Ratio</td>
+                    <td>Verhältnis Trans-Teardrop zu Symphyse / Trans-Teardrop-Linie</td>
+                    <td>r = 0,73-0,82</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>Diese Methoden ersetzen nicht die seitliche Röntgenaufnahme, können aber einen ersten Hinweis auf die Beckenstellung geben.</p>
+    </section>
+
+    <section id="dynamische-aufnahmen">
+        <h2>4. Dynamische Steh-Sitz-Aufnahmen</h2>
+        
+        <h3>4.1 Rationale</h3>
+        
+        <p>Die dynamische Röntgenserie mit Steh- und Sitzaufnahmen ist der Goldstandard zur Beurteilung der spinopelvinen Mobilität. Sie ermöglicht:</p>
+        
+        <ul>
+            <li>Quantifizierung der pelvinen Mobilität (ΔSS)</li>
+            <li>Identifikation von Steifigkeit oder Hypermobilität</li>
+            <li>Bestimmung des PI-LL-Mismatch</li>
+            <li>Klassifikation nach Hip-Spine-Classification</li>
+        </ul>
+        
+        <h3>4.2 Standardprotokoll für seitliche Aufnahmen</h3>
+        
+        <table border="1">
+            <caption>Positionierung für spinopelvine Röntgenserie</caption>
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Patientenposition</th>
+                    <th>Zu messende Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Seitlich stehend</strong></td>
+                    <td>Aufrecht, Seite zum Detektor, Arme vor der Brust gekreuzt, Füße schulterbreit, Blick nach vorn</td>
+                    <td>SS (stehend), LL, PI, PT, PFA, SVA</td>
+                </tr>
+                <tr>
+                    <td><strong>Seitlich sitzend (entspannt)</strong></td>
+                    <td>Aufrecht auf Stuhl ohne Rückenlehne, 90° Hüft-/Kniebeugung, Füße flach auf dem Boden, Arme vor der Brust</td>
+                    <td>SS (sitzend), LL (sitzend)</td>
+                </tr>
+                <tr>
+                    <td><strong>Seitlich sitzend (flektiert)</strong></td>
+                    <td>Maximal vorgebeugt, Ellbogen auf den Knien</td>
+                    <td>SS (flektiert), LL (flektiert)</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>4.3 Die Bedeutung der Sitzposition: Entspannt vs. Flektiert</h3>
+        
+        <p>Die Wahl der Sitzposition hat erhebliche Auswirkungen auf die gemessene Mobilität:</p>
+        
+        <table border="1">
+            <caption>Vergleich entspanntes vs. flektiertes Sitzen (Ransone 2020)</caption>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Entspannt sitzend</th>
+                    <th>Flektiert sitzend</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mittlere ΔSS (Stehen → Sitzen)</td>
+                    <td>20,7° (SD 8,9°)</td>
+                    <td>2,1° (SD 9,7°)</td>
+                </tr>
+                <tr>
+                    <td>Reverse Accommodation (anteriore Tilt im Sitzen)</td>
+                    <td>0%</td>
+                    <td>45,7%</td>
+                </tr>
+                <tr>
+                    <td>Mittlere Differenz</td>
+                    <td colspan="2">15° zwischen den Positionen</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <blockquote>
+            <strong>Wichtig:</strong> Die Sitzposition muss standardisiert werden! Die entspannte Sitzposition ist für die präoperative Planung zu bevorzugen, da sie die alltägliche Sitzhaltung besser repräsentiert. Die flektierte Position zeigt die maximale lumbale Flexion und ist für die Beurteilung der "Hip-User" geeignet.
+        </blockquote>
+        
+        <h3>4.4 Kritische Bewertung von ΔSS ≤10° als Steifigkeitsmarker</h3>
+        
+        <p>Die häufig verwendete Definition ΔSS ≤10° (entspannt sitzend) als Marker für Wirbelsäulensteifigkeit muss kritisch betrachtet werden:</p>
+        
+        <p>Sharma et al. (2023) zeigten, dass ΔSS ≤10° (entspannt) die Präsenz einer steifen Wirbelsäule 7-fach überschätzt:</p>
+        
+        <ul>
+            <li>24% der Patienten hatten ΔSS ≤10° (entspannt)</li>
+            <li>Nur 7% hatten tatsächlich eine steife Wirbelsäule (LF ≤20°)</li>
+            <li>Korrelation zwischen ΔSS (entspannt) und LF: r² = 0,13</li>
+        </ul>
+        
+        <p>Die flektierte Sitzposition mit Messung der lumbalen Flexion (LF) ist genauer zur Identifikation echter Steifigkeit:</p>
+        
+        <ul>
+            <li><strong>Definition steife Wirbelsäule:</strong> LF ≤20° (Differenz LL stehend – LL flektiert sitzend)</li>
+            <li>Genauigkeit zur Steifigkeitsdetektion: 100% mit flektierter Position vs. 56% mit entspannter Position</li>
+        </ul>
+        
+        <h3>4.5 Bildfeld und anatomische Landmarken</h3>
+        
+        <p>Für aussagekräftige spinopelvine Aufnahmen muss das Bildfeld folgende Strukturen erfassen:</p>
+        
+        <ul>
+            <li><strong>Minimal:</strong> L3-Wirbelkörper (80% der lumbalen Bewegung findet zwischen L3-L5 statt)</li>
+            <li><strong>Optimal:</strong> L1-Wirbelkörper (vollständige LL-Messung)</li>
+            <li><strong>Distal:</strong> Beide Hüftköpfe vollständig dargestellt</li>
+        </ul>
+    </section>
+
+    <section id="ct">
+        <h2>5. CT-Diagnostik: Indikationen und Messungen</h2>
+        
+        <h3>5.1 Indikationen für CT vor H-TEP</h3>
+        
+        <p>Die CT-Untersuchung ist nicht routinemäßig erforderlich, aber in folgenden Situationen indiziert:</p>
+        
+        <table border="1">
+            <caption>Indikationen für CT vor H-TEP</caption>
+            <thead>
+                <tr>
+                    <th>Indikation</th>
+                    <th>Begründung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Roboter-assistierte oder navigierte H-TEP</td>
+                    <td>3D-Planung und intraoperative Referenzierung</td>
+                </tr>
+                <tr>
+                    <td>Schwere Hüftdysplasie (Crowe III/IV)</td>
+                    <td>Beurteilung der knöchernen Defekte, Planung von Augmenten</td>
+                </tr>
+                <tr>
+                    <td>Posttraumatische Arthrose</td>
+                    <td>Evaluierung von Fehlstellungen und Hardware</td>
+                </tr>
+                <tr>
+                    <td>Komplexe Revision</td>
+                    <td>Beurteilung des knöchernen Stocks, Defektklassifikation</td>
+                </tr>
+                <tr>
+                    <td>Verdacht auf abnorme femorale Antetorsion</td>
+                    <td>Planung der kombinierten Anteversion</td>
+                </tr>
+                <tr>
+                    <td>Spinopelvine High-Risk-Patienten</td>
+                    <td>Integration in funktionelle Planungssoftware</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>5.2 CT-Messungen für die H-TEP-Planung</h3>
+        
+        <h4>Azetabuläre Anteversion</h4>
+        
+        <p>Die native azetabuläre Anteversion wird axial gemessen:</p>
+        
+        <ul>
+            <li>Tangente zwischen anteriorem und posteriorem Pfannenrand</li>
+            <li>Winkel zur Sagittalebene (definiert durch die posterioren Beckenkonturen)</li>
+            <li><strong>Normwerte:</strong> ∅ 20,2° ± 6,1° (Range -24° bis +57°)</li>
+            <li><strong>Geschlechtsunterschied:</strong> Frauen haben ~5° mehr Anteversion als Männer</li>
+        </ul>
+        
+        <h4>Femorale Antetorsion</h4>
+        
+        <p>Die native femorale Antetorsion beeinflusst die kombinierte Anteversion:</p>
+        
+        <ul>
+            <li><strong>Messung:</strong> Winkel zwischen Schenkelhalsachse und posteriorer Kondylenlinie</li>
+            <li><strong>Normwerte:</strong> ∅ 31,0° ± 12,6° (Range -13° bis +80°)</li>
+            <li><strong>Klinische Relevanz:</strong> Hohe Antetorsion (>40°) → weniger Pfannenanteversion erforderlich</li>
+        </ul>
+        
+        <h4>3D-Modelle vs. 2D-Schnitte</h4>
+        
+        <p>Die 3D-Rekonstruktion bietet Vorteile gegenüber der 2D-axialen Messung:</p>
+        
+        <table border="1">
+            <caption>3D vs. 2D CT-Messung der azetabulären Anteversion</caption>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>2D axial</th>
+                    <th>3D-Modell</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mittlere Anteversion</td>
+                    <td>22,0° ± 6,0°</td>
+                    <td>16,1° ± 5,9°</td>
+                </tr>
+                <tr>
+                    <td>Beeinflussung durch Becken-Tilt</td>
+                    <td>Ja</td>
+                    <td>Nein (normalisiert auf APP)</td>
+                </tr>
+                <tr>
+                    <td>Reproduzierbarkeit</td>
+                    <td>Gut</td>
+                    <td>Exzellent</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <blockquote>
+            <strong>Praxishinweis:</strong> 2D-Messungen überschätzen die Anteversion im Vergleich zu 3D-Modellen systematisch um ~6°. Dies sollte bei der Interpretation und Planung berücksichtigt werden.
+        </blockquote>
+        
+        <h3>5.3 Anteriore Beckenebene (APP) im CT</h3>
+        
+        <p>Die APP dient als Referenzebene für CT-basierte Navigation und Robotik:</p>
+        
+        <ul>
+            <li><strong>Definition:</strong> Ebene durch die Mittelpunkte beider SIAS und den oberen Symphysenrand</li>
+            <li><strong>Messung:</strong> Identifikation der knöchernen Landmarken im 3D-Modell</li>
+            <li><strong>Limitation:</strong> Die APP ist eine anatomische, keine funktionelle Ebene</li>
+        </ul>
+        
+        <p>Der Winkel zwischen APP und der Horizontalen im Liegen (CT) versus im Stehen (Röntgen) ist die "Supine-to-Standing Shift" und muss für die funktionelle Planung berücksichtigt werden.</p>
+    </section>
+
+    <section id="eos">
+        <h2>6. EOS-System: Low-Dose Ganzkörperbildgebung</h2>
+        
+        <h3>6.1 Technologie</h3>
+        
+        <p>Das EOS-System (EOS Imaging, Paris) ist ein niedrigdosiertes biplanares Röntgensystem, das auf der Nobelpreis-prämierten Technologie von Georges Charpak basiert:</p>
+        
+        <ul>
+            <li><strong>Prinzip:</strong> Gasgefüllter Partikeldetektor mit Vieldraht-Proportionalkammer</li>
+            <li><strong>Strahlendosis:</strong> 50-80% weniger als konventionelles Röntgen</li>
+            <li><strong>Aufnahmeformat:</strong> Simultane a.p.- und seitliche Ganzkörperaufnahme im Stehen</li>
+            <li><strong>3D-Rekonstruktion:</strong> Semi-automatische Erstellung von 3D-Modellen aus 2D-Aufnahmen</li>
+        </ul>
+        
+        <h3>6.2 Vorteile für die spinopelvine Evaluation</h3>
+        
+        <table border="1">
+            <caption>Vorteile des EOS-Systems</caption>
+            <thead>
+                <tr>
+                    <th>Vorteil</th>
+                    <th>Beschreibung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ganzkörperbildgebung</td>
+                    <td>C1 bis Füße in einer Aufnahme, ohne Stitching-Artefakte</td>
+                </tr>
+                <tr>
+                    <td>Funktionelle Position</td>
+                    <td>Aufnahme im belasteten Stand</td>
+                </tr>
+                <tr>
+                    <td>3D-Modelle</td>
+                    <td>Rekonstruktion von Wirbelsäule, Becken und unteren Extremitäten</td>
+                </tr>
+                <tr>
+                    <td>Niedrige Dosis</td>
+                    <td>Ermöglicht wiederholte Steh-Sitz-Aufnahmen</td>
+                </tr>
+                <tr>
+                    <td>Verzerrungsfreiheit</td>
+                    <td>Keine Randverzerrungen wie bei konventionellem Röntgen</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>6.3 Messbarer Parameter</h3>
+        
+        <p>Im EOS-System können alle relevanten spinopelvinen Parameter gemessen werden:</p>
+        
+        <ul>
+            <li>Pelvic Incidence (PI)</li>
+            <li>Sacral Slope (SS)</li>
+            <li>Pelvic Tilt (PT)</li>
+            <li>Lumbar Lordosis (LL)</li>
+            <li>Thoracic Kyphosis (TK)</li>
+            <li>Sagittal Vertical Axis (SVA)</li>
+            <li>Azetabuläre Anteversion und Inklination (durch 3D-Rekonstruktion)</li>
+        </ul>
+        
+        <h3>6.4 Validierung</h3>
+        
+        <p>Studien haben die Reliabilität des EOS-Systems für spinopelvine Messungen validiert:</p>
+        
+        <ul>
+            <li>Intra- und Inter-Observer-Reliabilität: Gut bis exzellent (ICC >0,85)</li>
+            <li>Übereinstimmung mit konventionellem Röntgen: Keine signifikanten Unterschiede bei PI, PT, SS, LL</li>
+            <li>Übereinstimmung mit CT: Vergleichbare Ergebnisse für Acetabulum-Parameter</li>
+        </ul>
+        
+        <blockquote>
+            <strong>Limitation:</strong> Das EOS-System ist nicht in allen Kliniken verfügbar. Die Anschaffungskosten und der Platzbedarf sind höher als für konventionelle Röntgengeräte. Für Kliniken ohne EOS ist die konventionelle Steh-Sitz-Serie mit standardisierter Technik eine gute Alternative.
+        </blockquote>
+    </section>
+
+    <section id="mrt">
+        <h2>7. MRT: Weichteilbeurteilung und spezielle Indikationen</h2>
+        
+        <h3>7.1 Rolle der MRT vor primärer H-TEP</h3>
+        
+        <p>Die MRT ist für die Routinediagnostik vor primärer H-TEP meist nicht erforderlich, hat aber spezielle Indikationen:</p>
+        
+        <table border="1">
+            <caption>MRT-Indikationen vor H-TEP</caption>
+            <thead>
+                <tr>
+                    <th>Indikation</th>
+                    <th>Fragestellung</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Femoroacetabuläres Impingement</td>
+                    <td>Labrum- und Knorpelschäden vor gelenkerhaltender OP</td>
+                </tr>
+                <tr>
+                    <td>Hüftkopfnekrose (AVN)</td>
+                    <td>Staging, Ausdehnung, kontralaterale Beteiligung</td>
+                </tr>
+                <tr>
+                    <td>Verdacht auf entzündliche Erkrankung</td>
+                    <td>Synovialitis, Osteomyelitis, Tumor</td>
+                </tr>
+                <tr>
+                    <td>Abduktorenstatus</td>
+                    <td>Fettinfiltration, Atrophie (präoperative Risikoabschätzung)</td>
+                </tr>
+                <tr>
+                    <td>Spinale Pathologie</td>
+                    <td>Bandscheibenvorfall, Spinalkanalstenose, bei "Hip-Spine-Syndrom"</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>7.2 MRT bei Verdacht auf spinale Ursache</h3>
+        
+        <p>Bei Patienten mit gleichzeitigen Rücken- und Hüftbeschwerden kann die MRT helfen, die Schmerzursache zu differenzieren:</p>
+        
+        <ul>
+            <li><strong>LWS-MRT:</strong> Beurteilung von Bandscheibenpathologie, Spinalstenose, Facettenarthrose</li>
+            <li><strong>Hüft-MRT:</strong> Labrumläsionen, Knorpelschäden, frühe AVN</li>
+        </ul>
+        
+        <p>Die Entscheidung, welche Pathologie zuerst behandelt wird, beeinflusst das Outcome beider Verfahren erheblich.</p>
+        
+        <h3>7.3 MRT-Protokoll für die Hüfte</h3>
+        
+        <p>Falls eine Hüft-MRT indiziert ist, wird folgendes Protokoll empfohlen:</p>
+        
+        <ul>
+            <li><strong>Feldstärke:</strong> 1,5T oder 3T</li>
+            <li><strong>Spule:</strong> Oberflächenspule für hohe Auflösung</li>
+            <li><strong>Sequenzen:</strong>
+                <ul>
+                    <li>Koronar PD-gewichtet</li>
+                    <li>Sagittal PD-gewichtet</li>
+                    <li>Axial T2 mit Fettsättigung</li>
+                    <li>Koronar STIR (großes FOV für Beckenübersicht)</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>7.4 MRT zur Planung?</h3>
+        
+        <p>Neuere Studien untersuchen MRT-basierte 3D-Planung als strahlungsfreie Alternative zur CT:</p>
+        
+        <ul>
+            <li>3D-DP-TSE-Sequenzen zeigen gute anatomische Reproduktion</li>
+            <li>Keine Strahlenbelastung – relevant für junge Patienten</li>
+            <li>Limitation: Längere Akquisitionszeit, eingeschränkte Kortikalis-Darstellung</li>
+        </ul>
+        
+        <p>Derzeit ist die CT für roboter-assistierte/navigierte H-TEP noch der Standard, aber MRT-basierte Planung könnte in Zukunft an Bedeutung gewinnen.</p>
+    </section>
+
+    <section id="parameter">
+        <h2>8. Spinopelvine Parameter: Messung und Interpretation</h2>
+        
+        <h3>8.1 Übersicht der Parameter</h3>
+        
+        <table border="1">
+            <caption>Spinopelvine Parameter und ihre Messung</caption>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Definition</th>
+                    <th>Normalwert</th>
+                    <th>Variabilität</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pelvic Incidence (PI)</td>
+                    <td>Winkel zwischen Linie Sakrummitte-Hüftzentrum und Senkrechter auf S1-Deckplatte</td>
+                    <td>45-65°</td>
+                    <td>Konstant (morphologisch)</td>
+                </tr>
+                <tr>
+                    <td>Sacral Slope (SS)</td>
+                    <td>Winkel zwischen S1-Deckplatte und Horizontaler</td>
+                    <td>30-45° (stehend)</td>
+                    <td>Positionsabhängig</td>
+                </tr>
+                <tr>
+                    <td>Pelvic Tilt (PT)</td>
+                    <td>Winkel zwischen Linie Sakrummitte-Hüftzentrum und Vertikaler</td>
+                    <td>10-25° (stehend)</td>
+                    <td>Positionsabhängig</td>
+                </tr>
+                <tr>
+                    <td>Lumbar Lordosis (LL)</td>
+                    <td>Winkel zwischen L1-Deckplatte und S1-Deckplatte</td>
+                    <td>40-60°</td>
+                    <td>Positionsabhängig</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p><strong>Fundamentale Gleichung:</strong> PI = PT + SS (konstant für jeden Patienten)</p>
+        
+        <h3>8.2 Pelvic Incidence (PI)</h3>
+        
+        <p>Der PI ist der wichtigste morphologische Parameter:</p>
+        
+        <ul>
+            <li><strong>Bedeutung:</strong> Determiniert die individuelle Lordosekapazität</li>
+            <li><strong>Niedriger PI (&lt;45°):</strong> Flachere Lordose, geringere spinopelvine Mobilität, höheres Risiko für CSI-Outlier</li>
+            <li><strong>Hoher PI (>65°):</strong> Stärkere Lordose, größere Mobilität, aber auch höheres Risiko für sagittale Imbalance bei Lordoseverlust</li>
+        </ul>
+        
+        <h3>8.3 PI-LL-Mismatch</h3>
+        
+        <p>Das PI-LL-Mismatch ist ein Schlüsselparameter für die Erkennung sagittaler Imbalance:</p>
+        
+        <table border="1">
+            <caption>PI-LL-Mismatch Klassifikation</caption>
+            <thead>
+                <tr>
+                    <th>PI-LL Wert</th>
+                    <th>Klassifikation</th>
+                    <th>Klinische Bedeutung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&lt; -10°</td>
+                    <td>Hyperlordose</td>
+                    <td>Überkompensation, potenzielle anteriore Impingementprobleme</td>
+                </tr>
+                <tr>
+                    <td>-10° bis +10°</td>
+                    <td>Normolordose (balanciert)</td>
+                    <td>Normale sagittale Balance, niedriges Risiko</td>
+                </tr>
+                <tr>
+                    <td>> +10°</td>
+                    <td>Flatback (hypolordotisch)</td>
+                    <td>Sagittale Imbalance, posteriore Becken-Tilt, erhöhtes Instabilitätsrisiko</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>In einer japanischen Studie mit 945 Patienten vor H-TEP hatten:</p>
+        <ul>
+            <li>59,2% Normolordose</li>
+            <li>12,2% Hyperlordose</li>
+            <li>28,6% Flatback</li>
+        </ul>
+        
+        <h3>8.4 Spinopelvine Mobilität (ΔSS)</h3>
+        
+        <p>Die Änderung des Sacral Slope vom Stehen zum Sitzen quantifiziert die Beckenmobilität:</p>
+        
+        <table border="1">
+            <caption>Klassifikation der spinopelvinen Mobilität</caption>
+            <thead>
+                <tr>
+                    <th>ΔSS (Stehen → Sitzen)</th>
+                    <th>Klassifikation</th>
+                    <th>Klinische Konsequenz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&lt; 10°</td>
+                    <td>Steif</td>
+                    <td>Erhöhtes Luxationsrisiko, DM erwägen</td>
+                </tr>
+                <tr>
+                    <td>10-30°</td>
+                    <td>Normal</td>
+                    <td>Niedriges Risiko</td>
+                </tr>
+                <tr>
+                    <td>> 30°</td>
+                    <td>Hypermobil</td>
+                    <td>Risiko für Edge-Loading, weniger Anteversion</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>8.5 Combined Sagittal Index (CSI)</h3>
+        
+        <p>Der CSI integriert Pfannenorientierung und Hüftposition:</p>
+        
+        <p><strong>CSI = Ante-Inclination (AI) + Pelvic-Femoral Angle (PFA)</strong></p>
+        
+        <ul>
+            <li>AI = Inklination + Anteversion (der Pfanne)</li>
+            <li>PFA = Winkel Femurschaft zur Sakrummitte im Stehen</li>
+        </ul>
+        
+        <table border="1">
+            <caption>CSI Safe Zones</caption>
+            <thead>
+                <tr>
+                    <th>Patientengruppe</th>
+                    <th>CSI Standing Safe Zone</th>
+                    <th>CSI Sitting Safe Zone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Normal (PI-LL ≤10°, ΔSS ≥10°)</td>
+                    <td>205-245°</td>
+                    <td>>151°</td>
+                </tr>
+                <tr>
+                    <td>Eingeschränkt (PI-LL >10° oder ΔSS <10°)</td>
+                    <td>215-235°</td>
+                    <td>>161°</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="screening">
+        <h2>9. Screening-Algorithmus für Risikopatienten</h2>
+        
+        <h3>9.1 Wer benötigt erweiterte spinopelvine Bildgebung?</h3>
+        
+        <p>Nicht jeder H-TEP-Patient benötigt das vollständige spinopelvine Bildgebungsprogramm. Ein gestufter Ansatz ist sinnvoll:</p>
+        
+        <h4>High-Priority Patienten (immer erweiterte Bildgebung)</h4>
+        <ul>
+            <li>Vorherige LWS-Fusion</li>
+            <li>Bekannte oder vermutete Wirbelsäulenerkrankung</li>
+            <li>Revision wegen Instabilität</li>
+            <li>Frauen >75 Jahre</li>
+            <li>"Outlet"-Projektion auf liegendem Beckenübersichtsbild</li>
+        </ul>
+        
+        <h4>Moderate-Priority Patienten (erweiterte Bildgebung empfohlen)</h4>
+        <ul>
+            <li>Chronische Rückenschmerzen</li>
+            <li>Kyphose oder erkennbare Haltungsanomalie</li>
+            <li>BMI >35</li>
+            <li>Neurologische Grunderkrankung (Parkinson, Multiple Sklerose)</li>
+            <li>Ankylosierende Spondylitis</li>
+        </ul>
+        
+        <h4>Standard-Patienten (Basisbildgebung oft ausreichend)</h4>
+        <ul>
+            <li>Keine Wirbelsäulenanamnese</li>
+            <li>Normale Körperhaltung</li>
+            <li>Keine Risikofaktoren</li>
+        </ul>
+        
+        <blockquote>
+            <strong>Wichtig:</strong> 81% der Patienten mit steifer Wirbelsäule haben KEINE Fusion! Eine alleinige Anamnese-basierte Selektion übersieht die Mehrzahl der Risikopatienten. Im Zweifel sollte die erweiterte Bildgebung durchgeführt werden.
+        </blockquote>
+        
+        <h3>9.2 Screeningparameter auf dem stehenden Beckenübersichtsbild</h3>
+        
+        <p>Erste Hinweise auf spinopelvine Pathologie können bereits auf dem stehenden a.p.-Beckenübersichtsbild erkannt werden:</p>
+        
+        <table border="1">
+            <caption>Screening-Zeichen auf dem Beckenübersichtsbild</caption>
+            <thead>
+                <tr>
+                    <th>Zeichen</th>
+                    <th>Interpretation</th>
+                    <th>Konsequenz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Symphyse deutlich über Sakrococcygealgelenk</td>
+                    <td>Posteriore pelvine Tilt</td>
+                    <td>Erhöhte funktionelle Anteversion, seitliche Aufnahme empfohlen</td>
+                </tr>
+                <tr>
+                    <td>Sichtbare LWS-Instrumentation</td>
+                    <td>Z.n. Fusion</td>
+                    <td>Obligate Steh-Sitz-Serie</td>
+                </tr>
+                <tr>
+                    <td>Ausgeprägte Skoliose</td>
+                    <td>3D-Deformität</td>
+                    <td>Ganzkörper-Röntgen oder EOS</td>
+                </tr>
+                <tr>
+                    <td>Sakrum sehr vertikal</td>
+                    <td>Niedriger Sacral Slope</td>
+                    <td>V.a. Flatback oder steifes Becken</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>9.3 "Hip-User" vs. "Spine-User"</h3>
+        
+        <p>Die Unterscheidung zwischen "Hip-Users" und "Spine-Users" ist für die Risikostratifizierung hilfreich:</p>
+        
+        <ul>
+            <li><strong>Spine-User:</strong> Normale lumbale Flexion, Bewegung hauptsächlich über die Wirbelsäule</li>
+            <li><strong>Hip-User:</strong> Eingeschränkte lumbale Flexion, kompensatorisch mehr Hüftbewegung</li>
+        </ul>
+        
+        <p>Innmann et al. zeigten, dass ein stehender PT ≥19° der beste Prädiktor für "Hip-User" ist (Sensitivität 90%, Spezifität 71%). Patienten mit PT ≥19° UND Flatback hatten ein 30-fach erhöhtes Risiko, "Hip-User" zu sein.</p>
+    </section>
+
+    <section id="software">
+        <h2>10. Planungssoftware und digitale Lösungen</h2>
+        
+        <h3>10.1 Übersicht verfügbarer Systeme</h3>
+        
+        <p>Verschiedene Hersteller bieten Software zur Integration spinopelviner Parameter in die H-TEP-Planung:</p>
+        
+        <table border="1">
+            <caption>Planungssoftware für spinopelvine H-TEP-Planung</caption>
+            <thead>
+                <tr>
+                    <th>Software</th>
+                    <th>Hersteller</th>
+                    <th>Bildgebung</th>
+                    <th>Besonderheiten</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cuptimize Hip-Spine</td>
+                    <td>DePuy Synthes</td>
+                    <td>4 Röntgenbilder (Stehen/Sitzen lateral, a.p. stehend/liegend)</td>
+                    <td>Risikostratifizierung, funktionelle Cup-Position</td>
+                </tr>
+                <tr>
+                    <td>Intellijoint VIEW</td>
+                    <td>Intellijoint Surgical</td>
+                    <td>Röntgen (kein CT erforderlich)</td>
+                    <td>Target Zone Visualizer, "stuck-standing/sitting" Erkennung, kostenlos verfügbar</td>
+                </tr>
+                <tr>
+                    <td>OPS (Optimized Positioning System)</td>
+                    <td>Corin</td>
+                    <td>CT + funktionelle Röntgen</td>
+                    <td>Integration mit Robotik, personalisierte Safe Zone</td>
+                </tr>
+                <tr>
+                    <td>Mako Total Hip</td>
+                    <td>Stryker</td>
+                    <td>CT-basiert</td>
+                    <td>Roboter-assistiert, intraoperative Anpassung</td>
+                </tr>
+                <tr>
+                    <td>ONE Planner Hip</td>
+                    <td>Zimmer Biomet</td>
+                    <td>CT/Röntgen</td>
+                    <td>3D-Planung, Integration mit Navigation</td>
+                </tr>
+                <tr>
+                    <td>RI.HIP Navigation</td>
+                    <td>Smith & Nephew</td>
+                    <td>CT-basiert</td>
+                    <td>Navigationsintegration</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>10.2 Cuptimize Hip-Spine Analysis</h3>
+        
+        <p>Das Cuptimize-System nutzt vier Röntgenbilder für die funktionelle Planung:</p>
+        
+        <ol>
+            <li>Lateral stehend</li>
+            <li>Lateral sitzend</li>
+            <li>A.p. Becken stehend</li>
+            <li>A.p. Becken liegend</li>
+        </ol>
+        
+        <p>Die Software berechnet:</p>
+        <ul>
+            <li>Risikostratifizierung für Dislokation</li>
+            <li>Vorhersage der funktionellen Pfannenposition im Stehen und Sitzen</li>
+            <li>Empfohlene Inklination und Anteversion</li>
+        </ul>
+        
+        <h3>10.3 Intellijoint VIEW</h3>
+        
+        <p>Intellijoint VIEW bietet eine webbasierte Planungslösung ohne CT-Erfordernis:</p>
+        
+        <ul>
+            <li><strong>Target Zone Visualizer:</strong> Patientenspezifische funktionelle Zielzone</li>
+            <li><strong>Mobilitätsanalyse:</strong> Erkennung von "stuck-standing" oder "stuck-sitting" Mustern</li>
+            <li><strong>Integration:</strong> Nahtlose Übertragung der Planung in das Intellijoint HIP Navigationssystem</li>
+            <li><strong>Verfügbarkeit:</strong> Seit 2024 kostenlos für alle Orthopäden in USA/Kanada verfügbar</li>
+        </ul>
+        
+        <h3>10.4 CT-basierte Robotiksysteme</h3>
+        
+        <p>Moderne Robotiksysteme wie Mako und ROSA integrieren spinopelvine Parameter in die intraoperative Führung:</p>
+        
+        <ul>
+            <li>Präoperatives CT für 3D-Modell</li>
+            <li>Integration funktioneller Röntgenaufnahmen (optional)</li>
+            <li>Berechnung einer patientenspezifischen Safe Zone</li>
+            <li>Intraoperatives Feedback zur Pfannenposition relativ zur funktionellen Ebene</li>
+        </ul>
+        
+        <blockquote>
+            <strong>Evidenz:</strong> Robotiksysteme erreichen eine Genauigkeit von ~1° ± 2° für die Pfannenpositionierung (vs. 7° ± 6° manuell). Ob dies zu besseren klinischen Ergebnissen führt, ist noch nicht eindeutig belegt.
+        </blockquote>
+    </section>
+
+    <section id="workflow">
+        <h2>11. Praktischer präoperativer Workflow</h2>
+        
+        <h3>11.1 Stufenweiser Ansatz</h3>
+        
+        <table border="1">
+            <caption>Präoperativer Bildgebungs-Workflow</caption>
+            <thead>
+                <tr>
+                    <th>Schritt</th>
+                    <th>Alle Patienten</th>
+                    <th>Risikopatienten</th>
+                    <th>High-Risk / Robotik</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Beckenübersicht a.p. stehend</td>
+                    <td>Beckenübersicht a.p. stehend</td>
+                    <td>Beckenübersicht a.p. stehend</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Hüfte axial (Lauenstein/Cross-table)</td>
+                    <td>Hüfte axial</td>
+                    <td>Hüfte axial</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>–</td>
+                    <td>Lateral Becken/LWS stehend</td>
+                    <td>Lateral Becken/LWS stehend</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>–</td>
+                    <td>Lateral Becken/LWS sitzend (entspannt)</td>
+                    <td>Lateral Becken/LWS sitzend (entspannt + flektiert)</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>–</td>
+                    <td>Optional: Becken a.p. liegend</td>
+                    <td>Becken a.p. liegend</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>CT Becken/prox. Femur (Low-dose)</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>11.2 Checkliste für die präoperative Evaluation</h3>
+        
+        <p><strong>Anamnese:</strong></p>
+        <ul>
+            <li>☐ Rückenschmerzen (aktuell oder chronisch)?</li>
+            <li>☐ Vorherige Wirbelsäulenoperationen?</li>
+            <li>☐ Bekannte Wirbelsäulenerkrankung (Stenose, Spondylolisthese)?</li>
+            <li>☐ Neurologische Grunderkrankung?</li>
+            <li>☐ Vorherige Hüft-OP (Revision wegen Instabilität)?</li>
+        </ul>
+        
+        <p><strong>Klinische Untersuchung:</strong></p>
+        <ul>
+            <li>☐ Haltung im Stehen (Kyphose, Lordoseverlust, vorgebeugter Gang?)</li>
+            <li>☐ Hüftbeugekontraktur (Thomas-Test)?</li>
+            <li>☐ Lumbale Beweglichkeit (Finger-Boden-Abstand, Schober)?</li>
+            <li>☐ Abduktorenstatus</li>
+        </ul>
+        
+        <p><strong>Bildgebung:</strong></p>
+        <ul>
+            <li>☐ Beckenübersicht a.p. stehend angefertigt?</li>
+            <li>☐ "Outlet"-Projektion auf liegendem Bild? → Erweiterte Bildgebung</li>
+            <li>☐ LWS-Fusion sichtbar? → Steh-Sitz-Serie obligat</li>
+            <li>☐ Bei Risikopatienten: Steh-Sitz-Serie durchgeführt?</li>
+        </ul>
+        
+        <p><strong>Parameter-Bestimmung:</strong></p>
+        <ul>
+            <li>☐ PI gemessen</li>
+            <li>☐ SS stehend und sitzend gemessen</li>
+            <li>☐ LL stehend gemessen</li>
+            <li>☐ PI-LL-Mismatch berechnet (>10° = Flatback)</li>
+            <li>☐ ΔSS berechnet (<10° = steif)</li>
+            <li>☐ Klassifikation nach Hip-Spine-Classification</li>
+        </ul>
+        
+        <h3>11.3 Interpretation und Konsequenz</h3>
+        
+        <table border="1">
+            <caption>Bildgebungsbefund und klinische Konsequenz</caption>
+            <thead>
+                <tr>
+                    <th>Befund</th>
+                    <th>Klassifikation</th>
+                    <th>Konsequenz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PI-LL ≤10°, ΔSS ≥10°</td>
+                    <td>Gruppe 1A (Normal)</td>
+                    <td>Standard-Positionierung (40° Inkl., 20-25° AV)</td>
+                </tr>
+                <tr>
+                    <td>PI-LL ≤10°, ΔSS <10°</td>
+                    <td>Gruppe 1B (Steif)</td>
+                    <td>Mehr AV (25-30°), DM erwägen</td>
+                </tr>
+                <tr>
+                    <td>PI-LL >10°, ΔSS ≥10°</td>
+                    <td>Gruppe 2A (Flatback, mobil)</td>
+                    <td>Mehr AV (25-30°), DM erwägen</td>
+                </tr>
+                <tr>
+                    <td>PI-LL >10°, ΔSS <10°</td>
+                    <td>Gruppe 2B (Flatback + steif)</td>
+                    <td>Max. AV (30-35°), DM empfohlen</td>
+                </tr>
+                <tr>
+                    <td>ΔSS >30°</td>
+                    <td>Hypermobil</td>
+                    <td>Weniger AV (12-20°), Edge-Loading beachten</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>11.4 Zusammenarbeit mit der Wirbelsäulenchirurgie</h3>
+        
+        <p>Bei Patienten mit gleichzeitiger Hüft- und Wirbelsäulenpathologie ist die interdisziplinäre Absprache essentiell:</p>
+        
+        <ul>
+            <li><strong>Reihenfolge der OPs:</strong> Bei symptomatischer Hüftarthrose und geplanter LWS-Fusion sollte die H-TEP idealerweise ZUERST durchgeführt werden (bessere funktionelle Ergebnisse)</li>
+            <li><strong>Timing:</strong> Mindestens 6-12 Monate zwischen den Eingriffen empfohlen</li>
+            <li><strong>Kommunikation:</strong> Information an Wirbelsäulenchirurgen über geplante/durchgeführte H-TEP und Pfannenposition</li>
+        </ul>
+        
+        <blockquote>
+            <strong>Evidenz:</strong> Patienten mit LWS-Fusion VOR H-TEP haben ein 2-fach erhöhtes Luxationsrisiko und 3,4-fach erhöhtes Revisionsrisiko im Vergleich zu Patienten ohne Fusion (An et al. 2017, Meta-Analyse).
+        </blockquote>
+    </section>
+
+    <section id="zusammenfassung">
+        <h2>12. Zusammenfassung</h2>
+        
+        <table border="1">
+            <caption>10 Kernbotschaften zur präoperativen Bildgebung</caption>
+            <thead>
+                <tr>
+                    <th>Nr.</th>
+                    <th>Kernbotschaft</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Die Beckenübersicht sollte im Stehen angefertigt werden – sie repräsentiert die funktionelle Beckenposition besser als die liegende Aufnahme.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>40% der H-TEP-Patienten haben eine spinale Imbalance, 31% haben mindestens einen spinopelvinen Risikofaktor.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>81% der Patienten mit steifer Wirbelsäule haben KEINE LWS-Fusion – nur die Bildgebung identifiziert diese Patienten.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Die Steh-Sitz-Röntgenserie ist der Goldstandard zur Beurteilung der spinopelvinen Mobilität.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Die Sitzposition muss standardisiert werden – entspanntes und flektiertes Sitzen ergeben unterschiedliche ΔSS-Werte (Differenz ~15°).</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>ΔSS ≤10° (entspannt) überschätzt die Präsenz einer steifen Wirbelsäule 7-fach – die flektierte Sitzposition ist genauer.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Der PI-LL-Mismatch >10° definiert ein "Flatback" mit erhöhtem Instabilitätsrisiko.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>CT ist für roboter-assistierte/navigierte H-TEP und bei komplexer Anatomie indiziert, aber nicht routinemäßig erforderlich.</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Digitale Planungssoftware (Cuptimize, Intellijoint VIEW) integriert spinopelvine Parameter in die Pfannenpositionierung.</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Die Hip-Spine-Classification ermöglicht eine strukturierte Risikostratifizierung und leitet die Implantatwahl (DM ja/nein) und Positionierung.</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Empfohlenes Mindestprogramm</h3>
+        
+        <p><strong>Für alle H-TEP-Patienten:</strong></p>
+        <ul>
+            <li>Beckenübersicht a.p. im Stehen</li>
+            <li>Strukturierte Anamnese zu Wirbelsäulenpathologie</li>
+        </ul>
+        
+        <p><strong>Für Risikopatienten (LWS-Fusion, Rückenschmerzen, Alter >75, "Outlet"-Projektion):</strong></p>
+        <ul>
+            <li>Zusätzlich: Seitliche Steh-Sitz-Serie mit standardisierter Positionierung</li>
+            <li>Messung von PI, LL, SS (stehend/sitzend), Berechnung von PI-LL und ΔSS</li>
+            <li>Klassifikation nach Hip-Spine-Classification</li>
+        </ul>
+        
+        <p><strong>Für High-Risk-Patienten oder Robotik-Planung:</strong></p>
+        <ul>
+            <li>Vollständige Bildgebungsserie inkl. a.p. stehend und liegend</li>
+            <li>CT Becken (ggf. mit distalem Femur für femorale Antetorsion)</li>
+            <li>Integration in Planungssoftware</li>
+        </ul>
+    </section>
+
+    <section id="literatur">
+        <h2>13. Literatur</h2>
+        
+        <ol>
+            <li>Ransone M, Fehring K, Fehring T. Standardization of lateral pelvic radiograph is necessary to predict spinopelvic mobility accurately. Bone Joint J. 2020;102-B(7 Suppl B):41-46.</li>
+            <li>Sharma AK, Grammatopoulos G, Pierrepont JW, et al. Sacral Slope Change From Standing to Relaxed-Seated Grossly Overpredicts the Presence of a Stiff Spine. J Arthroplasty. 2023;38(4):713-718.</li>
+            <li>Sharma AK, Pierrepont JW, Madurawe C, et al. The Majority of Total Hip Arthroplasty Patients With a Stiff Spine Do Not Have an Instrumented Fusion. J Arthroplasty. 2023;38(7):1299-1304.</li>
+            <li>Luthringer TA, Vigdorchik JM. A Preoperative Workup of a "Hip-Spine" Total Hip Arthroplasty Patient: A Simplified Approach to a Complex Problem. J Arthroplasty. 2019;34(7S):S57-S62.</li>
+            <li>Murray DW. The definition and measurement of acetabular orientation. J Bone Joint Surg Br. 1993;75(2):228-232.</li>
+            <li>Tang ZH, Yeoh CSN, Tan GMJ. Radiographic parameters in total hip arthroplasty: A definition guide. Indian J Radiol Imaging. 2022;32(1):42-52.</li>
+            <li>Lazennec JY, Brusson A, Rousseau MA. Hip-spine relations and sagittal balance clinical consequences. Eur Spine J. 2011;20 Suppl 5:686-698.</li>
+            <li>An VVG, Phan K, Sivakumar BS, et al. Prior Lumbar Spinal Fusion is Associated With an Increased Risk of Dislocation and Revision in Total Hip Arthroplasty: A Meta-Analysis. J Arthroplasty. 2018;33(1):297-300.</li>
+            <li>Innmann MM, Merle C, Phan P, et al. How Can Patients With Mobile Hips and Stiff Lumbar Spines Be Identified Prior to Total Hip Arthroplasty? J Arthroplasty. 2021;36(7):2393-2400.</li>
+            <li>Attenello JD, Harpstrite JK. Implications of Spinopelvic Mobility on Total Hip Arthroplasty: Review of Current Literature. Hawaii J Health Soc Welf. 2019;78(11 Suppl 2):31-40.</li>
+            <li>Ross JR, Nepple JJ, Philippon MJ, et al. Effect of changes in pelvic tilt on range of motion to impingement and radiographic parameters of acetabular morphologic characteristics. Am J Sports Med. 2014;42(10):2402-2409.</li>
+            <li>Lee JM, Jeon JY, Kim YC, et al. CT-based 3D model to assess femoral version: comparison to the 2D axial slice approach. BMC Musculoskelet Disord. 2020;21(1):738.</li>
+            <li>Grammatopoulos G, Falsetto A, Sanders E, et al. Integrating the combined sagittal index reduces the risk of dislocation following total hip replacement. J Bone Joint Surg Am. 2022;104:397-411.</li>
+            <li>Vigdorchik JM, Sharma AK, Elbuluk AM, et al. High Prevalence of Spinopelvic Pathology in Patients Undergoing Total Hip Arthroplasty. J Bone Joint Surg Am. 2021;103(7):626-633.</li>
+            <li>Kleeman-Forsthuber L, Vigdorchik JM, Pierrepont JW, Dennis DA. Pelvic incidence significance relative to spinopelvic risk factors for total hip arthroplasty instability. Bone Joint J. 2022;104-B(3):352-358.</li>
+            <li>Shakeri S, et al. EOS® is reliable to evaluate spinopelvic parameters: a validation study. BMC Med Imaging. 2024;24(1):35.</li>
+            <li>Kamath AF, Sousa PL, Cross MB, et al. Can Flexed-Seated and Single-Leg Standing Radiographs Be Useful in Preoperative Evaluation of Lumbar Mobility in Total Hip Arthroplasty? J Arthroplasty. 2020;35(8):2124-2130.</li>
+            <li>De Vet JR, Fenster T, Ling D, et al. A Novel Method to Calculate Functional Pelvic Tilt Using a Standing Anteroposterior Pelvis Radiograph. Cureus. 2023;15(5):e38802.</li>
+            <li>Kim YH, Kim JS, Park JW, Joo JH. Computed tomographic measurement of acetabular and femoral component version in total hip arthroplasty. BMC Musculoskelet Disord. 2014;15:115.</li>
+            <li>Phan D, Bederman SS, Schwarzkopf R. The influence of sagittal spinal deformity on anteversion of the acetabular component in total hip arthroplasty. Bone Joint J. 2015;97-B:1017-1023.</li>
+            <li>Onggo JR, Nambiar M, Onggo JD, et al. Clinical outcomes and complication profile of total hip arthroplasty after lumbar spine fusion: a meta-analysis and systematic review. Eur Spine J. 2020;29(2):282-294.</li>
+            <li>Behery OA, Vasquez-Montes D, Cizmic Z, et al. Can Flexed-Seated and Single-Leg Standing Radiographs Be Useful in Preoperative Evaluation of Lumbar Mobility in Total Hip Arthroplasty? J Arthroplasty. 2020;35(8):2124-2130.</li>
+            <li>Scientific Reports. Spinopelvic parameters in the lateral decubitus are different from standing and sitting positions. 2025.</li>
+            <li>Kim KI, et al. Robotic-assisted Total Hip Arthroplasty and Spinopelvic Parameters: A Review. Hip Pelvis. 2024;36(2):93-102.</li>
+            <li>Hsieh PH, et al. Modern Imaging in Planning a Personalized Hip Replacement and Evaluating the Spino-pelvic Relationship in Prosthetic Instability. Springer 2019.</li>
+        </ol>
+    </section>
+
+
+
+            </article>
+        </main>
+    </div>
+</body>
+</html>

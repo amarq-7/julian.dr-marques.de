@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joint Alignment Compendium - Spinopelvines Alignment</title>
+    <meta name="description" content="Digitales Handbuch für Alignment-Strategien in der Endoprothetik. Strukturiertes Wissen und klinische Strategien für Fachpublikum.">
+    <meta name="author" content="Julian Marques">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <style>
+        .logo-highlight { background: linear-gradient(135deg, #2563eb, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .site-footer { background: #111827; color: white; padding: 3rem 2rem 1.5rem; }
+        .footer-inner { max-width: 1400px; margin: 0 auto; }
+        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+        .footer-brand h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .footer-brand p { color: #9ca3af; font-size: 0.875rem; line-height: 1.6; }
+        .footer-links h4 { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; color: #d1d5db; }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a { color: #9ca3af; text-decoration: none; font-size: 0.9375rem; }
+        .footer-links a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-copyright { font-size: 0.8125rem; color: #6b7280; }
+        .footer-disclaimer { font-size: 0.75rem; color: #6b7280; max-width: 600px; line-height: 1.5; }
+        @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="header-content">
+                <a href="index.html" class="logo" style="text-decoration: none;">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L12 6M12 18L12 22M6 12L2 12M22 12L18 12"/>
+                            <circle cx="12" cy="12" r="4"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Joint<span class="logo-highlight">Alignment</span>Compendium</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="huefte/index.html" class="nav-link">Hüfte</a>
+                    <a href="ueber/index.html" class="nav-link">Über</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-gradient">Joint Alignment</span>
+                    <span class="title-light">Compendium</span>
+                </h1>
+                <p class="hero-subtitle">Digitales Handbuch für Alignment-Strategien in der Endoprothetik</p>
+                <p class="hero-description">Strukturiertes Wissen und klinische Strategien für Fachpublikum</p>
+            </div>
+        </section>
+
+        <section class="body-section">
+            <div class="body-container">
+                <div class="body-figure">
+                    <svg viewBox="0 0 200 450" class="human-body-svg" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="35" rx="25" ry="30" class="body-part body-head"/>
+                        <rect x="90" y="62" width="20" height="15" rx="3" class="body-part body-neck"/>
+                        <ellipse cx="55" cy="90" rx="18" ry="15" class="body-part body-shoulder"/>
+                        <ellipse cx="145" cy="90" rx="18" ry="15" class="body-part body-shoulder"/>
+                        <path d="M70 77 L130 77 L140 85 L145 120 L140 180 L120 190 L80 190 L60 180 L55 120 L60 85 Z" class="body-part body-torso"/>
+                        <rect x="35" y="95" width="18" height="55" rx="8" class="body-part body-arm"/>
+                        <rect x="147" y="95" width="18" height="55" rx="8" class="body-part body-arm"/>
+                        <rect x="32" y="152" width="16" height="60" rx="6" class="body-part body-arm"/>
+                        <rect x="152" y="152" width="16" height="60" rx="6" class="body-part body-arm"/>
+                        <ellipse cx="40" cy="225" rx="12" ry="15" class="body-part body-hand"/>
+                        <ellipse cx="160" cy="225" rx="12" ry="15" class="body-part body-hand"/>
+                        <a href="huefte/" class="hip-link">
+                            <ellipse cx="75" cy="210" rx="22" ry="25" class="body-part body-hip active-region"/>
+                            <ellipse cx="125" cy="210" rx="22" ry="25" class="body-part body-hip active-region"/>
+                            <circle cx="75" cy="210" r="8" class="hip-joint-marker"/>
+                            <circle cx="125" cy="210" r="8" class="hip-joint-marker"/>
+                        </a>
+                        <rect x="58" y="230" width="28" height="80" rx="12" class="body-part body-leg"/>
+                        <rect x="114" y="230" width="28" height="80" rx="12" class="body-part body-leg"/>
+                        <ellipse cx="72" cy="315" rx="16" ry="12" class="body-part body-knee"/>
+                        <ellipse cx="128" cy="315" rx="16" ry="12" class="body-part body-knee"/>
+                        <rect x="60" y="325" width="24" height="75" rx="10" class="body-part body-leg"/>
+                        <rect x="116" y="325" width="24" height="75" rx="10" class="body-part body-leg"/>
+                        <ellipse cx="72" cy="415" rx="18" ry="10" class="body-part body-foot"/>
+                        <ellipse cx="128" cy="415" rx="18" ry="10" class="body-part body-foot"/>
+                    </svg>
+                    <div class="pulse-indicator pulse-left"></div>
+                    <div class="pulse-indicator pulse-right"></div>
+                </div>
+
+                <div class="region-cards">
+                    <a href="huefte/" class="region-card region-hip active-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3>Hüfte</h3>
+                            <p>Spinopelvines Alignment & H-TEP</p>
+                            <span class="card-status available">Verfügbar</span>
+                        </div>
+                        <div class="card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                    </a>
+                    <div class="region-card region-knee disabled">
+                        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 5v3M12 16v3"/></svg></div>
+                        <div class="card-content"><h3>Knie</h3><p>K-TEP & Alignment</p><span class="card-status coming-soon">Demnächst</span></div>
+                        <div class="card-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                    </div>
+                    <div class="region-card region-shoulder disabled">
+                        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+                        <div class="card-content"><h3>Schulter</h3><p>S-TEP & Rotatorenmanschette</p><span class="card-status coming-soon">Demnächst</span></div>
+                        <div class="card-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                    </div>
+                    <div class="region-card region-spine disabled">
+                        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M8 6h8M7 10h10M8 14h8M9 18h6"/></svg></div>
+                        <div class="card-content"><h3>Wirbelsäule</h3><p>Spinale Pathologien</p><span class="card-status coming-soon">Demnächst</span></div>
+                        <div class="card-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="features-container">
+                <h2 class="section-title">Was Sie erwartet</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+                        <h3>Übersichtsartikel</h3>
+                        <p>Umfassende Reviews zu allen relevanten Themen der Endoprothetik</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                        <h3>Paper-Zusammenfassungen</h3>
+                        <p>Prägnante Zusammenfassungen der wichtigsten Studien</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+                        <h3>Klinische Tipps</h3>
+                        <p>Praxisnahe Expertentipps für den klinischen Alltag</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
+                        <h3>Erweiterbar</h3>
+                        <p>Modulare Struktur für einfaches Hinzufügen neuer Inhalte</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h3>Joint Alignment Compendium</h3>
+                    <p>Digitales Handbuch für Alignment-Strategien in der Endoprothetik. Strukturiertes Wissen und klinische Strategien für Fachpublikum.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul><li><a href="index.html">Home</a></li><li><a href="huefte/index.html">Hüfte</a></li><li><a href="ueber/index.html">Über den Autor</a></li></ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <ul><li><a href="impressum/index.html">Impressum</a></li><li><a href="datenschutz/index.html">Datenschutz</a></li><li><a href="disclaimer/index.html">Disclaimer</a></li></ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Joint Alignment Compendium. Alle Rechte vorbehalten.</p>
+                <p class="footer-disclaimer">Die Inhalte dienen der Information und Fortbildung und stellen keine klinische Anweisung dar.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
