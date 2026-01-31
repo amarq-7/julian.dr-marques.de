@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rheumatologische Patienten und Hüftendoprothetik - Joint Alignment Compendium</title>
+    <title>Rheumatische Erkrankungen und Spinopelvines Alignment - Joint Alignment Compendium</title>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -77,10 +77,8 @@
         .alert-info h4 { color: var(--primary-700); }
         .alert-success { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border-left: 4px solid var(--success); }
         .alert-success h4 { color: #065f46; }
-
-        .site-footer { background: var(--gray-900); color: white; padding: 1.5rem 2rem; text-align: center; }
-        .footer-brand { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem; }
-        .footer-copyright { font-size: 0.875rem; color: var(--gray-400); }
+        .alert-danger { background: linear-gradient(135deg, #fee2e2, #fecaca); border-left: 4px solid var(--danger); }
+        .alert-danger h4 { color: #991b1b; }
 
         @media (max-width: 1024px) { .main-container { grid-template-columns: 1fr; } .sidebar { display: none; } .article-content { padding: 2rem; } }
         @media (max-width: 768px) { .article-hero h1 { font-size: 1.75rem; } .article-content { padding: 1.5rem; } .article-content h2 { font-size: 1.5rem; } }
@@ -93,7 +91,8 @@
             <nav class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="huefte.html">Hüfte</a>
-                <a href="ueber.html" class="nav-link">Über</a></nav>
+                <a href="ueber.html">Über</a>
+            </nav>
         </div>
     </header>
 
@@ -101,15 +100,15 @@
         <div class="breadcrumb-inner">
             <a href="index.html">Home</a><span class="breadcrumb-separator">›</span>
             <a href="huefte.html">Hüfte</a><span class="breadcrumb-separator">›</span>
-            <span>Rheumatologische Patienten und Hüftendoprothe...</span>
+            <span>Rheumatische Erkrankungen und Spinopelvines Alignment</span>
         </div>
     </nav>
 
     <section class="article-hero">
         <div class="hero-content">
-            <span class="article-category">⚡ Spezialfälle</span>
-            <h1>Rheumatologische Patienten und Hüftendoprothetik</h1>
-            <p class="article-subtitle">Übersichtsartikel zum Thema Spezialfälle</p>
+            <span class="article-category">🔬 Spezielle Patientengruppen</span>
+            <h1>Rheumatische Erkrankungen und Spinopelvines Alignment</h1>
+            <p class="article-subtitle">Spinopelvine Besonderheiten bei rheumatoider Arthritis, Spondylarthropathien und ihre Implikationen für die Hüftendoprothetik</p>
         </div>
     </section>
 
@@ -118,75 +117,548 @@
             <div class="toc-card">
                 <div class="toc-header"><h3>Inhalt</h3></div>
                 <ul class="toc-list">
-                    <li><a href="#1-epidemiologie-und-pathophysiologie" class="toc-link active">1. Epidemiologie und Pathophysiolog...</a></li>
-                    <li><a href="#2-spinopelvine-besonderheiten-bei-as" class="toc-link">2. Spinopelvine Besonderheiten bei ...</a></li>
-                    <li><a href="#3-alignmentaspekte-und-pfannenpositionierung" class="toc-link">3. Alignmentaspekte und Pfannenposi...</a></li>
-                    <li><a href="#4-besonderheiten-bei-rheumatoider-arthritis" class="toc-link">4. Besonderheiten bei Rheumatoider ...</a></li>
-                    <li><a href="#5-perioperatives-management-und-medikation" class="toc-link">5. Perioperatives Management und Me...</a></li>
-                    <li><a href="#6-heterotope-ossifikation" class="toc-link">6. Heterotope Ossifikation</a></li>
-                    <li><a href="#7-chirurgische-strategien" class="toc-link">7. Chirurgische Strategien</a></li>
-                    <li><a href="#8-key-messages" class="toc-link">8. Key Messages</a></li>
-                    <li><a href="#tipps-und-tricks-aus-der-praxis" class="toc-link">Tipps und Tricks aus der Praxis</a></li>
-                    <li><a href="#9-literatur" class="toc-link">9. Literatur</a></li>
+                    <li><a href="#1-einleitung" class="toc-link active">1. 🔬 Einleitung</a></li>
+                    <li><a href="#2-rheumatoide-arthritis" class="toc-link">2. 🦠 Rheumatoide Arthritis</a></li>
+                    <li><a href="#3-spondylitis-ankylosans" class="toc-link">3. 🦴 Spondylitis ankylosans</a></li>
+                    <li><a href="#4-psoriasis-arthritis" class="toc-link">4. 🩺 Psoriasis-Arthritis</a></li>
+                    <li><a href="#5-spinopelvine-mobilität" class="toc-link">5. 📐 Spinopelvine Mobilität</a></li>
+                    <li><a href="#6-komplikationen" class="toc-link">6. ⚠️ Komplikationsrisiken</a></li>
+                    <li><a href="#7-operationsplanung" class="toc-link">7. 🎯 Operationsplanung</a></li>
+                    <li><a href="#8-empfehlungen" class="toc-link">8. ✅ Klinische Empfehlungen</a></li>
+                    <li><a href="#9-literatur" class="toc-link">9. 📚 Literatur</a></li>
                 </ul>
             </div>
         </aside>
 
         <article class="article-content">
-            <section id="1-epidemiologie-und-pathophysiologie">
-                <h2>1. Epidemiologie und Pathophysiologie</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="1-einleitung">
+                <h2>1. 🔬 Einleitung</h2>
+                
+                <p>Rheumatische Erkrankungen stellen eine besondere Herausforderung für die Hüftendoprothetik dar. Neben den bekannten systemischen Komplikationen (Infektionsrisiko, Knochenqualität, Medikamentenmanagement) rückt zunehmend die <strong>spinopelvine Dynamik</strong> in den Fokus. Insbesondere die <strong>Spondylarthropathien</strong> mit axialer Beteiligung führen zu charakteristischen Veränderungen der Wirbelsäulen-Becken-Biomechanik.</p>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">💡</div>
+                    <div class="alert-content">
+                        <h4>Relevanz für die HTEP</h4>
+                        <p>Die Kombination aus <strong>spinopelviner Steifigkeit</strong> und <strong>Hüftgelenkbeteiligung</strong> bei entzündlich-rheumatischen Erkrankungen führt zu einem signifikant erhöhten Dislokationsrisiko. Das Verständnis der krankheitsspezifischen spinopelvinen Veränderungen ist essentiell für die präoperative Planung.</p>
+                    </div>
+                </div>
+
+                <h3>Krankheitsspektrum</h3>
+                <p>Diese Übersicht behandelt die spinopelvinen Implikationen folgender Erkrankungen:</p>
+                <ul>
+                    <li><strong>Rheumatoide Arthritis (RA):</strong> Systemische Entzündung mit HWS-Instabilität</li>
+                    <li><strong>Spondylitis ankylosans (AS):</strong> Axiale Beteiligung mit Wirbelsäulenversteifung</li>
+                    <li><strong>Psoriasis-Arthritis (PsA):</strong> Variables Spektrum mit potenzieller axialer Beteiligung</li>
+                    <li><strong>Andere Spondylarthropathien:</strong> Reaktive Arthritis, Enteropathie-assoziierte Arthritis</li>
+                </ul>
             </section>
 
-            <section id="2-spinopelvine-besonderheiten-bei-as">
-                <h2>2. Spinopelvine Besonderheiten bei AS</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="2-rheumatoide-arthritis">
+                <h2>2. 🦠 Rheumatoide Arthritis</h2>
+                
+                <h3>Spinale Manifestationen</h3>
+                <p>Die RA betrifft typischerweise die <strong>obere Halswirbelsäule</strong> und kann zu erheblicher Instabilität führen:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Manifestation</th>
+                            <th>Prävalenz</th>
+                            <th>Mechanismus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Atlantoaxiale Subluxation (AAS)</strong></td>
+                            <td>bis 49%</td>
+                            <td>Erosive Synovitis, Zerstörung des Lig. transversum</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kraniales Settling (CS)</strong></td>
+                            <td>bis 38%</td>
+                            <td>Erosion der okzipitoatlantalen Gelenke</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subaxiale Subluxation (SAS)</strong></td>
+                            <td>ca. 20%</td>
+                            <td>Facettengelenk- und Diskusdestruktion</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-danger">
+                    <div class="alert-icon">🔴</div>
+                    <div class="alert-content">
+                        <h4>Wichtiger Zusammenhang</h4>
+                        <p>Patienten mit schwerer Gelenkbeteiligung der unteren Extremität sind <strong>besonders anfällig für HWS-Instabilität</strong>. In einer Studie hatten 82 von 101 RA-Patienten nach Gelenkersatz der unteren Extremität eine nachweisbare zervikale Instabilität. Die Beteiligung großer Gelenke (Hüfte, Knie) korreliert signifikant mit dem Ausmaß der HWS-Pathologie.</p>
+                    </div>
+                </div>
+
+                <h3>Anästhesiologische Implikationen</h3>
+                <p>Die HWS-Instabilität hat direkte Konsequenzen für die Narkoseführung:</p>
+                <ul>
+                    <li><strong>Präoperatives HWS-Röntgen:</strong> Funktionsaufnahmen in Flexion/Extension obligat bei langjähriger RA</li>
+                    <li><strong>AADI (Anterior Atlanto-Dental Interval):</strong> > 3mm pathologisch, > 9mm Myelopathierisiko</li>
+                    <li><strong>PADI (Posterior Atlanto-Dental Interval):</strong> < 14mm = hohes Risiko für neurologische Komplikationen</li>
+                    <li><strong>Fiberoptische Intubation:</strong> Bei nachgewiesener Instabilität erwägen</li>
+                </ul>
+
+                <h3>Spinopelvine Dynamik bei RA</h3>
+                <p>Im Gegensatz zu den Spondylarthropathien betrifft die RA primär die <strong>HWS</strong> und nicht die lumbopelvine Region. Die spinopelvine Mobilität ist daher bei isolierter RA oft <strong>erhalten</strong>. Jedoch:</p>
+                <ul>
+                    <li>Sekundäre degenerative Veränderungen der LWS durch jahrelange Steroidtherapie</li>
+                    <li>Osteoporose mit Wirbelkörperfrakturen → Kyphosierung</li>
+                    <li>Muskelatrophie durch Inaktivität → reduzierte posturale Kontrolle</li>
+                </ul>
             </section>
 
-            <section id="3-alignmentaspekte-und-pfannenpositionierung">
-                <h2>3. Alignmentaspekte und Pfannenpositionierung</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="3-spondylitis-ankylosans">
+                <h2>3. 🦴 Spondylitis ankylosans</h2>
+                
+                <p>Die Spondylitis ankylosans (Morbus Bechterew) stellt aufgrund der charakteristischen <strong>Wirbelsäulenversteifung</strong> die größte Herausforderung für die spinopelvine Balance dar.</p>
+
+                <h3>Pathophysiologie</h3>
+                <p>Die chronische Entzündung führt zu:</p>
+                <ul>
+                    <li><strong>Syndesmophytenbildung:</strong> Verknöcherung der Anulus-fibrosus-Fasern</li>
+                    <li><strong>Bambusstab-Wirbelsäule:</strong> Komplette Fusion der Bewegungssegmente</li>
+                    <li><strong>Thorakolumbale Kyphose:</strong> Verlust der lumbalen Lordose</li>
+                    <li><strong>Fixierte posteriore Beckenkippung:</strong> Kompensation der Kyphose</li>
+                </ul>
+
+                <h3>Spinopelvine Charakteristika</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>AS-Population</th>
+                            <th>Normalpopulation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Sacral Slope (stehend)</strong></td>
+                            <td>25,5° (↓)</td>
+                            <td>~40°</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pelvic Tilt</strong></td>
+                            <td>Erhöht (posterior)</td>
+                            <td>Normal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ΔSS (Stehen → Sitzen)</strong></td>
+                            <td>< 10° (steif)</td>
+                            <td>10-30°</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lumbar Lordosis</strong></td>
+                            <td>Reduziert bis aufgehoben</td>
+                            <td>Normal</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Spinopelvine Mobilitätsmuster bei AS</h3>
+                <p>Die reduzierte spinopelvine Mobilität führt zu charakteristischen Mustern:</p>
+
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h4>"Stuck Sitting" – Das dominante Muster bei AS</h4>
+                        <p>In einer Studie mit 58 AS-Patienten nach HTEP zeigten <strong>63,8% (37/58)</strong> ein "Stuck Sitting"-Muster (SS < 30° sowohl im Stehen als auch im Sitzen). Diese Patienten haben ein <strong>erhöhtes Risiko für posteriores Impingement und anteriore Dislokation</strong>.</p>
+                    </div>
+                </div>
+
+                <ul>
+                    <li><strong>Stuck Sitting (63,8%):</strong> Steife Wirbelsäule in posteriorer Beckenkippung → Risiko für anteriore Dislokation</li>
+                    <li><strong>Stuck Standing (6,9%):</strong> Selten bei AS, Wirbelsäule fixiert in anteriorer Beckenkippung → Risiko für posteriore Dislokation</li>
+                    <li><strong>Spine Stiffness in Extension (10,8%):</strong> 4 von 37 "Stuck Sitting"-Patienten zeigten zusätzlich Extensionssteifigkeit</li>
+                </ul>
+
+                <h3>Hüftbeteiligung bei AS</h3>
+                <p>Die Hüftgelenke sind bei AS häufig betroffen:</p>
+                <ul>
+                    <li><strong>Prävalenz:</strong> Bis zu 50% der AS-Patienten entwickeln Hüftbeteiligung</li>
+                    <li><strong>Charakteristik:</strong> Frühzeitige Ankylose, oft bilateral</li>
+                    <li><strong>Junges Alter:</strong> Durchschnittsalter bei HTEP ca. 37 Jahre (deutlich jünger als bei primärer Koxarthrose)</li>
+                </ul>
+
+                <h3>Dislokationsrisiko bei AS nach HTEP</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Zeitraum</th>
+                            <th>Relatives Risiko (vs. Kontrolle)</th>
+                            <th>Signifikanz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>90 Tage</td>
+                            <td>1,44 (95% CI: 0,93-2,22)</td>
+                            <td>Trend</td>
+                        </tr>
+                        <tr>
+                            <td>2 Jahre</td>
+                            <td><strong>1,67</strong> (95% CI: 1,25-2,23)</td>
+                            <td>p < 0,05</td>
+                        </tr>
+                        <tr>
+                            <td>Gesamt-Follow-up</td>
+                            <td><strong>1,49</strong> (95% CI: 1,14-1,93)</td>
+                            <td>p < 0,05</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>Quelle: Blizzard et al. 2017, J Arthroplasty</em></p>
             </section>
 
-            <section id="4-besonderheiten-bei-rheumatoider-arthritis">
-                <h2>4. Besonderheiten bei Rheumatoider Arthritis</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="4-psoriasis-arthritis">
+                <h2>4. 🩺 Psoriasis-Arthritis</h2>
+                
+                <h3>Klinisches Spektrum</h3>
+                <p>Die Psoriasis-Arthritis zeigt ein heterogenes Erscheinungsbild mit verschiedenen Phänotypen:</p>
+                <ul>
+                    <li>Asymmetrische Oligoarthritis</li>
+                    <li>Symmetrische Polyarthritis (RA-ähnlich)</li>
+                    <li>DIP-Gelenkbefall</li>
+                    <li>Arthritis mutilans</li>
+                    <li><strong>Axialer Befall (Spondylitis)</strong> – bei etwa 20-40% der Patienten</li>
+                </ul>
+
+                <h3>Spinopelvine Implikationen</h3>
+                <p>Das spinopelvine Risikoprofil der PsA liegt zwischen RA und AS:</p>
+                <ul>
+                    <li><strong>Ohne axialen Befall:</strong> Spinopelvine Mobilität meist erhalten, ähnlich wie bei primärer Koxarthrose</li>
+                    <li><strong>Mit axialem Befall:</strong> Steifigkeit ähnlich (aber meist milder) wie bei AS</li>
+                </ul>
+
+                <h3>Komplikationen nach HTEP bei PsA</h3>
+                <p>Eine Metaanalyse zeigt spezifische Risiken:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komplikation</th>
+                            <th>PsA vs. Arthrose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Akutes Nierenversagen</td>
+                            <td>Erhöht</td>
+                        </tr>
+                        <tr>
+                            <td>Schlaganfall</td>
+                            <td>Erhöht</td>
+                        </tr>
+                        <tr>
+                            <td>Dislokation</td>
+                            <td>Tendenziell niedriger als bei AS</td>
+                        </tr>
+                        <tr>
+                            <td>Periprothetische Fraktur</td>
+                            <td>Tendenziell niedriger als bei AS</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">💡</div>
+                    <div class="alert-content">
+                        <h4>Koebner-Phänomen</h4>
+                        <p>Bei PsA-Patienten kann chirurgischer Stress ein <strong>Aufflammen der Psoriasis</strong> entlang der Operationsnarbe auslösen (Koebner-Phänomen). Dies sollte bei der Aufklärung erwähnt und interdisziplinär (Dermatologie) adressiert werden.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="5-perioperatives-management-und-medikation">
-                <h2>5. Perioperatives Management und Medikation</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="5-spinopelvine-mobilität">
+                <h2>5. 📐 Spinopelvine Mobilität bei Rheuma</h2>
+                
+                <h3>Vergleich der Krankheitsbilder</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Erkrankung</th>
+                            <th>LWS-Beteiligung</th>
+                            <th>Spinopelvine Mobilität</th>
+                            <th>Typisches Muster</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Rheumatoide Arthritis</strong></td>
+                            <td>Selten primär</td>
+                            <td>Meist erhalten</td>
+                            <td>Variabel</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spondylitis ankylosans</strong></td>
+                            <td>Immer (definierend)</td>
+                            <td><strong>Stark eingeschränkt</strong></td>
+                            <td>Stuck Sitting (63%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Psoriasis-Arthritis</strong></td>
+                            <td>20-40% axial</td>
+                            <td>Variabel</td>
+                            <td>Je nach axialem Befall</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reaktive Arthritis</strong></td>
+                            <td>Möglich</td>
+                            <td>Meist erhalten</td>
+                            <td>Variabel</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Messung der spinopelvinen Mobilität</h3>
+                <p>Die Evaluation erfolgt standardisiert durch:</p>
+                <ol>
+                    <li><strong>Laterale Beckenaufnahme im Stehen:</strong> Messung von SS, PT, PI</li>
+                    <li><strong>Laterale Beckenaufnahme im Sitzen:</strong> Messung von SS</li>
+                    <li><strong>Berechnung ΔSS:</strong> Differenz SS(Stehen) − SS(Sitzen)</li>
+                </ol>
+
+                <h4>Interpretation bei rheumatischen Erkrankungen</h4>
+                <ul>
+                    <li><strong>ΔSS < 10°:</strong> Steif ("stiff") – bei AS typisch</li>
+                    <li><strong>ΔSS 10-30°:</strong> Normal</li>
+                    <li><strong>ΔSS > 30°:</strong> Hypermobil – bei rheumatischen Erkrankungen selten</li>
+                </ul>
+
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h4>Besonderheit bei AS</h4>
+                        <p>Bei AS-Patienten mit ankylotischer Hüfte kann die Sitz-Aufnahme durch die <strong>fehlende Hüftflexion</strong> verfälscht sein. Das Becken wird kompensatorisch nach posterior gekippt, was zu einer <strong>Überschätzung der Mobilität</strong> führen kann. Postoperativ normalisiert sich dies oft nach Wiederherstellung der Hüftflexion.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="6-heterotope-ossifikation">
-                <h2>6. Heterotope Ossifikation</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="6-komplikationen">
+                <h2>6. ⚠️ Komplikationsrisiken bei rheumatischen Erkrankungen</h2>
+                
+                <h3>Vergleich der Komplikationsraten nach HTEP</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komplikation</th>
+                            <th>RA vs. OA</th>
+                            <th>AS vs. OA</th>
+                            <th>PsA vs. OA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Dislokation</strong></td>
+                            <td>OR 2,31 ↑</td>
+                            <td>RR 1,49-1,67 ↑</td>
+                            <td>Eher niedriger</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Periprothetische Infektion</strong></td>
+                            <td>OR 1,44 ↑</td>
+                            <td>Erhöht</td>
+                            <td>Erhöht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wundinfektion</strong></td>
+                            <td>OR 2,15 ↑</td>
+                            <td>Erhöht</td>
+                            <td>Erhöht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Revision</strong></td>
+                            <td>OR 1,15 ↑</td>
+                            <td>RR 1,51 ↑</td>
+                            <td>Variabel</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aseptische Lockerung</strong></td>
+                            <td>Konstant</td>
+                            <td>Erhöht</td>
+                            <td>Variabel</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Heterotope Ossifikation</strong></td>
+                            <td>Normal</td>
+                            <td><strong>Deutlich erhöht</strong></td>
+                            <td>Normal</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Faktoren für erhöhtes Dislokationsrisiko</h3>
+                <ul>
+                    <li><strong>Spinopelvine Steifigkeit:</strong> Hauptfaktor bei AS, führt zu Impingement</li>
+                    <li><strong>Weichteilschwäche:</strong> Chronische Entzündung, Steroidtherapie, Muskelatrophie</li>
+                    <li><strong>Knochenqualität:</strong> Osteoporose durch Entzündung und Therapie</li>
+                    <li><strong>Immunsuppression:</strong> Erhöhtes Infektionsrisiko → septische Lockerung</li>
+                    <li><strong>Krankheitsaktivität:</strong> Höherer SDAI = höheres Komplikationsrisiko</li>
+                </ul>
+
+                <div class="alert alert-danger">
+                    <div class="alert-icon">🔴</div>
+                    <div class="alert-content">
+                        <h4>Krankheitsaktivität als Prädiktor</h4>
+                        <p>Eine Studie (2024) zeigte, dass jede <strong>1-Punkt-Erhöhung im SDAI</strong> (Simplified Disease Activity Index) mit einem signifikant erhöhten Komplikationsrisiko assoziiert ist (OR 1,015; p = 0,035). Patienten mit hoher Krankheitsaktivität hatten eine Komplikationsrate von <strong>17,5%</strong> vs. <strong>0%</strong> bei Patienten in Remission.</p>
+                    </div>
+                </div>
+
+                <h3>Zeitlicher Verlauf der Dislokationen</h3>
+                <p>Bei AS zeigt sich ein <strong>verzögertes Dislokationsmuster</strong>:</p>
+                <ul>
+                    <li><strong>90 Tage:</strong> Erhöhtes Risiko (nicht signifikant)</li>
+                    <li><strong>2 Jahre:</strong> Signifikant erhöhtes Risiko (RR 1,67)</li>
+                    <li><strong>Langzeit:</strong> Persistierend erhöhtes Risiko</li>
+                </ul>
+                <p>Dies unterstreicht die Bedeutung der <strong>spinopelvinen Steifigkeit als Langzeitrisikofaktor</strong>, der nicht allein durch initiale Implantatpositionierung kompensiert werden kann.</p>
             </section>
 
-            <section id="7-chirurgische-strategien">
-                <h2>7. Chirurgische Strategien</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="7-operationsplanung">
+                <h2>7. 🎯 Operationsplanung bei rheumatischen Erkrankungen</h2>
+                
+                <h3>Präoperative Evaluation</h3>
+                
+                <h4>Bei allen rheumatischen Erkrankungen</h4>
+                <ul>
+                    <li><strong>Krankheitsaktivität:</strong> SDAI, DAS28 – Optimierung vor elektiver OP</li>
+                    <li><strong>Medikamentenmanagement:</strong> DMARD-Pause, Biologika-Pause gemäß Protokoll</li>
+                    <li><strong>Knochenqualität:</strong> DXA, ggf. Vitamin-D-Substitution</li>
+                    <li><strong>Infektionsstatus:</strong> CRP, Leukozyten, Urinstatus</li>
+                </ul>
+
+                <h4>Spezifisch bei RA</h4>
+                <ul>
+                    <li><strong>HWS-Röntgen:</strong> Funktionsaufnahmen bei > 5 Jahren Krankheitsdauer</li>
+                    <li><strong>MRT HWS:</strong> Bei radiologischer Instabilität zur Beurteilung der Myelonkompression</li>
+                    <li><strong>Anästhesiekonsil:</strong> Bei nachgewiesener HWS-Instabilität</li>
+                </ul>
+
+                <h4>Spezifisch bei AS und axialer PsA</h4>
+                <ul>
+                    <li><strong>Laterale Steh-/Sitz-Aufnahmen:</strong> Obligat für spinopelvine Evaluation</li>
+                    <li><strong>ΔSS-Bestimmung:</strong> Quantifizierung der Steifigkeit</li>
+                    <li><strong>Ganzkörper-EOS:</strong> Bei komplexer Deformität (Global Alignment)</li>
+                </ul>
+
+                <h3>Pfannenpositionierung nach Mobilitätsmuster</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Muster</th>
+                            <th>Risiko</th>
+                            <th>Empfohlene Anteversion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Stuck Sitting</strong> (häufig bei AS)</td>
+                            <td>Anteriore Dislokation</td>
+                            <td><strong>15-20°</strong> (reduziert)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stuck Standing</strong> (selten bei AS)</td>
+                            <td>Posteriore Dislokation</td>
+                            <td><strong>20-25°</strong> (erhöht)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Normal (RA ohne spinale Beteiligung)</strong></td>
+                            <td>Standard</td>
+                            <td><strong>15-20°</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Implantatwahl</h3>
+                <ul>
+                    <li><strong>Dual Mobility:</strong> Stark empfohlen bei AS mit spinopelviner Steifigkeit (ΔSS < 10°)</li>
+                    <li><strong>Constraint-Liner:</strong> Bei Revisionssituationen nach Dislokation</li>
+                    <li><strong>Großköpfe (≥36mm):</strong> Alternative zu DM bei jüngeren Patienten, aber erhöhtes Abriebrisiko</li>
+                    <li><strong>Zementfreie Fixation:</strong> Bevorzugt bei jüngeren AS-Patienten mit guter Knochenqualität</li>
+                    <li><strong>Zementierte Fixation:</strong> Bei Osteoporose, insbesondere nach Langzeit-Steroidtherapie (RA)</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Dual Mobility bei AS</h4>
+                        <p>Der Einsatz von Dual-Mobility-Pfannen bei AS-Patienten mit spinopelviner Steifigkeit wird von mehreren Autoren als <strong>Standardempfehlung</strong> angesehen. Die erhöhte Bewegungstoleranz kann die eingeschränkte spinopelvine Mobilität teilweise kompensieren.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="8-key-messages">
-                <h2>8. Key Messages</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
-            </section>
+            <section id="8-empfehlungen">
+                <h2>8. ✅ Klinische Empfehlungen</h2>
+                
+                <h3>Algorithmus nach Krankheitsbild</h3>
 
-            <section id="tipps-und-tricks-aus-der-praxis">
-                <h2>Tipps und Tricks aus der Praxis</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+                <h4>Rheumatoide Arthritis</h4>
+                <ol>
+                    <li>Präoperative HWS-Evaluation bei > 5 Jahren Krankheitsdauer</li>
+                    <li>Spinopelvine Steh-/Sitz-Analyse bei Verdacht auf LWS-Beteiligung</li>
+                    <li>Krankheitsaktivität vor OP optimieren (Remission anstreben)</li>
+                    <li>Standardpositionierung bei erhaltener spinopelviner Mobilität</li>
+                    <li>Erhöhtes Infektionsbewusstsein – rigorose Asepsis</li>
+                </ol>
+
+                <h4>Spondylitis ankylosans</h4>
+                <ol>
+                    <li><strong>Obligate spinopelvine Analyse:</strong> Steh-/Sitz-Aufnahmen</li>
+                    <li><strong>ΔSS-Bestimmung:</strong> Bei < 10° = spinopelvine Steifigkeit</li>
+                    <li><strong>Stuck Sitting identifizieren:</strong> SS < 30° im Stehen UND Sitzen</li>
+                    <li><strong>Anteversion reduzieren:</strong> 15-18° bei Stuck Sitting</li>
+                    <li><strong>Dual Mobility erwägen:</strong> Routinemäßig bei spinopelviner Steifigkeit</li>
+                    <li><strong>HO-Prophylaxe:</strong> Indomethacin oder Bestrahlung perioperativ</li>
+                </ol>
+
+                <h4>Psoriasis-Arthritis</h4>
+                <ol>
+                    <li>Axiale Beteiligung evaluieren (Bildgebung, Klinik)</li>
+                    <li>Bei axialem Befall: Vorgehen wie bei AS</li>
+                    <li>Bei rein peripherem Befall: Vorgehen wie bei primärer Koxarthrose</li>
+                    <li>Dermatologische Abstimmung vor OP</li>
+                </ol>
+
+                <h3>Zusammenfassung der Kernpunkte</h3>
+
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Take-Home Messages</h4>
+                        <ul>
+                            <li><strong>AS:</strong> Spinopelvine Steifigkeit ist der Hauptrisikofaktor für Dislokation → Steh-/Sitz-Aufnahmen obligat, DM erwägen</li>
+                            <li><strong>RA:</strong> HWS-Instabilität präoperativ ausschließen → Funktions-Röntgen, anästhesiologische Planung</li>
+                            <li><strong>Alle rheumatischen Erkrankungen:</strong> Krankheitsaktivität präoperativ optimieren → niedriger SDAI = niedrigeres Komplikationsrisiko</li>
+                            <li><strong>Infektionsrisiko:</strong> Bei allen inflammatorischen Arthritiden erhöht → rigorose Asepsis, Medikamentenmanagement</li>
+                            <li><strong>Junges Alter:</strong> Insbesondere bei AS → Langzeitresultate und Revisionsstrategien bedenken</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
 
             <section id="9-literatur">
-                <h2>9. Literatur</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+                <h2>9. 📚 Literatur</h2>
+                
+                <ol>
+                    <li>Blizzard DJ, Penrose CT, Sheets CZ, et al. Ankylosing Spondylitis Increases Perioperative and Postoperative Complications After Total Hip Arthroplasty. <em>J Arthroplasty</em> 2017;32(8):2474-2479.</li>
+                    <li>Chung BC, Stefl M, Kang HP, et al. Increased dislocation rates following total hip arthroplasty in patients with ankylosing spondylitis. <em>Hip Int</em> 2023;33(1):97-103.</li>
+                    <li>Grammatopoulos G, Pandit HG, Glyn-Jones S, et al. Spinopelvic challenges in primary total hip arthroplasty. <em>EFORT Open Rev</em> 2023;8(5):310-322.</li>
+                    <li>Gillick JL, Wainwright J, Das K. Rheumatoid Arthritis and the Cervical Spine: A Review on the Role of Surgery. <em>Int J Rheumatol</em> 2015;2015:252456.</li>
+                    <li>Zhang Y, Chu S, Liu K, et al. Outcomes in patients with rheumatoid versus osteoarthritis for total hip arthroplasty: A meta-analysis and systematic review. <em>Semin Arthritis Rheum</em> 2022;56:152061.</li>
+                    <li>Ravi B, Croxford R, Hollands S, et al. Increased risk of complications following total joint arthroplasty in patients with rheumatoid arthritis. <em>Arthritis Rheumatol</em> 2014;66(2):254-263.</li>
+                    <li>Chen W, Zhang L, Ma X. Association between disease activity of rheumatoid arthritis and risk of complications following total hip arthroplasty. <em>J Orthop Surg Res</em> 2024;19:451.</li>
+                    <li>Wasserman BR, Moskovich R, Razi AE. Rheumatoid arthritis of the cervical spine – clinical considerations. <em>Bull NYU Hosp Jt Dis</em> 2011;69:136-148.</li>
+                    <li>Lian Q, Lian Y, Li K, et al. Complications of primary total hip arthroplasty among patients with rheumatoid arthritis, psoriatic arthritis, ankylosing spondylitis, and primary osteoarthritis. <em>BMC Musculoskelet Disord</em> 2022;23(1):924.</li>
+                    <li>Attenello JD, Harpstrite JK. Implications of Spinopelvic Mobility on Total Hip Arthroplasty: Review of Current Literature. <em>Hawaii J Health Soc Welf</em> 2019;78(11 Suppl 2):31-40.</li>
+                </ol>
             </section>
 
         </article>
     </div>
-
-    
 
     <script>
         const tocLinks = document.querySelectorAll('.toc-link');
