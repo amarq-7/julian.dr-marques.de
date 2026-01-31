@@ -77,6 +77,8 @@
         .alert-info h4 { color: var(--primary-700); }
         .alert-success { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border-left: 4px solid var(--success); }
         .alert-success h4 { color: #065f46; }
+        .alert-danger { background: linear-gradient(135deg, #fee2e2, #fecaca); border-left: 4px solid var(--danger); }
+        .alert-danger h4 { color: #991b1b; }
 
         .site-footer { background: var(--gray-900); color: white; padding: 1.5rem 2rem; text-align: center; }
         .footer-brand { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem; }
@@ -101,7 +103,7 @@
         <div class="breadcrumb-inner">
             <a href="index.html">Home</a><span class="breadcrumb-separator">›</span>
             <a href="huefte.html">Hüfte</a><span class="breadcrumb-separator">›</span>
-            <span>Das CORI Surgical System in der Hüftendoproth...</span>
+            <span>Das CORI Surgical System</span>
         </div>
     </nav>
 
@@ -109,7 +111,7 @@
         <div class="hero-content">
             <span class="article-category">🤖 Robotik & Navigation</span>
             <h1>Das CORI Surgical System in der Hüftendoprothetik</h1>
-            <p class="article-subtitle">Übersichtsartikel zum Thema Robotik</p>
+            <p class="article-subtitle">Bildfreie Navigation mit RI.HIP für spinopelvin-optimierte Pfannenpositionierung</p>
         </div>
     </section>
 
@@ -118,69 +120,532 @@
             <div class="toc-card">
                 <div class="toc-header"><h3>Inhalt</h3></div>
                 <ul class="toc-list">
-                    <li><a href="#1-einleitung-und-grundlagen" class="toc-link active">1. Einleitung und Grundlagen</a></li>
-                    <li><a href="#2-systemkomponenten-und-setup" class="toc-link">2. Systemkomponenten und Setup</a></li>
-                    <li><a href="#3-praeoperative-planung" class="toc-link">3. Präoperative Planung</a></li>
-                    <li><a href="#4-operativer-workflow-schritt-fuer-schritt" class="toc-link">4. Operativer Workflow - Schritt fü...</a></li>
-                    <li><a href="#5-klinische-anwendertipps-von-experten" class="toc-link">5. Klinische Anwendertipps von Expe...</a></li>
-                    <li><a href="#6-klinische-outcomes-und-evidenz" class="toc-link">6. Klinische Outcomes und Evidenz</a></li>
-                    <li><a href="#7-limitationen-und-kontraindikationen" class="toc-link">7. Limitationen und Kontraindikatio...</a></li>
-                    <li><a href="#8-zukunftsperspektiven-und-weiterentwicklung" class="toc-link">8. Zukunftsperspektiven und Weitere...</a></li>
-                    <li><a href="#9-fazit-und-empfehlungen" class="toc-link">9. Fazit und Empfehlungen</a></li>
+                    <li><a href="#1-einleitung" class="toc-link active">1. 🧭 Einleitung und Grundlagen</a></li>
+                    <li><a href="#2-systemkomponenten" class="toc-link">2. 🔧 Systemkomponenten</a></li>
+                    <li><a href="#3-praeoperativ" class="toc-link">3. 📋 Präoperative Planung</a></li>
+                    <li><a href="#4-workflow" class="toc-link">4. 🔄 Operativer Workflow</a></li>
+                    <li><a href="#5-spinopelvin" class="toc-link">5. 🎯 Spinopelvine Integration</a></li>
+                    <li><a href="#6-evidenz" class="toc-link">6. 📊 Klinische Evidenz</a></li>
+                    <li><a href="#7-vergleich" class="toc-link">7. ⚖️ Systemvergleich</a></li>
+                    <li><a href="#8-limitationen" class="toc-link">8. ⚠️ Limitationen</a></li>
+                    <li><a href="#9-empfehlungen" class="toc-link">9. ✅ Empfehlungen</a></li>
+                    <li><a href="#10-literatur" class="toc-link">10. 📚 Literatur</a></li>
                 </ul>
             </div>
         </aside>
 
         <article class="article-content">
-            <section id="1-einleitung-und-grundlagen">
-                <h2>1. Einleitung und Grundlagen</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="1-einleitung">
+                <h2>1. 🧭 Einleitung und Grundlagen</h2>
+                
+                <p>Das <strong>CORI Surgical System</strong> von Smith+Nephew ist eine modulare Plattform für die computerassistierte Gelenkchirurgie. Mit der Erweiterung <strong>RI.HIP NAVIGATION</strong> (Real Intelligence) steht seit 2020/2022 ein bildfreies Navigationssystem für die Hüftendoprothetik zur Verfügung, das speziell auf die Herausforderungen der spinopelvinen Dynamik ausgerichtet ist.</p>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">💡</div>
+                    <div class="alert-content">
+                        <h4>Kernkonzept: Bildfreie Navigation</h4>
+                        <p>Im Gegensatz zu CT-basierten Systemen wie MAKO arbeitet RI.HIP NAVIGATION <strong>ohne präoperative Schnittbildgebung</strong>. Die Registrierung erfolgt intraoperativ durch Abtasten anatomischer Landmarken – ein Ansatz, der die präoperative Logistik vereinfacht und Strahlenexposition reduziert.</p>
+                    </div>
+                </div>
+
+                <h3>Historische Entwicklung</h3>
+                <ul>
+                    <li><strong>2020:</strong> FDA-Zulassung für CORI Surgical System (Knie)</li>
+                    <li><strong>2020:</strong> Einführung RI.HIP NAVIGATION als Standalone-Software</li>
+                    <li><strong>2022:</strong> Integration von RI.HIP NAVIGATION auf CORI-Plattform</li>
+                    <li><strong>2023:</strong> RI.HIP MODELER für präoperative spinopelvine Analyse</li>
+                    <li><strong>2024:</strong> KI-gestützte Personalized Planning Features</li>
+                </ul>
+
+                <h3>Systemphilosophie</h3>
+                <p>Das CORI-System verfolgt einen <strong>chirurgen-zentrierten Ansatz</strong>: Der Operateur behält die vollständige Kontrolle, während das System Echtzeit-Feedback zur Pfannenorientierung liefert. Im Gegensatz zu aktiven Robotersystemen erfolgt keine mechanische Führung der Instrumente – die Präzision entsteht durch visuelle Rückmeldung.</p>
             </section>
 
-            <section id="2-systemkomponenten-und-setup">
-                <h2>2. Systemkomponenten und Setup</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="2-systemkomponenten">
+                <h2>2. 🔧 Systemkomponenten und Setup</h2>
+                
+                <h3>Hardware-Komponenten</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Komponente</th>
+                            <th>Funktion</th>
+                            <th>Besonderheit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CORI Cart</strong></td>
+                            <td>Mobile Systemeinheit</td>
+                            <td>Kompaktestes Footprint im Markt</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ATRACSYS Kamera</strong></td>
+                            <td>Optisches Tracking</td>
+                            <td>458% schnellere Refresh-Rate vs. NAVIO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Becken-Array</strong></td>
+                            <td>Passive Tracker am Beckenkamm</td>
+                            <td>Perkutane Fixation möglich</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Femur-Array</strong></td>
+                            <td>Tracker am distalen Femur</td>
+                            <td>Pinless-Option verfügbar</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Navigierte Instrumente</strong></td>
+                            <td>Pointer, Impactor-Adapter</td>
+                            <td>Kompatibel mit Standard-Implantaten</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Software-Module für die Hüfte</h3>
+                <ul>
+                    <li><strong>RI.HIP NAVIGATION:</strong> Intraoperative Echtzeit-Navigation für Pfannenpositionierung</li>
+                    <li><strong>RI.HIP MODELER:</strong> Präoperative App zur spinopelvinen Analyse und Impingement-Simulation</li>
+                    <li><strong>TraumaCad® Integration:</strong> Digitales Templating mit Import in RI.HIP</li>
+                </ul>
+
+                <h3>OR-Setup</h3>
+                <p>Das System ist für <strong>Rückenlage (DAA, anterolateral)</strong> und <strong>Seitenlage (posterior)</strong> konzipiert. Der kompakte Footprint ermöglicht den Einsatz in Ambulatory Surgery Centers (ASCs).</p>
+
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Setup-Vorteil</h4>
+                        <p>Keine präoperative CT erforderlich – das System kann <strong>am OP-Tag ohne Vorlaufzeit</strong> eingesetzt werden. Die Registrierung dauert etwa 5-7 Minuten.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="3-praeoperative-planung">
-                <h2>3. Präoperative Planung</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="3-praeoperativ">
+                <h2>3. 📋 Präoperative Planung mit RI.HIP MODELER</h2>
+                
+                <p>Die <strong>RI.HIP MODELER App</strong> ermöglicht eine strukturierte präoperative Evaluation der spinopelvinen Situation und Impingement-Risiko-Analyse.</p>
+
+                <h3>Funktionen der App</h3>
+                <ul>
+                    <li><strong>Spinopelvine Klassifikation:</strong> Eingabe von ΔSS, PI-LL Mismatch zur Risikostratifizierung</li>
+                    <li><strong>Impingement-Analyse:</strong> Simulation verschiedener Pfannenpositionen in Flexion/Extension</li>
+                    <li><strong>ROM-Vorhersage:</strong> Berechnung des erwarteten Bewegungsumfangs</li>
+                    <li><strong>Zielposition-Empfehlung:</strong> Individualisierte Anteversions-/Inklinationsziele</li>
+                </ul>
+
+                <h3>Workflow der präoperativen Planung</h3>
+                <ol>
+                    <li><strong>Bildgebung:</strong> Stehende + sitzende laterale Beckenaufnahmen zur ΔSS-Bestimmung</li>
+                    <li><strong>Klassifikation:</strong> Einordnung nach Vigdorchik (1A/1B/2A/2B)</li>
+                    <li><strong>RI.HIP MODELER:</strong> Eingabe der Parameter, Impingement-Simulation</li>
+                    <li><strong>Zieldefinition:</strong> Festlegung der individuellen Pfannenorientierung</li>
+                    <li><strong>TraumaCad® Templating:</strong> Digitale Planung mit Export an RI.HIP</li>
+                </ol>
+
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h4>Wichtig: Präoperative Bildgebung</h4>
+                        <p>Obwohl das System "bildfrei" arbeitet, ist für die spinopelvine Analyse eine präoperative Steh-/Sitz-Aufnahme <strong>unbedingt empfohlen</strong> – insbesondere bei Risikopatienten (LWS-Fusion, degenerative WS-Erkrankung).</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="4-operativer-workflow-schritt-fuer-schritt">
-                <h2>4. Operativer Workflow - Schritt für Schritt</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="4-workflow">
+                <h2>4. 🔄 Operativer Workflow – Schritt für Schritt</h2>
+                
+                <h3>Phase 1: Array-Fixation und Registrierung</h3>
+                <ol>
+                    <li><strong>Becken-Array:</strong> Fixation am ipsilateralen Beckenkamm (2 Pins)</li>
+                    <li><strong>Femur-Array:</strong> Distale Femur-Fixation oder Pinless-Option</li>
+                    <li><strong>Landmarken-Registrierung:</strong>
+                        <ul>
+                            <li>Beide ASIS (Anterior Superior Iliac Spine)</li>
+                            <li>Symphyse (Mittelpunkt zwischen Tubercula pubica)</li>
+                            <li>→ Definition der Anterior Pelvic Plane (APP)</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Phase 2: Pfannen-Navigation</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Schritt</th>
+                            <th>System-Feedback</th>
+                            <th>Ziel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Acetabulum-Präparation</td>
+                            <td>—</td>
+                            <td>Standard-Technik</td>
+                        </tr>
+                        <tr>
+                            <td>Impactor mit Tracker</td>
+                            <td>Echtzeit-Anzeige Inkl./AV</td>
+                            <td>Zielposition erreichen</td>
+                        </tr>
+                        <tr>
+                            <td>Pfannen-Implantation</td>
+                            <td>Live-Visualisierung</td>
+                            <td>Finale Position validieren</td>
+                        </tr>
+                        <tr>
+                            <td>Pelvic-Tilt-Korrektur</td>
+                            <td>APP-korrigierte Ansicht</td>
+                            <td>Funktionelle Position prüfen</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Phase 3: Beinlänge und Offset</h3>
+                <p>Das System ermöglicht die <strong>digitale Messung von Beinlänge und Offset</strong> vor und nach Probeimplantation – deutlich genauer als konventionelle Techniken.</p>
+
+                <h3>Besonderheit: Dual-View-Anzeige</h3>
+                <p>RI.HIP bietet eine simultane Darstellung der Pfannenorientierung:</p>
+                <ul>
+                    <li><strong>Relative zur APP:</strong> Anatomische Referenz</li>
+                    <li><strong>Pelvic-Tilt-korrigiert:</strong> Wie auf postoperativem Röntgen erscheinend</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">💡</div>
+                    <div class="alert-content">
+                        <h4>Klinischer Vorteil</h4>
+                        <p>Die Dual-View-Anzeige berücksichtigt die <strong>individuelle Beckenkippung</strong> und ermöglicht eine Vorhersage der postoperativen Röntgenerscheinung – essentiell bei Patienten mit abnormem Pelvic Tilt.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="5-klinische-anwendertipps-von-experten">
-                <h2>5. Klinische Anwendertipps von Experten</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="5-spinopelvin">
+                <h2>5. 🎯 Spinopelvine Integration: Der Kernvorteil</h2>
+                
+                <p>Die Integration spinopelviner Parameter unterscheidet moderne Navigationssysteme von einfachen "Safe Zone"-Ansätzen. RI.HIP adressiert dieses Thema auf mehreren Ebenen.</p>
+
+                <h3>Berücksichtigung des Pelvic Tilt</h3>
+                <p>Jeder Grad Beckenkippung verändert die funktionelle Pfannenposition:</p>
+                <ul>
+                    <li><strong>1° Pelvic Tilt</strong> = ca. <strong>0,8° Anteversionsänderung</strong></li>
+                    <li><strong>1° Pelvic Tilt</strong> = ca. <strong>0,3° Inklinationsänderung</strong></li>
+                </ul>
+
+                <p>RI.HIP misst den <strong>intraoperativen Pelvic Tilt</strong> und korrigiert die Anzeige entsprechend – entscheidend bei Patienten, die in Rückenlage einen anderen Tilt haben als im Stehen.</p>
+
+                <h3>Anpassung nach Hip-Spine-Klassifikation</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Klassifikation</th>
+                            <th>Ziel-Anteversion</th>
+                            <th>RI.HIP-Strategie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1A</strong> (Normal/Normal)</td>
+                            <td>15-20°</td>
+                            <td>Standard-Zielwerte</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1B</strong> "Stuck Standing"</td>
+                            <td>20-25°</td>
+                            <td>Erhöhte AV, Tilt-Korrektur beachten</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2A</strong> (Deformität/Normal)</td>
+                            <td>Individuell</td>
+                            <td>PI-LL-Korrektur berücksichtigen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2B</strong> "Stuck Sitting"</td>
+                            <td>15-20°</td>
+                            <td>Reduzierte AV, DM erwägen</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Impingement-freie Zone</h3>
+                <p>Der RI.HIP MODELER berechnet für jeden Patienten die <strong>individualisierte impingement-freie Zone</strong> basierend auf:</p>
+                <ul>
+                    <li>Spinopelviner Mobilität (ΔSS)</li>
+                    <li>Schaftanteversion (kombinierte Anteversion)</li>
+                    <li>Erwarteter ROM in Alltagsaktivitäten</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Evidenz: Individualisierung reduziert Impingement</h4>
+                        <p>Studien zeigen, dass individualisierte Pfannenpositionierung basierend auf spinopelviner Analyse das <strong>Impingement-Risiko auf 9%</strong> reduziert – verglichen mit 18-61% bei vordefinierten Zielpositionen (Vigdorchik et al. 2023).</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="6-klinische-outcomes-und-evidenz">
-                <h2>6. Klinische Outcomes und Evidenz</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="6-evidenz">
+                <h2>6. 📊 Klinische Evidenz und Outcomes</h2>
+                
+                <h3>NJR-Registeranalyse (Davis et al. 2021)</h3>
+                <p>Die bislang größte Studie zur computerassistierten THA mit Smith+Nephew-Implantaten basiert auf Daten des National Joint Registry (England, Wales, Nordirland):</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Computer-navigiert</th>
+                            <th>Konventionell</th>
+                            <th>p-Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Revisionsrate 10 Jahre</strong></td>
+                            <td><strong>1,06%</strong></td>
+                            <td>3,88%</td>
+                            <td>0,005</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relatives Revisionsrisiko</strong></td>
+                            <td colspan="2"><strong>55% Reduktion</strong></td>
+                            <td>0,038</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Patientenzufriedenheit</strong></td>
+                            <td>Signifikant höher</td>
+                            <td>Referenz</td>
+                            <td>0,003</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Genauigkeit bildfreier Navigation</h3>
+                <p>Eine große Single-Surgeon-Studie (367 navigierte HTEP mit PiGalileo/Smith+Nephew) zeigte:</p>
+                <ul>
+                    <li><strong>Outlier-Rate Inklination:</strong> 1,9% (>10° Abweichung)</li>
+                    <li><strong>Outlier-Rate Anteversion:</strong> 1,63% (>10° Abweichung)</li>
+                    <li><strong>Mittlere Abweichung:</strong> Inklination 2,5° ± 3,1° / Anteversion 3,4° ± 5,3°</li>
+                </ul>
+
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h4>Einordnung der Genauigkeit</h4>
+                        <p>Die Genauigkeit bildfreier Systeme ist <strong>etwas geringer als CT-basierte Navigation</strong>, liegt aber im klinisch akzeptablen Bereich. Der Hauptvorteil liegt in der <strong>Reduktion von Ausreißern</strong> und der Berücksichtigung des individuellen Pelvic Tilt.</p>
+                    </div>
+                </div>
+
+                <h3>Lernkurve</h3>
+                <p>Studien zur Smith+Nephew-Navigation zeigen eine Lernkurve von etwa <strong>20-30 Fällen</strong> bis zur vollen Systemkompetenz, mit stabiler Genauigkeit danach.</p>
             </section>
 
-            <section id="7-limitationen-und-kontraindikationen">
-                <h2>7. Limitationen und Kontraindikationen</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="7-vergleich">
+                <h2>7. ⚖️ Systemvergleich: CORI vs. Andere Plattformen</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Merkmal</th>
+                            <th>CORI/RI.HIP</th>
+                            <th>MAKO (Stryker)</th>
+                            <th>ROSA Hip (Zimmer)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bildgebung</strong></td>
+                            <td>Bildfrei</td>
+                            <td>CT-basiert</td>
+                            <td>Fluoroskopie-basiert</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Robotik-Typ</strong></td>
+                            <td>Navigation (passiv)</td>
+                            <td>Haptisch (semi-aktiv)</td>
+                            <td>Navigation (passiv)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pfannenfräsung</strong></td>
+                            <td>Manuell</td>
+                            <td>Roboter-geführt</td>
+                            <td>Manuell</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Präop. Aufwand</strong></td>
+                            <td>Minimal</td>
+                            <td>CT erforderlich</td>
+                            <td>Minimal</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pelvic-Tilt-Korrektur</strong></td>
+                            <td>Ja (Dual-View)</td>
+                            <td>Ja (CT-Planung)</td>
+                            <td>Ja</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spinopelvine App</strong></td>
+                            <td>RI.HIP MODELER</td>
+                            <td>Hip-Spine-Modul</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ASC-Eignung</strong></td>
+                            <td>Sehr gut</td>
+                            <td>Eingeschränkt</td>
+                            <td>Gut</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">💡</div>
+                    <div class="alert-content">
+                        <h4>Positionierung im Markt</h4>
+                        <p>CORI/RI.HIP positioniert sich als <strong>kosteneffiziente, workflow-optimierte Lösung</strong> für Kliniken und ASCs, die Navigationstechnologie ohne den Overhead CT-basierter Systeme einsetzen möchten. Die Plattform ist besonders attraktiv für Operateure, die bereits das CORI-System für Knie-Eingriffe nutzen.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="8-zukunftsperspektiven-und-weiterentwicklung">
-                <h2>8. Zukunftsperspektiven und Weiterentwicklung</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="8-limitationen">
+                <h2>8. ⚠️ Limitationen und Kontraindikationen</h2>
+                
+                <h3>Systembedingte Limitationen</h3>
+                <ul>
+                    <li><strong>Keine robotische Pfannenfräsung:</strong> Präzision der Kavität hängt vom Operateur ab</li>
+                    <li><strong>Registrierungsabhängigkeit:</strong> Genauigkeit abhängig von korrekter Landmarken-Identifikation</li>
+                    <li><strong>APP-basierte Fehlerquelle:</strong> Bei Adipositas oder Deformitäten kann die APP-Registrierung erschwert sein</li>
+                    <li><strong>Keine Schaft-Navigation:</strong> Femurkomponente wird konventionell implantiert</li>
+                </ul>
+
+                <h3>Patientenspezifische Limitationen</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Situation</th>
+                            <th>Herausforderung</th>
+                            <th>Empfehlung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Schwere Adipositas</td>
+                            <td>ASIS/Symphyse schwer palpabel</td>
+                            <td>Alternative Registrierung erwägen</td>
+                        </tr>
+                        <tr>
+                            <td>Beckendeformität</td>
+                            <td>APP nicht definierbar</td>
+                            <td>CT-basiertes System bevorzugen</td>
+                        </tr>
+                        <tr>
+                            <td>Ankylosierende Spondylitis</td>
+                            <td>Fixierte Kyphose, kein Pelvic Tilt</td>
+                            <td>Erhöhte AV planen, DM erwägen</td>
+                        </tr>
+                        <tr>
+                            <td>Revision mit Defekten</td>
+                            <td>Registrierung möglicherweise unzuverlässig</td>
+                            <td>CT-basiertes System erwägen</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Kontraindikationen</h3>
+                <ul>
+                    <li>Nicht identifizierbare anatomische Landmarken (ASIS, Symphyse)</li>
+                    <li>Schwere Beckeninstabilität oder -frakturen</li>
+                    <li>Infizierte Hüfte (relative Kontraindikation – Array-Platzierung)</li>
+                </ul>
             </section>
 
-            <section id="9-fazit-und-empfehlungen">
-                <h2>9. Fazit und Empfehlungen</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="9-empfehlungen">
+                <h2>9. ✅ Klinische Empfehlungen</h2>
+                
+                <h3>Wann ist CORI/RI.HIP besonders geeignet?</h3>
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Ideale Indikationen</h4>
+                        <ul>
+                            <li>Primäre HTEP bei Patienten mit <strong>normalem bis moderatem spinopelvinem Risiko</strong></li>
+                            <li>Ambulante Settings (ASCs) mit Bedarf nach <strong>kompakter, effizienter Technologie</strong></li>
+                            <li>Kliniken, die bereits CORI für Knie nutzen (<strong>Plattform-Synergien</strong>)</li>
+                            <li>Anteriorer/anterolateraler Zugang in Rückenlage</li>
+                            <li>Operateure, die <strong>Echtzeit-Feedback ohne robotische Kontrolle</strong> bevorzugen</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Wann sollte ein CT-basiertes System erwogen werden?</h3>
+                <ul>
+                    <li>Komplexe Dysplasie mit erheblicher Acetabulum-Deformität</li>
+                    <li>Revision mit großen Knochendefekten</li>
+                    <li>Patienten mit schwer identifizierbaren Landmarken</li>
+                    <li>Wunsch nach robotischer Pfannenfräsung</li>
+                </ul>
+
+                <h3>Workflow-Empfehlungen</h3>
+                <ol>
+                    <li><strong>Präoperativ:</strong> Steh-/Sitz-Aufnahmen für ΔSS-Bestimmung bei allen Risikopatienten</li>
+                    <li><strong>RI.HIP MODELER:</strong> Impingement-Analyse bei ΔSS &lt;10° oder &gt;30°</li>
+                    <li><strong>Intraoperativ:</strong> Dual-View-Anzeige nutzen, Pelvic-Tilt-korrigierte Position dokumentieren</li>
+                    <li><strong>Beinlänge:</strong> Digitale Messung vor und nach Trial nutzen</li>
+                    <li><strong>Hochrisiko:</strong> Bei 1B/2B-Patienten Dual-Mobility erwägen – unabhängig von Navigation</li>
+                </ol>
+
+                <h3>Zusammenfassung der Kernpunkte</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspekt</th>
+                            <th>CORI/RI.HIP Empfehlung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bildgebung</td>
+                            <td>Keine CT erforderlich; Steh-/Sitz-Röntgen für spinopelvine Analyse empfohlen</td>
+                        </tr>
+                        <tr>
+                            <td>Zielwerte</td>
+                            <td>Individualisiert nach Hip-Spine-Klassifikation, nicht "Safe Zone"</td>
+                        </tr>
+                        <tr>
+                            <td>Pelvic Tilt</td>
+                            <td>Intraoperative Messung und Korrektur nutzen</td>
+                        </tr>
+                        <tr>
+                            <td>Dual-Mobility</td>
+                            <td>Bei 1B/2B unabhängig von Navigationstechnologie erwägen</td>
+                        </tr>
+                        <tr>
+                            <td>Dokumentation</td>
+                            <td>Finale Position relativ zu APP UND Tilt-korrigiert dokumentieren</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="10-literatur">
+                <h2>10. 📚 Literatur</h2>
+                
+                <ol>
+                    <li>Davis ET, McKinney KD, Kamali A, Kuljaca S, Pagkalos J. Computer guided total hip arthroplasty is associated with a reduced risk of revision and increased patient satisfaction. <em>World Arthroplasty Congress</em> 2021 (Poster).</li>
+                    <li>Innmann MM, Streit MR, Kolb J, et al. Image-Less THA Cup Navigation in Clinical Routine Setup: Individual Adjustments, Accuracy, Precision, and Robustness. <em>Medicina (Kaunas)</em> 2022;58(6):832.</li>
+                    <li>Vigdorchik JM, Sharma AK, Elbuluk AM, et al. Does Individualization of Cup Position Affect Prosthetic or Bone Impingement Following Total Hip Arthroplasty? <em>J Arthroplasty</em> 2023;38(7):1324-1330.</li>
+                    <li>Babisch JW, Layher F, Amiot LP. The rationale for tilt-adjusted acetabular cup navigation. <em>J Bone Joint Surg Am</em> 2008;90(2):357-365.</li>
+                    <li>Grammatopoulos G, Gofton W, Cochrane S, et al. Spinopelvic challenges in primary total hip arthroplasty. <em>EFORT Open Rev</em> 2023;8(5):298-312.</li>
+                    <li>Stefl M, Lundergan W, Heckmann N, et al. Spinopelvic mobility and acetabular component position for total hip arthroplasty. <em>Bone Joint J</em> 2017;99-B(1 Supple A):37-45.</li>
+                    <li>Naito Y, Hasegawa M, Tone S, et al. The accuracy of acetabular cup placement in primary total hip arthroplasty using an image-free navigation system. <em>BMC Musculoskelet Disord</em> 2021;22(1):1035.</li>
+                    <li>Sharma AK, Vigdorchik JM. Hip-Spine Relationship: A Review. <em>Arthroplasty</em> 2022;4(1):21.</li>
+                    <li>Smith+Nephew. RI.HIP NAVIGATION Surgical Technique – Supine Position. <em>Surgical Technique Guide</em> 2022.</li>
+                    <li>Meermans G, Van Doorn WJ, Witjes S. Cup placement in primary total hip arthroplasty: how to get it right without navigation or robotics. <em>EFORT Open Rev</em> 2022;7(6):421-431.</li>
+                </ol>
             </section>
 
         </article>
     </div>
-
-    
 
     <script>
         const tocLinks = document.querySelectorAll('.toc-link');
