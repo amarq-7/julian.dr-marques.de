@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LWS-Fusion und Hüftendoprothetik - Joint Alignment Compendium</title>
+    <title>LWS-Fusion und Spinopelvines Alignment - Joint Alignment Compendium</title>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -77,6 +77,8 @@
         .alert-info h4 { color: var(--primary-700); }
         .alert-success { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border-left: 4px solid var(--success); }
         .alert-success h4 { color: #065f46; }
+        .alert-danger { background: linear-gradient(135deg, #fee2e2, #fecaca); border-left: 4px solid var(--danger); }
+        .alert-danger h4 { color: #991b1b; }
 
         .site-footer { background: var(--gray-900); color: white; padding: 1.5rem 2rem; text-align: center; }
         .footer-brand { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem; }
@@ -101,15 +103,15 @@
         <div class="breadcrumb-inner">
             <a href="index.html">Home</a><span class="breadcrumb-separator">›</span>
             <a href="huefte.html">Hüfte</a><span class="breadcrumb-separator">›</span>
-            <span>LWS-Fusion und Hüftendoprothetik</span>
+            <span>LWS-Fusion und Spinopelvines Alignment</span>
         </div>
     </nav>
 
     <section class="article-hero">
         <div class="hero-content">
-            <span class="article-category">⚡ Spezialfälle</span>
-            <h1>LWS-Fusion und Hüftendoprothetik</h1>
-            <p class="article-subtitle">Übersichtsartikel zum Thema Spezialfälle</p>
+            <span class="article-category">🦴 Hip-Spine Syndrom</span>
+            <h1>LWS-Fusion und Spinopelvines Alignment</h1>
+            <p class="article-subtitle">Implikationen für die Hüftendoprothetik: Mechanismen, Risikostratifikation und Strategien zur Luxationsprophylaxe</p>
         </div>
     </section>
 
@@ -118,90 +120,401 @@
             <div class="toc-card">
                 <div class="toc-header"><h3>Inhalt</h3></div>
                 <ul class="toc-list">
-                    <li><a href="#1-einleitung-warum-dieses-thema-jeden-hueftchirurg" class="toc-link active">1. Einleitung: Warum dieses Thema j...</a></li>
-                    <li><a href="#2-epidemiologie-und-klinische-relevanz" class="toc-link">2. Epidemiologie und klinische Rele...</a></li>
-                    <li><a href="#3-spinopelvine-biomechanik-die-theorie-verstehen" class="toc-link">3. Spinopelvine Biomechanik – Die T...</a></li>
-                    <li><a href="#4-klassifikationssysteme-von-stefl-bis-bordeaux" class="toc-link">4. Klassifikationssysteme – Von Ste...</a></li>
-                    <li><a href="#5-diagnostik-hip-spine-syndrom-erkennen-und-differ" class="toc-link">5. Diagnostik: Hip-Spine-Syndrom er...</a></li>
-                    <li><a href="#6-die-sequenzierungsfrage-huefte-oder-wirbelsaeule" class="toc-link">6. Die Sequenzierungsfrage: Hüfte o...</a></li>
-                    <li><a href="#7-pfannenpositionierung-bei-fusionierter-lws" class="toc-link">7. Pfannenpositionierung bei fusion...</a></li>
-                    <li><a href="#8-implantatwahl-dual-mobility-und-andere-strategie" class="toc-link">8. Implantatwahl: Dual Mobility und...</a></li>
-                    <li><a href="#9-robotik-und-navigation-hilfsmittel-fuer-komplexe" class="toc-link">9. Robotik und Navigation – Hilfsmi...</a></li>
-                    <li><a href="#10-spaetluxation-und-spinopelvines-imbalance" class="toc-link">10. Spätluxation und spinopelvines ...</a></li>
+                    <li><a href="#1-einleitung" class="toc-link active">1. 🧭 Einleitung</a></li>
+                    <li><a href="#2-pathomechanismus" class="toc-link">2. ⚙️ Pathomechanismus</a></li>
+                    <li><a href="#3-klassifikation" class="toc-link">3. 📊 Hip-Spine Klassifikation</a></li>
+                    <li><a href="#4-luxationsrisiko" class="toc-link">4. ⚠️ Luxationsrisiko</a></li>
+                    <li><a href="#5-zeitpunkt" class="toc-link">5. 🔄 Sequenz: THA vs. Fusion</a></li>
+                    <li><a href="#6-pfannenposition" class="toc-link">6. 📐 Pfannenpositionierung</a></li>
+                    <li><a href="#7-dual-mobility" class="toc-link">7. 🔑 Dual-Mobility-Pfannen</a></li>
+                    <li><a href="#8-evaluation" class="toc-link">8. 🔍 Präoperative Evaluation</a></li>
+                    <li><a href="#9-literatur" class="toc-link">9. 📚 Literatur</a></li>
                 </ul>
             </div>
         </aside>
 
         <article class="article-content">
-            <section id="1-einleitung-warum-dieses-thema-jeden-hueftchirurg">
-                <h2>1. Einleitung: Warum dieses Thema jeden Hüftchirurgen betrifft</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="1-einleitung">
+                <h2>1. 🧭 Einleitung</h2>
+                
+                <p>Patienten mit lumbaler Wirbelsäulenfusion (LWS-Fusion) vor Hüft-TEP haben ein <strong>signifikant erhöhtes Luxationsrisiko (2- bis 3,5-fach)</strong>. Die Fusion eliminiert die physiologische Beckenmobilität und verändert dadurch die funktionelle Pfannenorientierung.</p>
+
+                <div class="alert alert-danger">
+                    <div class="alert-icon">🚨</div>
+                    <div class="alert-content">
+                        <h4>Klinische Relevanz</h4>
+                        <p>Bei Patienten mit LWS-Fusion ist die Standard-Pfannenpositionierung nach Lewinnek oft unzureichend. Eine individualisierte Planung unter Berücksichtigung der spinopelvinen Dynamik ist essenziell.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="2-epidemiologie-und-klinische-relevanz">
-                <h2>2. Epidemiologie und klinische Relevanz</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="2-pathomechanismus">
+                <h2>2. ⚙️ Pathomechanismus</h2>
+                
+                <h3>Normale Spinopelvine Dynamik</h3>
+                <p>Bei intakter LWS kippt das Becken beim Übergang vom Stehen zum Sitzen um ca. <strong>20° nach posterior (Retroversion)</strong>. Diese Beckenkippung öffnet die Pfanne nach posterior und ermöglicht impingementfreie Hüftflexion.</p>
+
+                <h3>Auswirkung der LWS-Fusion</h3>
+
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h4>Kernproblem</h4>
+                        <p>Die LWS-Fusion <strong>eliminiert die Fähigkeit des Beckens zur kompensatorischen Retroversion</strong> beim Sitzen. Die Pfanne bleibt in einer relativ fixen Position – mit reduzierter funktioneller Anteversion im Sitzen → erhöhtes Risiko für <strong>anteriores Impingement</strong> und <strong>posteriore Luxation</strong>.</p>
+                    </div>
+                </div>
+
+                <h3>EOS-Studie: Stehend vs. Sitzend bei THA-Patienten</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Ohne Fusion</th>
+                            <th>Mit Fusion</th>
+                            <th>p-Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ΔSS Stehen→Sitzen</td>
+                            <td>-18,4°</td>
+                            <td><strong>-7,9°</strong></td>
+                            <td>0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>ΔPfanneninklination</td>
+                            <td>10,2°</td>
+                            <td><strong>4,9°</strong></td>
+                            <td>0.0001</td>
+                        </tr>
+                        <tr>
+                            <td>ΔPfannenanteversion</td>
+                            <td>12,1°</td>
+                            <td><strong>7,1°</strong></td>
+                            <td>0.0001</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Einflussfaktoren</h3>
+                <ul>
+                    <li><strong>Fusionslänge:</strong> Pro zusätzlichem Fusionssegment sinkt ΔSS um 1,6°, ΔInklination um 0,8°, ΔAnteversion um 0,9°</li>
+                    <li><strong>L5-S1-Einschluss:</strong> Größter Verlust an Beckenmobilität (lumbosacraler Übergang generiert meiste sagittale Bewegung)</li>
+                    <li><strong>Spinopelvine Fixierung:</strong> &gt;3,5-fach erhöhtes Luxationsrisiko</li>
+                </ul>
             </section>
 
-            <section id="3-spinopelvine-biomechanik-die-theorie-verstehen">
-                <h2>3. Spinopelvine Biomechanik – Die Theorie verstehen</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="3-klassifikation">
+                <h2>3. 📊 Hip-Spine Klassifikation</h2>
+                
+                <p>Die <strong>Vigdorchik Hip-Spine Klassifikation</strong> kategorisiert Patienten nach zwei Kriterien:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kriterium 1: Spinale Deformität</th>
+                            <th>Kriterium 2: Spinale Steifigkeit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PI-LL Mismatch &gt;10° = Deformität</td>
+                            <td>ΔSS &lt;10° Stehen→Sitzen = <strong>Steif</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Flatback (posteriore Beckenkippung)</td>
+                            <td>ΔSS 10-30° = <strong>Normal</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Hyperlordose (anteriore Beckenkippung)</td>
+                            <td>ΔSS &gt;30° = <strong>Hypermobil</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>4 Kategorien</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kategorie</th>
+                            <th>Deformität</th>
+                            <th>Steifigkeit</th>
+                            <th>Risikoprofil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1A</strong></td>
+                            <td>Normal</td>
+                            <td>Normal</td>
+                            <td>Niedrig</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1B</strong></td>
+                            <td>Normal</td>
+                            <td>Steif</td>
+                            <td>Erhöht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2A</strong></td>
+                            <td>Deformität</td>
+                            <td>Normal</td>
+                            <td>Erhöht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2B</strong></td>
+                            <td>Deformität</td>
+                            <td>Steif</td>
+                            <td><strong>Hoch</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
 
-            <section id="4-klassifikationssysteme-von-stefl-bis-bordeaux">
-                <h2>4. Klassifikationssysteme – Von Stefl bis Bordeaux</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="4-luxationsrisiko">
+                <h2>4. ⚠️ Luxationsrisiko nach Fusionsniveau</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fusionsausmaß</th>
+                            <th>Luxationsrate</th>
+                            <th>Relatives Risiko</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ohne Fusion (Kontrolle)</td>
+                            <td>1,7%</td>
+                            <td>1,0</td>
+                        </tr>
+                        <tr>
+                            <td>1-2 Segmente lumbal</td>
+                            <td>~3%</td>
+                            <td>~1,8</td>
+                        </tr>
+                        <tr>
+                            <td>3+ Segmente lumbal</td>
+                            <td>~4%</td>
+                            <td>~2,4</td>
+                        </tr>
+                        <tr>
+                            <td>Mit Sakrum-Einschluss</td>
+                            <td>5,2%</td>
+                            <td><strong>~3,0</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Mit spinopelviner Fixation</td>
+                            <td>&gt;7%</td>
+                            <td><strong>&gt;3,5</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-danger">
+                    <div class="alert-icon">🚨</div>
+                    <div class="alert-content">
+                        <h4>Höchstes Risiko</h4>
+                        <p>Patienten mit <strong>spinopelviner Fixation</strong> (Iliosakralschrauben) haben das höchste Luxationsrisiko (&gt;7%). Hier ist eine aggressive Luxationsprophylaxe mit Dual-Mobility-Pfannen und angepasster Positionierung zwingend erforderlich.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="5-diagnostik-hip-spine-syndrom-erkennen-und-differ">
-                <h2>5. Diagnostik: Hip-Spine-Syndrom erkennen und differenzieren</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="5-zeitpunkt">
+                <h2>5. 🔄 Sequenz: THA vor oder nach LWS-Fusion?</h2>
+                
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Empfehlung</h4>
+                        <p>Aktuelle Evidenz empfiehlt: <strong>THA zuerst, LWS-Fusion später.</strong></p>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sequenz</th>
+                            <th>Konsequenz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>THA nach LWS-Fusion</strong></td>
+                            <td>Signifikant erhöhtes Luxations- und Revisionsrisiko (Prothese wird in ungünstige spinopelvine Umgebung implantiert)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LWS-Fusion nach THA</strong></td>
+                            <td>Stabile, eingeheilte TEP kann Veränderungen der spinopelvinen Mobilität besser kompensieren</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h4>Achtung</h4>
+                        <p>Auch bei stabiler THA kann eine nachfolgende LWS-Fusion zu <strong>späten Luxationen</strong> führen. Fallberichte zeigen Luxationen nach &gt;10 Jahren stabiler TEP nach mehrsegmentaler LWS-Fusion.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="6-die-sequenzierungsfrage-huefte-oder-wirbelsaeule">
-                <h2>6. Die Sequenzierungsfrage: Hüfte oder Wirbelsäule zuerst?</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="6-pfannenposition">
+                <h2>6. 📐 Pfannenpositionierung</h2>
+                
+                <h3>Steife Wirbelsäule (ΔSS &lt;10°)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Empfehlung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pfanneninklination</td>
+                            <td><strong>45°</strong> (erhöht)</td>
+                        </tr>
+                        <tr>
+                            <td>Pfannenanteversion</td>
+                            <td><strong>20-25°</strong> (erhöht)</td>
+                        </tr>
+                        <tr>
+                            <td>Kombinierte Anteversion</td>
+                            <td><strong>35-50°</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Rationale:</strong> Kompensation der fehlenden posterioren Beckenkippung im Sitzen</p>
+
+                <h3>Hypermobile Wirbelsäule (ΔSS &gt;30°)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Empfehlung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pfanneninklination</td>
+                            <td><strong>35-40°</strong> (reduziert)</td>
+                        </tr>
+                        <tr>
+                            <td>Pfannenanteversion</td>
+                            <td><strong>15-20°</strong> (reduziert)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong>Rationale:</strong> Vermeidung übermäßiger funktioneller Anteversion im Sitzen</p>
             </section>
 
-            <section id="7-pfannenpositionierung-bei-fusionierter-lws">
-                <h2>7. Pfannenpositionierung bei fusionierter LWS</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="7-dual-mobility">
+                <h2>7. 🔑 Dual-Mobility-Pfannen</h2>
+                
+                <p>Dual-Mobility (DM) Pfannen sind bei Patienten mit LWS-Fusion besonders wirksam:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Studie</th>
+                            <th>Standard-Cup</th>
+                            <th>DM-Cup</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nessler et al. (93 Pat., LSF)</td>
+                            <td>8,3%*</td>
+                            <td><strong>0%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>AJRR-Register (15.572 Pat.)</td>
+                            <td>1,68%</td>
+                            <td><strong>0,91% (p=0.005)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><em>*Literaturwert für Standard-Cups bei LSF-Patienten</em></p>
+
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Empfehlung</h4>
+                        <p>Bei Patienten mit LWS-Fusion (insbesondere mit <strong>Sakrum-Einschluss</strong> oder <strong>spinopelviner Fixierung</strong>) → <strong>Dual-Mobility-Pfanne erwägen</strong>. Angepasste Pfannenpositionierung basierend auf präoperativer Stehend/Sitzend-Bildgebung.</p>
+                    </div>
+                </div>
             </section>
 
-            <section id="8-implantatwahl-dual-mobility-und-andere-strategie">
-                <h2>8. Implantatwahl: Dual Mobility und andere Strategien</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="8-evaluation">
+                <h2>8. 🔍 Präoperative Evaluation</h2>
+                
+                <h3>Bildgebung</h3>
+                <ul>
+                    <li>Laterales Beckenröntgen im <strong>Stehen</strong> und <strong>Sitzen</strong></li>
+                </ul>
+
+                <h3>Parameter bestimmen</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Berechnung/Messung</th>
+                            <th>Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ΔSS (Stehen→Sitzen)</td>
+                            <td>SS stehend - SS sitzend</td>
+                            <td>&lt;10° steif, 10-30° normal, &gt;30° hypermobil</td>
+                        </tr>
+                        <tr>
+                            <td>PI-LL Mismatch</td>
+                            <td>PI - LL</td>
+                            <td>&gt;10° = sagittale Imbalance</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Dokumentation</h3>
+                <ul>
+                    <li>Fusionsniveau (welche Segmente?)</li>
+                    <li>Fusionslänge (Anzahl Segmente)</li>
+                    <li>L5-S1-Einschluss ja/nein</li>
+                    <li>Spinopelvine Fixation ja/nein</li>
+                </ul>
+
+                <h3>Zusammenfassung der Kernpunkte</h3>
+                <ul>
+                    <li>LWS-Fusion reduziert Beckenmobilität um ca. <strong>50%</strong> (ΔSS: 18° → 8°)</li>
+                    <li>Luxationsrisiko <strong>2- bis 3,5-fach erhöht</strong> (abhängig von Fusionsausmaß)</li>
+                    <li>L5-S1-Einschluss und spinopelvine Fixierung: <strong>Höchstes Risiko</strong></li>
+                    <li>Empfohlene Sequenz: <strong>THA vor LWS-Fusion</strong></li>
+                    <li>Steife Wirbelsäule: <strong>Mehr Anteversion und Inklination</strong></li>
+                    <li>Dual-Mobility-Pfannen <strong>reduzieren Luxationsrisiko signifikant</strong></li>
+                </ul>
             </section>
 
-            <section id="9-robotik-und-navigation-hilfsmittel-fuer-komplexe">
-                <h2>9. Robotik und Navigation – Hilfsmittel für komplexe Fälle</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
-            </section>
-
-            <section id="10-spaetluxation-und-spinopelvines-imbalance">
-                <h2>10. Spätluxation und spinopelvines Imbalance</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
-            </section>
-
-            <section id="11-interdisziplinaere-zusammenarbeit">
-                <h2>11. Interdisziplinäre Zusammenarbeit</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
-            </section>
-
-            <section id="12-klinischer-algorithmus-und-key-messages">
-                <h2>12. Klinischer Algorithmus und Key Messages</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
-            </section>
-
-            <section id="13-literaturverzeichnis">
-                <h2>13. Literaturverzeichnis</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="9-literatur">
+                <h2>9. 📚 Literatur</h2>
+                
+                <ol>
+                    <li>Buckland AJ et al. Dislocation of a primary total hip arthroplasty is more common in patients with a lumbar spinal fusion. <em>Bone Joint J</em> 2017;99-B:585-591.</li>
+                    <li>Vigdorchik JM et al. 2021 Otto Aufranc Award: A simple Hip-Spine Classification for THA. <em>Bone Joint J</em> 2021;103-B(7 Suppl B):17-24.</li>
+                    <li>Grammatopoulos G et al. What is the Impact of a Spinal Fusion on Acetabular Implant Orientation? <em>J Arthroplasty</em> 2017;32:2639-2646.</li>
+                    <li>Nessler JM et al. Use of dual mobility cups in patients with prior lumbar spine fusion. <em>Int Orthop</em> 2020;44:857-862.</li>
+                    <li>Yang DS et al. Risk of Dislocation Following THA in Patients With Prior Lumbar Fusion With Spinopelvic Fixation. <em>J Arthroplasty</em> 2023;38:700-705.</li>
+                    <li>Bernstein J et al. Spinal Fusion Is Associated With Changes in Acetabular Orientation and Reductions in Pelvic Mobility. <em>Clin Orthop Relat Res</em> 2019;477:324-330.</li>
+                    <li>An VVG et al. Prior Lumbar Spinal Fusion is Associated With an Increased Risk of Dislocation and Revision: A Meta-Analysis. <em>J Arthroplasty</em> 2018;33:297-300.</li>
+                    <li>Nessler JM et al. Dislocation Rates in Patients With LSF With/Without DM Cups: AJRR Study. <em>JAAOS</em> 2023;31:e271-e277.</li>
+                    <li>Sharma AK, Vigdorchik JM. The Hip-Spine Relationship in THA: How to Execute the Plan. <em>J Arthroplasty</em> 2021;36:2459-2467.</li>
+                    <li>Innmann MM et al. Current concepts in hip-spine relationships. <em>EFORT Open Rev</em> 2022;7:298-312.</li>
+                </ol>
             </section>
 
         </article>
     </div>
-
-    
 
     <script>
         const tocLinks = document.querySelectorAll('.toc-link');
