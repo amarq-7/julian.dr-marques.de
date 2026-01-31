@@ -77,10 +77,13 @@
         .alert-info h4 { color: var(--primary-700); }
         .alert-success { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border-left: 4px solid var(--success); }
         .alert-success h4 { color: #065f46; }
+        .alert-danger { background: linear-gradient(135deg, #fee2e2, #fecaca); border-left: 4px solid var(--danger); }
+        .alert-danger h4 { color: #991b1b; }
+
+        .expert-tip { background: linear-gradient(135deg, #faf5ff, #f3e8ff); border-left: 4px solid #8b5cf6; padding: 1.25rem 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-style: italic; }
+        .expert-tip::before { content: '💡 Expertentipp: '; font-weight: 600; font-style: normal; color: #6d28d9; }
 
         .site-footer { background: var(--gray-900); color: white; padding: 1.5rem 2rem; text-align: center; }
-        .footer-brand { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem; }
-        .footer-copyright { font-size: 0.875rem; color: var(--gray-400); }
 
         @media (max-width: 1024px) { .main-container { grid-template-columns: 1fr; } .sidebar { display: none; } .article-content { padding: 2rem; } }
         @media (max-width: 768px) { .article-hero h1 { font-size: 1.75rem; } .article-content { padding: 1.5rem; } .article-content h2 { font-size: 1.5rem; } }
@@ -101,15 +104,15 @@
         <div class="breadcrumb-inner">
             <a href="index.html">Home</a><span class="breadcrumb-separator">›</span>
             <a href="huefte.html">Hüfte</a><span class="breadcrumb-separator">›</span>
-            <span>Zugangswege und Spinopelvines Alignment in de...</span>
+            <span>Zugangswege und Spinopelvines Alignment</span>
         </div>
     </nav>
 
     <section class="article-hero">
         <div class="hero-content">
-            <span class="article-category">⚕️ Therapie</span>
+            <span class="article-category">⚕️ Operative Technik</span>
             <h1>Zugangswege und Spinopelvines Alignment in der HTEP</h1>
-            <p class="article-subtitle">Übersichtsartikel zum Thema Therapie</p>
+            <p class="article-subtitle">Klinische Betrachtung unter dem Aspekt des Spinopelvinen Alignments</p>
         </div>
     </section>
 
@@ -118,21 +121,416 @@
             <div class="toc-card">
                 <div class="toc-header"><h3>Inhalt</h3></div>
                 <ul class="toc-list">
-                    <li><a href="#inhalt" class="toc-link active">Inhalt</a></li>
+                    <li><a href="#1-einleitung" class="toc-link active">1. 🧭 Einleitung</a></li>
+                    <li><a href="#2-grundlagen" class="toc-link">2. 📐 Spinopelvine Grundlagen</a></li>
+                    <li><a href="#3-zugangswege" class="toc-link">3. 🔪 Operative Zugangswege</a></li>
+                    <li><a href="#4-technologien" class="toc-link">4. 🤖 Unterstützende Technologien</a></li>
+                    <li><a href="#5-algorithmus" class="toc-link">5. 📊 Klinischer Algorithmus</a></li>
+                    <li><a href="#6-tipps" class="toc-link">6. 💡 Praktische Tipps</a></li>
+                    <li><a href="#7-fazit" class="toc-link">7. ✅ Fazit</a></li>
+                    <li><a href="#8-literatur" class="toc-link">8. 📚 Literatur</a></li>
                 </ul>
             </div>
         </aside>
 
         <article class="article-content">
-            <section id="inhalt">
-                <h2>Inhalt</h2>
-                <p>Inhalt wird noch hinzugefügt.</p>
+            <section id="1-einleitung">
+                <h2>1. 🧭 Einleitung</h2>
+                
+                <p>Die Totalendoprothetik des Hüftgelenks (HTEP) gehört zu den erfolgreichsten orthopädischen Eingriffen mit hervorragenden Langzeitergebnissen. Dennoch bleibt die Instabilität mit <strong>Luxationsraten zwischen 0,2% und 10%</strong> eine relevante Komplikation und führende Ursache für Revisionseingriffe.</p>
+
+                <div class="alert alert-warning">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-content">
+                        <h4>Limitation der Lewinnek Safe Zone</h4>
+                        <p>Die klassische "Safe Zone" nach Lewinnek (40 ±10° Inklination, 15 ±10° Anteversion) bietet keinen absoluten Schutz vor Luxationen – <strong>bis zu 58% der luxierten Prothesen liegen innerhalb dieser Zone</strong>.</p>
+                    </div>
+                </div>
+
+                <p>Das Verständnis der spinopelvinen Mobilität hat unser Konzept der Pfannenpositionierung revolutioniert. Die Wahl des operativen Zugangswegs spielt dabei eine zentrale Rolle, da sie die intraoperative Beckenposition, die Möglichkeit zur fluoroskopischen Kontrolle und die Weichteilspannung beeinflusst.</p>
+            </section>
+
+            <section id="2-grundlagen">
+                <h2>2. 📐 Spinopelvine Grundlagen für die Zugangswahl</h2>
+                
+                <h3>Relevante Parameter</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Beschreibung</th>
+                            <th>Klinische Relevanz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pelvic Incidence (PI)</strong></td>
+                            <td>Morphologisch, unveränderlich</td>
+                            <td>Bestimmt individuelle Beckenmechanik</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lumbale Lordose (LL)</strong></td>
+                            <td>Variabel, abhängig von Degeneration</td>
+                            <td>Verändert sich mit WS-Pathologie</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PI-LL Mismatch</strong></td>
+                            <td>&gt;10° = spinopelvines Ungleichgewicht</td>
+                            <td>Sagittale Imbalance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sakraler Slope (SS)</strong></td>
+                            <td>ΔSS &lt;10° zwischen Stehen/Sitzen</td>
+                            <td>= steife Wirbelsäule</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Combined Sagittal Index</strong></td>
+                            <td>Ante-Inklination + pelvifem. Winkel</td>
+                            <td>Gesamtbeurteilung</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Hip-Spine-Klassifikation nach Vigdorchik</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Typ</th>
+                            <th>Ausrichtung</th>
+                            <th>Mobilität</th>
+                            <th>Luxationsrisiko</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1A</strong></td>
+                            <td>Normal</td>
+                            <td>Normal</td>
+                            <td>Niedrig</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1B "Stuck Standing"</strong></td>
+                            <td>Normal</td>
+                            <td>Fixierte Lordose, ΔSS &lt;10°</td>
+                            <td>Erhöht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2A</strong></td>
+                            <td>PI-LL &gt;10°</td>
+                            <td>Normal</td>
+                            <td>Erhöht</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2B "Stuck Sitting"</strong></td>
+                            <td>PI-LL &gt;10°</td>
+                            <td>Steif</td>
+                            <td><strong>Höchstes Risiko</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="3-zugangswege">
+                <h2>3. 🔪 Operative Zugangswege</h2>
+                
+                <h3>3.1 Direkter anteriorer Zugang (DAA)</h3>
+                
+                <h4>Anatomische Charakteristika</h4>
+                <ul>
+                    <li>Intermuskuläres und internervöses Intervall (Tensor fasciae latae / Sartorius)</li>
+                    <li>Smith-Petersen-Intervall</li>
+                    <li><strong>Keine Muskeln durchtrennt</strong></li>
+                    <li>Lagerung: Rückenlage, optional Extensionstisch</li>
+                </ul>
+
+                <h4>Spinopelvine Vorteile</h4>
+                <ol>
+                    <li><strong>Fluoroskopische Kontrolle:</strong> Echte a.p.-Beckenaufnahme zur präzisen Pfannenpositionierung bezogen auf APP</li>
+                    <li><strong>Reproduzierbare Beckenposition:</strong> Supine Lagerung minimiert unbeabsichtigte Beckenkippungen</li>
+                    <li><strong>Reduzierte Luxationsraten:</strong> Signifikant niedriger bei Patienten mit lumbaler Steifigkeit oder Spondylodese</li>
+                    <li><strong>Kapselerhalt:</strong> Anteriore Kapsel bleibt intakt → zusätzliche Stabilität</li>
+                </ol>
+
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Klinische Empfehlungen für DAA</h4>
+                        <ul>
+                            <li>Bevorzugter Zugang bei Z.n. lumbaler Spondylodese</li>
+                            <li>Ideal bei degenerativer WS-Erkrankung mit eingeschränkter spinopelviner Mobilität</li>
+                            <li>Besonders geeignet bei adipösen Patienten</li>
+                            <li>Ankylosierte Hüften profitieren von bildgestützter Positionierung</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="expert-tip">
+                    Bei Patienten mit Morbus Bechterew oder fixierter Kyphose ist der DAA aufgrund der fluoroskopischen Kontrolle und der supinen Position besonders vorteilhaft. Die Beckenposition ist reproduzierbarer, und die funktionelle Pfannenposition kann intraoperativ verifiziert werden.
+                </div>
+
+                <h3>3.2 Posteriorer/Posterolateraler Zugang</h3>
+                
+                <h4>Anatomische Charakteristika</h4>
+                <ul>
+                    <li>Spaltung des Gluteus maximus</li>
+                    <li>Ablösung der kurzen Außenrotatoren vom Trochanter major</li>
+                    <li>Lagerung: Seitenlage mit operiertem Bein nach oben</li>
+                </ul>
+
+                <h4>Spinopelvine Herausforderungen</h4>
+                <ol>
+                    <li><strong>Variable Beckenposition:</strong> Beeinflusst durch Skoliose, Hüftkontrakturen, Lagerungsfehler</li>
+                    <li><strong>Höhere Luxationsraten:</strong> Bis 22% bei Patienten mit Spondylodese!</li>
+                    <li><strong>Posteriore Luxationsrichtung:</strong> Kapselablösung + Außenrotatorendurchtrennung erhöht Risiko</li>
+                    <li><strong>Erschwertes Templating:</strong> Übertragung der Planung bei abnormer spinopelviner Mobilität schwieriger</li>
+                </ol>
+
+                <div class="alert alert-danger">
+                    <div class="alert-icon">🚨</div>
+                    <div class="alert-content">
+                        <h4>Cave: Posteriorer Zugang bei Spondylodese</h4>
+                        <p>Bei Patienten mit lumbaler Spondylodese und posteriorem Zugang zeigen Registerdaten Luxationsraten von <strong>4,6%</strong> gegenüber 1,7% bei HTEP vor Spondylodese. Diese Patienten benötigen obligat eine präoperative spinopelvine Analyse.</p>
+                    </div>
+                </div>
+
+                <h4>Kompensationsstrategien</h4>
+                <ul>
+                    <li>Kapselrekonstruktion zur Verbesserung der posterioren Stabilität</li>
+                    <li>Erhöhte Anteversion (20-25°) bei "Stuck Standing"-Patienten</li>
+                    <li>Konsequenter Einsatz von Dual-Mobility-Pfannen bei Hochrisikopatienten</li>
+                    <li>Präzise Beckenstabilisierung mit anterioren und posterioren Abstützungen</li>
+                </ul>
+
+                <h3>3.3 Direkter lateraler Zugang (Hardinge)</h3>
+                
+                <h4>Anatomische Charakteristika</h4>
+                <ul>
+                    <li>Spaltung des Gluteus medius und Vastus lateralis</li>
+                    <li>Lagerung: Seitenlage oder modifiziert in Rückenlage möglich</li>
+                </ul>
+
+                <h4>Spinopelvine Aspekte</h4>
+                <ul>
+                    <li>Historisch niedrigere Luxationsraten als posteriorer Zugang</li>
+                    <li>Exzellente Acetabulum-Exposition für Pfannenpositionierung</li>
+                    <li>Änderungen der spinopelvinen Parameter nach HTEP sind zugangsunabhängig</li>
+                    <li>Bei Rückenlagerung: fluoroskopische Kontrollen möglich</li>
+                </ul>
+
+                <h4>Indikationen unter spinopelvinen Aspekten</h4>
+                <ul>
+                    <li>Compliance-Probleme bezüglich Hüftprecautions (z.B. Alkoholabusus)</li>
+                    <li>Signifikante Hüftbeugekontrakturen</li>
+                    <li>Schenkelhalsfrakturen bei älteren Patienten mit hohem Luxationsrisiko</li>
+                </ul>
+
+                <h3>3.4 SuperPATH (Supercapsular Percutaneously Assisted)</h3>
+                
+                <h4>Anatomische Charakteristika</h4>
+                <ul>
+                    <li>Intervall zwischen Gluteus minimus und Piriformis</li>
+                    <li><strong>Kapselerhalt</strong>, Operation ohne Hüftkopfluxation</li>
+                    <li>Lagerung: Seitenlage mit Erweiterungsmöglichkeit auf klassischen posterioren Zugang</li>
+                </ul>
+
+                <h4>Spinopelvine Relevanz</h4>
+                <ul>
+                    <li>Kapselerhalt bietet zusätzliche intrinsische Stabilität</li>
+                    <li>Erhalt der Außenrotatoren</li>
+                    <li>Niedrige Luxationsraten in publizierten Serien (0-0,3%)</li>
+                    <li>Netzwerk-Metaanalysen zeigen überlegene kurzfristige Ergebnisse</li>
+                </ul>
+            </section>
+
+            <section id="4-technologien">
+                <h2>4. 🤖 Unterstützende Technologien</h2>
+                
+                <h3>Navigation und Robotik</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>System</th>
+                            <th>Technologie</th>
+                            <th>Spinopelviner Vorteil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MAKO</strong></td>
+                            <td>CT-basiert</td>
+                            <td>Präoperative Planung mit Integration spinopelviner Parameter</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intellijoint</strong></td>
+                            <td>Bildlose Navigation</td>
+                            <td>Intraoperatives Feedback zu Pfannenposition, Beinlänge, Offset</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROSA Hip</strong></td>
+                            <td>Fluoroskopie-basiert</td>
+                            <td>Verbesserte Genauigkeit bei Inklination vs. manueller Technik</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-info">
+                    <div class="alert-icon">💡</div>
+                    <div class="alert-content">
+                        <h4>Evidenzlage</h4>
+                        <p>Verbesserte radiologische Präzision, jedoch noch <strong>kein eindeutiger klinischer Vorteil</strong> in Bezug auf Luxationsraten nachgewiesen.</p>
+                    </div>
+                </div>
+
+                <h3>Dual-Mobility-Pfannen</h3>
+                <p>Dual-Mobility-Pfannen bieten eine <strong>zugangsunabhängige</strong> Stabilitätsverbesserung bei Hochrisikopatienten:</p>
+
+                <h4>Indikationen</h4>
+                <ul>
+                    <li>Spinopelvine Steifigkeit (ΔPT oder ΔSS &lt;10°)</li>
+                    <li>Z.n. lumbaler Spondylodese</li>
+                    <li>Neuromuskuläre Erkrankungen (z.B. M. Parkinson)</li>
+                    <li>Schenkelhalsfrakturen bei älteren Patienten</li>
+                    <li>Kognitive Beeinträchtigung mit Compliance-Problemen</li>
+                    <li>Ante-Inklination-Änderung &lt;5° zwischen Stehen und Sitzen</li>
+                </ul>
+
+                <div class="expert-tip">
+                    Bei Patienten mit einer Änderung der Ante-Inklination &lt;5° zwischen Stehen und Sitzen besteht selbst bei optimaler Pfannenposition ein erhöhtes Luxationsrisiko. Diese Patienten profitieren unabhängig vom gewählten Zugang von einer Dual-Mobility-Pfanne.
+                </div>
+            </section>
+
+            <section id="5-algorithmus">
+                <h2>5. 📊 Klinischer Algorithmus zur Zugangswahl</h2>
+                
+                <h3>Präoperative Evaluation</h3>
+                <ol>
+                    <li><strong>Anamnese:</strong> Z.n. Wirbelsäulen-OP, bekannte WS-Erkrankung, Instabilität bei vorheriger HTEP</li>
+                    <li><strong>Klinische Untersuchung:</strong> Haltungsanalyse, Flexionskontraktur, globale sagittale Balance</li>
+                    <li><strong>Bildgebung:</strong> Becken a.p. stehend, laterale LWS-Becken-Aufnahmen im Stehen und Sitzen</li>
+                </ol>
+
+                <h3>Risikostratifizierung</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risiko</th>
+                            <th>Kriterien</th>
+                            <th>Empfehlung</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Niedrig</strong></td>
+                            <td>ΔSS ≥20°, PI-LL ≤10°, keine WS-OP</td>
+                            <td>Zugangswahl nach Präferenz des Operateurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hoch</strong></td>
+                            <td>ΔSS &lt;10°, PI-LL &gt;10°, Z.n. Spondylodese</td>
+                            <td><strong>Bevorzugt DAA</strong> mit Fluoroskopie + Dual Mobility erwägen</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Entscheidungsbaum</h3>
+                <ol>
+                    <li>Liegen Risikofaktoren vor (Spondylodese, degenerative WS-Erkrankung, Frauen &gt;75 Jahre)?</li>
+                    <li>Wenn ja: Spinopelvine Röntgendiagnostik (Stehen/Sitzen)</li>
+                    <li>Klassifikation der spinopelvinen Mobilität (Normal, Steif, Hypermobil)</li>
+                    <li>Bestimmung des sagittalen Gleichgewichts (PI-LL)</li>
+                    <li>Anpassung von Zugang, Pfannenpositionierung und Implantatwahl</li>
+                </ol>
+            </section>
+
+            <section id="6-tipps">
+                <h2>6. 💡 Praktische Tipps und Tricks</h2>
+                
+                <h3>Intraoperative Maßnahmen</h3>
+                <ul>
+                    <li><strong>Lagerungskontrolle:</strong> Bei Seitenlage auf stabile, reproduzierbare Beckenposition achten; anteriore und posteriore Abstützungen verwenden</li>
+                    <li><strong>Fluoroskopie:</strong> Bei DAA echte a.p.-Projektion bestätigen (symmetrische Foramina obturatoria, Sakrum über Symphyse zentriert)</li>
+                    <li><strong>Landmarken:</strong> Das Ligamentum transversum acetabuli (TAL) als Referenz für die Pfannenanteversion nutzen</li>
+                    <li><strong>Kombinierte Anteversion:</strong> Pfannen- und Schaftanteversion gemeinsam betrachten (Ziel: 25-40° kombinierte Anteversion)</li>
+                </ul>
+
+                <h3>Pfannenpositionierung nach Patientengruppe</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Typ</th>
+                            <th>Anteversion</th>
+                            <th>Rationale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Stuck Standing (1B)</strong></td>
+                            <td>20-25° (erhöht)</td>
+                            <td>Vermeidung des anterioren Impingements im Sitzen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stuck Sitting (2B)</strong></td>
+                            <td>15-20° (reduziert)</td>
+                            <td>Vermeidung des posterioren Impingements im Stehen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hypermobil</strong></td>
+                            <td>Standard (40/20°)</td>
+                            <td>Dual Mobility bei Stabilitätsbedenken</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Postoperatives Management</h3>
+                <ul>
+                    <li>Individuelle Hüftprecautions basierend auf Pfannenposition und spinopelviner Mobilität</li>
+                    <li>Bei steifer Wirbelsäule und posteriorem Zugang: Strengere Flexionslimitierung</li>
+                    <li>Aufklärung des Patienten über erhöhtes Luxationsrisiko bei bestimmten Bewegungen</li>
+                </ul>
+            </section>
+
+            <section id="7-fazit">
+                <h2>7. ✅ Fazit und Kernbotschaften</h2>
+                
+                <p>Die Wahl des operativen Zugangs bei der Hüftendoprothetik sollte unter Berücksichtigung der individuellen spinopelvinen Charakteristik des Patienten erfolgen.</p>
+
+                <div class="alert alert-success">
+                    <div class="alert-icon">✅</div>
+                    <div class="alert-content">
+                        <h4>Kernbotschaften</h4>
+                        <ul>
+                            <li>Die klassische Lewinnek Safe Zone bietet <strong>keinen ausreichenden Schutz</strong> bei Patienten mit abnormer spinopelviner Mobilität</li>
+                            <li>Patienten mit lumbaler Spondylodese oder spinopelviner Steifigkeit haben ein <strong>signifikant erhöhtes Luxationsrisiko</strong></li>
+                            <li>Der <strong>DAA bietet bei Hochrisikopatienten potenzielle Vorteile</strong> durch bessere intraoperative Kontrolle</li>
+                            <li><strong>Dual-Mobility-Pfannen</strong> sind eine evidenzbasierte Option zur Luxationsprävention</li>
+                            <li>Die <strong>präoperative spinopelvine Analyse</strong> sollte bei Risikopatienten Standard sein</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>Es gibt <strong>keinen universell "besten" Zugang</strong> – vielmehr sollte die Zugangswahl Teil eines individualisierten Behandlungskonzepts sein, das die Anatomie des Patienten, die Erfahrung des Operateurs und die verfügbare Technologie berücksichtigt.</p>
+            </section>
+
+            <section id="8-literatur">
+                <h2>8. 📚 Weiterführende Literatur</h2>
+                
+                <h3>Grundlagenarbeiten</h3>
+                <ol>
+                    <li>Heckmann N et al. Late Dislocation Following THA: Spinopelvic Imbalance as a Causative Factor. <em>JBJS</em> 2018</li>
+                    <li>Stefl M et al. Spinopelvic mobility and acetabular component position for THA. <em>Bone Joint J</em> 2017</li>
+                    <li>Grammatopoulos G et al. Spinopelvic challenges in primary THA. <em>EFORT Open Rev</em> 2023</li>
+                    <li>Meermans G et al. Cup placement in primary THA: how to get it right. <em>EFORT Open Rev</em> 2022</li>
+                </ol>
+
+                <h3>Aktuelle Übersichtsarbeiten</h3>
+                <ol>
+                    <li>Vigdorchik JM et al. The Hip-Spine Classification. <em>J Arthroplasty</em> 2021</li>
+                    <li>Innmann MM et al. Spinopelvic characteristics normalize after THA. <em>JBJS Am</em> 2022</li>
+                </ol>
             </section>
 
         </article>
     </div>
-
-    
 
     <script>
         const tocLinks = document.querySelectorAll('.toc-link');
