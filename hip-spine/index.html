@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spinopelvine Pfannenplanung — Hip-Spine-Klassifikation</title>
+<style>
+  :root {
+    --bg1:#ffffff;--bg2:#f5f4ef;--bg3:#eae9e4;
+    --t1:#1a1a1a;--t2:#6b6a65;--t3:#9c9a92;
+    --b1:rgba(0,0,0,0.15);--b2:rgba(0,0,0,0.08);
+    --green-bg:#eaf3de;--green-t:#3b6d11;--green-b:#97c459;
+    --amber-bg:#faeeda;--amber-t:#854f0b;--amber-b:#ef9f27;
+    --red-bg:#fcebeb;--red-t:#a32d2d;--red-b:#f09595;
+    --r-md:8px;--r-lg:12px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media(prefers-color-scheme:dark){
+    :root{
+      --bg1:#1a1a1a;--bg2:#2c2c2a;--bg3:#3d3d3a;
+      --t1:#e8e6de;--t2:#9c9a92;--t3:#6b6a65;
+      --b1:rgba(255,255,255,0.15);--b2:rgba(255,255,255,0.08);
+      --green-bg:#173404;--green-t:#c0dd97;--green-b:#639922;
+      --amber-bg:#412402;--amber-t:#fac775;--amber-b:#ba7517;
+      --red-bg:#501313;--red-t:#f7c1c1;--red-b:#e24b4a;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);background:var(--bg3);color:var(--t1);line-height:1.5;padding:16px}
+  .wrap{max-width:720px;margin:0 auto;background:var(--bg1);border-radius:var(--r-lg);padding:24px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+  h1{font-size:18px;font-weight:600;margin-bottom:4px}
+  .subtitle{font-size:13px;color:var(--t2);margin-bottom:20px}
+  .sec{margin-bottom:20px}
+  .st{font-size:14px;font-weight:500;margin-bottom:10px}
+  .ig{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  @media(max-width:520px){.ig{grid-template-columns:1fr}}
+  .ic{background:var(--bg2);border-radius:var(--r-md);padding:10px 12px}
+  .ic .l{font-size:11px;color:var(--t2);margin-bottom:5px}
+  .ic .v{font-size:22px;font-weight:500;margin-bottom:5px}
+  .ic input[type=range]{width:100%;accent-color:var(--t2)}
+  .nt{font-size:10px;color:var(--t3);margin-top:3px;font-style:italic}
+  .dg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+  @media(max-width:520px){.dg{grid-template-columns:1fr 1fr}}
+  .dd{background:var(--bg2);border-radius:var(--r-md);padding:7px 10px;text-align:center}
+  .dd .dl{font-size:10px;color:var(--t2)}
+  .dd .dv{font-size:15px;font-weight:500;margin-top:1px}
+  .dd .dv.red{color:var(--red-t)}.dd .dv.grn{color:var(--green-t)}.dd .dv.amb{color:var(--amber-t)}
+  .cb{margin-top:12px;padding:14px 16px;border-radius:var(--r-lg);border:1px solid var(--b1)}
+  .cb .rw{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+  .cb .le{flex:1;min-width:200px}.cb .ri{text-align:right;min-width:130px}
+  .cb .gp{font-size:18px;font-weight:500;margin-bottom:2px}
+  .cb .su{font-size:13px;margin-bottom:6px}
+  .cb .cr{font-size:11px;font-weight:500;margin-bottom:6px}
+  .cb .pa{font-size:12px;line-height:1.5;margin-top:5px}
+  .cb .tl{font-size:10px;margin-bottom:1px}.cb .tv{font-size:16px;font-weight:500}
+  .cb.sf{border-color:var(--green-b);background:var(--green-bg)}
+  .cb.sf .gp,.cb.sf .tv{color:var(--green-t)}.cb.sf .su,.cb.sf .pa,.cb.sf .tl,.cb.sf .cr{color:var(--green-t);opacity:.85}
+  .cb.wn{border-color:var(--amber-b);background:var(--amber-bg)}
+  .cb.wn .gp,.cb.wn .tv{color:var(--amber-t)}.cb.wn .su,.cb.wn .pa,.cb.wn .tl,.cb.wn .cr{color:var(--amber-t);opacity:.85}
+  .cb.dn{border-color:var(--red-b);background:var(--red-bg)}
+  .cb.dn .gp,.cb.dn .tv{color:var(--red-t)}.cb.dn .su,.cb.dn .pa,.cb.dn .tl,.cb.dn .cr{color:var(--red-t);opacity:.85}
+  .fg{display:inline-block;font-size:11px;padding:3px 8px;border-radius:var(--r-md);font-weight:500;margin-right:3px;margin-bottom:3px}
+  .fg.r{background:var(--red-bg);color:var(--red-t)}.fg.a{background:var(--amber-bg);color:var(--amber-t)}.fg.g{background:var(--green-bg);color:var(--green-t)}
+  .hr{border:none;border-top:1px solid var(--b2);margin:20px 0}
+  .pg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:500px){.pg{grid-template-columns:1fr}}
+  .pc{border-radius:var(--r-lg);padding:14px;border:1px solid var(--b1);text-align:center;background:var(--bg1)}
+  .pc .pl{font-size:12px;color:var(--t2);margin-bottom:4px}
+  .pc .pt{font-size:11px;font-weight:500;padding:3px 10px;border-radius:var(--r-md);display:inline-block;margin-bottom:8px}
+  .pc .pt.ok{background:var(--green-bg);color:var(--green-t)}
+  .pc .pt.bad{background:var(--red-bg);color:var(--red-t)}
+  .pc .pv{font-size:28px;font-weight:500;margin-bottom:6px}
+  .pc .pv.ok{color:var(--green-t)}.pc .pv.bad{color:var(--red-t)}
+  .pc input[type=range]{width:100%;accent-color:var(--t2)}
+  .pc .bar{height:8px;border-radius:4px;margin:8px 0 2px;position:relative;background:var(--bg3)}
+  .pc .zn{position:absolute;height:100%;border-radius:4px;background:var(--green-bg);border:1px solid var(--green-b);opacity:.6}
+  .pc .mk{position:absolute;top:-4px;width:3px;height:16px;border-radius:2px;transform:translateX(-1.5px)}
+  .sb{margin-top:12px;padding:12px 16px;border-radius:var(--r-lg);font-size:13px;line-height:1.6}
+  .sb.sf{background:var(--green-bg);color:var(--green-t)}
+  .sb.wn{background:var(--amber-bg);color:var(--amber-t)}
+  .sb.dn{background:var(--red-bg);color:var(--red-t)}
+  .vr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  @media(max-width:520px){.vr{grid-template-columns:1fr}}
+  .al{font-size:11px;text-align:center;color:var(--t2);margin-top:4px}
+  .footer{text-align:center;font-size:10px;color:var(--t3);margin-top:20px;padding-top:12px;border-top:1px solid var(--b2)}
+  svg text{font-family:var(--font)}
+  .guide-toggle{display:flex;align-items:center;gap:8px;cursor:pointer;padding:10px 14px;background:var(--bg2);border:1px solid var(--b2);border-radius:var(--r-lg);margin-bottom:16px;font-size:13px;color:var(--t1);font-family:var(--font);width:100%;font-weight:500;transition:background .15s}
+  .guide-toggle:hover{background:var(--bg3)}
+  .guide-toggle .arrow{transition:transform .2s;font-size:11px;color:var(--t3)}
+  .guide-toggle.open .arrow{transform:rotate(90deg)}
+  .guide{display:none;margin-bottom:20px}
+  .guide.open{display:block}
+  .guide-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  @media(max-width:620px){.guide-cards{grid-template-columns:1fr}}
+  .gc{background:var(--bg1);border:1px solid var(--b2);border-radius:var(--r-lg);padding:14px;text-align:center}
+  .gc .gc-title{font-size:13px;font-weight:500;margin-bottom:2px}
+  .gc .gc-sub{font-size:11px;color:var(--t2);margin-bottom:10px}
+  .gc svg{margin:0 auto 10px;display:block}
+  .gc .gc-steps{text-align:left;font-size:11px;color:var(--t2);line-height:1.6}
+  .gc .gc-steps b{color:var(--t1);font-weight:500}
+  .xray-hint{font-size:12px;color:var(--t2);line-height:1.6;padding:10px 14px;background:var(--bg2);border-radius:var(--r-md);margin-top:12px}
+  .ind-box{margin-bottom:16px;padding:10px 14px;background:var(--bg2);border-radius:var(--r-md);font-size:12px;line-height:1.6;color:var(--t2)}
+  .ind-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:11px}
+  .ind-table th,.ind-table td{padding:6px 8px;border-bottom:1px solid var(--b2);text-align:left;vertical-align:top}
+  .ind-table th{font-size:11px;color:var(--t2);font-weight:600}
+  .ind-table tr:last-child td{border-bottom:none}
+  .ind-summary{margin-top:10px;font-size:11px;color:var(--t2);line-height:1.5}
+  .ind-summary b{color:var(--t1)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Spinopelvine Pfannenplanung</h1>
+  <div class="subtitle">Hip-Spine-Klassifikation nach Luthringer/Vigdorchik (2019) — Interaktives Planungstool</div>
+
+  <button class="guide-toggle" onclick="this.classList.toggle('open');document.getElementById('indications').classList.toggle('open')">
+    <span class="arrow">&#9654;</span> Indikationen für erweiterte LWS-Bildgebung
+  </button>
+  <div class="guide" id="indications">
+    <div class="ind-box">
+      Die folgende Übersicht definiert, wann über das Standard-Beckenübersichtsröntgen hinaus eine erweiterte LWS-Bildgebung
+      (z. B. stehende und gebeugt sitzende seitliche Ganzwirbelsäulenaufnahmen) erforderlich ist.
+    </div>
+    <table class="ind-table">
+      <thead>
+        <tr>
+          <th>Indikation / Risikofaktor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="Anamnestisch bekannte LWS-Pathologie"> Anamnestisch bekannte LWS-Pathologie (z.B. Bandscheibenprotrusion, Spinalkanalstenose)</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="Voroperation an der LWS (Fusion/Spondylodese)"> Voroperation an der LWS (insb. Fusion/Spondylodese)</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="Klinisch eingeschränkte LWS-Mobilität"> Klinisch eingeschränkte LWS-Mobilität (Stiffness)</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="Revisions-TEP / Rezidivluxation"> Revisions-TEP </label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="Status nach Luxation der Hüft-TEP"> Z. n. Luxation der Hüft-TEP</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="Sagittales Malalignment"> Sagittales Malalignment (klinischer V.&nbsp;a. Flat Back / Fixed Sagittal Imbalance)</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="BMI &gt; 35 mit eingeschränkter Hüftbeweglichkeit"> BMI &gt; 35 mit eingeschränkter Hüftbeweglichkeit</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="Neuromuskuläre Grunderkrankung"> Neuromuskuläre Grunderkrankung (z.B. M. Parkinson, Zerebralparese)</label></td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="ind-chk" data-label="Alter &gt; 75 Jahre mit klinischer Kyphose"> Alter &gt; 75 Jahre mit klinischer Kyphose</label></td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="ind-summary" class="ind-summary"></div>
+  </div>
+
+  <button class="guide-toggle" onclick="this.classList.toggle('open');document.getElementById('guide').classList.toggle('open')">
+    <span class="arrow">&#9654;</span> Messanleitung: Wie messe ich die 3 Winkel?
+  </button>
+  <div class="guide" id="guide">
+    <div class="guide-cards">
+
+      <div class="gc">
+        <div class="gc-title">Pelvic Incidence (PI)</div>
+        <div class="gc-sub">Seitl. Röntgen — einmalig, anatomisch fix</div>
+        <svg width="200" viewBox="0 0 200 240">
+          <!-- Pelvis body - simplified but recognizable -->
+          <path d="M40 60 Q32 95 38 135 Q48 170 80 182 Q100 186 120 182 Q152 170 162 135 Q168 95 160 60" fill="var(--bg2)" stroke="var(--t3)" stroke-width="1.2" opacity="0.6"/>
+          <!-- Sacrum wedge -->
+          <path d="M75 52 L125 52 L115 110 L85 110 Z" fill="var(--bg3)" stroke="var(--t3)" stroke-width="1"/>
+          <!-- S1 endplate - thick, prominent -->
+          <line x1="68" y1="56" x2="132" y2="56" stroke="var(--t1)" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="136" y="60" font-size="10" fill="var(--t1)" font-weight="500">S1</text>
+          <!-- Midpoint marker -->
+          <circle cx="100" cy="56" r="4" fill="var(--red-t)"/>
+          <text x="100" y="46" text-anchor="middle" font-size="9" fill="var(--red-t)">Mitte S1</text>
+          <!-- Femoral heads -->
+          <circle cx="72" cy="185" r="18" fill="none" stroke="var(--t3)" stroke-width="1.2"/>
+          <circle cx="72" cy="185" r="3.5" fill="var(--green-t)"/>
+          <circle cx="128" cy="185" r="18" fill="none" stroke="var(--t3)" stroke-width="1.2"/>
+          <circle cx="128" cy="185" r="2" fill="var(--t3)"/>
+          <!-- Label hip center -->
+          <text x="28" y="210" font-size="9" fill="var(--green-t)">Hüftkopf-</text>
+          <text x="28" y="220" font-size="9" fill="var(--green-t)">zentrum</text>
+          <line x1="57" y1="206" x2="69" y2="195" stroke="var(--green-t)" stroke-width="0.8"/>
+          <!-- LINE 1: Perpendicular to S1 from midpoint (pointing cranial-dorsal) -->
+          <line x1="100" y1="56" x2="100" y2="4" stroke="var(--red-t)" stroke-width="1.8"/>
+          <!-- small right-angle marker -->
+          <rect x="100" y="56" width="7" height="7" fill="none" stroke="var(--red-t)" stroke-width="0.8" transform="rotate(0 100 56)"/>
+          <text x="110" y="14" font-size="9" fill="var(--red-t)">Senkrechte</text>
+          <text x="110" y="24" font-size="9" fill="var(--red-t)">auf S1</text>
+          <!-- LINE 2: S1 midpoint to hip center -->
+          <line x1="100" y1="56" x2="72" y2="185" stroke="var(--green-t)" stroke-width="1.8"/>
+          <!-- PI angle arc between the two lines -->
+          <path d="M100 16 A 40 40 0 0 0 82 92" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/>
+          <text x="60" y="54" font-size="14" fill="var(--amber-t)" font-weight="500">PI</text>
+        </svg>
+        <div class="gc-steps">
+          <b>1.</b> Mitte der S1-Deckplatte markieren<br>
+          <b>2.</b> Senkrechte nach kranial auf S1 errichten<br>
+          <b>3.</b> Linie von S1-Mitte zum Hüftkopfzentrum<br>
+          <b>4.</b> Winkel zwischen beiden = <b>PI</b><br>
+          <span style="color:var(--t3)">PI ist anatomisch fix und ändert sich nie.</span>
+        </div>
+      </div>
+
+      <div class="gc">
+        <div class="gc-title">LL stehend</div>
+        <div class="gc-sub">Seitl. Röntgen — aufrecht stehend</div>
+        <svg width="180" viewBox="0 0 180 210">
+          <!-- Spine with lordosis curve -->
+          <rect x="74" y="16" width="36" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
+          <rect x="72" y="38" width="38" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
+          <rect x="69" y="60" width="40" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
+          <rect x="67" y="82" width="42" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
+          <rect x="65" y="104" width="44" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
+          <!-- L1 label -->
+          <text x="114" y="29" font-size="10" fill="var(--t1)" font-weight="500">L1</text>
+          <!-- S1 endplate -->
+          <line x1="58" y1="130" x2="118" y2="126" stroke="var(--t1)" stroke-width="2" stroke-linecap="round"/>
+          <text x="122" y="132" font-size="10" fill="var(--t1)" font-weight="500">S1</text>
+          <!-- L1 endplate line - extended, colored -->
+          <line x1="28" y1="18" x2="160" y2="14" stroke="var(--red-t)" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- S1 endplate line - extended, colored -->
+          <line x1="28" y1="132" x2="160" y2="124" stroke="var(--green-t)" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- The two lines converge on the right — show angle where they'd meet -->
+          <!-- Intersection point approx at x=400 — we show angle at the right edge -->
+          <!-- Instead: show the angle on the RIGHT side between the extended lines -->
+          <path d="M152 15 L152 125" fill="none" stroke="var(--amber-t)" stroke-width="0" opacity="0"/>
+          <!-- Angle arc on right side where lines approach -->
+          <path d="M145 26 A 50 50 0 0 1 148 112" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/>
+          <text x="153" y="72" font-size="14" fill="var(--amber-t)" font-weight="500">LL</text>
+          <!-- Standing stick figure -->
+          <circle cx="88" cy="148" r="5" fill="none" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <line x1="88" y1="153" x2="88" y2="180" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <line x1="88" y1="180" x2="80" y2="200" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <line x1="88" y1="180" x2="96" y2="200" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <line x1="88" y1="162" x2="78" y2="170" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <line x1="88" y1="162" x2="98" y2="170" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <text x="104" y="200" font-size="10" fill="var(--t2)" font-style="italic">stehend</text>
+        </svg>
+        <div class="gc-steps">
+          <b>1.</b> Linie entlang <span style="color:var(--red-t)">Oberkante L1</span><br>
+          <b>2.</b> Linie entlang <span style="color:var(--green-t)">Oberkante S1</span><br>
+          <b>3.</b> Winkel zwischen den beiden Linien = <b>LL</b><br>
+          <span style="color:var(--t3)">Große Lordose = großer Winkel (z. B. 50°)</span>
+        </div>
+      </div>
+
+      <div class="gc">
+        <div class="gc-title">LL gebeugt sitzend</div>
+        <div class="gc-sub">Seitl. Röntgen — maximal vornübergebeugt</div>
+        <svg width="180" viewBox="0 0 180 210">
+          <!-- Spine with reduced lordosis / kyphosis — vertebrae tilted forward -->
+          <rect x="60" y="20" width="36" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(-12 78 28)"/>
+          <rect x="63" y="41" width="37" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(-6 82 49)"/>
+          <rect x="66" y="62" width="38" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(-1 85 70)"/>
+          <rect x="68" y="83" width="40" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(2 88 91)"/>
+          <rect x="68" y="104" width="42" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(3 89 112)"/>
+          <!-- L1 label -->
+          <text x="100" y="22" font-size="10" fill="var(--t1)" font-weight="500">L1</text>
+          <!-- S1 endplate -->
+          <line x1="62" y1="130" x2="120" y2="128" stroke="var(--t1)" stroke-width="2" stroke-linecap="round"/>
+          <text x="124" y="132" font-size="10" fill="var(--t1)" font-weight="500">S1</text>
+          <!-- L1 endplate line - tilted forward more -->
+          <line x1="18" y1="32" x2="158" y2="12" stroke="var(--red-t)" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- S1 endplate line -->
+          <line x1="28" y1="132" x2="158" y2="126" stroke="var(--green-t)" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- Angle — SMALLER than standing, lines more parallel -->
+          <path d="M150 18 A 55 55 0 0 1 152 120" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/>
+          <text x="156" y="72" font-size="14" fill="var(--amber-t)" font-weight="500">LL</text>
+          <text x="156" y="86" font-size="10" fill="var(--amber-t)">(kleiner!)</text>
+          <!-- Seated bent stick figure -->
+          <circle cx="82" cy="148" r="5" fill="none" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <line x1="82" y1="153" x2="75" y2="140" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <path d="M82 153 Q95 168 105 162" fill="none" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <line x1="105" y1="162" x2="100" y2="196" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <line x1="105" y1="162" x2="115" y2="196" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
+          <!-- chair hint -->
+          <line x1="92" y1="170" x2="120" y2="170" stroke="var(--t3)" stroke-width="0.8" opacity="0.3"/>
+          <line x1="120" y1="155" x2="120" y2="196" stroke="var(--t3)" stroke-width="0.8" opacity="0.3"/>
+          <text x="46" y="200" font-size="10" fill="var(--t2)" font-style="italic">gebeugt sitzend</text>
+        </svg>
+        <div class="gc-steps">
+          <b>1.</b> Gleiche Messung: <span style="color:var(--red-t)">L1</span> zu <span style="color:var(--green-t)">S1</span><br>
+          <b>2.</b> Patient sitzt, maximal vornübergebeugt<br>
+          <b>3.</b> Linien sind fast parallel → LL ist <b>kleiner</b><br>
+          <b>4.</b> ΔLL = LL(stehend) − LL(gebeugt) = <b>Flexibilität</b>
+        </div>
+      </div>
+
+    </div>
+    <div class="xray-hint">
+      <b>Röntgen-Protokoll:</b> Seitliche Aufnahme von L1 bis proximales Femur. Stehend: Patient aufrecht, Blick geradeaus, Arme nach vorne auf Stütze. Gebeugt sitzend: Patient auf Stuhl, Oberkörper maximal nach vorne beugen (Hände Richtung Boden). PI wird nur einmal bestimmt (anatomisch konstant).
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="st">Primäre Messgrößen (präoperativ)</div>
+    <div class="ig">
+      <div class="ic"><div class="l">Pelvic Incidence (PI)</div><div class="v" id="vpi">55°</div><input type="range" id="spi" min="30" max="85" value="55" step="1" oninput="u()"><div class="nt">anatomisch fix</div></div>
+      <div class="ic"><div class="l">LL stehend</div><div class="v" id="vlls">50°</div><input type="range" id="slls" min="5" max="80" value="50" step="1" oninput="u()"><div class="nt">seitl. Röntgen, aufrecht stehend</div></div>
+      <div class="ic"><div class="l">LL gebeugt sitzend</div><div class="v" id="vllb">25°</div><input type="range" id="sllb" min="-10" max="60" value="25" step="1" oninput="u()"><div class="nt">seitl. Röntgen, maximal vornübergebeugt</div></div>
+    </div>
+    <div class="dg">
+      <div class="dd"><div class="dl">PI − LL (Mismatch)</div><div class="dv" id="dpill">—</div></div>
+      <div class="dd"><div class="dl">ΔLL (Flexibilität)</div><div class="dv" id="ddll">—</div></div>
+    </div>
+    <div style="margin-top:8px" id="flags"></div>
+    <div id="cbox" class="cb sf"></div>
+  </div>
+
+  <hr class="hr">
+
+  <div class="sec">
+    <div class="st">Pfannenplanung: Implantation vs. Zielwert</div>
+    <div class="pg">
+      <div class="pc"><div class="pl">Inklination</div><div class="pt" id="ti">—</div><div class="pv" id="vi">40°</div><input type="range" id="si" min="25" max="60" value="40" step="1" oninput="u()"><div class="bar"><div class="zn" id="zi"></div><div class="mk" id="mi"></div></div></div>
+      <div class="pc"><div class="pl">Anteversion</div><div class="pt" id="ta">—</div><div class="pv" id="va">22°</div><input type="range" id="sa" min="0" max="40" value="22" step="1" oninput="u()"><div class="bar"><div class="zn" id="za"></div><div class="mk" id="ma"></div></div></div>
+    </div>
+    <div class="vr">
+      <div><svg id="svI" width="100%" viewBox="0 0 280 240"></svg><div class="al">Frontalansicht (Inklination)</div></div>
+      <div><svg id="svA" width="100%" viewBox="0 0 280 240"></svg><div class="al">Axialansicht (Anteversion)</div></div>
+    </div>
+    <div id="rec" class="sb sf"></div>
+  </div>
+
+  <div class="footer">
+    Spinopelvine Pfannenplanung · Klassifikation nach Luthringer/Vigdorchik (J Arthroplasty 2019)<br>
+    Dieses Tool ersetzt keine individuelle klinische Beurteilung.
+  </div>
+</div>
+
+<script>
+const D=Math.PI/180;
+
+const GROUPS={
+  '1a':{lbl:'Gruppe 1A',name:'Normal',css:'sf',
+    desc:'Normales sagittales Alignment + normale spinale Mobilität',
+    criteria:'PI − LL \u2264 10° und \u0394LL \u2265 20°',
+    path:'Normale Anatomie und Mobilität. Standardimplantation.',
+    iLo:35,iHi:45,iR:'40° (\u00b15°)',aLo:20,aHi:25,aR:'20\u201325°',dm:false,extra:''},
+  '1b':{lbl:'Gruppe 1B',name:'Steife LWS',css:'wn',
+    desc:'Normales sagittales Alignment + steife Wirbelsäule',
+    criteria:'PI − LL \u2264 10° und \u0394LL < 20°',
+    path:'Steife LWS \u2192 Becken kann im Sitzen nicht posterior kippen \u2192 braucht MEHR Inklination und Anteversion.',
+    iLo:40,iHi:50,iR:'45° (\u00b15°)',aLo:25,aHi:30,aR:'25\u201330°',dm:true,
+    extra:'Dual-Mobility erwägen. Steife Wirbelsäule limitiert Beckenkompensation.'},
+  '2a':{lbl:'Gruppe 2A',name:'Flatback',css:'wn',
+    desc:'Flatback-Deformität + normale spinale Mobilität',
+    criteria:'PI − LL > 10° und \u0394LL \u2265 20°',
+    path:'Anteriorer Pelvic Tilt durch Hüftbeugekontraktur \u2192 löst sich postoperativ \u2192 funktionelle AV sinkt \u2192 braucht MEHR Anteversion.',
+    iLo:35,iHi:45,iR:'40° (\u00b15°)',aLo:20,aHi:25,aR:'20\u201325°',dm:false,
+    extra:'Postoperative PT-Reduktion durch Lösung der Beugekontraktur einplanen.'},
+  '2b':{lbl:'Gruppe 2B',name:'Flatback + steif',css:'dn',
+    desc:'Flatback-Deformität + steife Wirbelsäule \u2014 Hochrisiko',
+    criteria:'PI − LL > 10° und \u0394LL < 20°',
+    path:'Doppeltes Risiko: Postoperativ sinkt PT (Kontraktur-Lösung) UND im Sitzen kann das Becken nicht kompensieren.',
+    iLo:40,iHi:50,iR:'mind. 40°',aLo:20,aHi:30,aR:'20\u201330°',dm:true,
+    extra:'Individuelle CT-Planung. Dual-Mobility dringend empfohlen. Interdisziplinäre WS-Absprache.'}
+};
+
+function updateIndicationSummary(){
+  const box=document.getElementById('ind-summary');
+  if(!box) return;
+  const checks=[...document.querySelectorAll('#indications input.ind-chk')];
+  const selected=checks.filter(c=>c.checked);
+  if(selected.length===0){
+    box.textContent='Noch keine Risikofaktoren ausgewählt.';
+    return;
+  }
+  const labels=selected.map(c=>c.getAttribute('data-label')||c.parentElement.textContent.trim());
+  box.innerHTML='<div><b>Ausgewählte Faktoren:</b> '+labels.join(', ')+'</div>';
+}
+
+function classify(piLL,deltaLL){
+  const isFB=piLL>10,isStiff=deltaLL<20;
+  if(!isFB&&!isStiff) return '1a';
+  if(!isFB&&isStiff) return '1b';
+  if(isFB&&!isStiff) return '2a';
+  return '2b';
+}
+
+function u(){
+  const pi=+document.getElementById('spi').value;
+  const lls=+document.getElementById('slls').value;
+  const llb=+document.getElementById('sllb').value;
+  const iI=+document.getElementById('si').value;
+  const iA=+document.getElementById('sa').value;
+
+  document.getElementById('vpi').textContent=pi+'°';
+  document.getElementById('vlls').textContent=lls+'°';
+  document.getElementById('vllb').textContent=llb+'°';
+  document.getElementById('vi').textContent=iI+'°';
+  document.getElementById('va').textContent=iA+'°';
+
+  const piLL=pi-lls;
+  const deltaLL=lls-llb;
+
+  sC('dpill',piLL,piLL>10?'red':'');
+  sC('ddll',deltaLL,deltaLL<20?'red':'grn');
+
+  const grp=classify(piLL,deltaLL);
+  const g=GROUPS[grp];
+
+  const flags=[];
+  if(piLL>10) flags.push({t:'Flatback (PI-LL '+piLL+'°)',c:'r'});
+  if(deltaLL<20) flags.push({t:'Steife LWS (\u0394LL '+deltaLL+'°)',c:'r'});
+  if(flags.length===0) flags.push({t:'Keine Pathologie',c:'g'});
+  document.getElementById('flags').innerHTML=flags.map(f=>'<span class="fg '+f.c+'">'+f.t+'</span>').join('');
+
+  const cb=document.getElementById('cbox');
+  cb.className='cb '+g.css;
+  cb.innerHTML='<div class="rw"><div class="le"><div class="gp">'+g.lbl+': '+g.name+'</div><div class="su">'+g.desc+'</div><div class="cr">Kriterien: '+g.criteria+'</div><div class="pa">'+g.path+'</div>'+(g.extra?'<div class="pa" style="margin-top:4px;font-weight:500">'+g.extra+'</div>':'')+'</div><div class="ri"><div class="tl">Ziel-Inklination</div><div class="tv">'+g.iR+'</div><div class="tl" style="margin-top:8px">Ziel-Anteversion</div><div class="tv">'+g.aR+'</div>'+(g.dm?'<div style="margin-top:8px"><span class="fg r">Dual-Mobility</span></div>':'')+'</div></div>';
+
+  const iOk=iI>=g.iLo&&iI<=g.iHi;
+  const aOk=iA>=g.aLo&&iA<=g.aHi;
+
+  const ti=document.getElementById('ti');ti.textContent='Ziel: '+g.iR;ti.className='pt '+(iOk?'ok':'bad');
+  document.getElementById('vi').className='pv '+(iOk?'ok':'bad');
+  const ta=document.getElementById('ta');ta.textContent='Ziel: '+g.aR;ta.className='pt '+(aOk?'ok':'bad');
+  document.getElementById('va').className='pv '+(aOk?'ok':'bad');
+
+  setBar('zi','mi',25,60,g.iLo,g.iHi,iI,iOk);
+  setBar('za','ma',0,40,g.aLo,g.aHi,iA,aOk);
+
+  const rb=document.getElementById('rec');
+  let msgs=[];
+  if(!iOk) msgs.push(iI<g.iLo?'Inklination zu niedrig ('+iI+'° < '+g.iLo+'°)':'Inklination zu hoch ('+iI+'° > '+g.iHi+'°)');
+  if(!aOk) msgs.push(iA<g.aLo?'Anteversion zu niedrig ('+iA+'° < '+g.aLo+'°)':'Anteversion zu hoch ('+iA+'° > '+g.aHi+'°)');
+  if(iOk&&aOk){
+    rb.className='sb sf';
+    rb.textContent='Geplante Implantation passt zum '+g.lbl+'-Profil (Inkl. '+iI+'°, AV '+iA+'°).'+(g.dm?' Dual-Mobility dennoch empfohlen.':'');
+  } else {
+    rb.className='sb dn';
+    rb.textContent=msgs.join('. ')+'. Korrektur empfohlen für '+g.lbl+'.'+(g.dm?' Dual-Mobility dringend empfohlen.':'');
+  }
+
+  drawI(iI,g);drawA(iA,g);
+}
+
+function sC(id,v,cls){
+  const el=document.getElementById(id);
+  el.textContent=v+'°';
+  el.className='dv'+(cls?' '+cls:'');
+}
+
+function setBar(zid,mid,mn,mx,lo,hi,v,ok){
+  const r=mx-mn;
+  document.getElementById(zid).style.cssText='left:'+(lo-mn)/r*100+'%;width:'+(hi-lo)/r*100+'%';
+  const m=document.getElementById(mid);
+  m.style.left=(v-mn)/r*100+'%';
+  m.style.background=ok?'var(--green-t)':'var(--red-t)';
+}
+
+function drawI(iI,g){
+  const cx=140,cy=130,r=90;
+  const tLo=(90-g.iHi)*D,tHi=(90-g.iLo)*D;
+  const iR=(90-iI)*D,ok=iI>=g.iLo&&iI<=g.iHi;
+  const col=ok?'#3b6d11':'#a32d2d';
+  const cr=45;
+  document.getElementById('svI').innerHTML=
+    '<defs><marker id="ai" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>'+
+    '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="var(--bg2)" stroke="var(--b1)" stroke-width="0.5"/>'+
+    '<path d="M'+cx+' '+cy+' L'+(cx+r*Math.cos(tLo))+' '+(cy-r*Math.sin(tLo))+' A '+r+' '+r+' 0 0 1 '+(cx+r*Math.cos(tHi))+' '+(cy-r*Math.sin(tHi))+' Z" fill="'+col+'" opacity="0.12" stroke="'+col+'" stroke-width="0.5" stroke-dasharray="3 3"/>'+
+    '<text x="'+(cx+r*.68)+'" y="'+(cy-r*.46)+'" font-size="9" fill="'+col+'" opacity="0.7">'+g.iR+'</text>'+
+    '<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+(r-12)*Math.cos(iR))+'" y2="'+(cy-(r-12)*Math.sin(iR))+'" stroke="'+col+'" stroke-width="2.5" marker-end="url(#ai)"/>'+
+    '<path d="M'+(cx+cr*Math.cos(iR-.7))+' '+(cy-cr*Math.sin(iR-.7))+' A '+cr+' '+cr+' 0 0 1 '+(cx+cr*Math.cos(iR+.7))+' '+(cy-cr*Math.sin(iR+.7))+'" fill="none" stroke="'+col+'" stroke-width="3" stroke-linecap="round"/>'+
+    '<text x="'+(cx+(r-6)*Math.cos(iR)+6)+'" y="'+(cy-(r-6)*Math.sin(iR)+(iI>40?14:-6))+'" font-size="12" fill="'+col+'" font-weight="500">'+iI+'°</text>'+
+    '<text x="8" y="'+(cy+4)+'" font-size="10" fill="var(--t3)">lat.</text>';
+}
+
+function drawA(iA,g){
+  const cx=140,cy=130,r=90,sr=r-5;
+  const ok=iA>=g.aLo&&iA<=g.aHi;
+  const col=ok?'#3b6d11':'#a32d2d';
+  const a=iA*D,s1=g.aLo*D,s2=g.aHi*D;
+  function cup(an,c,sw){
+    const aa=an*D,dx=Math.sin(aa),dy=-Math.cos(aa),nx=Math.cos(aa),ny=Math.sin(aa);
+    const bx=cx-dy*28,by=cy+dx*28,ol=50;
+    const lx=bx+nx*ol,ly=by+ny*ol,rx=bx-nx*ol,ry=by-ny*ol;
+    const dp=36,clx=lx+dx*dp,cly=ly+dy*dp,crx=rx+dx*dp,cry=ry+dy*dp;
+    return '<path d="M'+lx+' '+ly+' Q'+clx+' '+cly+' '+(cx+dx*18)+' '+(cy+dy*18)+' Q'+crx+' '+cry+' '+rx+' '+ry+'" fill="'+c+'" fill-opacity="0.07" stroke="'+c+'" stroke-width="'+sw+'" stroke-linecap="round"/>';
+  }
+  document.getElementById('svA').innerHTML=
+    '<defs><marker id="aa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>'+
+    '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+r+'" ry="'+(r*.7)+'" fill="var(--bg2)" stroke="var(--b1)" stroke-width="0.5"/>'+
+    '<circle cx="'+cx+'" cy="'+cy+'" r="48" fill="none" stroke="var(--b1)" stroke-width="0.5"/>'+
+    '<line x1="'+cx+'" y1="'+cy+'" x2="'+cx+'" y2="'+(cy-r+10)+'" stroke="var(--b2)" stroke-width="0.5" stroke-dasharray="3 3"/>'+
+    '<text x="'+cx+'" y="28" text-anchor="middle" font-size="10" fill="var(--t3)">anterior</text>'+
+    '<text x="'+cx+'" y="'+(cy+r*.7+16)+'" text-anchor="middle" font-size="10" fill="var(--t3)">posterior</text>'+
+    '<text x="10" y="'+(cy+4)+'" font-size="10" fill="var(--t3)">lat.</text>'+
+    '<path d="M'+cx+' '+cy+' L'+(cx+sr*Math.sin(s1))+' '+(cy-sr*Math.cos(s1))+' A '+sr+' '+sr+' 0 0 1 '+(cx+sr*Math.sin(s2))+' '+(cy-sr*Math.cos(s2))+' Z" fill="'+col+'" opacity="0.1" stroke="'+col+'" stroke-width="0.5" stroke-dasharray="3 3"/>'+
+    '<text x="'+(cx+sr*Math.sin((g.aLo+g.aHi)/2*D)+4)+'" y="'+(cy-sr*Math.cos((g.aLo+g.aHi)/2*D)-4)+'" font-size="9" fill="'+col+'" opacity="0.7">'+g.aR+'</text>'+
+    cup(iA,col,2.5)+
+    '<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+70*Math.sin(a))+'" y2="'+(cy-70*Math.cos(a))+'" stroke="'+col+'" stroke-width="2.5" marker-end="url(#aa)"/>'+
+    '<path d="M'+cx+' '+(cy-32)+' A 32 32 0 0 1 '+(cx+32*Math.sin(a))+' '+(cy-32*Math.cos(a))+'" fill="none" stroke="'+col+'" stroke-width="1.5"/>'+
+    '<text x="'+(cx+38*Math.sin(a*.5)+6)+'" y="'+(cy-38*Math.cos(a*.5))+'" font-size="12" fill="'+col+'" font-weight="500">'+iA+'°</text>'+
+    '<circle cx="'+cx+'" cy="'+cy+'" r="3" fill="var(--t3)"/>';
+}
+
+document.querySelectorAll('#indications input.ind-chk').forEach(c=>{
+  c.addEventListener('change',updateIndicationSummary);
+});
+
+u();
+updateIndicationSummary();
+</script>
+</body>
+</html>
