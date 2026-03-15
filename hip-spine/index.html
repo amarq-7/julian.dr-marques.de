@@ -150,6 +150,24 @@
   .sc-b.wn{background:var(--amber-bg);color:var(--amber-t)}
   .sc-b.dn{background:var(--red-bg);color:var(--red-t)}
 
+  /* ── DM Decision Tree ── */
+  .dm-rule{padding:10px 14px;background:var(--bg2);border-radius:var(--r-md);margin-bottom:8px;border-left:3px solid var(--b1)}
+  .dm-if{font-size:12px;color:var(--t1);margin-bottom:4px}
+  .dm-then{font-size:12px;font-weight:600;margin-bottom:4px}
+  .dm-then.dm-rec{color:var(--red-t)}
+  .dm-then.dm-consider{color:var(--amber-t)}
+  .dm-then.dm-std{color:var(--green-t)}
+  .dm-rule.active{border-left-color:var(--red-b);background:var(--red-bg);animation:dmPulse .4s ease-out}
+  .dm-rule.active .dm-if{color:var(--red-t)}
+  .dm-rule.active
+  .dm-rule.active-consider{border-left-color:var(--amber-b);background:var(--amber-bg);animation:dmPulse .4s ease-out}
+  .dm-rule.active-consider .dm-if{color:var(--amber-t)}
+  .dm-rule.active-consider
+  .dm-rule#dm-rule-none.active-safe{border-left-color:var(--green-b);background:var(--green-bg)}
+  .dm-rule#dm-rule-none.active-safe .dm-if{color:var(--green-t)}
+  .dm-rule#dm-rule-none.active-safe
+  @keyframes dmPulse{from{box-shadow:0 0 0 3px var(--amber-bg)}to{box-shadow:none}}
+
   /* ── Section dots ── */
   .st-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px;vertical-align:middle;position:relative;top:-1px}
   .st-dot.green{background:var(--green-b)}.st-dot.amber{background:var(--amber-b)}.st-dot.blue{background:#5b8def}
@@ -221,6 +239,7 @@
     #pageInput{display:none!important}
     #pageResults{display:block!important}
     .page-back-bar{display:none!important}
+    .sticky-nav{display:none!important}
     .footer-link{display:none}
     /* Summary-only print mode */
     body.print-summary-only #pageResults .sec,
@@ -253,6 +272,13 @@
   .btn-skip:hover{color:var(--t1)}
   .page-actions{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:24px}
   .page-back-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+
+  /* ── Sticky Nav ── */
+  .sticky-nav{position:sticky;top:0;z-index:50;background:var(--bg1);border-bottom:1px solid var(--b2);margin:0 -24px;padding:8px 24px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(255,255,255,0.92)}
+  @media(prefers-color-scheme:dark){.sticky-nav{background:rgba(26,26,26,0.92)}}
+  .nav-pill{padding:4px 10px;font-size:10px;font-weight:500;border-radius:20px;border:1px solid var(--b2);background:transparent;color:var(--t3);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
+  .nav-pill:hover{background:var(--bg2);color:var(--t1);border-color:var(--b1)}
+  .nav-pill.active{background:var(--t1);color:var(--bg1);border-color:var(--t1)}
 </style>
 </head>
 <body>
@@ -336,13 +362,25 @@
     </div>
   </div>
 
-  <button class="guide-toggle" onclick="this.classList.toggle('open');document.getElementById('indications').classList.toggle('open')">
+  <!-- Sticky Navigation -->
+  <div class="sticky-nav" id="stickyNav">
+    <button class="nav-pill" onclick="navTo('tog-ind','indications')">Indikationen</button>
+    <button class="nav-pill" onclick="navTo('tog-guide','guide')">Messanleitung</button>
+    <button class="nav-pill" onclick="navTo('tog-class','class-section')">Klassifikation</button>
+    <button class="nav-pill" onclick="navTo('tog-cup','cup-section')">Pfanne</button>
+    <button class="nav-pill" onclick="navTo('tog-ca','ca-section')">Combined AV</button>
+    <button class="nav-pill" onclick="navTo('tog-dm','dm-section')">Dual Mobility</button>
+    <button class="nav-pill" onclick="navTo('tog-summary','summary-section')">Zusammenfassung</button>
+    <button class="nav-pill" onclick="navTo('tog-lit','lit-section')">Literatur</button>
+  </div>
+
+  <button class="guide-toggle" id="tog-ind" onclick="this.classList.toggle('open');document.getElementById('indications').classList.toggle('open')">
     <span class="arrow">&#9654;</span> Indikationen für erweiterte LWS-Bildgebung
   </button>
   <div class="guide" id="indications">
     <div class="ind-box">
       Die folgende Übersicht definiert, wann über das Standard-Beckenübersichtsröntgen hinaus eine erweiterte LWS-Bildgebung
-      (z. B. stehende und gebeugt sitzende seitliche Ganzwirbelsäulenaufnahmen) erforderlich ist.
+      (z. B. stehende und gebeugt sitzende seitliche Wirbelsäulenaufnahmen) erforderlich ist.
     </div>
     <table class="ind-table">
       <thead>
@@ -352,20 +390,22 @@
       </thead>
       <tbody>
         <tr><td><label><input type="checkbox" class="ind-chk" data-label="Anamnestisch bekannte LWS-Pathologie"> Anamnestisch bekannte LWS-Pathologie (z.B. Bandscheibenprotrusion, Spinalkanalstenose)</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Voroperation an der LWS (Fusion/Spondylodese)"> Voroperation an der LWS (insb. Fusion/Spondylodese)</label></td></tr>
+        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Voroperation an der LWS (Fusion/Spondylodese)" data-dm="fusion"> Voroperation an der LWS (insb. Fusion/Spondylodese)</label></td></tr>
         <tr><td><label><input type="checkbox" class="ind-chk" data-label="Klinisch eingeschränkte LWS-Mobilität"> Klinisch eingeschränkte LWS-Mobilität (Stiffness)</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Revisions-TEP / Rezidivluxation"> Revisions-TEP </label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Status nach Luxation der Hüft-TEP"> Z. n. Luxation der Hüft-TEP</label></td></tr>
+        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Revisions-TEP" data-dm="revision"> Revisions-TEP</label></td></tr>
+        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Status nach Luxation der Hüft-TEP" data-dm="revision"> Z. n. Luxation der Hüft-TEP</label></td></tr>
         <tr><td><label><input type="checkbox" class="ind-chk" data-label="Sagittales Malalignment"> Sagittales Malalignment (klinischer V.&nbsp;a. Flat Back / Fixed Sagittal Imbalance)</label></td></tr>
         <tr><td><label><input type="checkbox" class="ind-chk" data-label="BMI &gt; 35 mit eingeschränkter Hüftbeweglichkeit"> BMI &gt; 35 mit eingeschränkter Hüftbeweglichkeit</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Neuromuskuläre Grunderkrankung"> Neuromuskuläre Grunderkrankung (z.B. M. Parkinson, Zerebralparese)</label></td></tr>
+        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Neuromuskuläre Grunderkrankung" data-dm="neuro"> Neuromuskuläre Grunderkrankung (z.B. M. Parkinson, Zerebralparese)</label></td></tr>
         <tr><td><label><input type="checkbox" class="ind-chk" data-label="Alter &gt; 75 Jahre mit klinischer Kyphose"> Alter &gt; 75 Jahre mit klinischer Kyphose</label></td></tr>
+        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Schenkelhalsfraktur als OP-Indikation" data-dm="fracture"> Schenkelhalsfraktur als OP-Indikation</label></td></tr>
+        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Kognitive Einschränkung / eingeschränkte Compliance" data-dm="cognitive"> Kognitive Einschränkung / eingeschränkte Compliance (z.B. Demenz)</label></td></tr>
       </tbody>
     </table>
     <div id="ind-summary" class="ind-summary"></div>
   </div>
 
-  <button class="guide-toggle" onclick="this.classList.toggle('open');document.getElementById('guide').classList.toggle('open')">
+  <button class="guide-toggle" id="tog-guide" onclick="this.classList.toggle('open');document.getElementById('guide').classList.toggle('open')">
     <span class="arrow">&#9654;</span> Messanleitung: Wie messe ich die 3 Winkel?
   </button>
   <div class="guide" id="guide">
@@ -608,18 +648,83 @@
 
   <hr class="hr">
 
+  <!-- ═══ Dual Mobility Entscheidungshilfe ═══ -->
+  <button class="guide-toggle" id="tog-dm" onclick="this.classList.toggle('open');document.getElementById('dm-section').classList.toggle('open')">
+    <span class="arrow">&#9654;</span> Dual-Mobility-Entscheidungshilfe
+  </button>
+  <div class="guide" id="dm-section">
+
+    <div style="font-size:12px;color:var(--t2);line-height:1.7">
+
+      <div style="margin-bottom:14px;font-size:11px;color:var(--t3)">
+        Evidenzbasierte Wenn-Dann-Entscheidungen. Keine Punktescores — jede Empfehlung ist einzeln literaturgestützt.
+      </div>
+
+      <!-- Decision 1 -->
+      <div class="dm-rule" id="dm-rule-revision">
+        <div class="dm-if">Wenn <b>Revisions-TEP</b></div>
+        <div class="dm-then dm-rec">→ Dual Mobility empfohlen</div>
+      </div>
+
+      <!-- Decision 2 -->
+      <div class="dm-rule" id="dm-rule-fusion">
+        <div class="dm-if">Wenn <b>LWS-Fusion</b> (insb. multilevel)</div>
+        <div class="dm-then dm-rec">→ Dual Mobility empfohlen</div>
+      </div>
+
+      <!-- Decision 3 -->
+      <div class="dm-rule" id="dm-rule-fixed">
+        <div class="dm-if">Wenn <b>fixiertes spinopelvines Alignment</b> (ΔLL &lt; 10° / steife LWS mit fehlender Beckenkompensation)</div>
+        <div class="dm-then dm-rec">→ Dual Mobility empfohlen</div>
+      </div>
+
+      <!-- Decision 4 -->
+      <div class="dm-rule" id="dm-rule-neuro">
+        <div class="dm-if">Wenn <b>neuromuskuläre Erkrankung</b> (M. Parkinson, Zerebralparese, Apoplex)</div>
+        <div class="dm-then dm-rec">→ Dual Mobility empfohlen</div>
+      </div>
+
+      <!-- Decision 5 -->
+      <div class="dm-rule" id="dm-rule-fracture">
+        <div class="dm-if">Wenn <b>Schenkelhalsfraktur</b> (als OP-Indikation für TEP)</div>
+        <div class="dm-then dm-consider">→ Dual Mobility erwägen</div>
+      </div>
+
+      <!-- Decision 6 -->
+      <div class="dm-rule" id="dm-rule-cognitive">
+        <div class="dm-if">Wenn <b>kognitive Einschränkung</b> (Demenz, eingeschränkte Compliance)</div>
+        <div class="dm-then dm-consider">→ Dual Mobility erwägen</div>
+      </div>
+
+      <!-- Decision 7 -->
+      <div class="dm-rule" id="dm-rule-none">
+        <div class="dm-if">Wenn <b>keine</b> der oben genannten Bedingungen</div>
+        <div class="dm-then dm-std">→ Standard-Gleitpaarung ausreichend</div>
+      </div>
+
+      <!-- Auto-detection from tool -->
+      <div id="dm-auto" style="margin-top:14px"></div>
+
+    </div>
+  </div>
+
   <!-- ═══ OP-Planungszusammenfassung ═══ -->
   <button class="guide-toggle" id="tog-summary" onclick="this.classList.toggle('open');document.getElementById('summary-section').classList.toggle('open')">
     <span class="arrow">&#9654;</span> OP-Planungszusammenfassung
   </button>
   <div class="guide" id="summary-section">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px 14px;background:var(--bg2);border-radius:var(--r-md)">
+      <span style="font-size:12px;font-weight:500;color:var(--t1)">Dual Mobility geplant?</span>
+      <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-size:12px;color:var(--green-t);font-weight:500"><input type="radio" name="dm-plan" value="no" checked onchange="updateSummary()"> Nein</label>
+      <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-size:12px;color:var(--amber-t);font-weight:500"><input type="radio" name="dm-plan" value="yes" onchange="updateSummary()"> Ja</label>
+    </div>
     <div id="summaryContent" style="font-size:12px;line-height:1.8;color:var(--t2)"></div>
   </div>
 
   <hr class="hr">
 
   <!-- ═══ Literatur ═══ -->
-  <button class="guide-toggle" onclick="this.classList.toggle('open');document.getElementById('lit-section').classList.toggle('open')">
+  <button class="guide-toggle" id="tog-lit" onclick="this.classList.toggle('open');document.getElementById('lit-section').classList.toggle('open')">
     <span class="arrow">&#9654;</span> Literatur &amp; Quellenangaben
   </button>
   <div class="guide" id="lit-section">
@@ -1117,6 +1222,7 @@ function u(){
   var cupAVTarget=Math.round((g.aLo+g.aHi)/2);
   updateCA(cupAVTarget,iA,stemAV,deltaLL,grp);
   if(document.getElementById('summaryContent')) updateSummary();
+  updateDMHint();
 }
 
 function sC(id,v,cls){
@@ -1180,10 +1286,74 @@ function drawA(iA,g){
 }
 
 document.querySelectorAll('#indications input.ind-chk').forEach(c=>{
-  c.addEventListener('change',updateIndicationSummary);
+  c.addEventListener('change',function(){
+    updateIndicationSummary();
+    updateDMHint();
+  });
 });
 
 /* ── Page Navigation ── */
+function updateDMHint(){
+  var el=document.getElementById('dm-auto');
+  if(!el) return;
+
+  // Reset all rule highlights
+  document.querySelectorAll('.dm-rule').forEach(function(r){
+    r.classList.remove('active','active-consider','active-safe');
+  });
+
+  var lls=+document.getElementById('slls').value;
+  var llb=+document.getElementById('sllb').value;
+  var deltaLL=lls-llb;
+  var grp=classify((+document.getElementById('spi').value)-lls,deltaLL);
+  var g=GROUPS[grp];
+
+  var activeCount=0;
+  var hints=[];
+
+  // Check all checkboxes with data-dm attribute
+  document.querySelectorAll('.ind-chk[data-dm]').forEach(function(chk){
+    if(chk.checked){
+      var ruleId='dm-rule-'+chk.getAttribute('data-dm');
+      var ruleEl=document.getElementById(ruleId);
+      if(ruleEl){
+        // "fracture" and "cognitive" are consider, rest are recommend
+        var isCon=(chk.getAttribute('data-dm')==='fracture'||chk.getAttribute('data-dm')==='cognitive');
+        ruleEl.classList.add(isCon?'active-consider':'active');
+        activeCount++;
+      }
+    }
+  });
+
+  // Check ΔLL for fixed alignment (auto, not checkbox)
+  if(deltaLL<10){
+    var fixedEl=document.getElementById('dm-rule-fixed');
+    if(fixedEl){fixedEl.classList.add('active');activeCount++;}
+    hints.push('ΔLL = '+deltaLL+'° (< 10°) → fixiertes spinopelvines Alignment erkannt.');
+  } else if(deltaLL<20){
+    var fixedEl=document.getElementById('dm-rule-fixed');
+    if(fixedEl){fixedEl.classList.add('active-consider');activeCount++;}
+    hints.push('ΔLL = '+deltaLL+'° (< 20°) → eingeschränkte LWS-Mobilität.');
+  }
+
+  // Highlight "none" rule if nothing active
+  var noneEl=document.getElementById('dm-rule-none');
+  if(activeCount===0&&noneEl){
+    noneEl.classList.add('active-safe');
+  }
+
+  // Summary box
+  if(activeCount>0){
+    var activeLabels=[];
+    document.querySelectorAll('.dm-rule.active .dm-if b, .dm-rule.active-consider .dm-if b').forEach(function(b){
+      activeLabels.push(b.textContent);
+    });
+    el.innerHTML='<div style="padding:10px 14px;border-radius:var(--r-md);background:var(--amber-bg);border:1px solid var(--amber-b);font-size:11px;color:var(--amber-t);line-height:1.6"><b>'+activeCount+' Risikofaktor'+(activeCount>1?'en':'')+' erkannt:</b> '+activeLabels.join(', ')+'.'+(hints.length?' '+hints.join(' '):'')+'</div>';
+  } else {
+    el.innerHTML='<div style="padding:10px 14px;border-radius:var(--r-md);background:var(--green-bg);border:1px solid var(--green-b);font-size:11px;color:var(--green-t);line-height:1.6"><b>Kein erhöhtes Luxationsrisiko erkannt.</b> Standard-Gleitpaarung ausreichend.</div>';
+  }
+}
+
 function printSummary(){
   // Ensure summary is generated
   updateSummary();
@@ -1237,6 +1407,23 @@ function toggleAll(open){
       if(sec) sec.classList.remove('open');
     }
   });
+}
+
+function navTo(togId,secId){
+  var tog=document.getElementById(togId);
+  var sec=document.getElementById(secId);
+  // Open the section
+  if(tog&&!tog.classList.contains('open')) tog.classList.add('open');
+  if(sec&&!sec.classList.contains('open')) sec.classList.add('open');
+  // Scroll to it (offset for sticky nav)
+  if(tog) tog.scrollIntoView({behavior:'smooth',block:'start'});
+  // Brief highlight on the nav pill
+  document.querySelectorAll('.nav-pill').forEach(function(p){p.classList.remove('active')});
+  var pills=document.querySelectorAll('.nav-pill');
+  pills.forEach(function(p){
+    if(p.getAttribute('onclick').indexOf(togId)!==-1) p.classList.add('active');
+  });
+  setTimeout(function(){document.querySelectorAll('.nav-pill').forEach(function(p){p.classList.remove('active')})},1500);
 }
 
 function syncInput(){
@@ -1306,6 +1493,8 @@ function updateSummary(){
   var piLL=pi-lls,deltaLL=lls-llb;
   var grp=classify(piLL,deltaLL);
   var g=GROUPS[grp];
+  var dmPlanned=document.querySelector('input[name="dm-plan"]:checked');
+  var isDM=dmPlanned&&dmPlanned.value==='yes';
 
   // Indications
   var indChecks=[...document.querySelectorAll('#indications input.ind-chk')];
@@ -1321,17 +1510,6 @@ function updateSummary(){
     indHTML='<div style="margin-bottom:12px"><b style="color:var(--t1)">Indikationen:</b> Keine Risikofaktoren ausgewählt.</div>';
   }
 
-  // CA values
-  var cupAVTarget=Math.round((g.aLo+g.aHi)/2);
-  var caRad=iA+stemAV;
-  var dPT=deltaLL*0.38;
-  var fAVd=dPT*0.7;
-  var caStand=caRad;
-  var caSit=iA+fAVd+stemAV;
-  var sStand=caStatus(caStand),sSit=caStatus(caSit);
-  var iOk=iI>=g.iLo&&iI<=g.iHi;
-  var aOk=iA>=g.aLo&&iA<=g.aHi;
-
   var html=indHTML;
 
   html+='<div style="margin-bottom:12px"><b style="color:var(--t1)">Spinopelvine Parameter:</b><br>';
@@ -1340,21 +1518,39 @@ function updateSummary(){
   html+=' · ΔLL: <b>'+deltaLL+'°</b>'+(deltaLL<20?' <span class="fg r" style="font-size:10px">Steife LWS</span>':' <span class="fg g" style="font-size:10px">Flexibel</span>');
   html+='</div>';
 
-  html+='<div style="margin-bottom:12px"><b style="color:var(--t1)">Klassifikation:</b> <span class="fg '+(g.css==='sf'?'g':g.css==='wn'?'a':'r')+'">'+g.lbl+': '+g.name+'</span><br>';
-  html+='Ziel-Inklination: '+g.iR+' · Ziel-Anteversion: '+g.aR;
-  if(g.dm) html+=' · <span class="fg r" style="font-size:10px">Dual-Mobility erwägen</span>';
+  html+='<div style="margin-bottom:12px"><b style="color:var(--t1)">Klassifikation:</b> <span class="fg '+(g.css==='sf'?'g':g.css==='wn'?'a':'r')+'">'+g.lbl+': '+g.name+'</span></div>';
+
+  // Implant planning
+  html+='<div style="margin-bottom:12px"><b style="color:var(--t1)">Implantat:</b> '+(isDM?'<span class="fg a" style="font-size:11px">Dual Mobility</span>':'<span class="fg g" style="font-size:11px">Standard-Gleitpaarung</span>')+'<br>';
+  html+='Schaft-Anteversion: <b>'+stemAV+'°</b>';
   html+='</div>';
 
-  html+='<div style="margin-bottom:12px"><b style="color:var(--t1)">Geplante Implantation:</b><br>';
-  html+='Inklination: <b>'+iI+'°</b> '+(iOk?'<span class="fg g" style="font-size:10px">✓ im Zielbereich</span>':'<span class="fg r" style="font-size:10px">✗ außerhalb</span>');
-  html+=' · Anteversion Pfanne: <b>'+iA+'°</b> '+(aOk?'<span class="fg g" style="font-size:10px">✓ im Zielbereich</span>':'<span class="fg r" style="font-size:10px">✗ außerhalb</span>');
-  html+='<br>Schaft-Anteversion: <b>'+stemAV+'°</b>';
-  html+='</div>';
+  if(isDM){
+    // DM planned: cup positioning less critical
+    html+='<div style="padding:10px 14px;border-radius:var(--r-md);background:var(--amber-bg);border:1px solid var(--amber-b);font-size:11px;color:var(--amber-t);line-height:1.6">';
+    html+='<b>Dual Mobility geplant:</b> Die exakte Pfannenpositionierung (Inklination/Anteversion) und die Combined Anteversion sind bei DM-Pfannen weniger kritisch, da die duale Artikulation einen größeren Jump Distance und erweiterten Bewegungsumfang vor Impingement bietet. Die Zielwerte der Klassifikation (Inkl. '+g.iR+', AV '+g.aR+') dienen weiterhin als Orientierung.';
+    html+='</div>';
+  } else {
+    // Standard: show full cup and CA detail
+    var caRad=iA+stemAV;
+    var dPT=deltaLL*0.38;
+    var fAVd=dPT*0.7;
+    var caStand=caRad;
+    var caSit=iA+fAVd+stemAV;
+    var sStand=caStatus(caStand),sSit=caStatus(caSit);
+    var iOk=iI>=g.iLo&&iI<=g.iHi;
+    var aOk=iA>=g.aLo&&iA<=g.aHi;
 
-  html+='<div><b style="color:var(--t1)">Combined Anteversion:</b><br>';
-  html+='CA Stehend: <b>'+caStand.toFixed(0)+'°</b> '+(sStand.css==='sf'?'<span class="fg g" style="font-size:10px">✓ Safe Zone</span>':sStand.css==='wn'?'<span class="fg a" style="font-size:10px">⚠ Grenzwertig</span>':'<span class="fg r" style="font-size:10px">✗ Außerhalb</span>');
-  html+=' · CA Sitzend: <b>'+caSit.toFixed(0)+'°</b> '+(sSit.css==='sf'?'<span class="fg g" style="font-size:10px">✓ Safe Zone</span>':sSit.css==='wn'?'<span class="fg a" style="font-size:10px">⚠ Grenzwertig</span>':'<span class="fg r" style="font-size:10px">✗ Außerhalb</span>');
-  html+='</div>';
+    html+='<div style="margin-bottom:12px"><b style="color:var(--t1)">Pfannenpositionierung:</b><br>';
+    html+='Inklination: <b>'+iI+'°</b> '+(iOk?'<span class="fg g" style="font-size:10px">✓ im Zielbereich</span>':'<span class="fg r" style="font-size:10px">✗ außerhalb (Ziel: '+g.iR+')</span>');
+    html+=' · Anteversion: <b>'+iA+'°</b> '+(aOk?'<span class="fg g" style="font-size:10px">✓ im Zielbereich</span>':'<span class="fg r" style="font-size:10px">✗ außerhalb (Ziel: '+g.aR+')</span>');
+    html+='</div>';
+
+    html+='<div><b style="color:var(--t1)">Combined Anteversion:</b><br>';
+    html+='CA Stehend: <b>'+caStand.toFixed(0)+'°</b> '+(sStand.css==='sf'?'<span class="fg g" style="font-size:10px">✓ Safe Zone</span>':sStand.css==='wn'?'<span class="fg a" style="font-size:10px">⚠ Grenzwertig</span>':'<span class="fg r" style="font-size:10px">✗ Außerhalb</span>');
+    html+=' · CA Sitzend: <b>'+caSit.toFixed(0)+'°</b> '+(sSit.css==='sf'?'<span class="fg g" style="font-size:10px">✓ Safe Zone</span>':sSit.css==='wn'?'<span class="fg a" style="font-size:10px">⚠ Grenzwertig</span>':'<span class="fg r" style="font-size:10px">✗ Außerhalb</span>');
+    html+='</div>';
+  }
 
   document.getElementById('summaryContent').innerHTML=html;
 }
