@@ -279,6 +279,7 @@
   .nav-pill{padding:4px 10px;font-size:10px;font-weight:500;border-radius:20px;border:1px solid var(--b2);background:transparent;color:var(--t3);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
   .nav-pill:hover{background:var(--bg2);color:var(--t1);border-color:var(--b1)}
   .nav-pill.active{background:var(--t1);color:var(--bg1);border-color:var(--t1)}
+  @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -293,6 +294,64 @@
 
   <!-- ═══════════ PAGE 1: EINGABE ═══════════ -->
   <div class="page active" id="pageInput">
+
+    <!-- ═══ Beckenübersicht Screening ═══ -->
+    <div style="margin-bottom:24px;padding:18px 20px;background:var(--bg2);border:1px solid var(--b2);border-radius:var(--r-lg)">
+      <div style="font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px">Screening: Beckenübersicht analysieren</div>
+      <div style="font-size:11px;color:var(--t3);margin-bottom:14px">Beurteilen Sie die a.p. Beckenübersicht auf indirekte Zeichen eines Beckentilts. Optional: Bild hochladen für eine KI-gestützte Voranalyse (nur bei gehosteter Version). <b>Die finale Entscheidung trifft der Arzt.</b></div>
+
+      <!-- Upload area -->
+      <div id="xrayDropzone" style="border:2px dashed var(--b1);border-radius:var(--r-md);padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg1)" onclick="document.getElementById('xrayFile').click()" ondragover="event.preventDefault();this.style.borderColor='var(--blue-b)';this.style.background='var(--blue-bg)'" ondragleave="this.style.borderColor='var(--b1)';this.style.background='var(--bg1)'" ondrop="event.preventDefault();this.style.borderColor='var(--b1)';this.style.background='var(--bg1)';handleXrayUpload(event.dataTransfer.files[0])">
+        <div id="xrayUploadContent">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 8px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <div style="font-size:12px;color:var(--t2)">Beckenübersicht (a.p.) hochladen</div>
+          <div style="font-size:10px;color:var(--t3);margin-top:4px">Bild hierher ziehen oder klicken · JPG/PNG · Optional: KI-Voranalyse</div>
+        </div>
+        <input type="file" id="xrayFile" accept="image/*" style="display:none" onchange="handleXrayUpload(this.files[0])">
+      </div>
+
+      <!-- KI Analysis Result (hidden by default, shown only on success) -->
+      <div id="xrayResult" style="display:none;margin-top:14px">
+        <div id="xrayLoading" style="display:none;text-align:center;padding:20px">
+          <div style="font-size:12px;color:var(--t3)">KI analysiert Beckenübersicht...</div>
+          <div style="margin-top:8px;width:40px;height:40px;border:3px solid var(--b2);border-top-color:var(--blue-b);border-radius:50%;animation:spin 0.8s linear infinite;margin:8px auto 0"></div>
+        </div>
+        <div id="xrayAI" style="display:none">
+          <div style="font-size:11px;font-weight:600;color:var(--blue-t);margin-bottom:6px">KI-Voranalyse (nicht validiert — ärztliche Bestätigung erforderlich)</div>
+          <div id="xrayAIText" style="font-size:11px;color:var(--t2);line-height:1.6;padding:10px 14px;background:var(--blue-bg);border:1px solid var(--blue-b);border-radius:var(--r-md)"></div>
+        </div>
+      </div>
+
+      <!-- Manual Checklist (ALWAYS visible) -->
+      <div style="margin-top:14px">
+        <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:8px">Ärztliche Beurteilung — Indirekte Tilt-Zeichen</div>
+        <div style="font-size:10px;color:var(--t3);margin-bottom:10px">Beurteilen Sie die Beckenübersicht auf indirekte Zeichen eines Beckentilts:</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11px">
+          <tbody>
+            <tr style="border-bottom:1px solid var(--b2)">
+              <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="tilt-chk" data-sign="sacrum" style="margin-top:2px"> <span><b>Sakrum stark projiziert</b><br><span style="color:var(--t3)">Sakrum deutlich sichtbar → posteriorer Beckentilt (Retroversion)</span></span></label></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--b2)">
+              <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="tilt-chk" data-sign="coccyx" style="margin-top:2px"> <span><b>Steißbein-Symphysen-Abstand verändert</b><br><span style="color:var(--t3)">Kurz (&lt;15mm) = posteriorer Tilt · Lang (&gt;35mm) = anteriorer Tilt</span></span></label></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--b2)">
+              <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="tilt-chk" data-sign="foramina" style="margin-top:2px"> <span><b>Obturator-Foramina asymmetrisch</b><br><span style="color:var(--t3)">Seitenungleichheit deutet auf Beckenrotation / -kippung</span></span></label></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--b2)">
+              <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="tilt-chk" data-sign="kyphosis" style="margin-top:2px"> <span><b>Klinischer Verdacht auf Kyphose / Flatback</b><br><span style="color:var(--t3)">Patient steht nicht aufrecht, vornübergebeugte Haltung</span></span></label></td>
+            </tr>
+            <tr>
+              <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="tilt-chk" data-sign="fusion" style="margin-top:2px"> <span><b>LWS-Fusion ≥ 3 Segmente sichtbar</b><br><span style="color:var(--t3)">Instrumentierung / Fusionsmasse in der LWS erkennbar</span></span></label></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Recommendation -->
+        <div id="tiltRecommendation" style="margin-top:12px;padding:10px 14px;border-radius:var(--r-md);font-size:11px;line-height:1.6"></div>
+      </div>
+    </div>
+
+    <hr class="hr" style="margin:0 0 20px 0">
 
     <div style="text-align:center;margin-bottom:6px">
       <div style="font-size:15px;font-weight:600;color:var(--t1)">Patientendaten eingeben</div>
@@ -1567,6 +1626,104 @@ function goToInput(){
   document.getElementById('pageInput').classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+/* ── Beckenübersicht Screening ── */
+var xrayImageData=null;
+
+function handleXrayUpload(file){
+  if(!file||!file.type.startsWith('image/')) return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    xrayImageData=e.target.result;
+    var dz=document.getElementById('xrayUploadContent');
+    dz.innerHTML='<img src="'+xrayImageData+'" style="max-height:120px;max-width:100%;border-radius:6px;margin-bottom:6px"><div style="font-size:11px;color:var(--green-t)">Bild hochgeladen — '+file.name+'</div><div style="font-size:10px;color:var(--t3);margin-top:2px">Klicken für anderes Bild</div>';
+    document.getElementById('xrayResult').style.display='block';
+    document.getElementById('xrayLoading').style.display='block';
+    document.getElementById('xrayAI').style.display='none';
+    analyzeXray(xrayImageData);
+  };
+  reader.readAsDataURL(file);
+}
+
+async function analyzeXray(imgData){
+  try{
+    var base64=imgData.split(',')[1];
+    var mediaType=imgData.split(';')[0].split(':')[1];
+    var response=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{
+          role:'user',
+          content:[
+            {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
+            {type:'text',text:'Du bist ein orthopädischer Radiologe. Analysiere diese Beckenübersichtsröntgenaufnahme (a.p.) auf indirekte Zeichen eines Beckentilts und spinopelviner Pathologie. Beurteile folgende Kriterien:\n\n1. Sakrum-Projektion: Ist das Sakrum stark/wenig sichtbar? (viel sichtbar = posteriorer Tilt)\n2. Steißbein-Symphysen-Abstand: Kurz (<15mm), normal (15-35mm), oder lang (>35mm)?\n3. Obturator-Foramina: Symmetrisch oder asymmetrisch?\n4. LWS-Fusion/Instrumentierung: Sichtbar? Wenn ja, wie viele Segmente?\n5. Generelle Auffälligkeiten (Kyphose-Zeichen, sagittales Malalignment)?\n\nAntworte auf Deutsch, knapp und klinisch präzise. Gib am Ende eine klare Empfehlung: Erweiterte LWS-Bildgebung empfohlen / erwägen / nicht erforderlich. Dies ist ein Screening-Tool, keine Diagnose.'}
+          ]
+        }]
+      })
+    });
+    var data=await response.json();
+    var text=data.content.map(function(c){return c.text||''}).join('');
+    document.getElementById('xrayLoading').style.display='none';
+    document.getElementById('xrayAI').style.display='block';
+    document.getElementById('xrayAIText').innerHTML=text.replace(/\n/g,'<br>');
+    autoCheckFromAI(text);
+    updateTiltRecommendation();
+  } catch(err){
+    document.getElementById('xrayLoading').style.display='none';
+    document.getElementById('xrayAI').style.display='block';
+    document.getElementById('xrayAIText').innerHTML='<span style="color:var(--t3)">KI-Voranalyse nicht verfügbar (lokale Datei). Bitte nutzen Sie die Checkliste oben zur manuellen Beurteilung.</span>';
+    updateTiltRecommendation();
+  }
+}
+
+function autoCheckFromAI(text){
+  var lower=text.toLowerCase();
+  if(lower.includes('sakrum')&&(lower.includes('stark sichtbar')||lower.includes('deutlich')||lower.includes('posterior'))){
+    var el=document.querySelector('.tilt-chk[data-sign="sacrum"]');if(el)el.checked=true;
+  }
+  if(lower.includes('steißbein')&&(lower.includes('kurz')||lower.includes('verkürzt')||lower.includes('verlängert')||lower.includes('verändert'))){
+    var el=document.querySelector('.tilt-chk[data-sign="coccyx"]');if(el)el.checked=true;
+  }
+  if(lower.includes('asymmetr')){
+    var el=document.querySelector('.tilt-chk[data-sign="foramina"]');if(el)el.checked=true;
+  }
+  if(lower.includes('fusion')||lower.includes('instrumentier')||lower.includes('spondylodese')){
+    var el=document.querySelector('.tilt-chk[data-sign="fusion"]');if(el)el.checked=true;
+  }
+  if(lower.includes('kyphose')||lower.includes('flatback')||lower.includes('malalignment')){
+    var el=document.querySelector('.tilt-chk[data-sign="kyphosis"]');if(el)el.checked=true;
+  }
+}
+
+function updateTiltRecommendation(){
+  var checks=document.querySelectorAll('.tilt-chk');
+  var count=0,fusion=false;
+  checks.forEach(function(c){
+    if(c.checked){count++;if(c.getAttribute('data-sign')==='fusion')fusion=true;}
+  });
+  var el=document.getElementById('tiltRecommendation');
+  if(fusion){
+    el.style.background='var(--red-bg)';el.style.border='1px solid var(--red-b)';
+    el.innerHTML='<b style="color:var(--red-t)">Erweiterte LWS-Bildgebung dringend empfohlen</b><br><span style="color:var(--red-t)">LWS-Fusion erkannt. Stehende und gebeugt sitzende seitliche Wirbelsäulenaufnahmen zur Bestimmung von PI, LL und ΔLL erforderlich.</span>';
+  } else if(count>=2){
+    el.style.background='var(--amber-bg)';el.style.border='1px solid var(--amber-b)';
+    el.innerHTML='<b style="color:var(--amber-t)">Erweiterte LWS-Bildgebung empfohlen</b><br><span style="color:var(--amber-t)">'+count+' indirekte Tilt-Zeichen erkannt. Seitliche Wirbelsäulenaufnahmen (stehend + gebeugt sitzend) empfohlen.</span>';
+  } else if(count===1){
+    el.style.background='var(--amber-bg)';el.style.border='1px solid var(--amber-b)';
+    el.innerHTML='<b style="color:var(--amber-t)">Erweiterte Bildgebung erwägen</b><br><span style="color:var(--amber-t)">1 indirektes Zeichen. Klinische Korrelation empfohlen.</span>';
+  } else {
+    el.style.background='var(--green-bg)';el.style.border='1px solid var(--green-b)';
+    el.innerHTML='<b style="color:var(--green-t)">Keine auffälligen Tilt-Zeichen</b><br><span style="color:var(--green-t)">Standard-Bildgebung ausreichend.</span>';
+  }
+}
+
+document.querySelectorAll('.tilt-chk').forEach(function(c){
+  c.addEventListener('change',updateTiltRecommendation);
+});
+updateTiltRecommendation();
 
 syncInput();
 u();
