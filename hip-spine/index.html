@@ -318,31 +318,37 @@
       </div>
 
       <!-- Upload + Canvas -->
-      <div style="position:relative;background:var(--bg3);border-radius:var(--r-md);overflow:hidden;min-height:120px;cursor:crosshair" id="measureWrap">
-        <div id="measureUploadHint" style="text-align:center;padding:40px 16px" onclick="document.getElementById('measureFile').click()">
+      <div style="position:relative;background:var(--bg3);border-radius:var(--r-md);overflow:hidden;min-height:120px" id="measureWrap">
+        <div id="measureUploadHint" style="text-align:center;padding:40px 16px;cursor:pointer" onclick="document.getElementById('measureFile').click()">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 6px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <div style="font-size:12px;color:var(--t2)">Seitliche WS-Aufnahme hochladen</div>
+          <div style="font-size:12px;color:var(--t2)" id="uploadLabel">Seitliche WS-Aufnahme (stehend) hochladen</div>
           <div style="font-size:10px;color:var(--t3)">Klicken oder Bild hierher ziehen</div>
         </div>
         <canvas id="measureCanvas" style="display:none;width:100%;cursor:crosshair"></canvas>
         <input type="file" id="measureFile" accept="image/*" style="display:none" onchange="loadMeasureImage(this.files[0])">
+        <!-- Image remove + change buttons -->
+        <div id="measureImgBar" style="display:none;position:absolute;top:6px;right:6px;gap:4px;z-index:5">
+          <button onclick="document.getElementById('measureFile').click()" style="padding:4px 8px;font-size:10px;border-radius:4px;border:none;background:rgba(0,0,0,0.6);color:#fff;cursor:pointer;font-family:var(--font)">Anderes Bild</button>
+          <button onclick="removeMeasureImage()" style="padding:4px 8px;font-size:10px;border-radius:4px;border:none;background:rgba(220,38,38,0.8);color:#fff;cursor:pointer;font-family:var(--font)">✕ Bild entfernen</button>
+        </div>
       </div>
 
       <!-- Step instructions -->
       <div id="measureSteps" style="display:none;margin-top:10px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
           <div id="mStepIndicator" style="display:flex;gap:4px"></div>
-          <button class="btn-secondary" style="padding:4px 10px;font-size:10px;margin-left:auto" onclick="undoMeasurePoint()">Letzten Punkt rückgängig</button>
-          <button class="btn-secondary" style="padding:4px 10px;font-size:10px" onclick="resetMeasure()">Reset</button>
+          <button class="btn-secondary" style="padding:4px 10px;font-size:10px;margin-left:auto" onclick="undoMeasurePoint()">↩ Rückgängig</button>
+          <button class="btn-secondary" style="padding:4px 10px;font-size:10px" onclick="resetMeasure()">Punkte reset</button>
         </div>
-        <div id="mStepText" style="font-size:12px;color:var(--t1);font-weight:500;padding:8px 12px;background:var(--blue-bg);border:1px solid var(--blue-b);border-radius:var(--r-md);color:var(--blue-t)"></div>
+        <div id="mStepText" style="font-size:12px;font-weight:500;padding:8px 12px;background:var(--blue-bg);border:1px solid var(--blue-b);border-radius:var(--r-md);color:var(--blue-t)"></div>
       </div>
 
-      <!-- Results -->
+      <!-- Results: all three values always visible -->
       <div id="measureResults" style="display:none;margin-top:12px">
-        <div class="dg">
-          <div class="dd" id="mResPIBox" style="border:1.5px solid var(--b2)"><div class="dl">PI (gemessen)</div><div class="dv" id="mResPI">—</div></div>
-          <div class="dd" id="mResLLBox" style="border:1.5px solid var(--b2)"><div class="dl" id="mResLLLabel">LL stehend (gemessen)</div><div class="dv" id="mResLL">—</div></div>
+        <div class="dg" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="dd" id="mResPIBox" style="border:1.5px solid var(--b2)"><div class="dl">PI</div><div class="dv" id="mResPI">—</div></div>
+          <div class="dd" id="mResLLSBox" style="border:1.5px solid var(--b2)"><div class="dl">LL stehend</div><div class="dv" id="mResLLS">—</div></div>
+          <div class="dd" id="mResLLFBox" style="border:1.5px solid var(--b2)"><div class="dl">LL gebeugt</div><div class="dv" id="mResLLF">—</div></div>
         </div>
         <button class="btn-secondary" style="width:100%;margin-top:8px;justify-content:center;font-weight:600;color:var(--green-t);border-color:var(--green-b)" id="mApplyBtn" onclick="applyMeasuredValues()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1626,20 +1632,19 @@ function goToInput(){
 }
 
 /* ── Röntgen-Messwerkzeug ── */
-var mMode='stand'; // 'stand' or 'flex'
+var mMode='stand';
 var mPoints=[];
 var mImage=null;
 var mCanvas=null;
 var mCtx=null;
 var mScale=1;
-var mMeasuredPI=null,mMeasuredLLStand=null,mMeasuredLLFlex=null;
+var mMeasuredPI=null,mMeasuredLLS=null,mMeasuredLLF=null;
+var mAutoAdvanced=false;
 
-// Steps: stand mode needs 5 points (S1 left, S1 right, Hip center, L1 left, L1 right)
-// flex mode needs 4 points (S1 left, S1 right, L1 left, L1 right)
 var MSTEPS_STAND=[
   'S1-Deckplatte: Linken Rand anklicken',
   'S1-Deckplatte: Rechten Rand anklicken',
-  'Hüftkopfzentrum anklicken (Mittelpunkt des Femurkopfs)',
+  'Hüftkopfzentrum anklicken',
   'L1-Oberkante: Linken Rand anklicken',
   'L1-Oberkante: Rechten Rand anklicken'
 ];
@@ -1654,9 +1659,30 @@ function switchMeasureTab(mode){
   mMode=mode;
   document.getElementById('mTabStand').classList.toggle('selected',mode==='stand');
   document.getElementById('mTabFlex').classList.toggle('selected',mode==='flex');
-  document.getElementById('mResLLLabel').textContent=mode==='stand'?'LL stehend (gemessen)':'LL gebeugt sitzend (gemessen)';
-  document.getElementById('mResPIBox').style.display=mode==='stand'?'':'none';
-  resetMeasure();
+  highlightActiveResult();
+  // Reset points but keep image if same
+  mPoints=[];
+  if(mImage) drawMeasure();
+  updateMStepUI();
+}
+
+function highlightActiveResult(){
+  var piB=document.getElementById('mResPIBox');
+  var llsB=document.getElementById('mResLLSBox');
+  var llfB=document.getElementById('mResLLFBox');
+  if(mMode==='stand'){
+    piB.style.borderColor='var(--blue-b)';piB.style.background='var(--blue-bg)';
+    llsB.style.borderColor='var(--blue-b)';llsB.style.background='var(--blue-bg)';
+    llfB.style.borderColor='var(--b2)';llfB.style.background='';
+  } else {
+    piB.style.borderColor='var(--b2)';piB.style.background='';
+    llsB.style.borderColor='var(--b2)';llsB.style.background='';
+    llfB.style.borderColor='var(--blue-b)';llfB.style.background='var(--blue-bg)';
+  }
+  // Mark completed values green
+  if(mMeasuredPI!==null){piB.style.borderColor='var(--green-b)';piB.style.background='var(--green-bg)';}
+  if(mMeasuredLLS!==null){llsB.style.borderColor='var(--green-b)';llsB.style.background='var(--green-bg)';}
+  if(mMeasuredLLF!==null){llfB.style.borderColor='var(--green-b)';llfB.style.background='var(--green-bg)';}
 }
 
 function loadMeasureImage(file){
@@ -1673,7 +1699,9 @@ function loadMeasureImage(file){
     mCanvas.height=img.height;
     mCanvas.style.display='block';
     mCanvas.style.height=(img.height*mScale)+'px';
+    mCanvas.style.cursor='crosshair';
     document.getElementById('measureUploadHint').style.display='none';
+    document.getElementById('measureImgBar').style.display='flex';
     document.getElementById('measureSteps').style.display='block';
     document.getElementById('measureResults').style.display='block';
     mCanvas.onclick=function(e){
@@ -1682,10 +1710,31 @@ function loadMeasureImage(file){
       var y=(e.clientY-rect.top)/rect.height*mCanvas.height;
       addMeasurePoint(x,y);
     };
-    resetMeasure();
+    mPoints=[];
     drawMeasure();
+    updateMStepUI();
+    highlightActiveResult();
   };
   img.src=URL.createObjectURL(file);
+  // Reset file input so same file can be re-selected
+  document.getElementById('measureFile').value='';
+}
+
+function removeMeasureImage(){
+  mImage=null;
+  mPoints=[];
+  mCanvas=document.getElementById('measureCanvas');
+  mCanvas.style.display='none';
+  document.getElementById('measureUploadHint').style.display='block';
+  document.getElementById('measureImgBar').style.display='none';
+  document.getElementById('measureSteps').style.display='none';
+  updateUploadLabel();
+}
+
+function updateUploadLabel(){
+  var lbl=document.getElementById('uploadLabel');
+  if(mMode==='stand') lbl.textContent='Seitliche WS-Aufnahme (stehend) hochladen';
+  else lbl.textContent='Seitliche WS-Aufnahme (gebeugt sitzend) hochladen';
 }
 
 function addMeasurePoint(x,y){
@@ -1694,7 +1743,42 @@ function addMeasurePoint(x,y){
   mPoints.push({x:x,y:y});
   drawMeasure();
   updateMStepUI();
-  if(mPoints.length===steps.length) calculateAngles();
+  if(mPoints.length===steps.length) onMeasureComplete();
+}
+
+function onMeasureComplete(){
+  calculateAngles();
+  highlightActiveResult();
+
+  // Auto-advance: after standing → switch to flex
+  if(mMode==='stand'&&mMeasuredLLF===null&&!mAutoAdvanced){
+    mAutoAdvanced=true;
+    var txtEl=document.getElementById('mStepText');
+    txtEl.innerHTML='<span style="color:var(--green-t)">✓ Stehend-Messung abgeschlossen.</span> Wechsle in 2s zur gebeugt-sitzenden Aufnahme...';
+    txtEl.style.background='var(--green-bg)';txtEl.style.borderColor='var(--green-b)';txtEl.style.color='var(--green-t)';
+
+    setTimeout(function(){
+      // Switch to flex tab
+      mMode='flex';
+      document.getElementById('mTabStand').classList.remove('selected');
+      document.getElementById('mTabFlex').classList.add('selected');
+      // Clear image and show upload
+      mImage=null;
+      mPoints=[];
+      mCanvas=document.getElementById('measureCanvas');
+      mCanvas.style.display='none';
+      document.getElementById('measureUploadHint').style.display='block';
+      document.getElementById('measureImgBar').style.display='none';
+      updateUploadLabel();
+      updateMStepUI();
+      highlightActiveResult();
+      // Pulse the upload area
+      var dz=document.getElementById('measureUploadHint');
+      dz.style.transition='background .3s';
+      dz.style.background='var(--amber-bg)';
+      setTimeout(function(){dz.style.background='';},1200);
+    },2000);
+  }
 }
 
 function undoMeasurePoint(){
@@ -1702,8 +1786,6 @@ function undoMeasurePoint(){
     mPoints.pop();
     drawMeasure();
     updateMStepUI();
-    document.getElementById('mResPI').textContent='—';
-    document.getElementById('mResLL').textContent='—';
   }
 }
 
@@ -1711,8 +1793,6 @@ function resetMeasure(){
   mPoints=[];
   if(mImage) drawMeasure();
   updateMStepUI();
-  document.getElementById('mResPI').textContent='—';
-  document.getElementById('mResLL').textContent='—';
 }
 
 function updateMStepUI(){
@@ -1727,11 +1807,16 @@ function updateMStepUI(){
   }
   indEl.innerHTML=h;
   var txtEl=document.getElementById('mStepText');
-  if(mPoints.length<steps.length){
+  if(!mImage){
+    var label=mMode==='stand'?'stehende':'gebeugt sitzende';
+    txtEl.textContent='Bitte '+label+' seitliche WS-Aufnahme hochladen.';
+    txtEl.style.background='var(--amber-bg)';txtEl.style.borderColor='var(--amber-b)';txtEl.style.color='var(--amber-t)';
+  } else if(mPoints.length<steps.length){
     txtEl.textContent='Schritt '+(mPoints.length+1)+'/'+steps.length+': '+steps[mPoints.length];
     txtEl.style.background='var(--blue-bg)';txtEl.style.borderColor='var(--blue-b)';txtEl.style.color='var(--blue-t)';
   } else {
-    txtEl.textContent='Messung abgeschlossen — Winkel berechnet.';
+    var label=mMode==='stand'?'Stehend':'Gebeugt sitzend';
+    txtEl.innerHTML='<span style="color:var(--green-t)">\u2714 '+label+'-Messung abgeschlossen.</span>';
     txtEl.style.background='var(--green-bg)';txtEl.style.borderColor='var(--green-b)';txtEl.style.color='var(--green-t)';
   }
 }
@@ -1741,25 +1826,17 @@ function drawMeasure(){
   mCtx.clearRect(0,0,mCanvas.width,mCanvas.height);
   mCtx.drawImage(mImage,0,0);
 
-  var colors=['#ef4444','#ef4444','#f59e0b','#3b82f6','#3b82f6'];
-  if(mMode==='flex') colors=['#ef4444','#ef4444','#3b82f6','#3b82f6'];
+  var colors=mMode==='stand'?['#ef4444','#ef4444','#f59e0b','#3b82f6','#3b82f6']:['#ef4444','#ef4444','#3b82f6','#3b82f6'];
   var r=Math.max(6,mCanvas.width/80);
 
-  // Draw points
   for(var i=0;i<mPoints.length;i++){
     var p=mPoints[i];
     mCtx.beginPath();
     mCtx.arc(p.x,p.y,r,0,Math.PI*2);
-    mCtx.fillStyle=colors[i];
-    mCtx.globalAlpha=0.8;
-    mCtx.fill();
-    mCtx.globalAlpha=1;
-    mCtx.strokeStyle='#fff';
-    mCtx.lineWidth=2;
-    mCtx.stroke();
+    mCtx.fillStyle=colors[i];mCtx.globalAlpha=0.8;mCtx.fill();
+    mCtx.globalAlpha=1;mCtx.strokeStyle='#fff';mCtx.lineWidth=2;mCtx.stroke();
   }
 
-  // Draw S1 line (first 2 points)
   if(mPoints.length>=2){
     mCtx.beginPath();
     mCtx.moveTo(mPoints[0].x,mPoints[0].y);
@@ -1769,50 +1846,34 @@ function drawMeasure(){
   }
 
   if(mMode==='stand'){
-    // Draw hip center (point 3)
-    if(mPoints.length>=3){
-      drawLabel(mCtx,mPoints[2].x,mPoints[2].y-20,'Hip','#f59e0b');
-    }
-    // Draw L1 line (points 4,5)
+    if(mPoints.length>=3) drawLabel(mCtx,mPoints[2].x,mPoints[2].y-20,'Hip','#f59e0b');
     if(mPoints.length>=5){
       mCtx.beginPath();
-      mCtx.moveTo(mPoints[3].x,mPoints[3].y);
-      mCtx.lineTo(mPoints[4].x,mPoints[4].y);
+      mCtx.moveTo(mPoints[3].x,mPoints[3].y);mCtx.lineTo(mPoints[4].x,mPoints[4].y);
       mCtx.strokeStyle='#3b82f6';mCtx.lineWidth=3;mCtx.stroke();
       drawLabel(mCtx,(mPoints[3].x+mPoints[4].x)/2,(mPoints[3].y+mPoints[4].y)/2-20,'L1','#3b82f6');
     }
-    // Draw PI construction lines
     if(mPoints.length>=3){
       var s1mid={x:(mPoints[0].x+mPoints[1].x)/2,y:(mPoints[0].y+mPoints[1].y)/2};
       var hip=mPoints[2];
-      // Perpendicular to S1
-      var s1dx=mPoints[1].x-mPoints[0].x;
-      var s1dy=mPoints[1].y-mPoints[0].y;
+      var s1dx=mPoints[1].x-mPoints[0].x,s1dy=mPoints[1].y-mPoints[0].y;
       var perpX=-s1dy,perpY=s1dx;
       var perpLen=Math.sqrt(perpX*perpX+perpY*perpY);
       perpX/=perpLen;perpY/=perpLen;
+      if(perpY>0){perpX=-perpX;perpY=-perpY;}
       var lineLen=mCanvas.width/4;
-      // Draw perpendicular (cranial direction = negative y usually)
-      mCtx.beginPath();
-      mCtx.setLineDash([8,6]);
+      mCtx.beginPath();mCtx.setLineDash([8,6]);
       mCtx.moveTo(s1mid.x,s1mid.y);
-      mCtx.lineTo(s1mid.x-perpX*lineLen,s1mid.y-perpY*lineLen);
-      mCtx.strokeStyle='#22c55e';mCtx.lineWidth=2;mCtx.stroke();
-      mCtx.setLineDash([]);
-      // Draw line to hip
-      mCtx.beginPath();
-      mCtx.setLineDash([8,6]);
-      mCtx.moveTo(s1mid.x,s1mid.y);
-      mCtx.lineTo(hip.x,hip.y);
-      mCtx.strokeStyle='#f59e0b';mCtx.lineWidth=2;mCtx.stroke();
-      mCtx.setLineDash([]);
+      mCtx.lineTo(s1mid.x+perpX*lineLen,s1mid.y+perpY*lineLen);
+      mCtx.strokeStyle='#22c55e';mCtx.lineWidth=2;mCtx.stroke();mCtx.setLineDash([]);
+      mCtx.beginPath();mCtx.setLineDash([8,6]);
+      mCtx.moveTo(s1mid.x,s1mid.y);mCtx.lineTo(hip.x,hip.y);
+      mCtx.strokeStyle='#f59e0b';mCtx.lineWidth=2;mCtx.stroke();mCtx.setLineDash([]);
     }
   } else {
-    // Flex mode: L1 line (points 3,4)
     if(mPoints.length>=4){
       mCtx.beginPath();
-      mCtx.moveTo(mPoints[2].x,mPoints[2].y);
-      mCtx.lineTo(mPoints[3].x,mPoints[3].y);
+      mCtx.moveTo(mPoints[2].x,mPoints[2].y);mCtx.lineTo(mPoints[3].x,mPoints[3].y);
       mCtx.strokeStyle='#3b82f6';mCtx.lineWidth=3;mCtx.stroke();
       drawLabel(mCtx,(mPoints[2].x+mPoints[3].x)/2,(mPoints[2].y+mPoints[3].y)/2-20,'L1','#3b82f6');
     }
@@ -1821,11 +1882,9 @@ function drawMeasure(){
 
 function drawLabel(ctx,x,y,text,color){
   ctx.font='bold '+Math.max(14,ctx.canvas.width/40)+'px Arial';
-  ctx.fillStyle=color;
-  ctx.textAlign='center';
+  ctx.fillStyle=color;ctx.textAlign='center';
   ctx.strokeStyle='rgba(0,0,0,0.6)';ctx.lineWidth=3;
-  ctx.strokeText(text,x,y);
-  ctx.fillText(text,x,y);
+  ctx.strokeText(text,x,y);ctx.fillText(text,x,y);
 }
 
 function calculateAngles(){
@@ -1833,59 +1892,48 @@ function calculateAngles(){
   if(mMode==='stand'&&mPoints.length===5){
     var s1L=mPoints[0],s1R=mPoints[1],hip=mPoints[2],l1L=mPoints[3],l1R=mPoints[4];
     var s1mid={x:(s1L.x+s1R.x)/2,y:(s1L.y+s1R.y)/2};
-
-    // PI: angle between S1 perpendicular (cranial) and line to hip center
     var s1dx=s1R.x-s1L.x,s1dy=s1R.y-s1L.y;
-    var perpX=-s1dy,perpY=s1dx; // perpendicular to S1
-    var hipDx=hip.x-s1mid.x,hipDy=hip.y-s1mid.y;
-    // Ensure perpendicular points cranially (y decreases)
+    var perpX=-s1dy,perpY=s1dx;
     if(perpY>0){perpX=-perpX;perpY=-perpY;}
-    var pi=Math.acos((perpX*hipDx+perpY*hipDy)/(Math.sqrt(perpX*perpX+perpY*perpY)*Math.sqrt(hipDx*hipDx+hipDy*hipDy)))*D;
+    var hipDx=hip.x-s1mid.x,hipDy=hip.y-s1mid.y;
+    var dot=perpX*hipDx+perpY*hipDy;
+    var magA=Math.sqrt(perpX*perpX+perpY*perpY);
+    var magB=Math.sqrt(hipDx*hipDx+hipDy*hipDy);
+    var pi=Math.acos(Math.max(-1,Math.min(1,dot/(magA*magB))))*D;
     pi=Math.round(pi);
     mMeasuredPI=pi;
-    document.getElementById('mResPI').textContent=pi+'°';
+    document.getElementById('mResPI').textContent=pi+'\u00B0';
 
-    // LL: angle between L1 upper endplate and S1 endplate
     var l1dx=l1R.x-l1L.x,l1dy=l1R.y-l1L.y;
     var s1Angle=Math.atan2(s1dy,s1dx);
     var l1Angle=Math.atan2(l1dy,l1dx);
     var ll=Math.abs(s1Angle-l1Angle)*D;
     if(ll>180) ll=360-ll;
     ll=Math.round(ll);
-    mMeasuredLLStand=ll;
-    document.getElementById('mResLL').textContent=ll+'°';
+    mMeasuredLLS=ll;
+    document.getElementById('mResLLS').textContent=ll+'\u00B0';
 
   } else if(mMode==='flex'&&mPoints.length===4){
-    var s1L=mPoints[0],s1R=mPoints[1],l1L=mPoints[2],l1R=mPoints[3];
-    var s1dx=s1R.x-s1L.x,s1dy=s1R.y-s1L.y;
-    var l1dx=l1R.x-l1L.x,l1dy=l1R.y-l1L.y;
+    var s1dx=mPoints[1].x-mPoints[0].x,s1dy=mPoints[1].y-mPoints[0].y;
+    var l1dx=mPoints[3].x-mPoints[2].x,l1dy=mPoints[3].y-mPoints[2].y;
     var s1Angle=Math.atan2(s1dy,s1dx);
     var l1Angle=Math.atan2(l1dy,l1dx);
     var ll=Math.abs(s1Angle-l1Angle)*D;
     if(ll>180) ll=360-ll;
     ll=Math.round(ll);
-    mMeasuredLLFlex=ll;
-    document.getElementById('mResLL').textContent=ll+'°';
+    mMeasuredLLF=ll;
+    document.getElementById('mResLLF').textContent=ll+'\u00B0';
   }
 }
 
 function applyMeasuredValues(){
-  if(mMode==='stand'){
-    if(mMeasuredPI!==null){
-      document.getElementById('p1_pi').value=Math.max(30,Math.min(85,mMeasuredPI));
-    }
-    if(mMeasuredLLStand!==null){
-      document.getElementById('p1_lls').value=Math.max(5,Math.min(80,mMeasuredLLStand));
-    }
-  } else {
-    if(mMeasuredLLFlex!==null){
-      document.getElementById('p1_llb').value=Math.max(-10,Math.min(60,mMeasuredLLFlex));
-    }
-  }
+  if(mMeasuredPI!==null) document.getElementById('p1_pi').value=Math.max(30,Math.min(85,mMeasuredPI));
+  if(mMeasuredLLS!==null) document.getElementById('p1_lls').value=Math.max(5,Math.min(80,mMeasuredLLS));
+  if(mMeasuredLLF!==null) document.getElementById('p1_llb').value=Math.max(-10,Math.min(60,mMeasuredLLF));
   syncInput();
-  // Flash the updated cards
-  var cards=document.querySelectorAll('.input-card');
-  cards.forEach(function(c){c.style.transition='background .3s';c.style.background='var(--green-bg)';
+  // Flash cards green
+  document.querySelectorAll('.input-card').forEach(function(c){
+    c.style.transition='background .3s';c.style.background='var(--green-bg)';
     setTimeout(function(){c.style.background='';},600);
   });
 }
