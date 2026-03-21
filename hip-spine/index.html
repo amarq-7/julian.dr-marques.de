@@ -151,7 +151,10 @@
   .sc-b.dn{background:var(--red-bg);color:var(--red-t)}
 
   /* ── DM Decision Tree ── */
-  .dm-rule{padding:10px 14px;background:var(--bg2);border-radius:var(--r-md);margin-bottom:8px;border-left:3px solid var(--b1)}
+  .dm-rule{padding:10px 14px;background:var(--bg2);border-radius:var(--r-md);margin-bottom:8px;border-left:3px solid var(--b1);transition:all .2s;border:1px solid var(--b2);border-left:3px solid var(--b1)}
+  .dm-rule:hover{background:var(--bg3);border-color:var(--b1)}
+  .dm-rule.dm-selected{border-color:var(--red-b)!important;border-left-color:var(--red-b)!important;background:var(--red-bg)}
+  .dm-rule.dm-rule-safe.dm-selected{border-color:var(--green-b)!important;border-left-color:var(--green-b)!important;background:var(--green-bg)}
   .dm-if{font-size:12px;color:var(--t1);margin-bottom:4px}
   .dm-then{font-size:12px;font-weight:600;margin-bottom:4px}
   .dm-then.dm-rec{color:var(--red-t)}
@@ -236,6 +239,7 @@
     .info-btn{display:none!important}
     .info-popup,.info-overlay{display:none!important}
     .legal-popup,#legalOverlay{display:none!important}
+    #pageScreening{display:none!important}
     #pageInput{display:none!important}
     #pageResults{display:block!important}
     .page-back-bar{display:none!important}
@@ -298,8 +302,98 @@
     <div class="subtitle">Hip-Spine-Klassifikation nach Vigdorchik et al. (Bone Joint J 2021) — Interaktives Planungstool</div>
   </div>
 
+  <!-- ═══════════ PAGE 0: SCREENING ═══════════ -->
+  <div class="page active" id="pageScreening">
+
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:15px;font-weight:600;color:var(--t1)">Schritt 1: Screening — Erweiterte LWS-Bildgebung erforderlich?</div>
+      <div style="font-size:12px;color:var(--t3);margin-top:4px">Beurteilen Sie die a.p. Beckenübersicht auf indirekte Zeichen eines Beckentilts und Risikofaktoren.</div>
+    </div>
+
+    <!-- Upload + Canvas for AP Pelvis -->
+    <div style="position:relative;background:var(--bg3);border-radius:var(--r-lg);overflow:hidden;min-height:100px;margin-bottom:14px" id="scrWrap">
+      <div id="scrUploadHint" style="text-align:center;padding:30px 16px;cursor:pointer" onclick="document.getElementById('scrFile').click()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 6px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <div style="font-size:12px;color:var(--t2)">Beckenübersicht (a.p.) hochladen</div>
+        <div style="font-size:10px;color:var(--t3)">Optional — zur Messung des Steißbein-Symphysen-Abstands</div>
+      </div>
+      <canvas id="scrCanvas" style="display:none;cursor:crosshair"></canvas>
+      <input type="file" id="scrFile" accept="image/*" style="display:none" onchange="loadScrImage(this.files[0])">
+      <div id="scrImgBar" style="display:none;position:absolute;top:6px;right:6px;gap:4px;z-index:5">
+        <button onclick="document.getElementById('scrFile').click()" style="padding:4px 8px;font-size:10px;border-radius:4px;border:none;background:rgba(0,0,0,0.6);color:#fff;cursor:pointer;font-family:var(--font)">Anderes Bild</button>
+        <button onclick="removeScrImage()" style="padding:4px 8px;font-size:10px;border-radius:4px;border:none;background:rgba(220,38,38,0.8);color:#fff;cursor:pointer;font-family:var(--font)">✕ Entfernen</button>
+      </div>
+    </div>
+
+    <!-- Measurement instructions -->
+    <div id="scrMeasureSteps" style="display:none;margin-bottom:14px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span class="m-dot" id="scrDot1"></span><span class="m-dot" id="scrDot2"></span>
+        <span style="font-size:10px;color:var(--t3);margin-left:auto;cursor:pointer" onclick="scrPoints=[];drawScr();updateScrUI()">Punkte reset</span>
+      </div>
+      <div id="scrStepText" style="font-size:12px;font-weight:500;padding:8px 12px;border-radius:var(--r-md);background:var(--blue-bg);border:1px solid var(--blue-b);color:var(--blue-t)"></div>
+    </div>
+
+    <!-- Measurement result -->
+    <div id="scrDistBox" style="display:none;margin-bottom:14px;padding:10px 14px;border-radius:var(--r-md);font-size:12px;line-height:1.6"></div>
+
+    <hr class="hr" style="margin:0 0 14px 0">
+
+    <!-- Risk factor checkboxes -->
+    <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:10px">Klinische Risikofaktoren</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <tbody>
+        <tr style="border-bottom:1px solid var(--b2)">
+          <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="scr-chk" data-risk="outlet" onchange="updateScrRecommendation()"> <span><b>Beckenübersicht imponiert wie Outlet-Aufnahme</b><br><span style="color:var(--t3)">Sakrum stark sichtbar, kurzer Steißbein-Symphysen-Abstand → Hinweis auf posterioren Beckentilt</span></span></label></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--b2)">
+          <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="scr-chk" data-risk="fusion" onchange="updateScrRecommendation()"> <span><b>LWS-Versteifung ≥ 3 Segmente</b><br><span style="color:var(--t3)">Instrumentierung / Fusionsmasse in der LWS sichtbar oder anamnestisch bekannt</span></span></label></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--b2)">
+          <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="scr-chk" data-risk="priorop" onchange="updateScrRecommendation()"> <span><b>LWS-Voroperation (ohne Fusion)</b><br><span style="color:var(--t3)">Z.n. Dekompression, Nukleotomie, etc.</span></span></label></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--b2)">
+          <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="scr-chk" data-risk="kyphosis" onchange="updateScrRecommendation()"> <span><b>Klinischer Verdacht auf Kyphose / Flatback</b><br><span style="color:var(--t3)">Patient steht nicht aufrecht, vornübergebeugte Haltung</span></span></label></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--b2)">
+          <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="scr-chk" data-risk="mobility" onchange="updateScrRecommendation()"> <span><b>Klinisch eingeschränkte LWS-Mobilität</b><br><span style="color:var(--t3)">Steife LWS beim Vornüberbeugen / Schober-Test pathologisch</span></span></label></td>
+        </tr>
+        <tr>
+          <td style="padding:8px 4px"><label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer"><input type="checkbox" class="scr-chk" data-risk="malalign" onchange="updateScrRecommendation()"> <span><b>Sagittales Malalignment / Obturator-Asymmetrie</b><br><span style="color:var(--t3)">Foramina-Asymmetrie, Beckenrotation, oder sagittale Imbalance</span></span></label></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Recommendation -->
+    <div id="scrRecommendation" style="margin-top:16px;padding:12px 16px;border-radius:var(--r-lg);font-size:12px;line-height:1.7"></div>
+
+    <!-- Navigation -->
+    <div class="page-actions" style="margin-top:20px">
+      <button class="btn-primary" id="scrNextBtn" onclick="goToInputFromScreening()">
+        Weiter zur Winkelmessung / Eingabe
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <button class="btn-skip" onclick="skipScreening()">
+        Screening überspringen — direkt zur Eingabe →
+      </button>
+    </div>
+
+  </div>
+
   <!-- ═══════════ PAGE 1: EINGABE ═══════════ -->
-  <div class="page active" id="pageInput">
+  <div class="page" id="pageInput">
+
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:15px;font-weight:600;color:var(--t1)">Schritt 2: Messung dynamischer spinopelviner Parameter</div>
+      <div style="font-size:12px;color:var(--t3);margin-top:4px">Messen Sie PI und LL auf seitlichen Wirbelsäulenaufnahmen oder geben Sie die Werte manuell ein.</div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <button class="btn-secondary" onclick="goToScreening()" style="font-size:11px;padding:6px 12px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Zurück zum Screening
+      </button>
+    </div>
 
     <!-- ═══ Röntgen-Messwerkzeug ═══ -->
     <button class="guide-toggle" onclick="this.classList.toggle('open');document.getElementById('measure-section').classList.toggle('open')" style="margin-bottom:12px">
@@ -324,7 +418,7 @@
           <div style="font-size:12px;color:var(--t2)" id="uploadLabel">Seitliche WS-Aufnahme (stehend) hochladen</div>
           <div style="font-size:10px;color:var(--t3)">Klicken oder Bild hierher ziehen</div>
         </div>
-        <canvas id="measureCanvas" style="display:none;width:100%;cursor:crosshair"></canvas>
+        <canvas id="measureCanvas" style="display:none;cursor:crosshair"></canvas>
         <input type="file" id="measureFile" accept="image/*" style="display:none" onchange="loadMeasureImage(this.files[0])">
         <!-- Image remove + change buttons -->
         <div id="measureImgBar" style="display:none;position:absolute;top:6px;right:6px;gap:4px;z-index:5">
@@ -355,6 +449,14 @@
           Gemessene Werte übernehmen
         </button>
       </div>
+    </div>
+
+    <!-- ═══ Messanleitung als i-Buttons ═══ -->
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;padding:10px 14px;background:var(--bg2);border:1px solid var(--b2);border-radius:var(--r-md)">
+      <span style="font-size:11px;color:var(--t2);font-weight:500">Messanleitung:</span>
+      <span class="info-btn" onclick="showInfo('piMess')" style="font-size:11px;padding:3px 10px;border:1px solid var(--b1);border-radius:12px;background:var(--bg1)">PI</span>
+      <span class="info-btn" onclick="showInfo('llStandMess')" style="font-size:11px;padding:3px 10px;border:1px solid var(--b1);border-radius:12px;background:var(--bg1)">LL stehend</span>
+      <span class="info-btn" onclick="showInfo('llFlexMess')" style="font-size:11px;padding:3px 10px;border:1px solid var(--b1);border-radius:12px;background:var(--bg1)">LL gebeugt</span>
     </div>
 
     <div style="text-align:center;margin-bottom:6px">
@@ -427,158 +529,12 @@
 
   <!-- Sticky Navigation -->
   <div class="sticky-nav" id="stickyNav">
-    <button class="nav-pill" onclick="navTo('tog-ind','indications')">Indikationen</button>
-    <button class="nav-pill" onclick="navTo('tog-guide','guide')">Messanleitung</button>
     <button class="nav-pill" onclick="navTo('tog-class','class-section')">Klassifikation</button>
     <button class="nav-pill" onclick="navTo('tog-cup','cup-section')">Pfanne</button>
     <button class="nav-pill" onclick="navTo('tog-ca','ca-section')">Combined AV</button>
     <button class="nav-pill" onclick="navTo('tog-dm','dm-section')">Dual Mobility</button>
     <button class="nav-pill" onclick="navTo('tog-summary','summary-section')">Zusammenfassung</button>
     <button class="nav-pill" onclick="navTo('tog-lit','lit-section')">Literatur</button>
-  </div>
-
-  <button class="guide-toggle" id="tog-ind" onclick="this.classList.toggle('open');document.getElementById('indications').classList.toggle('open')">
-    <span class="arrow">&#9654;</span> Indikationen für erweiterte LWS-Bildgebung
-  </button>
-  <div class="guide" id="indications">
-    <div class="ind-box">
-      Die folgende Übersicht definiert, wann über das Standard-Beckenübersichtsröntgen hinaus eine erweiterte LWS-Bildgebung
-      (z. B. stehende und gebeugt sitzende seitliche Wirbelsäulenaufnahmen) erforderlich ist.
-    </div>
-    <table class="ind-table">
-      <thead>
-        <tr>
-          <th>Indikation / Risikofaktor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Anamnestisch bekannte LWS-Pathologie"> Anamnestisch bekannte LWS-Pathologie (z.B. Bandscheibenprotrusion, Spinalkanalstenose)</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Voroperation an der LWS (Fusion/Spondylodese)" data-dm="fusion"> Voroperation an der LWS (insb. Fusion/Spondylodese)</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Klinisch eingeschränkte LWS-Mobilität"> Klinisch eingeschränkte LWS-Mobilität (Stiffness)</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Revisions-TEP" data-dm="revision"> Revisions-TEP</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Status nach Luxation der Hüft-TEP" data-dm="revision"> Z. n. Luxation der Hüft-TEP</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Sagittales Malalignment"> Sagittales Malalignment (klinischer V.&nbsp;a. Flat Back / Fixed Sagittal Imbalance)</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="BMI &gt; 35 mit eingeschränkter Hüftbeweglichkeit"> BMI &gt; 35 mit eingeschränkter Hüftbeweglichkeit</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Neuromuskuläre Grunderkrankung" data-dm="neuro"> Neuromuskuläre Grunderkrankung (z.B. M. Parkinson, Zerebralparese)</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Alter &gt; 75 Jahre mit klinischer Kyphose"> Alter &gt; 75 Jahre mit klinischer Kyphose</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Schenkelhalsfraktur als OP-Indikation" data-dm="fracture"> Schenkelhalsfraktur als OP-Indikation</label></td></tr>
-        <tr><td><label><input type="checkbox" class="ind-chk" data-label="Kognitive Einschränkung / eingeschränkte Compliance" data-dm="cognitive"> Kognitive Einschränkung / eingeschränkte Compliance (z.B. Demenz)</label></td></tr>
-      </tbody>
-    </table>
-    <div id="ind-summary" class="ind-summary"></div>
-  </div>
-
-  <button class="guide-toggle" id="tog-guide" onclick="this.classList.toggle('open');document.getElementById('guide').classList.toggle('open')">
-    <span class="arrow">&#9654;</span> Messanleitung: Wie messe ich die 3 Winkel?
-  </button>
-  <div class="guide" id="guide">
-    <div class="guide-cards">
-
-      <div class="gc">
-        <div class="gc-title">Pelvic Incidence (PI)</div>
-        <div class="gc-sub">Seitl. Röntgen — einmalig, anatomisch fix</div>
-        <svg width="200" viewBox="0 0 200 240">
-          <path d="M40 60 Q32 95 38 135 Q48 170 80 182 Q100 186 120 182 Q152 170 162 135 Q168 95 160 60" fill="var(--bg2)" stroke="var(--t3)" stroke-width="1.2" opacity="0.6"/>
-          <path d="M75 52 L125 52 L115 110 L85 110 Z" fill="var(--bg3)" stroke="var(--t3)" stroke-width="1"/>
-          <line x1="68" y1="56" x2="132" y2="56" stroke="var(--t1)" stroke-width="2.5" stroke-linecap="round"/>
-          <text x="136" y="60" font-size="10" fill="var(--t1)" font-weight="500">S1</text>
-          <circle cx="100" cy="56" r="4" fill="var(--red-t)"/>
-          <text x="100" y="46" text-anchor="middle" font-size="9" fill="var(--red-t)">Mitte S1</text>
-          <circle cx="72" cy="185" r="18" fill="none" stroke="var(--t3)" stroke-width="1.2"/>
-          <circle cx="72" cy="185" r="3.5" fill="var(--green-t)"/>
-          <circle cx="128" cy="185" r="18" fill="none" stroke="var(--t3)" stroke-width="1.2"/>
-          <circle cx="128" cy="185" r="2" fill="var(--t3)"/>
-          <text x="28" y="210" font-size="9" fill="var(--green-t)">Hüftkopf-</text>
-          <text x="28" y="220" font-size="9" fill="var(--green-t)">zentrum</text>
-          <line x1="57" y1="206" x2="69" y2="195" stroke="var(--green-t)" stroke-width="0.8"/>
-          <line x1="100" y1="56" x2="100" y2="4" stroke="var(--red-t)" stroke-width="1.8"/>
-          <rect x="100" y="56" width="7" height="7" fill="none" stroke="var(--red-t)" stroke-width="0.8" transform="rotate(0 100 56)"/>
-          <text x="110" y="14" font-size="9" fill="var(--red-t)">Senkrechte</text>
-          <text x="110" y="24" font-size="9" fill="var(--red-t)">auf S1</text>
-          <line x1="100" y1="56" x2="72" y2="185" stroke="var(--green-t)" stroke-width="1.8"/>
-          <path d="M100 16 A 40 40 0 0 0 82 92" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/>
-          <text x="60" y="54" font-size="14" fill="var(--amber-t)" font-weight="500">PI</text>
-        </svg>
-        <div class="gc-steps">
-          <b>1.</b> Mitte der S1-Deckplatte markieren<br>
-          <b>2.</b> Senkrechte nach kranial auf S1 errichten<br>
-          <b>3.</b> Linie von S1-Mitte zum Hüftkopfzentrum<br>
-          <b>4.</b> Winkel zwischen beiden = <b>PI</b><br>
-          <span style="color:var(--t3)">PI ist anatomisch fix und ändert sich nie.</span>
-        </div>
-      </div>
-
-      <div class="gc">
-        <div class="gc-title">LL stehend</div>
-        <div class="gc-sub">Seitl. Röntgen — aufrecht stehend</div>
-        <svg width="180" viewBox="0 0 180 210">
-          <rect x="74" y="16" width="36" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
-          <rect x="72" y="38" width="38" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
-          <rect x="69" y="60" width="40" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
-          <rect x="67" y="82" width="42" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
-          <rect x="65" y="104" width="44" height="18" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/>
-          <text x="114" y="29" font-size="10" fill="var(--t1)" font-weight="500">L1</text>
-          <line x1="58" y1="130" x2="118" y2="126" stroke="var(--t1)" stroke-width="2" stroke-linecap="round"/>
-          <text x="122" y="132" font-size="10" fill="var(--t1)" font-weight="500">S1</text>
-          <line x1="28" y1="18" x2="160" y2="14" stroke="var(--red-t)" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="28" y1="132" x2="160" y2="124" stroke="var(--green-t)" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M152 15 L152 125" fill="none" stroke="var(--amber-t)" stroke-width="0" opacity="0"/>
-          <path d="M145 26 A 50 50 0 0 1 148 112" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/>
-          <text x="153" y="72" font-size="14" fill="var(--amber-t)" font-weight="500">LL</text>
-          <circle cx="88" cy="148" r="5" fill="none" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="88" y1="153" x2="88" y2="180" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="88" y1="180" x2="80" y2="200" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="88" y1="180" x2="96" y2="200" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="88" y1="162" x2="78" y2="170" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="88" y1="162" x2="98" y2="170" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <text x="104" y="200" font-size="10" fill="var(--t2)" font-style="italic">stehend</text>
-        </svg>
-        <div class="gc-steps">
-          <b>1.</b> Linie entlang <span style="color:var(--red-t)">Oberkante L1</span><br>
-          <b>2.</b> Linie entlang <span style="color:var(--green-t)">Oberkante S1</span><br>
-          <b>3.</b> Winkel zwischen den beiden Linien = <b>LL</b><br>
-          <span style="color:var(--t3)">Große Lordose = großer Winkel (z. B. 50°)</span>
-        </div>
-      </div>
-
-      <div class="gc">
-        <div class="gc-title">LL gebeugt sitzend</div>
-        <div class="gc-sub">Seitl. Röntgen — maximal vornübergebeugt</div>
-        <svg width="180" viewBox="0 0 180 210">
-          <rect x="60" y="20" width="36" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(-12 78 28)"/>
-          <rect x="63" y="41" width="37" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(-6 82 49)"/>
-          <rect x="66" y="62" width="38" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(-1 85 70)"/>
-          <rect x="68" y="83" width="40" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(2 88 91)"/>
-          <rect x="68" y="104" width="42" height="17" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(3 89 112)"/>
-          <text x="100" y="22" font-size="10" fill="var(--t1)" font-weight="500">L1</text>
-          <line x1="62" y1="130" x2="120" y2="128" stroke="var(--t1)" stroke-width="2" stroke-linecap="round"/>
-          <text x="124" y="132" font-size="10" fill="var(--t1)" font-weight="500">S1</text>
-          <line x1="18" y1="32" x2="158" y2="12" stroke="var(--red-t)" stroke-width="1.8" stroke-linecap="round"/>
-          <line x1="28" y1="132" x2="158" y2="126" stroke="var(--green-t)" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M150 18 A 55 55 0 0 1 152 120" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/>
-          <text x="156" y="72" font-size="14" fill="var(--amber-t)" font-weight="500">LL</text>
-          <text x="156" y="86" font-size="10" fill="var(--amber-t)">(kleiner!)</text>
-          <circle cx="82" cy="148" r="5" fill="none" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="82" y1="153" x2="75" y2="140" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <path d="M82 153 Q95 168 105 162" fill="none" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="105" y1="162" x2="100" y2="196" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="105" y1="162" x2="115" y2="196" stroke="var(--t3)" stroke-width="0.8" opacity="0.4"/>
-          <line x1="92" y1="170" x2="120" y2="170" stroke="var(--t3)" stroke-width="0.8" opacity="0.3"/>
-          <line x1="120" y1="155" x2="120" y2="196" stroke="var(--t3)" stroke-width="0.8" opacity="0.3"/>
-          <text x="46" y="200" font-size="10" fill="var(--t2)" font-style="italic">gebeugt sitzend</text>
-        </svg>
-        <div class="gc-steps">
-          <b>1.</b> Gleiche Messung: <span style="color:var(--red-t)">L1</span> zu <span style="color:var(--green-t)">S1</span><br>
-          <b>2.</b> Patient sitzt, maximal vornübergebeugt<br>
-          <b>3.</b> Linien sind fast parallel → LL ist <b>kleiner</b><br>
-          <b>4.</b> ΔLL = LL(stehend) − LL(gebeugt) = <b>Flexibilität</b>
-        </div>
-      </div>
-
-    </div>
-    <div class="xray-hint">
-      <b>Röntgen-Protokoll:</b> Seitliche Aufnahme von L1 bis proximales Femur. Stehend: Patient aufrecht, Blick geradeaus, Arme nach vorne auf Stütze. Gebeugt sitzend: Patient auf Stuhl, Oberkörper maximal nach vorne beugen (Hände Richtung Boden). PI wird nur einmal bestimmt (anatomisch konstant).
-    </div>
   </div>
 
   <!-- ═══ Messgrößen + Klassifikation (ein Dropdown) ═══ -->
@@ -723,50 +679,46 @@
         Evidenzbasierte Wenn-Dann-Entscheidungen. Keine Punktescores — jede Empfehlung ist einzeln literaturgestützt.
       </div>
 
-      <!-- Decision 1 -->
-      <div class="dm-rule" id="dm-rule-revision">
+      <div class="dm-rule" id="dm-rule-revision" onclick="toggleDmRule(this)" style="cursor:pointer;user-select:none">
         <div class="dm-if">Wenn <b>Revisions-TEP</b></div>
         <div class="dm-then dm-rec">→ Dual Mobility empfohlen</div>
       </div>
 
-      <!-- Decision 2 -->
-      <div class="dm-rule" id="dm-rule-fusion">
+      <div class="dm-rule" id="dm-rule-fusion" onclick="toggleDmRule(this)" style="cursor:pointer;user-select:none">
         <div class="dm-if">Wenn <b>LWS-Fusion</b> (insb. multilevel)</div>
         <div class="dm-then dm-rec">→ Dual Mobility empfohlen</div>
       </div>
 
-      <!-- Decision 3 -->
-      <div class="dm-rule" id="dm-rule-fixed">
+      <div class="dm-rule" id="dm-rule-fixed" onclick="toggleDmRule(this)" style="cursor:pointer;user-select:none">
         <div class="dm-if">Wenn <b>fixiertes spinopelvines Alignment</b> (ΔLL &lt; 10° / steife LWS mit fehlender Beckenkompensation)</div>
         <div class="dm-then dm-rec">→ Dual Mobility empfohlen</div>
       </div>
 
-      <!-- Decision 4 -->
-      <div class="dm-rule" id="dm-rule-neuro">
+      <div class="dm-rule" id="dm-rule-neuro" onclick="toggleDmRule(this)" style="cursor:pointer;user-select:none">
         <div class="dm-if">Wenn <b>neuromuskuläre Erkrankung</b> (M. Parkinson, Zerebralparese, Apoplex)</div>
         <div class="dm-then dm-rec">→ Dual Mobility empfohlen</div>
       </div>
 
-      <!-- Decision 5 -->
-      <div class="dm-rule" id="dm-rule-fracture">
+      <div class="dm-rule" id="dm-rule-fracture" onclick="toggleDmRule(this)" style="cursor:pointer;user-select:none">
         <div class="dm-if">Wenn <b>Schenkelhalsfraktur</b> (als OP-Indikation für TEP)</div>
         <div class="dm-then dm-consider">→ Dual Mobility erwägen</div>
       </div>
 
-      <!-- Decision 6 -->
-      <div class="dm-rule" id="dm-rule-cognitive">
+      <div class="dm-rule" id="dm-rule-cognitive" onclick="toggleDmRule(this)" style="cursor:pointer;user-select:none">
         <div class="dm-if">Wenn <b>kognitive Einschränkung</b> (Demenz, eingeschränkte Compliance)</div>
         <div class="dm-then dm-consider">→ Dual Mobility erwägen</div>
       </div>
 
-      <!-- Decision 7 -->
-      <div class="dm-rule" id="dm-rule-none">
+      <div class="dm-rule dm-rule-safe" id="dm-rule-none" onclick="toggleDmRule(this)" style="cursor:pointer;user-select:none">
         <div class="dm-if">Wenn <b>keine</b> der oben genannten Bedingungen</div>
         <div class="dm-then dm-std">→ Standard-Gleitpaarung ausreichend</div>
       </div>
 
+      <!-- DM Summary -->
+      <div id="dm-summary" style="margin-top:14px;padding:10px 14px;border-radius:8px;font-size:12px;line-height:1.6"></div>
+
       <!-- Auto-detection from tool -->
-      <div id="dm-auto" style="margin-top:14px"></div>
+      <div id="dm-auto" style="margin-top:8px"></div>
 
     </div>
   </div>
@@ -965,6 +917,21 @@ const INFO_TEXTS={
     title:'Ranawat Safe Zone (25°–45°)',
     text:'Die <b>Ranawat Safe Zone</b> definiert den Bereich der Combined Anteversion, in dem das Luxationsrisiko minimal ist:<br><br>• <b>CA < 25°:</b> Zu wenig Anteversion → die Pfanne öffnet zu wenig nach anterior → Risiko einer <b>anterioren Luxation</b> (besonders bei Extension und Außenrotation)<br><br>• <b>CA 25°–45°:</b> Sicherer Bereich<br><br>• <b>CA > 45°:</b> Zu viel Anteversion → die Pfanne öffnet zu stark nach anterior → der Hüftkopf kann nach posterior herausrutschen → Risiko einer <b>posterioren Luxation</b> (besonders bei Flexion, Adduktion und Innenrotation)<br><br>Beide Positionen (Stehen und Sitzen) sollten innerhalb der Safe Zone liegen.',
     source:'Ranawat & Maynard (Tech Orthop 1991)'
+  },
+  piMess:{
+    title:'So messen Sie die Pelvic Incidence (PI)',
+    text:'<div style="text-align:center;margin:10px 0"><svg width="240" viewBox="0 0 200 220"><path d="M40 50 Q32 85 38 125 Q48 160 80 172 Q100 176 120 172 Q152 160 162 125 Q168 85 160 50" fill="var(--bg2)" stroke="var(--t3)" stroke-width="1" opacity="0.5"/><line x1="68" y1="48" x2="132" y2="48" stroke="var(--t1)" stroke-width="2.5" stroke-linecap="round"/><text x="136" y="52" font-size="10" fill="var(--t1)" font-weight="500">S1</text><circle cx="100" cy="48" r="4" fill="var(--red-t)"/><text x="100" y="40" text-anchor="middle" font-size="9" fill="var(--red-t)">Mitte S1</text><line x1="100" y1="48" x2="100" y2="4" stroke="var(--red-t)" stroke-width="1.8"/><rect x="100" y="48" width="7" height="7" fill="none" stroke="var(--red-t)" stroke-width="0.8"/><text x="112" y="14" font-size="9" fill="var(--red-t)">Senkrechte</text><circle cx="72" cy="175" r="18" fill="none" stroke="var(--t3)" stroke-width="1.2"/><circle cx="72" cy="175" r="3.5" fill="var(--green-t)"/><text x="28" y="200" font-size="9" fill="var(--green-t)">Hüftkopfzentrum</text><line x1="100" y1="48" x2="72" y2="175" stroke="var(--green-t)" stroke-width="1.8"/><path d="M100 16 A 40 40 0 0 0 82 92" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/><text x="60" y="50" font-size="16" fill="var(--amber-t)" font-weight="600">PI</text></svg></div><b>Schritte:</b><br>1. Mitte der S1-Deckplatte markieren<br>2. Senkrechte nach kranial auf S1 errichten<br>3. Linie von S1-Mitte zum Hüftkopfzentrum<br>4. Winkel zwischen beiden = <b>PI</b><br><br>PI ist anatomisch fix und ändert sich nie (im Gegensatz zu PT und SS).',
+    source:'Duval-Beaupère et al. (1992)'
+  },
+  llStandMess:{
+    title:'So messen Sie die Lendenlordose (LL) stehend',
+    text:'<div style="text-align:center;margin:10px 0"><svg width="220" viewBox="0 0 180 190"><rect x="64" y="12" width="30" height="15" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/><rect x="62" y="31" width="32" height="15" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/><rect x="59" y="50" width="34" height="15" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/><rect x="57" y="69" width="36" height="15" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/><rect x="55" y="88" width="38" height="15" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/><text x="100" y="24" font-size="10" fill="var(--t1)" font-weight="600">L1</text><text x="102" y="116" font-size="10" fill="var(--t1)" font-weight="600">S1</text><line x1="48" y1="112" x2="108" y2="110" stroke="var(--t1)" stroke-width="2"/><line x1="20" y1="14" x2="148" y2="10" stroke="var(--red-t)" stroke-width="1.8"/><line x1="20" y1="114" x2="148" y2="108" stroke="var(--green-t)" stroke-width="1.8"/><path d="M140 18 A 48 48 0 0 1 142 102" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/><text x="148" y="64" font-size="16" fill="var(--amber-t)" font-weight="600">LL</text></svg></div><b>Schritte (seitl. Röntgen, aufrecht stehend):</b><br>1. Linie entlang der <span style="color:var(--red-t)">Oberkante von L1</span><br>2. Linie entlang der <span style="color:var(--green-t)">Oberkante von S1</span><br>3. Winkel zwischen den beiden Linien = <b>LL</b><br><br>Große Lordose = großer Winkel (z.B. 50°).',
+    source:'Vialle et al. (Eur Spine J 2005)'
+  },
+  llFlexMess:{
+    title:'So messen Sie die LL gebeugt sitzend',
+    text:'<div style="text-align:center;margin:10px 0"><svg width="220" viewBox="0 0 180 190"><rect x="50" y="16" width="30" height="14" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(-10 65 23)"/><rect x="53" y="34" width="31" height="14" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(-5 69 41)"/><rect x="56" y="52" width="32" height="14" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8"/><rect x="58" y="70" width="34" height="14" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(2 75 77)"/><rect x="58" y="88" width="36" height="14" rx="3" fill="var(--bg2)" stroke="var(--t3)" stroke-width="0.8" transform="rotate(3 76 95)"/><text x="86" y="18" font-size="10" fill="var(--t1)" font-weight="600">L1</text><text x="102" y="116" font-size="10" fill="var(--t1)" font-weight="600">S1</text><line x1="52" y1="112" x2="108" y2="110" stroke="var(--t1)" stroke-width="2"/><line x1="10" y1="28" x2="148" y2="10" stroke="var(--red-t)" stroke-width="1.8"/><line x1="24" y1="114" x2="148" y2="108" stroke="var(--green-t)" stroke-width="1.8"/><path d="M140 16 A 52 52 0 0 1 142 102" fill="none" stroke="var(--amber-t)" stroke-width="2.5"/><text x="148" y="56" font-size="14" fill="var(--amber-t)" font-weight="600">LL</text><text x="146" y="70" font-size="10" fill="var(--amber-t)">(klein)</text></svg></div><b>Schritte (seitl. Röntgen, maximal vornübergebeugt sitzend):</b><br>1. Gleiche Messung wie stehend: <span style="color:var(--red-t)">L1</span> zu <span style="color:var(--green-t)">S1</span><br>2. Patient sitzt auf Stuhl, maximal vornübergebeugt<br>3. Linien fast parallel → LL ist deutlich <b>kleiner</b><br><br><b>ΔLL = LL(stehend) − LL(gebeugt) = Flexibilität der LWS</b><br>ΔLL ≥ 20° = flexible LWS · ΔLL < 20° = steife LWS.',
+    source:'Vigdorchik et al. (Bone Joint J 2021)'
   }
 };
 
@@ -1348,72 +1315,34 @@ function drawA(iA,g){
     '<circle cx="'+cx+'" cy="'+cy+'" r="3" fill="var(--t3)"/>';
 }
 
-document.querySelectorAll('#indications input.ind-chk').forEach(c=>{
-  c.addEventListener('change',function(){
-    updateIndicationSummary();
-    updateDMHint();
-  });
-});
+// Indikationen removed from page 2 — DM rules now clickable directly
 
 /* ── Page Navigation ── */
 function updateDMHint(){
   var el=document.getElementById('dm-auto');
   if(!el) return;
 
-  // Reset all rule highlights
-  document.querySelectorAll('.dm-rule').forEach(function(r){
-    r.classList.remove('active','active-consider','active-safe');
-  });
-
   var lls=+document.getElementById('slls').value;
   var llb=+document.getElementById('sllb').value;
   var deltaLL=lls-llb;
-  var grp=classify((+document.getElementById('spi').value)-lls,deltaLL);
-  var g=GROUPS[grp];
 
-  var activeCount=0;
   var hints=[];
 
-  // Check all checkboxes with data-dm attribute
-  document.querySelectorAll('.ind-chk[data-dm]').forEach(function(chk){
-    if(chk.checked){
-      var ruleId='dm-rule-'+chk.getAttribute('data-dm');
-      var ruleEl=document.getElementById(ruleId);
-      if(ruleEl){
-        // "fracture" and "cognitive" are consider, rest are recommend
-        var isCon=(chk.getAttribute('data-dm')==='fracture'||chk.getAttribute('data-dm')==='cognitive');
-        ruleEl.classList.add(isCon?'active-consider':'active');
-        activeCount++;
-      }
-    }
-  });
-
-  // Check ΔLL for fixed alignment (auto, not checkbox)
+  // Auto-detect fixed alignment from ΔLL
+  var fixedEl=document.getElementById('dm-rule-fixed');
   if(deltaLL<10){
-    var fixedEl=document.getElementById('dm-rule-fixed');
-    if(fixedEl){fixedEl.classList.add('active');activeCount++;}
-    hints.push('ΔLL = '+deltaLL+'° (< 10°) → fixiertes spinopelvines Alignment erkannt.');
-  } else if(deltaLL<20){
-    var fixedEl=document.getElementById('dm-rule-fixed');
-    if(fixedEl){fixedEl.classList.add('active-consider');activeCount++;}
-    hints.push('ΔLL = '+deltaLL+'° (< 20°) → eingeschränkte LWS-Mobilität.');
+    if(fixedEl&&!fixedEl.classList.contains('dm-selected')){
+      fixedEl.classList.add('dm-selected');
+      updateDmSummary();
+    }
+    hints.push('ΔLL = '+deltaLL+'° (< 10°) → fixiertes Alignment automatisch erkannt.');
   }
 
-  // Highlight "none" rule if nothing active
-  var noneEl=document.getElementById('dm-rule-none');
-  if(activeCount===0&&noneEl){
-    noneEl.classList.add('active-safe');
-  }
-
-  // Summary box
-  if(activeCount>0){
-    var activeLabels=[];
-    document.querySelectorAll('.dm-rule.active .dm-if b, .dm-rule.active-consider .dm-if b').forEach(function(b){
-      activeLabels.push(b.textContent);
-    });
-    el.innerHTML='<div style="padding:10px 14px;border-radius:var(--r-md);background:var(--amber-bg);border:1px solid var(--amber-b);font-size:11px;color:var(--amber-t);line-height:1.6"><b>'+activeCount+' Risikofaktor'+(activeCount>1?'en':'')+' erkannt:</b> '+activeLabels.join(', ')+'.'+(hints.length?' '+hints.join(' '):'')+'</div>';
+  if(hints.length>0){
+    el.style.background='var(--amber-bg)';el.style.border='1px solid var(--amber-b)';el.style.padding='8px 12px';el.style.borderRadius='var(--r-md)';el.style.fontSize='11px';
+    el.innerHTML='<span style="color:var(--amber-t)">'+hints.join('<br>')+'</span>';
   } else {
-    el.innerHTML='<div style="padding:10px 14px;border-radius:var(--r-md);background:var(--green-bg);border:1px solid var(--green-b);font-size:11px;color:var(--green-t);line-height:1.6"><b>Kein erhöhtes Luxationsrisiko erkannt.</b> Standard-Gleitpaarung ausreichend.</div>';
+    el.innerHTML='';el.style.background='';el.style.border='';el.style.padding='';
   }
 }
 
@@ -1522,7 +1451,7 @@ function goToResults(){
   updateSummary();
 
   // Auto-open key sections (not summary)
-  ['class','cup','ca'].forEach(function(id){
+  ['class'].forEach(function(id){
     var tog=document.getElementById('tog-'+id);
     var secMap={class:'class-section',cup:'cup-section',ca:'ca-section'};
     var sec=document.getElementById(secMap[id]);
@@ -1559,21 +1488,21 @@ function updateSummary(){
   var dmPlanned=document.querySelector('input[name="dm-plan"]:checked');
   var isDM=dmPlanned&&dmPlanned.value==='yes';
 
-  // Indications
-  var indChecks=[...document.querySelectorAll('#indications input.ind-chk')];
-  var indSelected=indChecks.filter(function(c){return c.checked});
-  var indHTML='';
-  if(indSelected.length>0){
-    indHTML='<div style="margin-bottom:12px"><b style="color:var(--t1)">Indikationen für erweiterte Bildgebung:</b><br>';
-    indSelected.forEach(function(c){
-      indHTML+='• '+c.getAttribute('data-label')+'<br>';
-    });
-    indHTML+='</div>';
-  } else {
-    indHTML='<div style="margin-bottom:12px"><b style="color:var(--t1)">Indikationen:</b> Keine Risikofaktoren ausgewählt.</div>';
+  // DM Decisions (from clickable rules)
+  var dmRules=document.querySelectorAll('.dm-rule.dm-selected');
+  var dmHTML='';
+  var dmLabels=[];
+  dmRules.forEach(function(r){
+    var b=r.querySelector('.dm-if b');
+    if(b&&b.textContent!=='keine') dmLabels.push(b.textContent);
+  });
+  if(dmLabels.length>0){
+    dmHTML='<div style="margin-bottom:12px"><b style="color:var(--t1)">Dual-Mobility-Indikationen:</b><br>';
+    dmLabels.forEach(function(l){dmHTML+='• '+l+'<br>';});
+    dmHTML+='</div>';
   }
 
-  var html=indHTML;
+  var html=dmHTML;
 
   html+='<div style="margin-bottom:12px"><b style="color:var(--t1)">Spinopelvine Parameter:</b><br>';
   html+='PI: '+pi+'° · LL stehend: '+lls+'° · LL gebeugt sitzend: '+llb+'°<br>';
@@ -1631,6 +1560,236 @@ function goToInput(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+/* ── Dual-Mobility Klickbare Regeln ── */
+function toggleDmRule(el){
+  el.classList.toggle('dm-selected');
+  updateDmSummary();
+}
+
+function updateDmSummary(){
+  var rules=document.querySelectorAll('.dm-rule.dm-selected');
+  var el=document.getElementById('dm-summary');
+  if(!el) return;
+  var selected=[];
+  var dmNeeded=false,dmConsider=false;
+  rules.forEach(function(r){
+    var id=r.id;
+    var label=r.querySelector('.dm-if b').textContent;
+    if(id==='dm-rule-none'){
+      // "keine" selected
+    } else if(id==='dm-rule-fracture'||id==='dm-rule-cognitive'){
+      dmConsider=true;
+      selected.push(label);
+    } else {
+      dmNeeded=true;
+      selected.push(label);
+    }
+  });
+
+  if(dmNeeded){
+    el.style.background='var(--red-bg)';el.style.border='1px solid var(--red-b)';
+    el.innerHTML='<b style="color:var(--red-t)">Dual Mobility empfohlen</b><br><span style="color:var(--red-t)">Grund: '+selected.join(', ')+'. DM-Pfanne oder DM-Liner verwenden.</span>';
+  } else if(dmConsider){
+    el.style.background='var(--amber-bg)';el.style.border='1px solid var(--amber-b)';
+    el.innerHTML='<b style="color:var(--amber-t)">Dual Mobility erwägen</b><br><span style="color:var(--amber-t)">Grund: '+selected.join(', ')+'. Individuelle Abwägung empfohlen.</span>';
+  } else if(rules.length>0){
+    // Only "none" selected
+    el.style.background='var(--green-bg)';el.style.border='1px solid var(--green-b)';
+    el.innerHTML='<b style="color:var(--green-t)">Standard-Gleitpaarung ausreichend</b><br><span style="color:var(--green-t)">Kein erhöhtes Luxationsrisiko. 36er Kopf mit Standard-Inlay.</span>';
+  } else {
+    el.style.background='var(--bg2)';el.style.border='1px solid var(--b2)';
+    el.innerHTML='<span style="color:var(--t3)">Bitte zutreffende Bedingungen oben anklicken.</span>';
+  }
+}
+updateDmSummary();
+
+/* ── Screening: Beckenübersicht ── */
+var scrImage=null,scrCanvas=null,scrCtx=null,scrPoints=[];
+
+function loadScrImage(file){
+  if(!file) return;
+  var img=new Image();
+  img.onload=function(){
+    scrImage=img;
+    scrCanvas=document.getElementById('scrCanvas');
+    scrCtx=scrCanvas.getContext('2d');
+    var wrap=document.getElementById('scrWrap');
+    var maxW=wrap.clientWidth;
+    var maxH=400;
+    var scale=Math.min(maxW/img.width,maxH/img.height);
+    var dispW=Math.round(img.width*scale);
+    var dispH=Math.round(img.height*scale);
+    scrCanvas.width=img.width;
+    scrCanvas.height=img.height;
+    scrCanvas.style.display='block';
+    scrCanvas.style.width=dispW+'px';
+    scrCanvas.style.height=dispH+'px';
+    scrCanvas.style.margin='0 auto';
+    scrCanvas.style.cursor='crosshair';
+    document.getElementById('scrUploadHint').style.display='none';
+    document.getElementById('scrImgBar').style.display='flex';
+    document.getElementById('scrMeasureSteps').style.display='block';
+    document.getElementById('scrDistBox').style.display='block';
+    scrPoints=[];
+    scrCanvas.onclick=function(e){
+      if(scrPoints.length>=2) return;
+      var rect=scrCanvas.getBoundingClientRect();
+      var x=(e.clientX-rect.left)/rect.width*scrCanvas.width;
+      var y=(e.clientY-rect.top)/rect.height*scrCanvas.height;
+      scrPoints.push({x:x,y:y});
+      drawScr();
+      updateScrUI();
+      if(scrPoints.length===2) calcScrDist();
+    };
+    drawScr();
+    updateScrUI();
+  };
+  img.src=URL.createObjectURL(file);
+  document.getElementById('scrFile').value='';
+}
+
+function removeScrImage(){
+  scrImage=null;scrPoints=[];
+  document.getElementById('scrCanvas').style.display='none';
+  document.getElementById('scrUploadHint').style.display='block';
+  document.getElementById('scrImgBar').style.display='none';
+  document.getElementById('scrMeasureSteps').style.display='none';
+  document.getElementById('scrDistBox').style.display='none';
+}
+
+function drawScr(){
+  if(!scrCtx||!scrImage) return;
+  scrCtx.clearRect(0,0,scrCanvas.width,scrCanvas.height);
+  scrCtx.drawImage(scrImage,0,0);
+  var r=Math.max(8,scrCanvas.width/60);
+  var labels=['Os coccygis','Symphyse'];
+  var colors=['#ef4444','#3b82f6'];
+  for(var i=0;i<scrPoints.length;i++){
+    var p=scrPoints[i];
+    scrCtx.beginPath();scrCtx.arc(p.x,p.y,r,0,Math.PI*2);
+    scrCtx.fillStyle=colors[i];scrCtx.globalAlpha=0.8;scrCtx.fill();
+    scrCtx.globalAlpha=1;scrCtx.strokeStyle='#fff';scrCtx.lineWidth=2;scrCtx.stroke();
+    var fs=Math.max(14,scrCanvas.width/35);
+    scrCtx.font='bold '+fs+'px Arial';scrCtx.fillStyle=colors[i];scrCtx.textAlign='center';
+    scrCtx.strokeStyle='rgba(0,0,0,0.6)';scrCtx.lineWidth=3;
+    scrCtx.strokeText(labels[i],p.x,p.y-r-6);scrCtx.fillText(labels[i],p.x,p.y-r-6);
+  }
+  if(scrPoints.length===2){
+    scrCtx.beginPath();scrCtx.setLineDash([10,6]);
+    scrCtx.moveTo(scrPoints[0].x,scrPoints[0].y);
+    scrCtx.lineTo(scrPoints[1].x,scrPoints[1].y);
+    scrCtx.strokeStyle='#f59e0b';scrCtx.lineWidth=3;scrCtx.stroke();scrCtx.setLineDash([]);
+  }
+}
+
+function updateScrUI(){
+  var d1=document.getElementById('scrDot1'),d2=document.getElementById('scrDot2');
+  d1.className='m-dot'+(scrPoints.length>=1?' done':scrPoints.length===0?' active':'');
+  d2.className='m-dot'+(scrPoints.length>=2?' done':scrPoints.length===1?' active':'');
+  var txt=document.getElementById('scrStepText');
+  if(scrPoints.length===0){
+    txt.textContent='Schritt 1/2: Spitze des Os coccygis anklicken';
+    txt.style.background='var(--blue-bg)';txt.style.borderColor='var(--blue-b)';txt.style.color='var(--blue-t)';
+  } else if(scrPoints.length===1){
+    txt.textContent='Schritt 2/2: Oberkante der Symphyse anklicken';
+    txt.style.background='var(--blue-bg)';txt.style.borderColor='var(--blue-b)';txt.style.color='var(--blue-t)';
+  } else {
+    txt.textContent='\u2714 Messung abgeschlossen';
+    txt.style.background='var(--green-bg)';txt.style.borderColor='var(--green-b)';txt.style.color='var(--green-t)';
+  }
+}
+
+function calcScrDist(){
+  var p1=scrPoints[0],p2=scrPoints[1];
+  var dx=p2.x-p1.x,dy=p2.y-p1.y;
+  var dist=Math.sqrt(dx*dx+dy*dy);
+  // Relative to image — we express as ratio of image height
+  var ratio=dist/scrCanvas.height;
+  // Vertical component: if coccyx is above symphysis (y < symphysis y), distance is "short"
+  var vertDist=p2.y-p1.y; // positive = coccyx above symphysis (normal in image coords)
+
+  var el=document.getElementById('scrDistBox');
+  // Short distance or coccyx overlapping symphysis = posterior tilt = outlet sign
+  if(ratio<0.04||vertDist<0){
+    el.style.background='var(--red-bg)';el.style.border='1px solid var(--red-b)';
+    el.innerHTML='<b style="color:var(--red-t)">Steißbein-Symphysen-Abstand sehr kurz / Überlappung</b><br><span style="color:var(--red-t)">Starker Hinweis auf posterioren Beckentilt. Beckenübersicht imponiert wie Outlet-Aufnahme. Erweiterte LWS-Bildgebung empfohlen.</span>';
+    // Auto-check outlet checkbox
+    var chk=document.querySelector('.scr-chk[data-risk="outlet"]');
+    if(chk&&!chk.checked){chk.checked=true;updateScrRecommendation();}
+  } else if(ratio<0.08){
+    el.style.background='var(--amber-bg)';el.style.border='1px solid var(--amber-b)';
+    el.innerHTML='<b style="color:var(--amber-t)">Steißbein-Symphysen-Abstand grenzwertig kurz</b><br><span style="color:var(--amber-t)">Möglicher posteriorer Beckentilt. Klinische Korrelation empfohlen.</span>';
+  } else {
+    el.style.background='var(--green-bg)';el.style.border='1px solid var(--green-b)';
+    el.innerHTML='<b style="color:var(--green-t)">Steißbein-Symphysen-Abstand normal</b><br><span style="color:var(--green-t)">Kein Hinweis auf relevanten Beckentilt auf der a.p. Aufnahme.</span>';
+  }
+}
+
+function updateScrRecommendation(){
+  var checks=document.querySelectorAll('.scr-chk');
+  var count=0,hasFusion=false,hasOutlet=false;
+  checks.forEach(function(c){
+    if(c.checked){
+      count++;
+      if(c.getAttribute('data-risk')==='fusion') hasFusion=true;
+      if(c.getAttribute('data-risk')==='outlet') hasOutlet=true;
+    }
+  });
+  var el=document.getElementById('scrRecommendation');
+  var btn=document.getElementById('scrNextBtn');
+  if(hasFusion||hasOutlet){
+    el.style.background='var(--red-bg)';el.style.border='1px solid var(--red-b)';
+    var reasons=[];
+    if(hasFusion) reasons.push('LWS-Fusion \u2265 3 Segmente');
+    if(hasOutlet) reasons.push('Outlet-Zeichen');
+    el.innerHTML='<b style="color:var(--red-t)">\u26A0 Erweiterte LWS-Bildgebung dringend empfohlen</b><br><span style="color:var(--red-t)">Grund: '+reasons.join(' + ')+'. Stehende und gebeugt sitzende seitliche Wirbels\u00E4ulenaufnahmen zur Bestimmung von PI, LL und \u0394LL erforderlich.</span>';
+    btn.textContent='Weiter zur Winkelmessung \u2192';
+    btn.style.background='var(--red-t)';btn.style.borderColor='var(--red-t)';
+  } else if(count>=2){
+    el.style.background='var(--amber-bg)';el.style.border='1px solid var(--amber-b)';
+    el.innerHTML='<b style="color:var(--amber-t)">\u26A0 Erweiterte LWS-Bildgebung empfohlen</b><br><span style="color:var(--amber-t)">'+count+' Risikofaktoren identifiziert. Seitliche Wirbels\u00E4ulenaufnahmen empfohlen.</span>';
+    btn.textContent='Weiter zur Winkelmessung \u2192';
+    btn.style.background='';btn.style.borderColor='';
+  } else if(count===1){
+    el.style.background='var(--amber-bg)';el.style.border='1px solid var(--amber-b)';
+    el.innerHTML='<b style="color:var(--amber-t)">Erweiterte Bildgebung erw\u00E4gen</b><br><span style="color:var(--amber-t)">1 Risikofaktor. Klinische Korrelation empfohlen.</span>';
+    btn.textContent='Weiter zur Winkelmessung / Eingabe \u2192';
+    btn.style.background='';btn.style.borderColor='';
+  } else {
+    el.style.background='var(--green-bg)';el.style.border='1px solid var(--green-b)';
+    el.innerHTML='<b style="color:var(--green-t)">Keine Risikofaktoren \u2014 Standard-Bildgebung ausreichend</b><br><span style="color:var(--green-t)">Keine erweiterte LWS-Bildgebung erforderlich. Sie k\u00F6nnen direkt mit der Planung fortfahren.</span>';
+    btn.textContent='Weiter zur Eingabe \u2192';
+    btn.style.background='';btn.style.borderColor='';
+  }
+}
+
+// Drag-drop on scrWrap
+var sw=document.getElementById('scrWrap');
+if(sw){
+  sw.addEventListener('dragover',function(e){e.preventDefault();sw.style.outline='2px solid var(--blue-b)';});
+  sw.addEventListener('dragleave',function(){sw.style.outline='';});
+  sw.addEventListener('drop',function(e){e.preventDefault();sw.style.outline='';if(e.dataTransfer.files[0])loadScrImage(e.dataTransfer.files[0]);});
+}
+
+/* ── Page Navigation ── */
+function goToInputFromScreening(){
+  document.getElementById('pageScreening').classList.remove('active');
+  document.getElementById('pageInput').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function skipScreening(){
+  goToInputFromScreening();
+}
+
+function goToScreening(){
+  document.getElementById('pageInput').classList.remove('active');
+  document.getElementById('pageScreening').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+updateScrRecommendation();
+
 /* ── Röntgen-Messwerkzeug ── */
 var mMode='stand';
 var mPoints=[];
@@ -1639,7 +1798,7 @@ var mCanvas=null;
 var mCtx=null;
 var mScale=1;
 var mMeasuredPI=null,mMeasuredLLS=null,mMeasuredLLF=null;
-var mAutoAdvanced=false;
+
 
 var MSTEPS_STAND=[
   'S1-Deckplatte: Linken Rand anklicken',
@@ -1694,11 +1853,17 @@ function loadMeasureImage(file){
     mCtx=mCanvas.getContext('2d');
     var wrap=document.getElementById('measureWrap');
     var maxW=wrap.clientWidth;
-    mScale=maxW/img.width;
+    var maxH=500;
+    var scale=Math.min(maxW/img.width,maxH/img.height);
+    var dispW=Math.round(img.width*scale);
+    var dispH=Math.round(img.height*scale);
+    mScale=scale;
     mCanvas.width=img.width;
     mCanvas.height=img.height;
     mCanvas.style.display='block';
-    mCanvas.style.height=(img.height*mScale)+'px';
+    mCanvas.style.width=dispW+'px';
+    mCanvas.style.height=dispH+'px';
+    mCanvas.style.margin='0 auto';
     mCanvas.style.cursor='crosshair';
     document.getElementById('measureUploadHint').style.display='none';
     document.getElementById('measureImgBar').style.display='flex';
@@ -1749,37 +1914,35 @@ function addMeasurePoint(x,y){
 function onMeasureComplete(){
   calculateAngles();
   highlightActiveResult();
+  var txtEl=document.getElementById('mStepText');
 
-  // Auto-advance: after standing → switch to flex
-  if(mMode==='stand'&&mMeasuredLLF===null&&!mAutoAdvanced){
-    mAutoAdvanced=true;
-    var txtEl=document.getElementById('mStepText');
-    txtEl.innerHTML='<span style="color:var(--green-t)">✓ Stehend-Messung abgeschlossen.</span> Wechsle in 2s zur gebeugt-sitzenden Aufnahme...';
+  if(mMode==='stand'&&mMeasuredLLF===null){
+    txtEl.innerHTML='<span style="color:var(--green-t)">✔ Stehend-Messung abgeschlossen (PI: '+mMeasuredPI+'°, LL: '+mMeasuredLLS+'°).</span><br><button onclick="advanceToFlex()" style="margin-top:6px;padding:8px 20px;border:none;border-radius:6px;background:var(--t1);color:var(--bg1);font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;width:100%">Weiter: Gebeugt sitzend messen →</button>';
     txtEl.style.background='var(--green-bg)';txtEl.style.borderColor='var(--green-b)';txtEl.style.color='var(--green-t)';
-
-    setTimeout(function(){
-      // Switch to flex tab
-      mMode='flex';
-      document.getElementById('mTabStand').classList.remove('selected');
-      document.getElementById('mTabFlex').classList.add('selected');
-      // Clear image and show upload
-      mImage=null;
-      mPoints=[];
-      mCanvas=document.getElementById('measureCanvas');
-      mCanvas.style.display='none';
-      document.getElementById('measureUploadHint').style.display='block';
-      document.getElementById('measureImgBar').style.display='none';
-      updateUploadLabel();
-      updateMStepUI();
-      highlightActiveResult();
-      // Pulse the upload area
-      var dz=document.getElementById('measureUploadHint');
-      dz.style.transition='background .3s';
-      dz.style.background='var(--amber-bg)';
-      setTimeout(function(){dz.style.background='';},1200);
-    },2000);
+  } else if(mMode==='flex'&&mMeasuredLLF!==null){
+    var piTxt=mMeasuredPI!==null?('PI: '+mMeasuredPI+'° · '):'';
+    var llsTxt=mMeasuredLLS!==null?('LL stehend: '+mMeasuredLLS+'° · '):'';
+    txtEl.innerHTML='<span style="color:var(--green-t)">✔ Alle Messungen abgeschlossen!</span> '+piTxt+llsTxt+'LL gebeugt: '+mMeasuredLLF+'°<br><span style="color:var(--green-t)">↓ Klicken Sie auf „Gemessene Werte übernehmen“.</span>';
+    txtEl.style.background='var(--green-bg)';txtEl.style.borderColor='var(--green-b)';txtEl.style.color='var(--green-t)';
+    var btn=document.getElementById('mApplyBtn');
+    btn.style.transition='all .3s';btn.style.background='var(--green-bg)';btn.style.transform='scale(1.02)';
+    setTimeout(function(){btn.style.background='';btn.style.transform='';},1000);
   }
 }
+
+
+function advanceToFlex(){
+  mMode='flex';
+  document.getElementById('mTabStand').classList.remove('selected');
+  document.getElementById('mTabFlex').classList.add('selected');
+  mImage=null;mPoints=[];
+  var c=document.getElementById('measureCanvas');c.style.display='none';
+  document.getElementById('measureUploadHint').style.display='block';
+  document.getElementById('measureImgBar').style.display='none';
+  updateUploadLabel();updateMStepUI();highlightActiveResult();
+  document.getElementById('measureWrap').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
 
 function undoMeasurePoint(){
   if(mPoints.length>0){
@@ -1869,6 +2032,18 @@ function drawMeasure(){
       mCtx.beginPath();mCtx.setLineDash([8,6]);
       mCtx.moveTo(s1mid.x,s1mid.y);mCtx.lineTo(hip.x,hip.y);
       mCtx.strokeStyle='#f59e0b';mCtx.lineWidth=2;mCtx.stroke();mCtx.setLineDash([]);
+      // PI angle label
+      if(mMeasuredPI!==null){
+        var lx=s1mid.x+(perpX*lineLen*0.4+hipDx*0.15);
+        var ly=s1mid.y+(perpY*lineLen*0.4+hipDy*0.15);
+        drawLabel(mCtx,lx,ly,'PI: '+mMeasuredPI+'\u00B0','#22c55e');
+      }
+    }
+    // LL angle label (between L1 and S1)
+    if(mPoints.length>=5&&mMeasuredLLS!==null){
+      var lx=(s1mid.x+(mPoints[3].x+mPoints[4].x)/2)/2;
+      var ly=(s1mid.y+(mPoints[3].y+mPoints[4].y)/2)/2;
+      drawLabel(mCtx,lx+40,ly,'LL: '+mMeasuredLLS+'\u00B0','#3b82f6');
     }
   } else {
     if(mPoints.length>=4){
@@ -1876,6 +2051,12 @@ function drawMeasure(){
       mCtx.moveTo(mPoints[2].x,mPoints[2].y);mCtx.lineTo(mPoints[3].x,mPoints[3].y);
       mCtx.strokeStyle='#3b82f6';mCtx.lineWidth=3;mCtx.stroke();
       drawLabel(mCtx,(mPoints[2].x+mPoints[3].x)/2,(mPoints[2].y+mPoints[3].y)/2-20,'L1','#3b82f6');
+      if(mMeasuredLLF!==null){
+        var s1mid={x:(mPoints[0].x+mPoints[1].x)/2,y:(mPoints[0].y+mPoints[1].y)/2};
+        var lx=(s1mid.x+(mPoints[2].x+mPoints[3].x)/2)/2;
+        var ly=(s1mid.y+(mPoints[2].y+mPoints[3].y)/2)/2;
+        drawLabel(mCtx,lx+40,ly,'LL: '+mMeasuredLLF+'\u00B0','#3b82f6');
+      }
     }
   }
 }
@@ -1900,6 +2081,7 @@ function calculateAngles(){
     var magA=Math.sqrt(perpX*perpX+perpY*perpY);
     var magB=Math.sqrt(hipDx*hipDx+hipDy*hipDy);
     var pi=Math.acos(Math.max(-1,Math.min(1,dot/(magA*magB))))*D;
+    if(pi>90) pi=180-pi;
     pi=Math.round(pi);
     mMeasuredPI=pi;
     document.getElementById('mResPI').textContent=pi+'\u00B0';
