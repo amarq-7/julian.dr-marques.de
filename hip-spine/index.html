@@ -427,6 +427,31 @@
         </div>
       </div>
 
+      <!-- Perspective correction panel -->
+      <div id="calibPanel" style="display:none;margin-top:10px">
+        <div id="calibInfo" style="padding:10px 14px;border-radius:var(--r-md);background:var(--amber-bg);border:1px solid var(--amber-b);font-size:11px;color:var(--amber-t);line-height:1.6;margin-bottom:10px">
+          <b>Tipp:</b> Wenn das Bild schräg fotografiert wurde (z.B. vom Monitor/Lichtkasten), kann die Perspektive die Winkelmessung verfälschen. Sie können das Bild korrigieren, indem Sie die 4 Ecken des Röntgenbilds markieren.
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn-secondary" style="padding:6px 14px;font-size:11px;flex:1" id="calibStartBtn" onclick="startCalibration()">
+            📐 Perspektive korrigieren (4 Ecken markieren)
+          </button>
+          <button class="btn-secondary" style="padding:6px 14px;font-size:11px;flex:1;color:var(--green-t);border-color:var(--green-b)" onclick="skipCalibration()">
+            ✓ Direkt messen (ohne Korrektur)
+          </button>
+        </div>
+        <!-- Calibration step instructions -->
+        <div id="calibSteps" style="display:none;margin-top:8px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+            <span class="m-dot" id="calDot0"></span><span class="m-dot" id="calDot1"></span><span class="m-dot" id="calDot2"></span><span class="m-dot" id="calDot3"></span>
+            <span style="font-size:10px;color:var(--t3);margin-left:auto;cursor:pointer" onclick="resetCalibration()">Reset</span>
+          </div>
+          <div id="calibStepText" style="font-size:12px;font-weight:500;padding:8px 12px;background:var(--blue-bg);border:1px solid var(--blue-b);border-radius:var(--r-md);color:var(--blue-t)"></div>
+        </div>
+        <!-- Distortion warning -->
+        <div id="calibResult" style="display:none;margin-top:8px;padding:8px 12px;border-radius:var(--r-md);font-size:11px;line-height:1.5"></div>
+      </div>
+
       <!-- Step instructions -->
       <div id="measureSteps" style="display:none;margin-top:10px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
@@ -1844,11 +1869,18 @@ function highlightActiveResult(){
   if(mMeasuredLLF!==null){llfB.style.borderColor='var(--green-b)';llfB.style.background='var(--green-bg)';}
 }
 
+var mCalibMode=false;
+var mCalibPoints=[];
+var mOriginalImage=null; // store original before correction
+
 function loadMeasureImage(file){
   if(!file) return;
   var img=new Image();
   img.onload=function(){
     mImage=img;
+    mOriginalImage=img;
+    mCalibMode=false;
+    mCalibPoints=[];
     mCanvas=document.getElementById('measureCanvas');
     mCtx=mCanvas.getContext('2d');
     var wrap=document.getElementById('measureWrap');
@@ -1867,32 +1899,272 @@ function loadMeasureImage(file){
     mCanvas.style.cursor='crosshair';
     document.getElementById('measureUploadHint').style.display='none';
     document.getElementById('measureImgBar').style.display='flex';
-    document.getElementById('measureSteps').style.display='block';
     document.getElementById('measureResults').style.display='block';
+    // Show calibration panel instead of going straight to measurement
+    document.getElementById('calibPanel').style.display='block';
+    document.getElementById('measureSteps').style.display='none';
+    document.getElementById('calibSteps').style.display='none';
+    document.getElementById('calibResult').style.display='none';
     mCanvas.onclick=function(e){
       var rect=mCanvas.getBoundingClientRect();
       var x=(e.clientX-rect.left)/rect.width*mCanvas.width;
       var y=(e.clientY-rect.top)/rect.height*mCanvas.height;
-      addMeasurePoint(x,y);
+      if(mCalibMode) addCalibPoint(x,y);
+      else addMeasurePoint(x,y);
     };
     mPoints=[];
     drawMeasure();
-    updateMStepUI();
     highlightActiveResult();
   };
   img.src=URL.createObjectURL(file);
-  // Reset file input so same file can be re-selected
   document.getElementById('measureFile').value='';
 }
 
+function skipCalibration(){
+  mCalibMode=false;
+  document.getElementById('calibPanel').style.display='none';
+  document.getElementById('measureSteps').style.display='block';
+  updateMStepUI();
+}
+
+function startCalibration(){
+  mCalibMode=true;
+  mCalibPoints=[];
+  document.getElementById('calibSteps').style.display='block';
+  document.getElementById('calibStartBtn').style.display='none';
+  updateCalibUI();
+  drawCalibOverlay();
+}
+
+function resetCalibration(){
+  mCalibPoints=[];
+  mImage=mOriginalImage;
+  mCanvas.width=mOriginalImage.width;
+  mCanvas.height=mOriginalImage.height;
+  drawCalibOverlay();
+  updateCalibUI();
+  document.getElementById('calibResult').style.display='none';
+}
+
+function addCalibPoint(x,y){
+  if(mCalibPoints.length>=4) return;
+  mCalibPoints.push({x:x,y:y});
+  drawCalibOverlay();
+  updateCalibUI();
+  if(mCalibPoints.length===4) applyPerspectiveCorrection();
+}
+
+var CALIB_LABELS=['Oben-Links','Oben-Rechts','Unten-Rechts','Unten-Links'];
+var CALIB_COLORS=['#ef4444','#f59e0b','#22c55e','#3b82f6'];
+
+function updateCalibUI(){
+  for(var i=0;i<4;i++){
+    var dot=document.getElementById('calDot'+i);
+    if(!dot) continue;
+    dot.className='m-dot'+(i<mCalibPoints.length?' done':i===mCalibPoints.length?' active':'');
+  }
+  var txt=document.getElementById('calibStepText');
+  if(mCalibPoints.length<4){
+    txt.textContent='Ecke '+(mCalibPoints.length+1)+'/4: '+CALIB_LABELS[mCalibPoints.length]+' des Röntgenbilds anklicken';
+    txt.style.background='var(--blue-bg)';txt.style.borderColor='var(--blue-b)';txt.style.color='var(--blue-t)';
+  } else {
+    txt.textContent='\u2714 Perspektive korrigiert — Sie können jetzt messen.';
+    txt.style.background='var(--green-bg)';txt.style.borderColor='var(--green-b)';txt.style.color='var(--green-t)';
+  }
+}
+
+function drawCalibOverlay(){
+  if(!mCtx||!mImage) return;
+  mCtx.clearRect(0,0,mCanvas.width,mCanvas.height);
+  mCtx.drawImage(mImage,0,0);
+  // Dim the image slightly
+  mCtx.fillStyle='rgba(0,0,0,0.15)';
+  mCtx.fillRect(0,0,mCanvas.width,mCanvas.height);
+  var r=Math.max(8,mCanvas.width/60);
+  // Draw points
+  for(var i=0;i<mCalibPoints.length;i++){
+    var p=mCalibPoints[i];
+    mCtx.beginPath();mCtx.arc(p.x,p.y,r,0,Math.PI*2);
+    mCtx.fillStyle=CALIB_COLORS[i];mCtx.globalAlpha=0.85;mCtx.fill();
+    mCtx.globalAlpha=1;mCtx.strokeStyle='#fff';mCtx.lineWidth=2;mCtx.stroke();
+    var fs=Math.max(12,mCanvas.width/45);
+    mCtx.font='bold '+fs+'px Arial';mCtx.fillStyle='#fff';mCtx.textAlign='center';
+    mCtx.strokeStyle='rgba(0,0,0,0.7)';mCtx.lineWidth=3;
+    mCtx.strokeText(CALIB_LABELS[i],p.x,p.y-r-8);
+    mCtx.fillText(CALIB_LABELS[i],p.x,p.y-r-8);
+  }
+  // Draw connecting lines
+  if(mCalibPoints.length>=2){
+    mCtx.beginPath();mCtx.setLineDash([6,4]);mCtx.lineWidth=2;mCtx.strokeStyle='rgba(255,255,255,0.5)';
+    for(var i=0;i<mCalibPoints.length;i++){
+      var p=mCalibPoints[i];
+      if(i===0) mCtx.moveTo(p.x,p.y); else mCtx.lineTo(p.x,p.y);
+    }
+    if(mCalibPoints.length===4) mCtx.closePath();
+    mCtx.stroke();mCtx.setLineDash([]);
+  }
+  // Next point hint
+  if(mCalibPoints.length<4){
+    var fs2=Math.max(14,mCanvas.width/35);
+    mCtx.font=fs2+'px Arial';mCtx.fillStyle=CALIB_COLORS[mCalibPoints.length];mCtx.textAlign='center';
+    mCtx.strokeStyle='rgba(0,0,0,0.6)';mCtx.lineWidth=3;
+    var hintText=CALIB_LABELS[mCalibPoints.length]+' anklicken';
+    mCtx.strokeText(hintText,mCanvas.width/2,mCanvas.height-20);
+    mCtx.fillText(hintText,mCanvas.width/2,mCanvas.height-20);
+  }
+}
+
+/* ═══ HOMOGRAPHY & PERSPECTIVE WARP ═══ */
+function applyPerspectiveCorrection(){
+  var src=mCalibPoints;
+  // Calculate bounding dimensions of destination rectangle
+  var w=Math.max(
+    Math.sqrt(Math.pow(src[1].x-src[0].x,2)+Math.pow(src[1].y-src[0].y,2)),
+    Math.sqrt(Math.pow(src[2].x-src[3].x,2)+Math.pow(src[2].y-src[3].y,2))
+  );
+  var h=Math.max(
+    Math.sqrt(Math.pow(src[3].x-src[0].x,2)+Math.pow(src[3].y-src[0].y,2)),
+    Math.sqrt(Math.pow(src[2].x-src[1].x,2)+Math.pow(src[2].y-src[1].y,2))
+  );
+  w=Math.round(w);h=Math.round(h);
+  if(w<50||h<50){alert('Ecken zu nah beieinander.');return;}
+
+  // Destination: perfect rectangle
+  var dst=[{x:0,y:0},{x:w,y:0},{x:w,y:h},{x:0,y:h}];
+
+  // Calculate distortion angle for quality check
+  var angles=[];
+  for(var i=0;i<4;i++){
+    var a=src[i],b=src[(i+1)%4],c=src[(i+2)%4];
+    var ab={x:b.x-a.x,y:b.y-a.y};
+    var cb={x:b.x-c.x,y:b.y-c.y};
+    var dot=ab.x*cb.x+ab.y*cb.y;
+    var cross=ab.x*cb.y-ab.y*cb.x;
+    angles.push(Math.abs(Math.atan2(cross,dot)*180/Math.PI));
+  }
+  var maxAngleDev=Math.max.apply(null,angles.map(function(a){return Math.abs(a-90)}));
+
+  // Compute inverse homography (dst→src) to sample original image
+  var H=computeHomography(dst,src);
+  if(!H){alert('Homographie-Berechnung fehlgeschlagen.');return;}
+
+  // Create corrected image
+  var tmpCanvas=document.createElement('canvas');
+  tmpCanvas.width=w;tmpCanvas.height=h;
+  var tmpCtx=tmpCanvas.getContext('2d');
+
+  // Draw original to offscreen canvas for pixel sampling
+  var srcCanvas=document.createElement('canvas');
+  srcCanvas.width=mOriginalImage.width;srcCanvas.height=mOriginalImage.height;
+  var srcCtx=srcCanvas.getContext('2d');
+  srcCtx.drawImage(mOriginalImage,0,0);
+  var srcData=srcCtx.getImageData(0,0,srcCanvas.width,srcCanvas.height);
+  var dstData=tmpCtx.createImageData(w,h);
+
+  // Inverse warp with bilinear interpolation
+  for(var dy=0;dy<h;dy++){
+    for(var dx=0;dx<w;dx++){
+      // Apply H to (dx,dy) to get source coordinates
+      var denom=H[6]*dx+H[7]*dy+1;
+      var sx=(H[0]*dx+H[1]*dy+H[2])/denom;
+      var sy=(H[3]*dx+H[4]*dy+H[5])/denom;
+      // Bilinear interpolation
+      var ix=Math.floor(sx),iy=Math.floor(sy);
+      var fx=sx-ix,fy=sy-iy;
+      if(ix>=0&&ix<srcCanvas.width-1&&iy>=0&&iy<srcCanvas.height-1){
+        for(var c=0;c<4;c++){
+          var i00=srcData.data[(iy*srcCanvas.width+ix)*4+c];
+          var i10=srcData.data[(iy*srcCanvas.width+ix+1)*4+c];
+          var i01=srcData.data[((iy+1)*srcCanvas.width+ix)*4+c];
+          var i11=srcData.data[((iy+1)*srcCanvas.width+ix+1)*4+c];
+          var val=i00*(1-fx)*(1-fy)+i10*fx*(1-fy)+i01*(1-fx)*fy+i11*fx*fy;
+          dstData.data[(dy*w+dx)*4+c]=Math.round(val);
+        }
+      }
+    }
+  }
+  tmpCtx.putImageData(dstData,0,0);
+
+  // Replace image with corrected version
+  var correctedImg=new Image();
+  correctedImg.onload=function(){
+    mImage=correctedImg;
+    var wrap=document.getElementById('measureWrap');
+    var maxW=wrap.clientWidth;
+    var maxH2=500;
+    var scale2=Math.min(maxW/w,maxH2/h);
+    mCanvas.width=w;mCanvas.height=h;
+    mCanvas.style.width=Math.round(w*scale2)+'px';
+    mCanvas.style.height=Math.round(h*scale2)+'px';
+    mScale=scale2;
+    mCalibMode=false;
+    mPoints=[];
+
+    // Show quality result
+    var resEl=document.getElementById('calibResult');
+    resEl.style.display='block';
+    if(maxAngleDev>15){
+      resEl.style.background='var(--amber-bg)';resEl.style.border='1px solid var(--amber-b)';
+      resEl.innerHTML='<span style="color:var(--amber-t)">\u26A0 Starke Verzerrung korrigiert ('+Math.round(maxAngleDev)+'\u00B0 Abweichung). Ergebnis akzeptabel, aber Foto m\u00F6glichst senkrechter aufnehmen f\u00FCr h\u00F6here Genauigkeit.</span>';
+    } else {
+      resEl.style.background='var(--green-bg)';resEl.style.border='1px solid var(--green-b)';
+      resEl.innerHTML='<span style="color:var(--green-t)">\u2714 Perspektive korrigiert ('+Math.round(maxAngleDev)+'\u00B0 Abweichung). Messung kann beginnen.</span>';
+    }
+
+    // Switch to measurement mode
+    document.getElementById('measureSteps').style.display='block';
+    drawMeasure();
+    updateMStepUI();
+  };
+  correctedImg.src=tmpCanvas.toDataURL();
+}
+
+// Solve 8x8 linear system for homography: dst→src mapping
+// H maps (dx,dy) → (sx,sy): sx=(h0*dx+h1*dy+h2)/(h6*dx+h7*dy+1)
+function computeHomography(src,dst){
+  // Build 8x9 matrix from 4 point correspondences
+  var A=[];
+  for(var i=0;i<4;i++){
+    var s=src[i],d=dst[i];
+    A.push([s.x,s.y,1,0,0,0,-d.x*s.x,-d.x*s.y,-d.x]);
+    A.push([0,0,0,s.x,s.y,1,-d.y*s.x,-d.y*s.y,-d.y]);
+  }
+  // Gaussian elimination
+  var n=8;
+  for(var col=0;col<n;col++){
+    var maxRow=col;
+    for(var row=col+1;row<n;row++){
+      if(Math.abs(A[row][col])>Math.abs(A[maxRow][col])) maxRow=row;
+    }
+    var tmp=A[col];A[col]=A[maxRow];A[maxRow]=tmp;
+    if(Math.abs(A[col][col])<1e-10) return null;
+    for(var row=col+1;row<n;row++){
+      var f=A[row][col]/A[col][col];
+      for(var j=col;j<=n;j++) A[row][j]-=f*A[col][j];
+    }
+  }
+  // Back substitution
+  var h=new Array(8);
+  for(var row=n-1;row>=0;row--){
+    h[row]=A[row][n];
+    for(var j=row+1;j<n;j++) h[row]-=A[row][j]*h[j];
+    h[row]/=A[row][row];
+  }
+  return h;
+}
+
 function removeMeasureImage(){
-  mImage=null;
-  mPoints=[];
+  mImage=null;mOriginalImage=null;
+  mPoints=[];mCalibPoints=[];mCalibMode=false;
   mCanvas=document.getElementById('measureCanvas');
   mCanvas.style.display='none';
   document.getElementById('measureUploadHint').style.display='block';
   document.getElementById('measureImgBar').style.display='none';
   document.getElementById('measureSteps').style.display='none';
+  document.getElementById('calibPanel').style.display='none';
+  document.getElementById('calibSteps').style.display='none';
+  document.getElementById('calibResult').style.display='none';
+  document.getElementById('calibStartBtn').style.display='';
   updateUploadLabel();
 }
 
@@ -1935,11 +2207,16 @@ function advanceToFlex(){
   mMode='flex';
   document.getElementById('mTabStand').classList.remove('selected');
   document.getElementById('mTabFlex').classList.add('selected');
-  mImage=null;mPoints=[];
+  mImage=null;mOriginalImage=null;mPoints=[];mCalibPoints=[];mCalibMode=false;
   var c=document.getElementById('measureCanvas');c.style.display='none';
   document.getElementById('measureUploadHint').style.display='block';
   document.getElementById('measureImgBar').style.display='none';
-  updateUploadLabel();updateMStepUI();highlightActiveResult();
+  document.getElementById('calibPanel').style.display='none';
+  document.getElementById('calibSteps').style.display='none';
+  document.getElementById('calibResult').style.display='none';
+  document.getElementById('calibStartBtn').style.display='';
+  document.getElementById('measureSteps').style.display='none';
+  updateUploadLabel();highlightActiveResult();
   document.getElementById('measureWrap').scrollIntoView({behavior:'smooth',block:'center'});
 }
 
