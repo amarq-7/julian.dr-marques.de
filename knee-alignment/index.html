@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knie-Alignment-Planung — CPAK & Resektionsplanung</title>
+<style>
+  :root {
+    --bg1:#ffffff;--bg2:#f5f4ef;--bg3:#eae9e4;
+    --t1:#1a1a1a;--t2:#6b6a65;--t3:#9c9a92;
+    --b1:rgba(0,0,0,0.15);--b2:rgba(0,0,0,0.08);
+    --green-bg:#eaf3de;--green-t:#3b6d11;--green-b:#97c459;
+    --amber-bg:#faeeda;--amber-t:#854f0b;--amber-b:#ef9f27;
+    --red-bg:#fcebeb;--red-t:#a32d2d;--red-b:#f09595;
+    --blue-bg:#e8f0fd;--blue-t:#1d4a8a;--blue-b:#6ba3ef;
+    --r-md:8px;--r-lg:12px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media(prefers-color-scheme:dark){:root{
+    --bg1:#1a1a1a;--bg2:#2c2c2a;--bg3:#3d3d3a;
+    --t1:#e8e6de;--t2:#9c9a92;--t3:#6b6a65;
+    --b1:rgba(255,255,255,0.15);--b2:rgba(255,255,255,0.08);
+    --green-bg:#173404;--green-t:#c0dd97;--green-b:#639922;
+    --amber-bg:#412402;--amber-t:#fac775;--amber-b:#ba7517;
+    --red-bg:#501313;--red-t:#f7c1c1;--red-b:#e24b4a;
+    --blue-bg:#0d2440;--blue-t:#a3c5f0;--blue-b:#3670b5;
+  }}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);background:var(--bg3);color:var(--t1);line-height:1.5;padding:16px;padding-bottom:40px}
+  .wrap{max-width:720px;margin:0 auto;background:var(--bg1);border-radius:var(--r-lg);padding:24px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+  .header-wrap{margin-bottom:20px;padding:18px 22px 16px;background:linear-gradient(135deg,var(--bg2) 0%,var(--bg1) 100%);border:1px solid var(--b2);border-radius:var(--r-lg);position:relative;overflow:hidden}
+  .header-wrap::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:var(--blue-bg);opacity:0.5}
+  .header-wrap h1{font-size:20px;font-weight:700;letter-spacing:-0.02em;position:relative;z-index:1}
+  .header-wrap .subtitle{font-size:12px;color:var(--t2);margin-bottom:0;position:relative;z-index:1}
+  h2{font-size:14px;font-weight:600;margin-bottom:8px}
+  .sec{margin-bottom:16px}
+  .hr{border:none;border-top:1px solid var(--b2);margin:16px 0}
+
+  /* Input cards */
+  .ic{background:var(--bg2);border-radius:var(--r-md);padding:10px 12px;transition:background .3s}
+  .ic .l{font-size:11px;color:var(--t2);margin-bottom:4px}.ic .v{font-size:22px;font-weight:500;margin-bottom:4px}
+  .ic input[type=range]{width:100%;accent-color:var(--t2)}.ic .nt{font-size:10px;color:var(--t3);font-style:italic}
+
+  /* Data display */
+  .dg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .dd{background:var(--bg2);border-radius:var(--r-md);padding:7px 10px;text-align:center;border:1.5px solid var(--b2);transition:all .15s}
+  .dd .dl{font-size:10px;color:var(--t2)}.dd .dv{font-size:15px;font-weight:500;margin-top:1px}
+  .fg{display:inline-block;font-size:11px;padding:3px 8px;border-radius:var(--r-md);font-weight:500;margin-right:3px}
+  .fg.r{background:var(--red-bg);color:var(--red-t)}.fg.a{background:var(--amber-bg);color:var(--amber-t)}.fg.g{background:var(--green-bg);color:var(--green-t)}.fg.b{background:var(--blue-bg);color:var(--blue-t)}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:var(--r-md);border:none;font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+  .btn-primary{background:var(--t1);color:var(--bg1)}.btn-primary:hover{opacity:0.85}
+  .btn-secondary{background:transparent;color:var(--t2);border:1px solid var(--b1);padding:6px 12px;font-size:11px;display:inline-flex;align-items:center;gap:6px;border-radius:var(--r-md);font-family:var(--font);cursor:pointer;transition:all .15s}
+  .btn-secondary:hover{background:var(--bg2)}
+
+  /* Strategy pills */
+  .strat-btn{padding:6px 14px;border:1px solid var(--b1);border-radius:100px;background:transparent;color:var(--t2);cursor:pointer;font-family:var(--font);font-size:11px;font-weight:500;transition:all .15s;white-space:nowrap}
+  .strat-btn:hover{background:var(--bg2)}.strat-btn.selected{background:var(--t1);color:var(--bg1);border-color:var(--t1)}
+
+  /* Dropdown sections */
+  .guide-toggle{display:flex;align-items:center;gap:8px;width:100%;padding:12px 16px;border:1px solid var(--b2);border-radius:var(--r-lg);background:var(--bg2);cursor:pointer;font-family:var(--font);font-size:13px;font-weight:500;color:var(--t1);text-align:left;transition:all .15s;margin-bottom:6px}
+  .guide-toggle:hover{background:var(--bg3)}.guide-toggle .arrow{font-size:10px;color:var(--t3);transition:transform .2s}
+  .guide-toggle.open .arrow{transform:rotate(90deg)}.guide{display:none;margin-bottom:12px;padding:0 4px}.guide.open{display:block}
+
+  /* Classification box */
+  .cb{margin-top:10px;padding:12px 14px;border-radius:var(--r-lg);border:1px solid var(--b1);font-size:12px;line-height:1.6}
+  .cb.sf{border-color:var(--green-b);background:var(--green-bg);color:var(--green-t)}
+  .cb.wn{border-color:var(--amber-b);background:var(--amber-bg);color:var(--amber-t)}
+  .cb.dn{border-color:var(--red-b);background:var(--red-bg);color:var(--red-t)}
+
+  /* CPAK Matrix */
+  .cpak-matrix{display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:1px;margin:10px 0;font-size:11px;background:var(--b2);border-radius:var(--r-md);overflow:hidden}
+  .cpak-cell{padding:8px 6px;text-align:center;background:var(--bg1);transition:all .15s}
+  .cpak-cell.header{background:var(--bg2);font-weight:600;color:var(--t2);font-size:10px}
+  .cpak-cell.row-header{background:var(--bg2);font-weight:500;font-size:10px;display:flex;align-items:center;justify-content:center}
+  .cpak-cell.highlight{background:var(--blue-bg);font-weight:700;color:var(--blue-t);border:2px solid var(--blue-b)}
+
+  /* Sticky nav */
+  .sticky-nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:8px 0;margin:-24px -24px 12px;padding:8px 24px;border-bottom:1px solid var(--b2)}
+  @media(prefers-color-scheme:dark){.sticky-nav{background:rgba(26,26,26,0.85)}}
+  .nav-pills{display:flex;gap:4px;flex-wrap:wrap}
+  .nav-pill{padding:5px 12px;font-size:11px;border-radius:100px;border:1px solid var(--b2);background:transparent;color:var(--t2);cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
+  .nav-pill:hover{background:var(--bg2)}.nav-pill.active{background:var(--t1);color:var(--bg1);border-color:var(--t1)}
+
+  /* Measurement dots */
+  .m-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--bg3);border:1.5px solid var(--b1)}
+  .m-dot.active{border-color:var(--blue-b);background:var(--blue-bg);box-shadow:0 0 0 2px rgba(107,163,239,0.3)}
+  .m-dot.done{border-color:var(--green-b);background:var(--green-bg)}
+
+  /* Info button */
+  .info-btn{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--bg3);border:1px solid var(--b1);color:var(--t3);font-size:9px;font-weight:700;font-style:italic;font-family:Georgia,serif;cursor:pointer;vertical-align:middle;margin-left:4px}
+  .info-btn:hover{background:var(--t2);color:var(--bg1)}
+
+  /* Canvas */
+  .canvas-wrap{position:relative;background:var(--bg3);border-radius:var(--r-md);overflow:hidden;min-height:100px}
+
+  /* Print */
+  @media print{
+    body{padding:0;background:#fff}.wrap{box-shadow:none;max-width:100%;padding:16px}
+    [data-page="0"]{display:none!important}.sticky-nav,.btn,.btn-secondary{break-inside:avoid}
+    .guide{display:block!important}.guide-toggle{display:none!important}
+    input[type=range]{display:none}
+  }
+  .legal-link{color:var(--t3);text-decoration:underline;cursor:pointer;font-size:10px}.legal-link:hover{color:var(--t2)}
+
+  /* Lit */
+  .lit-item{margin-bottom:10px;font-size:11px;line-height:1.6;color:var(--t2)}
+  .lit-item .lit-title{font-weight:600;color:var(--t1)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 0: Präoperative Analyse + CPAK        -->
+<!-- ═══════════════════════════════════════════ -->
+<div data-page="0" id="page0">
+
+  <div class="header-wrap">
+    <h1>🦴 Knie-Alignment-Planung</h1>
+    <div class="subtitle">Präoperative Planungsvorbereitung für navigierte & roboterassistierte Knie-TEP · CPAK-Klassifikation nach MacDessi et al.</div>
+  </div>
+
+  <div style="text-align:center;margin-bottom:14px">
+    <div style="font-size:15px;font-weight:600">Schritt 1: Präoperative Analyse</div>
+    <div style="font-size:12px;color:var(--t3);margin-top:4px">Bestimmen Sie mLDFA und MPTA auf der Ganzbeinstandaufnahme — manuell oder per Bildmessung.</div>
+  </div>
+
+  <!-- Image upload + measurement -->
+  <div class="sec">
+    <button class="guide-toggle" id="togMeasure" onclick="this.classList.toggle('open');document.getElementById('measureSection').classList.toggle('open')">
+      <span class="arrow">&#9654;</span> Winkelmessung auf Ganzbeinstandaufnahme
+    </button>
+    <div class="guide" id="measureSection">
+      <div style="font-size:11px;color:var(--t3);margin-bottom:10px">
+        Laden Sie eine Ganzbeinstandaufnahme hoch und messen Sie mLDFA und MPTA direkt auf dem Bild.
+        <span style="color:var(--amber-t)">Tipp:</span> Bei Fotos vom Monitor „📐 Korrigieren" nutzen.
+      </div>
+
+      <div class="canvas-wrap" id="kMeasureWrap">
+        <div id="kUploadHint" style="text-align:center;padding:30px 16px;cursor:pointer" onclick="document.getElementById('kFile').click()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 6px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <div style="font-size:12px;color:var(--t2)">Ganzbeinstandaufnahme hochladen</div>
+          <div style="font-size:10px;color:var(--t3)">Klicken oder Bild hierher ziehen</div>
+        </div>
+        <canvas id="kCanvas" style="display:none;cursor:crosshair"></canvas>
+        <input type="file" id="kFile" accept="image/*" style="display:none" onchange="loadKneeImage(this.files[0])">
+        <div id="kImgBar" style="display:none;position:absolute;top:6px;right:6px;gap:4px;z-index:5">
+          <button onclick="startKneeCalib()" id="kCalibBtn" style="padding:4px 8px;font-size:10px;border-radius:4px;border:none;background:rgba(59,130,246,0.8);color:#fff;cursor:pointer;font-family:var(--font)">📐 Korrigieren</button>
+          <button onclick="document.getElementById('kFile').click()" style="padding:4px 8px;font-size:10px;border-radius:4px;border:none;background:rgba(0,0,0,0.6);color:#fff;cursor:pointer;font-family:var(--font)">Anderes Bild</button>
+          <button onclick="removeKneeImage()" style="padding:4px 8px;font-size:10px;border-radius:4px;border:none;background:rgba(220,38,38,0.8);color:#fff;cursor:pointer;font-family:var(--font)">✕ Entfernen</button>
+        </div>
+      </div>
+
+      <div id="kCalibResult" style="display:none;margin-top:6px;padding:8px 12px;border-radius:var(--r-md);font-size:11px"></div>
+
+      <!-- Measurement steps -->
+      <div id="kMeasureSteps" style="display:none;margin-top:8px">
+        <div style="display:flex;gap:4px;margin-bottom:4px;flex-wrap:wrap">
+          <button class="strat-btn selected" id="kTabLDFA" onclick="switchKneeTab('ldfa')">mLDFA messen</button>
+          <button class="strat-btn" id="kTabMPTA" onclick="switchKneeTab('mpta')">MPTA messen</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin:6px 0">
+          <div id="kStepDots" style="display:flex;gap:4px"></div>
+          <button class="btn-secondary" style="margin-left:auto;padding:3px 8px" onclick="undoKneePoint()">↩ Rückgängig</button>
+          <button class="btn-secondary" style="padding:3px 8px" onclick="resetKneePoints()">Reset</button>
+        </div>
+        <div id="kStepText" style="font-size:12px;font-weight:500;padding:8px 12px;background:var(--blue-bg);border:1px solid var(--blue-b);border-radius:var(--r-md);color:var(--blue-t)"></div>
+      </div>
+
+      <!-- Measured results -->
+      <div id="kMeasuredResults" style="display:none;margin-top:8px">
+        <div class="dg">
+          <div class="dd"><div class="dl">mLDFA gemessen</div><div class="dv" id="kResLDFA">—</div></div>
+          <div class="dd"><div class="dl">MPTA gemessen</div><div class="dv" id="kResMPTA">—</div></div>
+        </div>
+        <button class="btn-secondary" style="width:100%;margin-top:6px;justify-content:center;font-weight:600;color:var(--green-t);border-color:var(--green-b)" onclick="applyKneeMeasured()">
+          ✔ Gemessene Werte übernehmen
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manual input -->
+  <div class="sec">
+    <h2><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue-b);margin-right:6px;vertical-align:middle"></span>Winkel-Eingabe</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="ic">
+        <div class="l">mLDFA (°) <span class="info-btn" onclick="showInfo('ldfa')">i</span></div>
+        <div class="v" id="vldfa">88.0°</div>
+        <input type="range" id="sldfa" min="80" max="95" value="88" step="0.5" oninput="u()">
+        <div class="nt">lateraler distaler Femurwinkel</div>
+      </div>
+      <div class="ic">
+        <div class="l">MPTA (°) <span class="info-btn" onclick="showInfo('mpta')">i</span></div>
+        <div class="v" id="vmpta">87.0°</div>
+        <input type="range" id="smpta" min="80" max="95" value="87" step="0.5" oninput="u()">
+        <div class="nt">medialer proximaler Tibiawinkel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculated values -->
+  <div class="sec">
+    <h2><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green-b);margin-right:6px;vertical-align:middle"></span>Berechnete Parameter</h2>
+    <div class="dg">
+      <div class="dd"><div class="dl">aHKA (arithmetisch)</div><div class="dv" id="dahka">—</div></div>
+      <div class="dd"><div class="dl">JLO (Gelenklinie)</div><div class="dv" id="djlo">—</div></div>
+    </div>
+    <div style="margin-top:6px" id="flags"></div>
+  </div>
+
+  <!-- CPAK Matrix -->
+  <div class="sec">
+    <h2>CPAK-Klassifikation</h2>
+    <div class="cpak-matrix">
+      <div class="cpak-cell header"></div>
+      <div class="cpak-cell header">Varus LDFA<br>(&gt;90°)</div>
+      <div class="cpak-cell header">Neutral LDFA<br>(85–90°)</div>
+      <div class="cpak-cell header">Valgus LDFA<br>(&lt;85°)</div>
+      <div class="cpak-cell row-header">Varus MPTA<br>(&lt;85°)</div>
+      <div class="cpak-cell" id="cpak-I">I</div>
+      <div class="cpak-cell" id="cpak-II">II</div>
+      <div class="cpak-cell" id="cpak-III">III</div>
+      <div class="cpak-cell row-header">Neutral MPTA<br>(85–90°)</div>
+      <div class="cpak-cell" id="cpak-IV">IV</div>
+      <div class="cpak-cell" id="cpak-V">V</div>
+      <div class="cpak-cell" id="cpak-VI">VI</div>
+      <div class="cpak-cell row-header">Valgus MPTA<br>(&gt;90°)</div>
+      <div class="cpak-cell" id="cpak-VII">VII</div>
+      <div class="cpak-cell" id="cpak-VIII">VIII</div>
+      <div class="cpak-cell" id="cpak-IX">IX</div>
+    </div>
+    <div id="cbox" class="cb sf"></div>
+  </div>
+
+  <hr class="hr">
+  <div style="display:flex;gap:8px;justify-content:center">
+    <button class="btn btn-primary" onclick="goToPage(1)">Weiter zur Alignment-Planung →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAGE 1: Alignment-Strategie & Navigator    -->
+<!-- ═══════════════════════════════════════════ -->
+<div data-page="1" id="page1" style="display:none">
+
+  <div style="margin-bottom:12px">
+    <button class="btn-secondary" onclick="goToPage(0)">← Zurück zur Analyse</button>
+  </div>
+
+  <div style="text-align:center;margin-bottom:14px">
+    <div style="font-size:15px;font-weight:600">Schritt 2: Alignment-Strategie & Resektionsplanung</div>
+    <div style="font-size:12px;color:var(--t3);margin-top:4px">Wählen Sie die Strategie und passen Sie die Resektionswinkel für Navigation/Roboter an.</div>
+  </div>
+
+  <!-- Patient summary bar -->
+  <div style="padding:8px 14px;background:var(--bg2);border-radius:var(--r-md);font-size:11px;margin-bottom:12px;display:flex;gap:12px;flex-wrap:wrap">
+    <span><b>mLDFA:</b> <span id="s1_ldfa">88</span>°</span>
+    <span><b>MPTA:</b> <span id="s1_mpta">87</span>°</span>
+    <span><b>aHKA:</b> <span id="s1_ahka">—</span></span>
+    <span><b>CPAK:</b> <span id="s1_cpak">—</span></span>
+  </div>
+
+  <div class="sticky-nav">
+    <div class="nav-pills">
+      <button class="nav-pill active" onclick="navTo('strategie')">Strategie</button>
+      <button class="nav-pill" onclick="navTo('resektionswinkel')">Resektionswinkel</button>
+      <button class="nav-pill" onclick="navTo('postop')">Postop Alignment</button>
+      <button class="nav-pill" onclick="navTo('zusammenfassung')">Zusammenfassung</button>
+      <button class="nav-pill" onclick="navTo('literatur')">Literatur</button>
+    </div>
+  </div>
+
+  <!-- Alignment Strategy -->
+  <div id="sec_strategie" class="sec">
+    <button class="guide-toggle open" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      <span class="arrow">&#9654;</span> Alignment-Strategie
+    </button>
+    <div class="guide open">
+      <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap">
+        <button class="strat-btn selected" onclick="selectStrat('MA',this)">Mechanisch (MA)</button>
+        <button class="strat-btn" onclick="selectStrat('KA',this)">Kinematisch (KA)</button>
+        <button class="strat-btn" onclick="selectStrat('rKA',this)">Restricted KA (rKA)</button>
+        <button class="strat-btn" onclick="selectStrat('AA',this)">Anatomisch (AA)</button>
+        <button class="strat-btn" onclick="selectStrat('iKA',this)">Inverses KA (iKA)</button>
+        <button class="strat-btn" onclick="selectStrat('custom',this)">Individuell</button>
+      </div>
+      <div id="stratHint" style="font-size:11px;color:var(--t2);padding:8px 12px;background:var(--bg2);border-radius:var(--r-md);line-height:1.6"></div>
+    </div>
+  </div>
+
+  <!-- Resection Angles -->
+  <div id="sec_resektionswinkel" class="sec">
+    <button class="guide-toggle open" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      <span class="arrow">&#9654;</span> Resektionswinkel
+    </button>
+    <div class="guide open">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+        <div class="ic">
+          <div class="l">Femur koronal (° von ⊥) <span class="info-btn" onclick="showInfo('femCor')">i</span></div>
+          <div class="v" id="vFemDev">0.0°</div>
+          <input type="range" id="sFemDev" min="-5" max="8" value="0" step="0.5" oninput="updateNav()">
+          <div class="nt">0° = ⊥ zur mech. Achse (MA) · + = Valgus</div>
+        </div>
+        <div class="ic">
+          <div class="l">Tibia koronal (° von ⊥) <span class="info-btn" onclick="showInfo('tibCor')">i</span></div>
+          <div class="v" id="vTibDev">0.0°</div>
+          <input type="range" id="sTibDev" min="-5" max="8" value="0" step="0.5" oninput="updateNav()">
+          <div class="nt">0° = ⊥ zur mech. Achse (MA) · + = Varus</div>
+        </div>
+        <div class="ic">
+          <div class="l">Tibia — Posteriorer Slope</div>
+          <div class="v" id="vTibSlope">3.0°</div>
+          <input type="range" id="sTibSlope" min="0" max="10" value="3" step="0.5" oninput="updateNav()">
+          <div class="nt">Sagittale Neigung nach posterior</div>
+        </div>
+        <div class="ic">
+          <div class="l">Femur — Rotation (ext. zur PCA)</div>
+          <div class="v" id="vFemRot">3.0°</div>
+          <input type="range" id="sFemRot" min="0" max="6" value="3" step="0.5" oninput="updateNav()">
+          <div class="nt">3° = Standard (parallel zur Epikondylarachse)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post-op Alignment -->
+  <div id="sec_postop" class="sec">
+    <button class="guide-toggle open" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      <span class="arrow">&#9654;</span> Voraussichtliches postoperatives Alignment
+    </button>
+    <div class="guide open">
+      <div class="dg" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="dd" id="cellHKA"><div class="dl">Post-op HKA</div><div class="dv" id="navHKA">—</div></div>
+        <div class="dd" id="cellFem"><div class="dl">Femur koronal</div><div class="dv" id="navFemCor">—</div></div>
+        <div class="dd" id="cellTib"><div class="dl">Tibia koronal</div><div class="dv" id="navTibCor">—</div></div>
+      </div>
+      <div class="dg" style="grid-template-columns:1fr 1fr 1fr;margin-top:6px">
+        <div class="dd" id="cellExt"><div class="dl">Extensionsspalt</div><div class="dv" id="navExtGap">—</div></div>
+        <div class="dd" id="cellFlex"><div class="dl">Flexionsspalt</div><div class="dv" id="navFlexGap">—</div></div>
+        <div class="dd" id="cellJLO"><div class="dl">Gelenklinie (JLO)</div><div class="dv" id="navJLO">—</div></div>
+      </div>
+
+      <div id="navOptimize" style="margin-top:10px;padding:10px 14px;border-radius:var(--r-md);background:var(--bg2);border:1px solid var(--b2);font-size:11px;color:var(--t2);line-height:1.7"></div>
+
+      <!-- SVG Visualization -->
+      <div style="text-align:center;margin-top:12px">
+        <svg id="navSVG" width="100%" viewBox="0 0 440 380" style="max-width:440px;background:var(--bg2);border-radius:var(--r-lg);border:1px solid var(--b2)"></svg>
+      </div>
+
+      <div id="navStatus" class="cb sf" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+  <!-- Zusammenfassung -->
+  <div id="sec_zusammenfassung" class="sec">
+    <button class="guide-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      <span class="arrow">&#9654;</span> Planungszusammenfassung
+    </button>
+    <div class="guide" id="summaryContent" style="font-size:12px;line-height:1.8;color:var(--t2)"></div>
+  </div>
+
+  <!-- Literatur -->
+  <div id="sec_literatur" class="sec">
+    <button class="guide-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+      <span class="arrow">&#9654;</span> Literatur
+    </button>
+    <div class="guide">
+      <div class="lit-item">
+        <div class="lit-title">MacDessi SJ et al. CPAK classification. Bone Joint J. 2021;103-B(6 Supple A):13–20.</div>
+        Originalarbeit: 9 CPAK-Phänotypen, aHKA, JLO.
+      </div>
+      <div class="lit-item">
+        <div class="lit-title">Bellemans J et al. Is neutral mechanical alignment normal for all patients? Clin Orthop Relat Res. 2012;470(1):45–53.</div>
+        32% konstitutioneller Varus ≥ 3°.
+      </div>
+      <div class="lit-item">
+        <div class="lit-title">Vendittoli PA et al. Restricted Kinematic Alignment. Orthop Knowl Online J. 2022.</div>
+        rKA: LDFA/MPTA 85–95°, HKA ±3°.
+      </div>
+      <div class="lit-item">
+        <div class="lit-title">Howell SM et al. Kinematic Alignment in TKA. J Arthroplasty. 2013;28(3):469–473.</div>
+        KA-Originalarbeit.
+      </div>
+      <div class="lit-item">
+        <div class="lit-title">Rivière C et al. Alignment options for TKA. Orthop Traumatol Surg Res. 2017;103(7):1047–1056.</div>
+        Übersichtsarbeit Alignment-Strategien.
+      </div>
+      <div class="lit-item">
+        <div class="lit-title">Paley D, Pfeil J. Principles of Deformity Correction. Springer, 2002.</div>
+        Messmethodik mLDFA/MPTA.
+      </div>
+    </div>
+  </div>
+
+  <hr class="hr">
+  <div style="display:flex;gap:8px;justify-content:center">
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Drucken / PDF speichern</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="text-align:center;font-size:10px;color:var(--t3);margin-top:16px;padding-top:10px;border-top:1px solid var(--b2)">
+  Knie-Alignment-Planung · Dr. Julian Marques · Venusberg-Campus 1, 53127 Bonn<br>
+  <span class="legal-link" onclick="showLegal('disc')">Haftungsausschluss</span> ·
+  <span class="legal-link" onclick="showLegal('impr')">Impressum</span> ·
+  <span class="legal-link" onclick="showLegal('dsgvo')">Datenschutz</span>
+</div>
+</div>
+
+<!-- Info Overlay -->
+<div id="infoOv" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px)" onclick="closeInfo()">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--bg1);border-radius:var(--r-lg);padding:24px;max-width:480px;width:90%;max-height:80vh;overflow-y:auto" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;margin-bottom:10px"><h3 id="infoTitle" style="font-size:15px"></h3><button onclick="closeInfo()" style="background:none;border:none;font-size:18px;cursor:pointer;color:var(--t3)">✕</button></div>
+    <div id="infoBody" style="font-size:12px;color:var(--t2);line-height:1.7"></div>
+  </div>
+</div>
+
+<!-- Legal Overlay -->
+<div id="legalOv" style="display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.5)" onclick="this.style.display='none'">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--bg1);border-radius:var(--r-lg);padding:24px;max-width:480px;width:90%" onclick="event.stopPropagation()">
+    <div id="legalBody" style="font-size:12px;color:var(--t2);line-height:1.7"></div>
+    <button onclick="document.getElementById('legalOv').style.display='none'" style="margin-top:10px;padding:6px 14px;border:1px solid var(--b1);border-radius:var(--r-md);background:var(--bg2);cursor:pointer;font-family:var(--font)">Schließen</button>
+  </div>
+</div>
+
+<script>
+/* ═══ GLOBALS ═══ */
+var currentPage=0;
+var navStrat='MA';
+
+/* ═══ CPAK DATA ═══ */
+var CPAK_TYPES={
+  I:{lbl:'Typ I',name:'Varus + Apex distal',ahka:'varus',jlo:'distal',freq:'26%'},
+  II:{lbl:'Typ II',name:'Neutral + Apex distal',ahka:'neutral',jlo:'distal',freq:'39%'},
+  III:{lbl:'Typ III',name:'Valgus + Apex distal',ahka:'valgus',jlo:'distal',freq:'3%'},
+  IV:{lbl:'Typ IV',name:'Varus + Neutral JLO',ahka:'varus',jlo:'neutral',freq:'6%'},
+  V:{lbl:'Typ V',name:'Neutral + Neutral JLO',ahka:'neutral',jlo:'neutral',freq:'15%'},
+  VI:{lbl:'Typ VI',name:'Valgus + Neutral JLO',ahka:'valgus',jlo:'neutral',freq:'5%'},
+  VII:{lbl:'Typ VII',name:'Varus + Apex proximal',ahka:'varus',jlo:'proximal',freq:'<2%'},
+  VIII:{lbl:'Typ VIII',name:'Neutral + Apex proximal',ahka:'neutral',jlo:'proximal',freq:'<2%'},
+  IX:{lbl:'Typ IX',name:'Valgus + Apex proximal',ahka:'valgus',jlo:'proximal',freq:'<2%'}
+};
+var ALIGN_REC={
+  I:{rec:'KA',css:'sf',text:'KA signifikant besser als MA. 100% optimale Balance bei KA vs. 15% bei MA.'},
+  II:{rec:'AA',css:'sf',text:'Anatomisches Alignment empfohlen. Häufigster Phänotyp (39%). Native Gelenklinie respektieren.'},
+  III:{rec:'KA',css:'wn',text:'Trend zu KA, seltener Phänotyp. Individuelle Entscheidung.'},
+  IV:{rec:'KA',css:'sf',text:'KA signifikant besser. 89% optimale Balance bei KA vs. 0% bei MA.'},
+  V:{rec:'Beide',css:'wn',text:'Kein signifikanter Unterschied zwischen KA und MA.'},
+  VI:{rec:'Individuell',css:'wn',text:'Seltener Phänotyp. Individuelle Entscheidung.'},
+  VII:{rec:'Individuell',css:'dn',text:'Seltener Phänotyp. Vorsicht bei KA wegen komplexer Deformität.'},
+  VIII:{rec:'Individuell',css:'dn',text:'Seltener Phänotyp. Komplexe Anatomie, individuelle Planung.'},
+  IX:{rec:'Individuell',css:'dn',text:'Sehr selten. Komplexe Deformität, 3D-Planung empfohlen.'}
+};
+
+function classifyCPAK(ahka,jlo){
+  var aG=ahka<-2?'varus':ahka>2?'valgus':'neutral';
+  var jG=jlo<177?'distal':jlo>183?'proximal':'neutral';
+  for(var k in CPAK_TYPES) if(CPAK_TYPES[k].ahka===aG&&CPAK_TYPES[k].jlo===jG) return k;
+  return 'V';
+}
+
+/* ═══ NAVIGATION ═══ */
+function goToPage(n){
+  document.querySelectorAll('[data-page]').forEach(function(p){p.style.display='none'});
+  document.getElementById('page'+n).style.display='block';
+  currentPage=n;window.scrollTo(0,0);
+  if(n===1){updateNav();updateSummary();}
+}
+
+function navTo(sec){
+  var el=document.getElementById('sec_'+sec);
+  if(!el) return;
+  // Open dropdown if closed
+  var tog=el.querySelector('.guide-toggle');
+  if(tog&&!tog.classList.contains('open')){tog.click();}
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  document.querySelectorAll('.nav-pill').forEach(function(p){p.classList.remove('active')});
+  event.target.classList.add('active');
+}
+
+/* ═══ MAIN UPDATE ═══ */
+function u(){
+  var ldfa=+document.getElementById('sldfa').value;
+  var mpta=+document.getElementById('smpta').value;
+  document.getElementById('vldfa').textContent=ldfa.toFixed(1)+'°';
+  document.getElementById('vmpta').textContent=mpta.toFixed(1)+'°';
+  var ahka=mpta-ldfa;
+  var jlo=mpta+ldfa;
+  document.getElementById('dahka').textContent=(ahka>=0?'+':'')+ahka.toFixed(1)+'°';
+  document.getElementById('dahka').style.color=ahka<-2?'var(--red-t)':ahka>2?'var(--amber-t)':'var(--green-t)';
+  document.getElementById('djlo').textContent=jlo.toFixed(0)+'°';
+  document.getElementById('djlo').style.color=jlo<177||jlo>183?'var(--amber-t)':'var(--green-t)';
+  var fl=[];
+  if(ahka<-2)fl.push('<span class="fg r">Varus</span>');else if(ahka>2)fl.push('<span class="fg a">Valgus</span>');else fl.push('<span class="fg g">Neutral</span>');
+  if(jlo<177)fl.push('<span class="fg b">Apex distal</span>');else if(jlo>183)fl.push('<span class="fg r">Apex proximal</span>');else fl.push('<span class="fg g">JLO Neutral</span>');
+  document.getElementById('flags').innerHTML=fl.join(' ');
+  var type=classifyCPAK(ahka,jlo);var t=CPAK_TYPES[type];var r=ALIGN_REC[type];
+  document.querySelectorAll('.cpak-cell').forEach(function(c){c.classList.remove('highlight')});
+  var cel=document.getElementById('cpak-'+type);if(cel)cel.classList.add('highlight');
+  document.getElementById('cbox').className='cb '+r.css;
+  document.getElementById('cbox').innerHTML='<b>'+t.lbl+': '+t.name+'</b> ('+t.freq+')<br>'+r.text+'<br><b>Empfehlung: '+r.rec+'</b>';
+  // Sync page 1 summary bar
+  document.getElementById('s1_ldfa').textContent=ldfa.toFixed(1);
+  document.getElementById('s1_mpta').textContent=mpta.toFixed(1);
+  document.getElementById('s1_ahka').textContent=(ahka>=0?'+':'')+ahka.toFixed(1)+'°';
+  document.getElementById('s1_cpak').textContent=t.lbl;
+  if(currentPage===1){updateNav();updateSummary();}
+}
+
+/* ═══ ALIGNMENT STRATEGY ═══ */
+function selectStrat(s,el){
+  navStrat=s;
+  document.querySelectorAll('.strat-btn').forEach(function(b){if(b.parentElement.id!=='')return;b.classList.remove('selected')});
+  el.classList.add('selected');
+  var ldfa=+document.getElementById('sldfa').value;
+  var mpta=+document.getElementById('smpta').value;
+  var ahka=mpta-ldfa;
+  if(s==='MA'){
+    document.getElementById('sFemDev').value=0;document.getElementById('sTibDev').value=0;document.getElementById('sFemRot').value=3;
+    document.getElementById('stratHint').innerHTML='<b>Mechanisches Alignment:</b> Beide Komponenten ⊥ zur mechanischen Achse. Ziel: HKA 0°. Native Gelenklinie wird nicht erhalten.';
+  } else if(s==='KA'){
+    var fD=Math.max(-5,Math.min(8,90-ldfa)),tD=Math.max(-5,Math.min(8,90-mpta));
+    document.getElementById('sFemDev').value=fD;document.getElementById('sTibDev').value=tD;document.getElementById('sFemRot').value=0;
+    document.getElementById('stratHint').innerHTML='<b>Kinematisches Alignment:</b> Resektionen parallel zu nativen Gelenkflächen. Ziel: HKA = aHKA ('+(ahka>=0?'+':'')+ahka.toFixed(1)+'°). Native Gelenklinie vollständig erhalten. <span style="color:var(--amber-t)">Keine Restriktionsgrenzen.</span>';
+  } else if(s==='rKA'){
+    var fD=90-ldfa,tD=90-mpta;
+    fD=Math.max(-5,Math.min(5,fD));tD=Math.max(-5,Math.min(5,tD));
+    var hka=fD-tD;
+    if(hka>3){var ex=hka-3;fD-=ex/2;tD+=ex/2;}
+    if(hka<-3){var ex=-3-hka;fD+=ex/2;tD-=ex/2;}
+    fD=Math.round(fD*2)/2;tD=Math.round(tD*2)/2;
+    document.getElementById('sFemDev').value=fD;document.getElementById('sTibDev').value=tD;document.getElementById('sFemRot').value=0;
+    var restricted=(fD!==(90-ldfa))||(tD!==(90-mpta));
+    document.getElementById('stratHint').innerHTML='<b>Restricted KA (Vendittoli):</b> KA mit Grenzen: LDFA/MPTA 85–95°, HKA ±3°.'+(restricted?' <span style="color:var(--amber-t)">Native Winkel wurden eingeschränkt.</span>':' Native Anatomie liegt innerhalb der Grenzen.');
+  } else if(s==='AA'){
+    var fD=Math.max(-5,Math.min(8,(90-ldfa)*0.5)),tD=Math.max(-5,Math.min(8,(90-mpta)*0.5));
+    document.getElementById('sFemDev').value=fD;document.getElementById('sTibDev').value=tD;document.getElementById('sFemRot').value=3;
+    document.getElementById('stratHint').innerHTML='<b>Anatomisches Alignment:</b> Kompromiss zwischen MA und KA. Gelenklinie teilweise erhalten. Ziel: HKA ca. '+(ahka*0.5>=0?'+':'')+(ahka*0.5).toFixed(1)+'°.';
+  } else if(s==='iKA'){
+    var fD=Math.max(-5,Math.min(5,90-mpta)),tD=Math.max(-5,Math.min(5,90-ldfa));
+    document.getElementById('sFemDev').value=fD;document.getElementById('sTibDev').value=tD;document.getElementById('sFemRot').value=3;
+    document.getElementById('stratHint').innerHTML='<b>Inverses KA:</b> Femur- und Tibia-Abweichungen vertauscht. Spaltbalance über Knochen statt Weichteile. Gleiche HKA wie KA, aber invertierte JLO-Veränderung.';
+  } else {
+    document.getElementById('stratHint').innerHTML='<b>Individuell:</b> Resektionswinkel frei einstellbar. Für komplexe Deformitäten oder seltene CPAK-Typen.';
+  }
+  updateNav();
+}
+
+/* ═══ NAVIGATOR UPDATE ═══ */
+function updateNav(){
+  var ldfa=+document.getElementById('sldfa').value;
+  var mpta=+document.getElementById('smpta').value;
+  var femDev=+document.getElementById('sFemDev').value;
+  var tibDev=+document.getElementById('sTibDev').value;
+  var tibSlope=+document.getElementById('sTibSlope').value;
+  var femRot=+document.getElementById('sFemRot').value;
+  var ahka=mpta-ldfa,nativeJLO=mpta+ldfa;
+  document.getElementById('vFemDev').textContent=(femDev>=0?'+':'')+femDev.toFixed(1)+'°';
+  document.getElementById('vTibDev').textContent=(tibDev>=0?'+':'')+tibDev.toFixed(1)+'°';
+  document.getElementById('vTibSlope').textContent=tibSlope.toFixed(1)+'°';
+  document.getElementById('vFemRot').textContent=femRot.toFixed(1)+'°';
+  var postHKA=femDev-tibDev,postLDFA=90-femDev,postMPTA=90-tibDev,postJLO=postMPTA+postLDFA;
+  var extML=tibDev-femDev,flexML=extML+femRot-3;
+  var targetHKA=navStrat==='KA'?ahka:navStrat==='rKA'?Math.max(-3,Math.min(3,ahka)):navStrat==='AA'?ahka*0.5:navStrat==='iKA'?ahka:0;
+  var hkaTol=navStrat==='KA'?2:navStrat==='rKA'?1.5:3;
+  var hkaOk=Math.abs(postHKA-targetHKA)<=hkaTol;
+  var extOk=Math.abs(extML)<=2,flexOk=Math.abs(flexML)<=2;
+  var femOk=true,tibOk=true;
+  if(navStrat==='rKA'){femOk=(postLDFA>=85&&postLDFA<=95);tibOk=(postMPTA>=85&&postMPTA<=95);}
+  var jloOk;
+  if(navStrat==='KA')jloOk=Math.abs(postJLO-nativeJLO)<=2;
+  else if(navStrat==='rKA')jloOk=Math.abs(postJLO-nativeJLO)<=4;
+  else if(navStrat==='MA')jloOk=Math.abs(postJLO-180)<=2;
+  else if(navStrat==='AA')jloOk=Math.abs(postJLO-(nativeJLO+180)/2)<=3;
+  else jloOk=true;
+
+  document.getElementById('navHKA').textContent=(postHKA>=0?'+':'')+postHKA.toFixed(1)+'°';
+  document.getElementById('navHKA').style.color=hkaOk?'var(--green-t)':'var(--red-t)';
+  document.getElementById('navFemCor').textContent=(femDev>=0?'+':'')+femDev.toFixed(1)+'°'+(femDev===0?' (⊥)':femDev>0?' Valg.':' Var.');
+  document.getElementById('navTibCor').textContent=(tibDev>=0?'+':'')+tibDev.toFixed(1)+'°'+(tibDev===0?' (⊥)':tibDev>0?' Var.':' Valg.');
+  document.getElementById('navExtGap').innerHTML=Math.abs(extML)<0.5?'Symmetrisch':'Med. '+(extML>0?'enger':'weiter')+' ('+(extML>=0?'+':'')+extML.toFixed(1)+'°)';
+  document.getElementById('navExtGap').style.color=extOk?'var(--green-t)':'var(--red-t)';
+  document.getElementById('navFlexGap').innerHTML=Math.abs(flexML)<0.5?'Symmetrisch':'Med. '+(flexML>0?'enger':'weiter')+' ('+(flexML>=0?'+':'')+flexML.toFixed(1)+'°)';
+  document.getElementById('navFlexGap').style.color=flexOk?'var(--green-t)':'var(--red-t)';
+  var jlLabel=navStrat==='KA'?(jloOk?'Erhalten':'Verändert!'):navStrat==='rKA'?(jloOk?'Weitgehend erhalten':'Verändert'):navStrat==='MA'?(jloOk?'Horizontal':'Schief!'):'Teilw. erhalten';
+  document.getElementById('navJLO').textContent=jlLabel+' ('+postJLO.toFixed(0)+'°)';
+  document.getElementById('navJLO').style.color=jloOk?'var(--green-t)':'var(--red-t)';
+
+  colorCell('cellHKA',hkaOk);colorCell('cellFem',femOk);colorCell('cellTib',tibOk);
+  colorCell('cellExt',extOk);colorCell('cellFlex',flexOk);colorCell('cellJLO',jloOk);
+
+  // Optimization hints
+  var hints=[];
+  if(!hkaOk){var d=postHKA-targetHKA;hints.push(d>0?'⚠ <b>HKA zu valgus</b> → Femur-Resektion verringern oder Tibia erhöhen.':'⚠ <b>HKA zu varus</b> → Femur-Resektion erhöhen oder Tibia verringern.');}
+  if(!extOk){hints.push(extML>0?'⚠ <b>Ext.-Spalt medial enger</b> → Tibia-Varus reduzieren.':'⚠ <b>Ext.-Spalt lateral enger</b> → Tibia-Varus erhöhen.');}
+  if(!flexOk){hints.push(flexML>0?'⚠ <b>Flex.-Spalt medial enger</b> → Femur-Außenrotation erhöhen.':'⚠ <b>Flex.-Spalt lateral enger</b> → Femur-Außenrotation reduzieren.');}
+  if(!femOk)hints.push('⚠ <b>Femur außerhalb rKA-Grenze</b> (LDFA '+postLDFA.toFixed(1)+'°, erlaubt 85–95°).');
+  if(!tibOk)hints.push('⚠ <b>Tibia außerhalb rKA-Grenze</b> (MPTA '+postMPTA.toFixed(1)+'°, erlaubt 85–95°).');
+
+  var optEl=document.getElementById('navOptimize');
+  if(hints.length===0){optEl.style.background='var(--green-bg)';optEl.style.borderColor='var(--green-b)';optEl.innerHTML='<span style="color:var(--green-t)">✔ Alle Parameter im Zielbereich für '+navStrat+'.</span>';}
+  else{optEl.style.background='var(--red-bg)';optEl.style.borderColor='var(--red-b)';optEl.innerHTML='<div style="color:var(--red-t)">'+hints.join('<br>')+'</div>';}
+
+  var allOk=hkaOk&&extOk&&flexOk&&jloOk&&femOk&&tibOk;
+  var sb=document.getElementById('navStatus');
+  sb.className='cb '+(allOk?'sf':hints.length<=2?'wn':'dn');
+  sb.innerHTML='<b>'+navStrat+'</b> — '+(allOk?'Alle Parameter optimal.':hints.length+' Parameter außerhalb des Zielbereichs.');
+
+  drawNavSVG(ldfa,mpta,femDev,tibDev,postHKA);
+  updateSummary();
+}
+
+function colorCell(id,ok){var el=document.getElementById(id);if(!el)return;el.style.borderColor=ok?'var(--green-b)':'var(--red-b)';el.style.background=ok?'var(--green-bg)':'var(--red-bg)';}
+
+/* ═══ SVG ═══ */
+function drawNavSVG(ldfa,mpta,femDev,tibDev,hka){
+  var svg=document.getElementById('navSVG');
+  var preCx=140,postCx=320,ky=160,fL=110,tL=110,jH=30,D=Math.PI/180,A=3.0;
+  var pFA=(90-ldfa)*A,pTA=(mpta-90)*A,pJT=(180-(mpta+ldfa))/2*1.2;
+  var pfx=preCx-Math.sin(pFA*D)*fL,pfy=ky-Math.cos(pFA*D)*fL;
+  var ptx=preCx+Math.sin(pTA*D)*tL,pty=ky+Math.cos(pTA*D)*tL;
+  var oFA=femDev*A,oTA=tibDev*A;
+  var oJT=navStrat==='KA'?pJT:navStrat==='rKA'?pJT*0.85:navStrat==='AA'?pJT*0.5:navStrat==='MA'?0:(tibDev-femDev)*0.4;
+  var fx=postCx-Math.sin(oFA*D)*fL,fy=ky-Math.cos(oFA*D)*fL;
+  var tx=postCx+Math.sin(oTA*D)*tL,ty=ky+Math.cos(oTA*D)*tL;
+  var targetHKA=navStrat==='KA'?(mpta-ldfa):navStrat==='AA'?(mpta-ldfa)*0.5:0;
+  var hkaOk=Math.abs(hka-targetHKA)<=3;
+  var col=hkaOk?'var(--green-t)':'var(--red-t)';
+  var preCol='var(--t3)';
+  var pjl1x=preCx-Math.cos(pJT*D)*jH,pjl1y=ky+Math.sin(pJT*D)*jH,pjl2x=preCx+Math.cos(pJT*D)*jH,pjl2y=ky-Math.sin(pJT*D)*jH;
+  var ojl1x=postCx-Math.cos(oJT*D)*jH,ojl1y=ky+Math.sin(oJT*D)*jH,ojl2x=postCx+Math.cos(oJT*D)*jH,ojl2y=ky-Math.sin(oJT*D)*jH;
+  var h='<rect x="0" y="0" width="440" height="380" fill="var(--bg2)" rx="12"/>';
+  h+='<text x="'+preCx+'" y="20" text-anchor="middle" font-size="11" fill="var(--t2)" font-weight="600" font-family="var(--font)">Präoperativ</text>';
+  h+='<text x="'+postCx+'" y="20" text-anchor="middle" font-size="11" fill="var(--t2)" font-weight="600" font-family="var(--font)">Postoperativ ('+navStrat+')</text>';
+  // Mech axis ref
+  h+='<line x1="'+preCx+'" y1="35" x2="'+preCx+'" y2="310" stroke="var(--b2)" stroke-width="1" stroke-dasharray="4,4"/>';
+  h+='<line x1="'+postCx+'" y1="35" x2="'+postCx+'" y2="310" stroke="var(--b2)" stroke-width="1" stroke-dasharray="4,4"/>';
+  // Pre
+  h+='<line x1="'+preCx+'" y1="'+ky+'" x2="'+pfx.toFixed(1)+'" y2="'+pfy.toFixed(1)+'" stroke="'+preCol+'" stroke-width="5" stroke-linecap="round" opacity="0.5"/>';
+  h+='<line x1="'+preCx+'" y1="'+ky+'" x2="'+ptx.toFixed(1)+'" y2="'+pty.toFixed(1)+'" stroke="'+preCol+'" stroke-width="4" stroke-linecap="round" opacity="0.5"/>';
+  h+='<circle cx="'+preCx+'" cy="'+ky+'" r="4" fill="'+preCol+'" opacity="0.5"/>';
+  h+='<line x1="'+pjl1x.toFixed(1)+'" y1="'+pjl1y.toFixed(1)+'" x2="'+pjl2x.toFixed(1)+'" y2="'+pjl2y.toFixed(1)+'" stroke="var(--amber-b)" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>';
+  // Post
+  h+='<line x1="'+postCx+'" y1="'+ky+'" x2="'+fx.toFixed(1)+'" y2="'+fy.toFixed(1)+'" stroke="'+col+'" stroke-width="5" stroke-linecap="round"/>';
+  h+='<line x1="'+postCx+'" y1="'+ky+'" x2="'+tx.toFixed(1)+'" y2="'+ty.toFixed(1)+'" stroke="'+col+'" stroke-width="4" stroke-linecap="round"/>';
+  h+='<circle cx="'+postCx+'" cy="'+ky+'" r="4" fill="'+col+'"/>';
+  h+='<line x1="'+ojl1x.toFixed(1)+'" y1="'+ojl1y.toFixed(1)+'" x2="'+ojl2x.toFixed(1)+'" y2="'+ojl2y.toFixed(1)+'" stroke="'+col+'" stroke-width="2.5" stroke-linecap="round"/>';
+  // Resection lines
+  var rL=35;
+  h+='<line x1="'+(postCx-rL)+'" y1="'+(ky-10)+'" x2="'+(postCx+rL)+'" y2="'+(ky-10)+'" stroke="var(--blue-b)" stroke-width="1.5" stroke-dasharray="4,3"/>';
+  h+='<line x1="'+(postCx-rL)+'" y1="'+(ky+10)+'" x2="'+(postCx+rL)+'" y2="'+(ky+10)+'" stroke="var(--blue-b)" stroke-width="1.5" stroke-dasharray="4,3"/>';
+  // Labels
+  var ahka=mpta-ldfa;
+  h+='<text x="'+preCx+'" y="300" text-anchor="middle" font-size="10" fill="var(--t3)" font-family="var(--font)">aHKA '+(ahka>=0?'+':'')+ahka.toFixed(1)+'°</text>';
+  h+='<text x="'+preCx+'" y="314" text-anchor="middle" font-size="10" fill="var(--amber-t)" font-family="var(--font)">JLO '+(mpta+ldfa).toFixed(0)+'°</text>';
+  h+='<text x="'+postCx+'" y="300" text-anchor="middle" font-size="10" fill="'+col+'" font-family="var(--font)">HKA '+(hka>=0?'+':'')+hka.toFixed(1)+'°</text>';
+  // Legend
+  h+='<line x1="20" y1="345" x2="40" y2="345" stroke="var(--t3)" stroke-width="4" opacity="0.5"/>';
+  h+='<text x="45" y="349" font-size="9" fill="var(--t3)" font-family="var(--font)">Präop</text>';
+  h+='<line x1="100" y1="345" x2="120" y2="345" stroke="'+col+'" stroke-width="4"/>';
+  h+='<text x="125" y="349" font-size="9" fill="var(--t3)" font-family="var(--font)">Postop</text>';
+  h+='<line x1="200" y1="345" x2="220" y2="345" stroke="var(--amber-b)" stroke-width="2.5" opacity="0.6"/>';
+  h+='<text x="225" y="349" font-size="9" fill="var(--t3)" font-family="var(--font)">Native JLO</text>';
+  h+='<line x1="310" y1="345" x2="330" y2="345" stroke="var(--blue-b)" stroke-width="1.5" stroke-dasharray="4,3"/>';
+  h+='<text x="335" y="349" font-size="9" fill="var(--t3)" font-family="var(--font)">Resektion</text>';
+  svg.innerHTML=h;
+}
+
+/* ═══ SUMMARY ═══ */
+function updateSummary(){
+  var el=document.getElementById('summaryContent');if(!el)return;
+  var ldfa=+document.getElementById('sldfa').value,mpta=+document.getElementById('smpta').value;
+  var ahka=mpta-ldfa,jlo=mpta+ldfa;
+  var type=classifyCPAK(ahka,jlo),t=CPAK_TYPES[type];
+  var femDev=+document.getElementById('sFemDev').value,tibDev=+document.getElementById('sTibDev').value;
+  var tibSlope=+document.getElementById('sTibSlope').value,femRot=+document.getElementById('sFemRot').value;
+  var postHKA=femDev-tibDev;
+  el.innerHTML='<div style="padding:10px 14px;background:var(--bg2);border-radius:var(--r-md);margin-bottom:10px"><b>Patientenanatomie:</b> mLDFA '+ldfa.toFixed(1)+'° · MPTA '+mpta.toFixed(1)+'° · aHKA '+(ahka>=0?'+':'')+ahka.toFixed(1)+'° · CPAK '+t.lbl+'</div>'+
+    '<div style="padding:10px 14px;background:var(--blue-bg);border:1px solid var(--blue-b);border-radius:var(--r-md);color:var(--blue-t);margin-bottom:10px"><b>Strategie: '+navStrat+'</b></div>'+
+    '<div style="padding:10px 14px;background:var(--bg2);border-radius:var(--r-md)"><b>Roboter/Navigations-Eingabe:</b><br>'+
+    'Femur koronal: <b>'+(femDev>=0?'+':'')+femDev.toFixed(1)+'°</b> · Tibia koronal: <b>'+(tibDev>=0?'+':'')+tibDev.toFixed(1)+'°</b><br>'+
+    'Slope: <b>'+tibSlope.toFixed(1)+'°</b> · Femur-Rotation: <b>'+femRot.toFixed(1)+'°</b><br>'+
+    'Post-op HKA: <b>'+(postHKA>=0?'+':'')+postHKA.toFixed(1)+'°</b></div>';
+}
+
+/* ═══ IMAGE MEASUREMENT ═══ */
+var kImage=null,kCanvas=null,kCtx=null,kPoints=[],kMode='ldfa',kCalibMode=false,kCalibPoints=[],kHomography=null;
+var LDFA_STEPS=['Femur-Hüftkopfzentrum','Kniegelenkzentrum (Femur)','Lateraler Kondylenpunkt','Medialer Kondylenpunkt'];
+var MPTA_STEPS=['Kniegelenkzentrum (Tibia)','Sprunggelenkzentrum','Medialer Tibiaplateaupunkt','Lateraler Tibiaplateaupunkt'];
+var kMeasuredLDFA=null,kMeasuredMPTA=null;
+
+function loadKneeImage(file){
+  if(!file)return;
+  var img=new Image();
+  img.onload=function(){
+    kImage=img;kCalibMode=false;kCalibPoints=[];kHomography=null;kPoints=[];
+    kCanvas=document.getElementById('kCanvas');kCtx=kCanvas.getContext('2d');
+    var wrap=document.getElementById('kMeasureWrap');
+    var maxW=wrap.clientWidth,maxH=500;
+    var scale=Math.min(maxW/img.width,maxH/img.height);
+    kCanvas.width=img.width;kCanvas.height=img.height;
+    kCanvas.style.display='block';kCanvas.style.width=Math.round(img.width*scale)+'px';
+    kCanvas.style.height=Math.round(img.height*scale)+'px';kCanvas.style.margin='0 auto';
+    document.getElementById('kUploadHint').style.display='none';
+    document.getElementById('kImgBar').style.display='flex';
+    document.getElementById('kMeasureSteps').style.display='block';
+    document.getElementById('kMeasuredResults').style.display='block';
+    document.getElementById('kCalibResult').style.display='none';
+    kCanvas.onclick=function(e){
+      var rect=kCanvas.getBoundingClientRect();
+      var x=(e.clientX-rect.left)/rect.width*kCanvas.width;
+      var y=(e.clientY-rect.top)/rect.height*kCanvas.height;
+      if(kCalibMode) addKneeCalibPoint(x,y);
+      else addKneePoint(x,y);
+    };
+    drawKnee();updateKneeUI();
+  };
+  img.src=URL.createObjectURL(file);
+  document.getElementById('kFile').value='';
+}
+
+function removeKneeImage(){
+  kImage=null;kPoints=[];kCalibPoints=[];kCalibMode=false;kHomography=null;
+  document.getElementById('kCanvas').style.display='none';
+  document.getElementById('kUploadHint').style.display='block';
+  document.getElementById('kImgBar').style.display='none';
+  document.getElementById('kMeasureSteps').style.display='none';
+  document.getElementById('kMeasuredResults').style.display='none';
+  document.getElementById('kCalibResult').style.display='none';
+}
+
+function switchKneeTab(mode){
+  kMode=mode;kPoints=[];
+  document.getElementById('kTabLDFA').classList.toggle('selected',mode==='ldfa');
+  document.getElementById('kTabMPTA').classList.toggle('selected',mode==='mpta');
+  if(kImage)drawKnee();updateKneeUI();
+}
+
+function addKneePoint(x,y){
+  var steps=kMode==='ldfa'?LDFA_STEPS:MPTA_STEPS;
+  if(kPoints.length>=steps.length)return;
+  kPoints.push({x:x,y:y});drawKnee();updateKneeUI();
+  if(kPoints.length===steps.length) calcKneeAngle();
+}
+
+function undoKneePoint(){if(kPoints.length>0){kPoints.pop();drawKnee();updateKneeUI();}}
+function resetKneePoints(){kPoints=[];drawKnee();updateKneeUI();}
+
+function updateKneeUI(){
+  var steps=kMode==='ldfa'?LDFA_STEPS:MPTA_STEPS;
+  var dots='';
+  if(kCalibMode){
+    for(var i=0;i<4;i++){dots+='<span class="m-dot'+(i<kCalibPoints.length?' done':i===kCalibPoints.length?' active':'')+'"></span>';}
+    document.getElementById('kStepDots').innerHTML=dots;
+    document.getElementById('kStepText').innerHTML=kCalibPoints.length<4?'📐 Ecke '+(kCalibPoints.length+1)+'/4 des Röntgenbilds anklicken':'<span style="color:var(--green-t)">✔ Korrigiert</span>';
+  } else {
+    for(var i=0;i<steps.length;i++){dots+='<span class="m-dot'+(i<kPoints.length?' done':i===kPoints.length?' active':'')+'"></span>';}
+    document.getElementById('kStepDots').innerHTML=dots;
+    var txt=document.getElementById('kStepText');
+    if(kPoints.length<steps.length){txt.textContent=(kPoints.length+1)+'/'+steps.length+': '+steps[kPoints.length];txt.style.background='var(--blue-bg)';txt.style.borderColor='var(--blue-b)';txt.style.color='var(--blue-t)';}
+    else{txt.innerHTML='<span style="color:var(--green-t)">✔ '+(kMode==='ldfa'?'mLDFA':'MPTA')+'-Messung abgeschlossen.</span>';txt.style.background='var(--green-bg)';txt.style.borderColor='var(--green-b)';txt.style.color='var(--green-t)';}
+  }
+}
+
+function drawKnee(){
+  if(!kCtx||!kImage)return;
+  kCtx.clearRect(0,0,kCanvas.width,kCanvas.height);kCtx.drawImage(kImage,0,0);
+  if(kCalibMode){
+    kCtx.fillStyle='rgba(0,0,0,0.15)';kCtx.fillRect(0,0,kCanvas.width,kCanvas.height);
+    var r=Math.max(8,kCanvas.width/60);
+    var COLORS=['#ef4444','#f59e0b','#22c55e','#3b82f6'];
+    for(var i=0;i<kCalibPoints.length;i++){
+      var p=kCalibPoints[i];kCtx.beginPath();kCtx.arc(p.x,p.y,r,0,Math.PI*2);
+      kCtx.fillStyle=COLORS[i];kCtx.globalAlpha=0.85;kCtx.fill();kCtx.globalAlpha=1;kCtx.strokeStyle='#fff';kCtx.lineWidth=2;kCtx.stroke();
+    }
+    return;
+  }
+  var colors=kMode==='ldfa'?['#ef4444','#ef4444','#3b82f6','#3b82f6']:['#ef4444','#ef4444','#3b82f6','#3b82f6'];
+  var r=Math.max(6,kCanvas.width/80);
+  for(var i=0;i<kPoints.length;i++){
+    var p=kPoints[i];kCtx.beginPath();kCtx.arc(p.x,p.y,r,0,Math.PI*2);
+    kCtx.fillStyle=colors[i];kCtx.globalAlpha=0.8;kCtx.fill();kCtx.globalAlpha=1;kCtx.strokeStyle='#fff';kCtx.lineWidth=2;kCtx.stroke();
+  }
+  // Mechanical axis line (points 0-1)
+  if(kPoints.length>=2){kCtx.beginPath();kCtx.moveTo(kPoints[0].x,kPoints[0].y);kCtx.lineTo(kPoints[1].x,kPoints[1].y);kCtx.strokeStyle='#ef4444';kCtx.lineWidth=2;kCtx.setLineDash([6,4]);kCtx.stroke();kCtx.setLineDash([]);}
+  // Joint line (points 2-3)
+  if(kPoints.length>=4){kCtx.beginPath();kCtx.moveTo(kPoints[2].x,kPoints[2].y);kCtx.lineTo(kPoints[3].x,kPoints[3].y);kCtx.strokeStyle='#3b82f6';kCtx.lineWidth=2;kCtx.setLineDash([6,4]);kCtx.stroke();kCtx.setLineDash([]);}
+}
+
+function calcKneeAngle(){
+  var D=180/Math.PI;var H=kHomography;
+  // Transform points if calibrated
+  var p=[];for(var i=0;i<kPoints.length;i++){p.push(transformKneePoint(H,kPoints[i].x,kPoints[i].y));}
+  // Mechanical axis: p[0]→p[1]
+  var axDx=p[1].x-p[0].x,axDy=p[1].y-p[0].y;
+  // Joint line: p[2]→p[3]
+  var jlDx=p[3].x-p[2].x,jlDy=p[3].y-p[2].y;
+  // Angle between mechanical axis and joint line
+  var axAngle=Math.atan2(axDy,axDx);
+  var jlAngle=Math.atan2(jlDy,jlDx);
+  var angle=Math.abs(axAngle-jlAngle)*D;
+  if(angle>180)angle=360-angle;
+  // For LDFA: angle is measured laterally
+  // For MPTA: angle is measured medially
+  angle=Math.round(angle*10)/10;
+  if(kMode==='ldfa'){
+    kMeasuredLDFA=angle;
+    document.getElementById('kResLDFA').textContent=angle+'°'+(H?' ✔':'');
+  } else {
+    kMeasuredMPTA=angle;
+    document.getElementById('kResMPTA').textContent=angle+'°'+(H?' ✔':'');
+  }
+}
+
+function applyKneeMeasured(){
+  if(kMeasuredLDFA!==null){document.getElementById('sldfa').value=Math.max(80,Math.min(95,kMeasuredLDFA));}
+  if(kMeasuredMPTA!==null){document.getElementById('smpta').value=Math.max(80,Math.min(95,kMeasuredMPTA));}
+  u();
+  document.querySelectorAll('.ic').forEach(function(c){c.style.transition='background .3s';c.style.background='var(--green-bg)';setTimeout(function(){c.style.background='';},600);});
+}
+
+function transformKneePoint(H,x,y){
+  if(!H)return{x:x,y:y};
+  var d=H[6]*x+H[7]*y+1;
+  return{x:(H[0]*x+H[1]*y+H[2])/d,y:(H[3]*x+H[4]*y+H[5])/d};
+}
+
+/* ═══ CALIBRATION ═══ */
+function startKneeCalib(){kCalibMode=true;kCalibPoints=[];drawKnee();updateKneeUI();}
+function addKneeCalibPoint(x,y){
+  if(kCalibPoints.length>=4)return;
+  kCalibPoints.push({x:x,y:y});drawKnee();updateKneeUI();
+  if(kCalibPoints.length===4) applyKneeCalib();
+}
+function applyKneeCalib(){
+  var src=kCalibPoints;
+  var w=Math.max(Math.sqrt(Math.pow(src[1].x-src[0].x,2)+Math.pow(src[1].y-src[0].y,2)),Math.sqrt(Math.pow(src[2].x-src[3].x,2)+Math.pow(src[2].y-src[3].y,2)));
+  var h=Math.max(Math.sqrt(Math.pow(src[3].x-src[0].x,2)+Math.pow(src[3].y-src[0].y,2)),Math.sqrt(Math.pow(src[2].x-src[1].x,2)+Math.pow(src[2].y-src[1].y,2)));
+  if(w<50||h<50)return;
+  var dst=[{x:0,y:0},{x:w,y:0},{x:w,y:h},{x:0,y:h}];
+  kHomography=computeHomography(src,dst);
+  kCalibMode=false;kPoints=[];
+  var el=document.getElementById('kCalibResult');el.style.display='block';
+  el.style.background='var(--green-bg)';el.style.border='1px solid var(--green-b)';
+  el.innerHTML='<span style="color:var(--green-t)">✔ Perspektivkorrektur aktiv. Winkel werden automatisch entzerrt.</span>';
+  var btn=document.getElementById('kCalibBtn');btn.style.background='rgba(34,197,94,0.8)';btn.textContent='✔ Korrigiert';
+  drawKnee();updateKneeUI();
+}
+
+function computeHomography(src,dst){
+  var A=[];
+  for(var i=0;i<4;i++){var s=src[i],d=dst[i];
+    A.push([s.x,s.y,1,0,0,0,-d.x*s.x,-d.x*s.y, d.x]);
+    A.push([0,0,0,s.x,s.y,1,-d.y*s.x,-d.y*s.y, d.y]);}
+  var n=8;
+  for(var col=0;col<n;col++){var mR=col;for(var row=col+1;row<n;row++){if(Math.abs(A[row][col])>Math.abs(A[mR][col]))mR=row;}
+    var tmp=A[col];A[col]=A[mR];A[mR]=tmp;if(Math.abs(A[col][col])<1e-10)return null;
+    for(var row=col+1;row<n;row++){var f=A[row][col]/A[col][col];for(var j=col;j<=n;j++)A[row][j]-=f*A[col][j];}}
+  var h=new Array(8);for(var row=n-1;row>=0;row--){h[row]=A[row][n];for(var j=row+1;j<n;j++)h[row]-=A[row][j]*h[j];h[row]/=A[row][row];}
+  return h;
+}
+
+/* ═══ INFO ═══ */
+var INFO={
+  ldfa:{title:'mLDFA',body:'<p><b>Mechanischer lateraler distaler Femurwinkel</b></p><p>Gemessen zwischen mech. Femurachse und distaler Gelenkfläche.</p><p>Normal: 87° ± 3° (85–90°)</p><p>&gt;90° = Varus-Femur · &lt;85° = Valgus-Femur</p>'},
+  mpta:{title:'MPTA',body:'<p><b>Medialer proximaler Tibiawinkel</b></p><p>Gemessen zwischen mech. Tibiaachse und proximaler Gelenkfläche.</p><p>Normal: 87° ± 3° (85–90°)</p><p>&lt;85° = Varus-Tibia · &gt;90° = Valgus-Tibia</p>'},
+  femCor:{title:'Femur koronal',body:'<p>Resektionswinkel des distalen Femurs in der Koronalebene, gemessen als Abweichung von ⊥ zur mechanischen Achse.</p><p>0° = senkrecht (MA) · + = Valgus · − = Varus</p>'},
+  tibCor:{title:'Tibia koronal',body:'<p>Resektionswinkel der proximalen Tibia in der Koronalebene.</p><p>0° = senkrecht (MA) · + = Varus · − = Valgus</p>'}
+};
+function showInfo(k){var d=INFO[k];if(!d)return;document.getElementById('infoTitle').textContent=d.title;document.getElementById('infoBody').innerHTML=d.body;document.getElementById('infoOv').style.display='block';}
+function closeInfo(){document.getElementById('infoOv').style.display='none';}
+function showLegal(k){
+  var t={disc:'<h3>Haftungsausschluss</h3><p>Dieses Tool dient der präoperativen Planungsvorbereitung und ersetzt keine klinische Beurteilung.</p>',
+    impr:'<h3>Impressum</h3><p>Dr. Julian Marques · Venusberg-Campus 1 · 53127 Bonn · <a href="https://julian.dr-marques.de">julian.dr-marques.de</a></p>',
+    dsgvo:'<h3>Datenschutz</h3><p>Alle Berechnungen erfolgen lokal im Browser. Keine Datenübertragung an Server.</p>'};
+  document.getElementById('legalBody').innerHTML=t[k]||'';document.getElementById('legalOv').style.display='block';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeInfo();document.getElementById('legalOv').style.display='none';}});
+
+// Init
+u();selectStrat('MA',document.querySelector('.strat-btn.selected'));
+</script>
+</body>
+</html>
